@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """deck objects"""
 
-class Card:
+class Card():
         def __init__(self, type="", point_value=0, name=""):
             """initializing the cards"""
             self.type = type
@@ -33,15 +33,36 @@ class Card:
             """comment"""
             return self.__name
 
-        @tname.setter
+
+        @name.setter
         def name(self, string):
             """comment"""
             self.__name = string
 
+class HotSpring(Card):
+        def __init__(self, type="", point_value=0, name=""):
+            super().__init__(type, point_value, name)
 
+class Encounter(Card):
+        def __init__(self, type="", point_value=0, name=""):
+            super().__init__(type, point_value, name)
 
+class Souvenier(Card):
+        def __init__(self, type="", point_value=0, name="", subtype=""):
+            super().__init__(type, point_value, name)
+            self.subtype = subtype
+
+        @property
+        def subtype(self):
+            """comment"""
+            return self.__subtype
+
+        @subtype.setter
+        def subtype(self, string):
+            self.__subtype = string
 
 class Deck():
+        card_list = []
         def __init__(self, number_of_cards=0, owner=""):
             """initializing a deck, board or player owned"""
             self.number_of_cards = number_of_cards
