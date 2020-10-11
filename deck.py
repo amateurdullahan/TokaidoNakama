@@ -47,7 +47,11 @@ class Encounter(Card):
         def __init__(self, type="", point_value=0, name=""):
             super().__init__(type, point_value, name)
 
-class Souvenier(Card):
+class Meal(Card):
+        def __init__(self, type="", point_value=0, name=""):
+            super().__init__(type, point_value, name)
+
+class Souvenir(Card):
         def __init__(self, type="", point_value=0, name="", subtype=""):
             super().__init__(type, point_value, name)
             self.subtype = subtype
