@@ -71,3 +71,11 @@ class Deck():
             """initializing a deck, board or player owned"""
             self.number_of_cards = number_of_cards
             self.owner = owner
+
+        def add(obj):
+            """add card to deck"""
+            card_list.append(obj)
+
+        def print_list(card_list):
+            """just a test method to print a deck"""
+            print(card_list)
