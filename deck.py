@@ -47,7 +47,11 @@ class Encounter(Card):
         def __init__(self, type="", point_value=0, name=""):
             super().__init__(type, point_value, name)
 
-class Souvenier(Card):
+class Meal(Card):
+        def __init__(self, type="", point_value=0, name=""):
+            super().__init__(type, point_value, name)
+
+class Souvenir(Card):
         def __init__(self, type="", point_value=0, name="", subtype=""):
             super().__init__(type, point_value, name)
             self.subtype = subtype
@@ -67,3 +71,11 @@ class Deck():
             """initializing a deck, board or player owned"""
             self.number_of_cards = number_of_cards
             self.owner = owner
+
+        def add(obj):
+            """add card to deck"""
+            card_list.append(obj)
+
+        def print_list(card_list):
+            """just a test method to print a deck"""
+            print(card_list)
