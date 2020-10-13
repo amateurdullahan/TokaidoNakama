@@ -3,11 +3,14 @@ import sys
 import time
 from pygame.locals import *
 
+
+# Pygame Module Initialization
 pygame.init()
 
 # Screen Creation
+# Stretch goal of resizing display
 display_width = 1024
-display_height = 900
+display_height = 1024
 screen = pygame.display.set_mode((display_width, display_height))
 
 # Colors defined
@@ -29,23 +32,40 @@ pygame.display.set_icon(icon)
 
 # Board images
 board_one = pygame.image.load('board_one_rough_cutout.png')
-# board_two = pygame.image.load('board_two.png')
-# board_three = pygame.image.load('board_three.png')
-# board_four = pygame.image.load('board_four.png')
+# board_two = pygame.image.load('board_two_rough_cutout.png')
+# board_three = pygame.image.load('board_three_rough_cutout.png')
+# board_four = pygame.image.load('board_four_rough_cutout.png')
 
 # Piece images
-# player_green = 
-# player_blue = 
-# player_grey = 
-# player_yelloworange = 
-# player_purple = 
+# player_green = ('player_green.png')
+# player_blue = ('player_blue.png')
+# player_grey = ('player_grey.png')
+# player_yelloworange = ('player_yelloworange.png')
+# player_purple = ('player_purple.png')
 
-def board(x, y):
+# Coordinates for board
+x_board = (display_width * 0.12)
+y_board = (display_height * 0.12)
+
+# Function for board, will check for which board to load
+def board(x_board, y_board):
+
     # if check on which board to load, depending on game progress
-    screen.blit(pygame.transform.scale(board_one, (550, 450)), (x, y))
+    # if all players at space 14 && food has been chosen, board 2
+    # section for 
+    # Blit board, while scaling it to uniform size
+    screen.blit(pygame.transform.scale(board_one, (600, 440)), (x_board, y_board))
 
-x = (display_width * 0.22)
-y = (display_height * 0.2)
+# Font Section
+# Create title font, first param is font file in pygame, second is size
+font_title = pygame.font.Font('freesansbold.ttf', 60)
+# Create a text surface object, on which text is drawn on.
+text_title = font_title.render('Color\'s Turn', True, black)
+# Create a rectangular object for the text surface object
+text_title_rect = text_title.get_rect()
+# Set the center of the rectangular object
+text_title_rect.center = (display_width * .29, display_height * .095)
+
 
 # def start_screen():
 #
@@ -59,11 +79,11 @@ y = (display_height * 0.2)
 # start
 
 
-# Game Loop
+# Main Game Loop
 def main_screen():
     running = True
     while running:
-        # Creates list of events per frame, per second
+        # Inner loop of events & logic based off that (mouse clicks, selections, etc)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -71,9 +91,16 @@ def main_screen():
             # Shows list of events on ya terminal. To be removed, but fun to see
             print(event)
 
-        # RGB - Red, Green, Blue
+        # Filling screen
         screen.fill(white)
-        board(x, y)
+
+        # Render title text & rect
+        screen.blit(text_title, text_title_rect)
+
+        # Call Board Function
+        board(x_board, y_board)
+
+        # Update display after event logic is complete in inner for loop
         pygame.display.update()
 
 # Results Screen
@@ -84,6 +111,8 @@ def main_screen():
 #  and here!
 #
 #
+
+# Run Sequence Below
 
 # start_screen()
 main_screen()
