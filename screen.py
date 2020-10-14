@@ -1,7 +1,8 @@
+"""Main code for Tokaido Nakama"""
 import pygame
-import sys
-import time
-from pygame.locals import *
+# import sys
+# import time
+# from pygame.locals import *
 
 
 # Pygame Module Initialization
@@ -31,10 +32,10 @@ pygame.display.set_icon(icon)
 # clock = pygame.time.Clock()
 
 # Board images
-board_one = pygame.image.load('board_one_rough_cutout.png')
-# board_two = pygame.image.load('board_two_rough_cutout.png')
-# board_three = pygame.image.load('board_three_rough_cutout.png')
-# board_four = pygame.image.load('board_four_rough_cutout.png')
+board_one = pygame.image.load('board_one.png')
+# board_two = pygame.image.load('/images/board_two.png')
+# board_three = pygame.image.load('/images/board_three.png')
+# board_four = pygame.image.load('/images/board_four.png')
 
 # Piece images
 # player_green = ('player_green.png')
@@ -44,17 +45,28 @@ board_one = pygame.image.load('board_one_rough_cutout.png')
 # player_purple = ('player_purple.png')
 
 # Coordinates for board
-x_board = (display_width * 0.12)
-y_board = (display_height * 0.12)
+x_board_coord = (display_width * 0.052)
+y_board_coord = (display_height * 0.082)
 
 # Function for board, will check for which board to load
 def board(x_board, y_board):
+    """Sets up board & switches board as needed"""
 
     # if check on which board to load, depending on game progress
     # if all players at space 14 && food has been chosen, board 2
-    # section for 
+    # section for generating landing spots based off board
     # Blit board, while scaling it to uniform size
-    screen.blit(pygame.transform.scale(board_one, (600, 440)), (x_board, y_board))
+    current_board = pygame.transform.scale(board_one, (900, 600))
+    screen.blit(current_board, (x_board, y_board))
+
+# def encounter_selection():
+# Generates drop down menu / contextual menu based off encounter chosen.
+
+# def player_info(playercount, list of colors):
+# Generates player's info displays, depending on number of players & assigns colors
+
+# def board_points(current_board):
+# Generates points for pieces to land, depending on which board
 
 # Font Section
 # Create title font, first param is font file in pygame, second is size
@@ -64,7 +76,7 @@ text_title = font_title.render('Color\'s Turn', True, black)
 # Create a rectangular object for the text surface object
 text_title_rect = text_title.get_rect()
 # Set the center of the rectangular object
-text_title_rect.center = (display_width * .29, display_height * .095)
+text_title_rect.center = (display_width / 2, display_height * .05)
 
 
 # def start_screen():
@@ -76,11 +88,12 @@ text_title_rect.center = (display_width * .29, display_height * .095)
 #            if event.type == pygame.QUIT:
 #                pygame.quit()
 #                quit()
-# start
+# parameters selected here will be passed to main_screen
 
 
 # Main Game Loop
 def main_screen():
+    """Main game loop"""
     running = True
     while running:
         # Inner loop of events & logic based off that (mouse clicks, selections, etc)
@@ -98,7 +111,7 @@ def main_screen():
         screen.blit(text_title, text_title_rect)
 
         # Call Board Function
-        board(x_board, y_board)
+        board(x_board_coord, y_board_coord)
 
         # Update display after event logic is complete in inner for loop
         pygame.display.update()
@@ -109,7 +122,7 @@ def main_screen():
 #  stuff goes here
 #
 #  and here!
-#
+# 
 #
 
 # Run Sequence Below
