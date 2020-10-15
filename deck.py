@@ -169,6 +169,6 @@ class Deck():
         def print_list(self):
             """just a test method to print a deck"""
             a = 0
-            for a in range(len(self.number_of_cards)):
+            for a in self.number_of_cards:
                 print(self.card_list[a.__str__])
                 a += 1

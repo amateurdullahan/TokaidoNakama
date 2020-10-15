@@ -31,7 +31,7 @@ def CardSetup():
     HSDeck.add(HS11)
     HSDeck.add(HS12)
 
-    HSDeck.print_list()
+    """HSDeck.print_list()"""
 
     ENC1 = Encounter("Encounter", 0, "Kuge")
     ENC2 = Encounter("Encounter", 0, "Kuge")
@@ -64,7 +64,7 @@ def CardSetup():
     ENCDeck.add(ENC13)
     ENCDeck.add(ENC14)
 
-    ENCDeck.print_list()
+    """ENCDeck.print_list()"""
 
     M1 = Meal("Meal", 0, "Misoshiru", 1)
     M2 = Meal("Meal", 0, "Misoshiru", 1)
@@ -119,7 +119,7 @@ def CardSetup():
     MDeck.add(M24)
     MDeck.add(M25)
 
-    MDeck.print_list()
+    """MDeck.print_list()"""
 
     SV1 = Souvenir("Souvenir", 1, "Gofu", "Small Item", 1)
     SV2 = Souvenir("Souvenir", 1, "Koma", "Small Item", 1)
@@ -172,4 +172,4 @@ def CardSetup():
     SVDeck.add(SV23)
     SVDeck.add(SV24)
 
-    SVDeck.print_list()
+    """SVDeck.print_list()"""
