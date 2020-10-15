@@ -81,3 +81,21 @@ class Player():
         def pano_sea(self, value):
             """comment"""
             self.__pano_sea = value
+
+
+class Achievements():
+        def __init__(self, pano_paddy_bonus=0, pano_mt_bonus=0, pano_sea_bonus=0):
+            """initializing the players"""
+            self.pano_paddy_bonus = pano_paddy_bonus
+            self.pano_mt_bonus = pano_mt_bonus
+            self.pano_sea_bonus = pano_sea_bonus
+
+        @property
+        def pano_paddy_bonus=0(self):
+            """comment"""
+            return self.__pano_paddy_bonus=0
+
+        @color.setter
+        def pano_paddy_bonus=0(self, value):
+            """comment"""
+            self.__pano_paddy_bonus=0 = value
