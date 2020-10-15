@@ -173,3 +173,9 @@ def CardSetup():
     SVDeck.add(SV24)
 
     """SVDeck.print_list()"""
+
+    GreenPlayer = Player("Green")
+    PurplePlayer = Player("Purple")
+    YellowPlayer = Player("Yellow")
+    BluePlayer = Player("Blue")
+    GreyPlayer = Player("Grey")

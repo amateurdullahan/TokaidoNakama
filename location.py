@@ -2,7 +2,8 @@
 """location class and inherited stuff"""
 
 
-"""class Location():
+""" NOT SURE WE NEED THIS
+class Location():
     base location
     def __init__(self, board_space, name="", func):
         self.board_space = board_space
@@ -51,6 +52,8 @@ def Panorama_Sea_Loc(Player):
 
 def Temple_Loc(Player):
     """temple location function TBW"""
+    if Player.coins > 0:
+        return Player.coins -= 1
 
 def Souvenir_Shop_Loc(Player):
     """souvenirshop location function TBW"""
