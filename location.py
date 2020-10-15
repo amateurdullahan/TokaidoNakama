@@ -40,20 +40,25 @@ def Farm_Loc(Player):
 
 def Panorama_Paddy_Loc(Player):
     """paddy location function"""
-    return Player.pano_paddy += 1
+    Player.pano_paddy += 1
+    Player.points += Player.pano_paddy
+    """achievment check"""
 
 def Panorama_Mountain_Loc(Player):
     """mountain location function"""
-    return Player.pano_mt += 1
+    Player.pano_mt += 1
+    Player.points += Player.pano_mt
+    """achievment check"""
 
 def Panorama_Sea_Loc(Player):
     """sea location function"""
-    return Player.pano_sea += 1
+    Player.pano_sea += 1
+    Player.points += Player.pano_sea
+    """achievment check"""
 
 def Temple_Loc(Player):
     """temple location function TBW"""
-    if Player.coins > 0:
-        return Player.coins -= 1
+    Player.coins -= 1 """actual number will be player input"""
 
 def Souvenir_Shop_Loc(Player):
     """souvenirshop location function TBW"""
