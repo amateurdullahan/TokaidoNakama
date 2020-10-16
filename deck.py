@@ -39,6 +39,10 @@ class Card():
             """comment"""
             self.__name = string
 
+        def __str__(self):
+            """string rep"""
+            return "[{:s}] {:d} {:s}".format(self.type, self.point_value, self.name)
+
 class HotSpring(Card):
         def __init__(self, type="", point_value=0, name=""):
             super().__init__(type, point_value, name)
@@ -153,16 +157,18 @@ class Souvenir(Card):
             self.__cost = value
 
 class Deck():
-        def __init__(self, number_of_cards=0, owner="", card_list=[]):
+        def __init__(self, number_of_cards=0, card_list=[]):
             """initializing a deck, board or player owned"""
             self.number_of_cards = number_of_cards
-            self.owner = owner
             self.card_list = card_list
 
         def add(self, obj):
             """add card to deck"""
-            self.card_list.append(obj)
+            self.card_list.append(str(obj))
 
         def print_list(self):
             """just a test method to print a deck"""
-            print(self.card_list)
+            a = 0
+            for a in self.number_of_cards:
+                print(self.card_list[a.__str__])
+                a += 1

@@ -2,7 +2,7 @@
 """player objects"""
 
 class Player():
-        def __init__(self, color="", score=0, coins=0, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0):
+        def __init__(self, color="", score=0, coins=7, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0):
             """initializing the players"""
             self.color = color
             self.score = score
