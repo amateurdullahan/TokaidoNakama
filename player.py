@@ -2,7 +2,7 @@
 """player objects"""
 
 class Player():
-        def __init__(self, color="", score=0, coins=7, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0):
+        def __init__(self, color="", score=0, coins=7, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type0="", sv_type1="", sv_type2="", sv_type3=""):
             """initializing the players"""
             self.color = color
             self.score = score
@@ -11,6 +11,10 @@ class Player():
             self.pano_paddy = pano_paddy
             self.pano_mt = pano_mt
             self.pano_sea = pano_sea
+            self.sv_type0 = sv_type0
+            self.sv_type1 = sv_type1
+            self.sv_type2 = sv_type2
+            self.sv_type3 = sv_type3
 
         @property
         def color(self):
@@ -81,6 +85,46 @@ class Player():
         def pano_sea(self, value):
             """comment"""
             self.__pano_sea = value
+
+        @property
+        def sv_type0(self):
+            """comment"""
+            return self.__sv_type0
+
+        @sv_type0.setter
+        def sv_type0(self, string):
+            """comment"""
+            self.__sv_type0 = string
+
+        @property
+        def sv_type1(self):
+            """comment"""
+            return self.__sv_type1
+
+        @sv_type1.setter
+        def sv_type1(self, string):
+            """comment"""
+            self.__sv_type1 = string
+
+        @property
+        def sv_type2(self):
+            """comment"""
+            return self.__sv_type2
+
+        @sv_type2.setter
+        def sv_type2(self, string):
+            """comment"""
+            self.__sv_type2 = string
+
+        @property
+        def sv_type3(self):
+            """comment"""
+            return self.__sv_type3
+
+        @sv_type3.setter
+        def sv_type3(self, string):
+            """comment"""
+            self.__sv_type3 = string
 
 
 class Achievements():
