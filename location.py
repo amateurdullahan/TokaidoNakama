@@ -69,7 +69,7 @@ def Temple_Loc(Player):
 def Souvenir_Shop_Loc(Player):
     """souvenirshop location function TBW"""
     """ask player which cards bought, do this three times"""
-    if discarded:
+    if discard:
         """move card to discard deck"""
     else:
         Player.coins -= bought.cost
