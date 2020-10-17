@@ -73,21 +73,21 @@ def Souvenir_Shop_Loc(Player):
         """move card to discard deck"""
     else:
         Player.coins -= bought.cost
-        if Player.sv_type0 is None:
-           Player.sv_type0 = bought.subtype
-        elif Player.sv_type0 == bought.subtype:
+        if Player.sv_type_first is None:
+           Player.sv_type_first = bought.subtype
+        elif Player.sv_type_first == bought.subtype:
             Player.score += 1
-        elif Player.sv_type1 is None:
-            Player.sv_type1 = bought.subtype
-        elif Player.sv_type1 == bought.subtype:
+        elif Player.sv_type_second is None:
+            Player.sv_type_second = bought.subtype
+        elif Player.sv_type_second == bought.subtype:
             Player.score += 3
-        elif Player.sv_type2 is None:
-            Player.sv_type2 = bought.subtype
-        elif Player.sv_type2 == bought.subtype:
+        elif Player.sv_type_third is None:
+            Player.sv_type_third = bought.subtype
+        elif Player.sv_type_third == bought.subtype:
             Player.score += 5
-        elif Player.sv_type3 is None:
-            Player.sv_type3 = bought.subtype
-        elif Player.sv_type3 == bought.subtype:
+        elif Player.sv_type_fourth is None:
+            Player.sv_type_fourth = bought.subtype
+        elif Player.sv_type_fourth == bought.subtype:
             Player.score += 7
         """move card to player deck"""
         """check collector acheviement"""
@@ -97,7 +97,7 @@ def Hot_Spring_Loc(Player):
     """hot spring location function TBW"""
     """ask player if 2 or 3 pts"""
     Player.score += pts
-    """check Bather achievement"""
+    bather_bonus_check("""number of HS cards""")
     """move card to player deck"""
 
 def Inn_Loc(Player):
