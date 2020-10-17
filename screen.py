@@ -1,5 +1,7 @@
 """Main code for Tokaido Nakama"""
 import pygame
+from tkinter import *
+from tkinter import messagebox
 # import sys
 # import time
 # from pygame.locals import *
@@ -60,8 +62,11 @@ def board(x_board, y_board):
     # board_spaces(1)
     screen.blit(current_board, (x_board, y_board))
 
-# def encounter_selection():
-# Generates drop down menu / contextual menu based off encounter chosen.
+def encounter_selection(board_position):
+    """Generates drop down menu / contextual menu based off encounter chosen."""
+    Tk().wm_withdraw() # to hide main window?
+    messagebox.showinfo('Continue', )
+
 
 # def player_info(playercount, list of colors):
 # Generates player's info displays, depending on number of players & assigns colors
@@ -69,14 +74,7 @@ def board(x_board, y_board):
 # def board_spaces(board_number):
 #     """Generates spaces for pieces to land, depending on board #"""
 #    if board_number == 1:
-        
-        
-
-# rects for board positions
-
-        
-       
-
+    # rects for board positions
 
 # Font Section
 # Create title font, first param is font file in pygame, second is size
@@ -87,7 +85,6 @@ text_title = font_title.render('Color\'s Turn', True, black)
 text_title_rect = text_title.get_rect()
 # Set the center of the rectangular object
 text_title_rect.center = (display_width / 2, display_height * .03)
-
 
 # def start_screen():
 #
@@ -105,6 +102,8 @@ text_title_rect.center = (display_width / 2, display_height * .03)
 def main_screen():
     """Main game loop"""
     running = True
+    rect1 = pygame.Rect(155, 150, 21, 122)
+    rect11 = pygame.Rect(135, 87, 62, 82)
     rect5 = pygame.Rect(343, 87, 61, 190)
     while running:
         # Inner loop of events & logic based off that (mouse clicks, selections, etc)
@@ -114,8 +113,12 @@ def main_screen():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1: # Left  mouse button.
                     # Check if the rect collides with the mouse pos.
+                    if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
+                        print('Area 1 clicked.')
+                        encounter_selection(1)
                     if rect5.collidepoint(event.pos):
-                        print('Area clicked.')
+                        print('Area 5 clicked.')
+                        encounter_selection(5)
             #
 
             # Shows list of events on ya terminal. To be removed, but fun to see
