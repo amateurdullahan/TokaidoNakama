@@ -10,8 +10,8 @@ pygame.init()
 
 # Screen Creation
 # Stretch goal of resizing display
-display_width = 1024
-display_height = 1024
+display_width = 900
+display_height = 800
 screen = pygame.display.set_mode((display_width, display_height))
 
 # Colors defined
@@ -41,12 +41,12 @@ board_one = pygame.image.load('board_one.png')
 # player_green = ('player_green.png')
 # player_blue = ('player_blue.png')
 # player_grey = ('player_grey.png')
-# player_yelloworange = ('player_yelloworange.png')
+# player_yellow = ('player_yellow.png')
 # player_purple = ('player_purple.png')
 
 # Coordinates for board
-x_board_coord = (display_width * 0.052)
-y_board_coord = (display_height * 0.082)
+x_board_coord = (display_width * 0.02)
+y_board_coord = (display_height * 0.062)
 
 # Function for board, will check for which board to load
 def board(x_board, y_board):
@@ -56,7 +56,8 @@ def board(x_board, y_board):
     # if all players at space 14 && food has been chosen, board 2
     # section for generating landing spots based off board
     # Blit board, while scaling it to uniform size
-    current_board = pygame.transform.scale(board_one, (900, 600))
+    current_board = pygame.transform.scale(board_one, (850, 500))
+    # board_spaces(1)
     screen.blit(current_board, (x_board, y_board))
 
 # def encounter_selection():
@@ -65,18 +66,27 @@ def board(x_board, y_board):
 # def player_info(playercount, list of colors):
 # Generates player's info displays, depending on number of players & assigns colors
 
-# def board_points(current_board):
-# Generates points for pieces to land, depending on which board
+# def board_spaces(board_number):
+#     """Generates spaces for pieces to land, depending on board #"""
+#    if board_number == 1:
+        
+        
+
+# rects for board positions
+
+        
+       
+
 
 # Font Section
 # Create title font, first param is font file in pygame, second is size
-font_title = pygame.font.Font('freesansbold.ttf', 60)
+font_title = pygame.font.Font('freesansbold.ttf', 50)
 # Create a text surface object, on which text is drawn on.
 text_title = font_title.render('Color\'s Turn', True, black)
 # Create a rectangular object for the text surface object
 text_title_rect = text_title.get_rect()
 # Set the center of the rectangular object
-text_title_rect.center = (display_width / 2, display_height * .05)
+text_title_rect.center = (display_width / 2, display_height * .03)
 
 
 # def start_screen():
@@ -95,11 +105,18 @@ text_title_rect.center = (display_width / 2, display_height * .05)
 def main_screen():
     """Main game loop"""
     running = True
+    rect5 = pygame.Rect(343, 87, 61, 190)
     while running:
         # Inner loop of events & logic based off that (mouse clicks, selections, etc)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1: # Left  mouse button.
+                    # Check if the rect collides with the mouse pos.
+                    if rect5.collidepoint(event.pos):
+                        print('Area clicked.')
+            #
 
             # Shows list of events on ya terminal. To be removed, but fun to see
             print(event)
