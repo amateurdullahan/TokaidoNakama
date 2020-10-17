@@ -36,14 +36,14 @@ class Location():
 
 def Farm_Loc(Player):
     """farm location function"""
-    return Player.coins += 3
+    Player.coins += 3
 
 def Panorama_Paddy_Loc(Player):
     """paddy location function"""
     if player.pano_paddy < 3:
         Player.pano_paddy += 1
         Player.points += Player.pano_paddy
-        """achievment check"""
+        pano_paddy_check(Player)
 
 def Panorama_Mountain_Loc(Player):
     """mountain location function"""
@@ -69,7 +69,7 @@ def Temple_Loc(Player):
 def Souvenir_Shop_Loc(Player):
     """souvenirshop location function TBW"""
     """ask player which cards bought, do this three times"""
-    if discarded:
+    if discard:
         """move card to discard deck"""
     else:
         Player.coins -= bought.cost
