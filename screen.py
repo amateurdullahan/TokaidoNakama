@@ -1,7 +1,6 @@
 """Main code for Tokaido Nakama"""
 import pygame
-from tkinter import *
-from tkinter import messagebox
+import pygame_menu
 # import sys
 # import time
 # from pygame.locals import *
@@ -62,10 +61,9 @@ def board(x_board, y_board):
     # board_spaces(1)
     screen.blit(current_board, (x_board, y_board))
 
-def encounter_selection(board_position):
-    """Generates drop down menu / contextual menu based off encounter chosen."""
-    Tk().wm_withdraw() # to hide main window?
-    messagebox.showinfo('Continue', )
+# def encounter_selection(board_position):
+# Generates drop down menu / contextual menu based off encounter chosen."""
+
 
 
 # def player_info(playercount, list of colors):
@@ -98,9 +96,22 @@ text_title_rect.center = (display_width / 2, display_height * .03)
 # parameters selected here will be passed to main_screen
 
 
+player_colors = []
+
+start_menu = pygame_menu.Menu(height=300, width=400, theme=pygame_menu.themes.THEME_BLUE, title='Select Players:')
+start_menu.add_button('Green', print('Green'))
+start_menu.add_button('Blue', player_colors.append('Blue'))
+start_menu.add_button('Grey', player_colors.append('Grey'))
+start_menu.add_button('Yellow', player_colors.append('Yellow'))
+start_menu.add_button('Purple', player_colors.append('Purple'))
+
+
+
 # Main Game Loop
 def main_screen():
     """Main game loop"""
+   
+
     running = True
     rect1 = pygame.Rect(155, 150, 21, 122)
     rect11 = pygame.Rect(135, 87, 62, 82)
@@ -148,7 +159,9 @@ def main_screen():
 # Run Sequence Below
 
 # start_screen()
+start_menu.mainloop(screen)
 main_screen()
 # results_screen()
 pygame.quit()
 quit()
+
