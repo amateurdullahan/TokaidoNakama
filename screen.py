@@ -64,10 +64,36 @@ def board(x_board, y_board):
 
 def encounter_selection(board_position):
     # Generates drop down menu / contextual menu based off encounter chosen."""
-    if board_position == 1:
-        print("1")
-    elif board_position == 5:
-        print("5")
+
+    if board_position in [1, 8, 25, 29, 45, 45, 53]: 
+        # Code for Villages
+        print("Village stuff")
+    elif board_position in [2, 9, 16, 21, 36, 43]:
+        # Code for Temples
+        print("Temple stuff")
+    elif board_position in [3, 10, 20, 30, 38, 44, 49]:
+        # Code for Encounter
+        print("Encounter stuff")
+    elif board_position in [4, 18, 28, 35, 51]:
+        # Code for Pano_Paddy
+        print("Pano paddy stuff")
+    elif board_position in [5, 13, 22, 33, 42, 48]:
+        # Code for Hot Springs
+        print("Hot spring stuff")
+    elif board_position in [6, 12, 19, 23, 32, 50]:
+        # Code for Pano_Mt
+        print("Pano mt stuff")
+    elif board_position in [7, 17, 26, 31, 37, 47]:
+        # Code for Farm
+        print("Farm stuff")
+    elif board_position in [11, 15, 24, 34, 39, 46, 52]:
+        # Code for Pano_Sea
+        print("Pano sea stuff")
+    elif board_position in [14, 27, 41, 54]:
+        # Code for Inn
+        print("Inn stuff")
+        
+
 
 
 
