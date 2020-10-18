@@ -66,13 +66,13 @@ def encounter_selection(board_position):
     """Generates drop down menu / contextual menu based off encounter chosen."""
 
     if board_position in [1, 8, 25, 29, 45, 45, 53]:
-        # Code for Villages
+        # Code for Villages Menu & updating stuff
         print("Village stuff")
     elif board_position in [2, 9, 16, 21, 36, 43]:
-        # Code for Temples
+        # Code for Temples Menu & updating stuff
         print("Temple stuff")
     elif board_position in [3, 10, 20, 30, 38, 44, 49]:
-        # Code for Encounter
+        # Code for Encounter Menu & updating stuff
         print("Encounter stuff")
     elif board_position in [4, 18, 28, 35, 51]:
         # Code for Pano_Paddy
@@ -92,10 +92,6 @@ def encounter_selection(board_position):
     elif board_position in [14, 27, 41, 54]:
         # Code for Inn
         print("Inn stuff")
-
-
-
-
 
 # def player_info(playercount, list of colors):
 # Generates player's info displays, depending on number of players & assigns colors
@@ -132,6 +128,8 @@ def player_add(player_color):   # button fun
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
+                start_menu.disable()
+                main_screen(1)
         elif player_color == 'Blue' and 'Blue' not in player_list:
             player_blue = Player(player_color)
             player_list.append(player_color)
@@ -175,7 +173,7 @@ def quitter():
     quit()
 
 # Start Menu & Buttons
-start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_GREEN,
+start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_DEFAULT,
                               title='Select 3 Players', onclose=quitter)
 start_menu.add_label('In Starting Order:')
 green_button = start_menu.add_button('Green', player_add, 'Green')
@@ -186,28 +184,55 @@ purple_button = start_menu.add_button('Purple', player_add, 'Purple')
 
 
 # Main Game Loop
-def main_screen():
+def main_screen(board_number):
     """Main game loop"""
+    # Board One
+    if board_number == 1:
+        # Rect(left, top, width, height)
+        rect1 = pygame.Rect(155, 150, 21, 122)
+        rect11 = pygame.Rect(135, 87, 62, 82)
+        # rect2 = pygame.Rect(, , , ,)
+        # rect3 = pygame.Rect(, , , ,)
+        # rect4 = pygame.Rect(, , , ,)
+        rect5 = pygame.Rect(343, 87, 61, 190)
+        # rect6 = pygame.Rect(, , , ,)
+        rect00 = pygame.Rect(79, 309, 34, 34)
+        rect01 = pygame.Rect(79, 358, 34, 34)
+        rect02 = pygame.Rect(79, 408, 34, 34)
+        for elem in player_list:
+            print(elem)
+            # if elem == 'Green':
 
-    running = True
-    rect1 = pygame.Rect(155, 150, 21, 122)
-    rect11 = pygame.Rect(135, 87, 62, 82)
-    rect5 = pygame.Rect(343, 87, 61, 190)
-    # rect00 = pygame.Rect()
+                
+                
+                
+        # Piece images
+# player_green = ('player_green.png')
+# player_blue = ('player_blue.png')
+# player_grey = ('player_grey.png')
+# player_yellow = ('player_yellow.png')
+# player_purple = ('player_purple.png')
+
+    running = True  # Main Loop Flag
     while running:
-        # Inner loop of events & logic based off that (mouse clicks, selections, etc)
+        # Inner Loop for Events
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT:   # If The Window's 'X' Button is Clicked
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1: # Left  mouse button.
                     # Check if the rect collides with the mouse pos.
                     if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
-                        print('Area 1 clicked.')
+                        print('Village selected.')
                         # encounter_selection(1)
                     if rect5.collidepoint(event.pos):
-                        print('Area 5 clicked.')
+                        print('Hot Springs selected.')
                         # encounter_selection(5)
+                  # if rect for inn collision:
+                        # append to player list (which will be cleared as player pieces are set)
+                        # if all players on inn:
+                        # food menu. Within food menu,
+                        # determine board to load based off player pos # (which inn)
 
             # Shows list of events on ya terminal. To be removed, but fun to see
             print(event)
@@ -224,6 +249,10 @@ def main_screen():
         # Update display after event logic is complete in inner for loop
         pygame.display.update()
 
+        # If All Players At Inn
+        # Call Food Menu
+        # Then From Food Menu Call main_screen(NEXT BOARD NUMBER)
+
 # Results Screen
 # def results_screen():
 #
@@ -234,12 +263,7 @@ def main_screen():
 #
 
 # Run Sequence Below
-
-# start_screen()
-
-screen.fill(white)
-screen.blit(text_title, text_title_rect)
-board(X_BOARD_COORD, Y_BOARD_COORD)
 start_menu.mainloop(screen)
-# results_screen()
+# main_screen(1)
+# results screen()
 quitter()
