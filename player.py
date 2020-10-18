@@ -2,7 +2,7 @@
 """player objects"""
 
 class Player():
-        def __init__(self, color="", score=0, coins=7, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type0="", sv_type1="", sv_type2="", sv_type3=""):
+        def __init__(self, color="", score=0, coins=7, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0):
             """initializing the players"""
             self.color = color
             self.score = score
@@ -11,10 +11,11 @@ class Player():
             self.pano_paddy = pano_paddy
             self.pano_mt = pano_mt
             self.pano_sea = pano_sea
-            self.sv_type0 = sv_type0
-            self.sv_type1 = sv_type1
-            self.sv_type2 = sv_type2
-            self.sv_type3 = sv_type3
+            self.sv_type_first = sv_type_first
+            self.sv_type_second = sv_type_second
+            self.sv_type_third = sv_type_third
+            self.sv_type_fourth = sv_type_fourth
+            self.bather_bonus = bather_bonus
 
         @property
         def color(self):
@@ -87,41 +88,51 @@ class Player():
             self.__pano_sea = value
 
         @property
-        def sv_type0(self):
+        def sv_type_first(self):
             """comment"""
             return self.__sv_type0
 
-        @sv_type0.setter
-        def sv_type0(self, string):
+        @sv_type_first.setter
+        def sv_type_first(self, string):
             """comment"""
-            self.__sv_type0 = string
+            self.__sv_type_first = string
 
         @property
-        def sv_type1(self):
+        def sv_type_second(self):
             """comment"""
-            return self.__sv_type1
+            return self.__sv_type_second
 
-        @sv_type1.setter
-        def sv_type1(self, string):
+        @sv_type_second.setter
+        def sv_type_second(self, string):
             """comment"""
-            self.__sv_type1 = string
-
-        @property
-        def sv_type2(self):
-            """comment"""
-            return self.__sv_type2
-
-        @sv_type2.setter
-        def sv_type2(self, string):
-            """comment"""
-            self.__sv_type2 = string
+            self.__sv_type_second = string
 
         @property
-        def sv_type3(self):
+        def sv_type_third(self):
             """comment"""
-            return self.__sv_type3
+            return self.__sv_type_third
 
-        @sv_type3.setter
-        def sv_type3(self, string):
+        @sv_type_third.setter
+        def sv_type_third(self, string):
             """comment"""
-            self.__sv_type3 = string
+            self.__sv_type_third = string
+
+        @property
+        def sv_type_fourth(self):
+            """comment"""
+            return self.__sv_type_fourth
+
+        @sv_type_fourth.setter
+        def sv_type_fourth(self, string):
+            """comment"""
+            self.__sv_type_fourth = string
+
+        @property
+        def bather_bonus(self):
+            """comment"""
+            return self.__bather_bonus
+
+        @bather_bonus.setter
+        def bather_bonus(self, value):
+            """comment"""
+            self.__bather_bonus = value

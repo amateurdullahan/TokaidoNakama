@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""achievement checking functions"""
+from player import *
+
 
 class Achievements():
         def __init__(self, pano_paddy_bonus="", pano_mt_bonus="", pano_sea_bonus="", gourmet_sum=0, bather_count=0, chatterbox_count=0, collector_count=0, temple_bonus_first=1, temple_bonus_second=1, temple_bonus_third=1):
@@ -114,7 +118,20 @@ class Achievements():
             self.__temple_bonus_third = value
 
 def pano_paddy_check(Player):
-    if pano_paddy_bonus == None
-        if Player.pano_paddy == 3
+    if pano_paddy_bonus == None:
+        if Player.pano_paddy == 3:
             pano_paddy_bonus = Player.color
             Player.score += 3
+
+def bather_bonus_check(count):
+    if count > bather_count:
+        bather_count = count
+    for Player in player_colors:
+        if Player.bather_bonus = 0
+            if """number of Hot Springs cards""" == bather_count:
+                Player.bather_bonus = 1
+                Player.score += 3
+        elif Player.bather_bonus == 1:
+            if """number of hot springs cards""" < bather_count:
+                Player.bather_bonus = 0
+                Player.score -=3
