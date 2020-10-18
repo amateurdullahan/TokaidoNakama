@@ -1,7 +1,7 @@
 """Main code for Tokaido Nakama"""
-from player import Player
 import pygame
 import pygame_menu
+from player import Player
 # import sys
 # import time
 # from pygame.locals import *
@@ -12,9 +12,9 @@ pygame.init()
 
 # Screen Creation
 # Stretch goal of resizing display
-display_width = 900
-display_height = 800
-screen = pygame.display.set_mode((display_width, display_height))
+DISPLAY_WIDTH = 900
+DISPLAY_HEIGHT = 800
+screen = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 
 # Colors defined
 black = (0, 0, 0)
@@ -24,7 +24,7 @@ blue = (122, 165, 184)
 yelloworange = (243, 175, 1)
 grey = (145, 147, 156)
 purple = (98, 55, 114)
- 
+
 # Title and Icon
 pygame.display.set_caption("Tokaido Nakama")
 icon = pygame.image.load('cherrytreeicon.png')
@@ -47,8 +47,8 @@ board_one = pygame.image.load('board_one.png')
 # player_purple = ('player_purple.png')
 
 # Coordinates for board
-x_board_coord = (display_width * 0.02)
-y_board_coord = (display_height * 0.062)
+X_BOARD_COORD = (DISPLAY_WIDTH * 0.02)
+Y_BOARD_COORD = (DISPLAY_HEIGHT * 0.062)
 
 # Function for board, will check for which board to load
 def board(x_board, y_board):
@@ -63,9 +63,9 @@ def board(x_board, y_board):
     screen.blit(current_board, (x_board, y_board))
 
 def encounter_selection(board_position):
-    # Generates drop down menu / contextual menu based off encounter chosen."""
+    """Generates drop down menu / contextual menu based off encounter chosen."""
 
-    if board_position in [1, 8, 25, 29, 45, 45, 53]: 
+    if board_position in [1, 8, 25, 29, 45, 45, 53]:
         # Code for Villages
         print("Village stuff")
     elif board_position in [2, 9, 16, 21, 36, 43]:
@@ -92,7 +92,7 @@ def encounter_selection(board_position):
     elif board_position in [14, 27, 41, 54]:
         # Code for Inn
         print("Inn stuff")
-        
+
 
 
 
@@ -113,32 +113,21 @@ text_title = font_title.render('Color\'s Turn', True, black)
 # Create a rectangular object for the text surface object
 text_title_rect = text_title.get_rect()
 # Set the center of the rectangular object
-text_title_rect.center = (display_width / 2, display_height * .03)
+text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
 
-# def start_screen():
-#
-#   intro = True
-#   while intro:
-#        for event in pygame.event.get():
-#            print(event)
-#            if event.type == pygame.QUIT:
-#                pygame.quit()
-#                quit()
-# parameters selected here will be passed to main_screen
+# Setup
 
-# def player_setup(player_color):
-    
-    # if len(player_list) == 3:
-
+# Creates list in order of players, at limit goes into main screen
 player_list = []    # makes empty list
 def player_add(player_color):   # button fun
-    """adds player color to game"""
+    """Adds player color to game"""
     if len(player_list) < 3:
         if player_color == 'Green' and 'Green' not in player_list:
             player_green = Player(player_color)
             player_list.append(player_color)
             print(player_green)
-            green_button.set_position(1000, 1000)   # Hides it off the surface. Could just change color like below:
+            green_button.set_position(1000, 1000)
+            # Hides it off the surface. Could just change color like below:
             # green_button.set_background_color((73, 114, 16))
             if len(player_list) == 3:
                 print(player_list)
@@ -171,7 +160,6 @@ def player_add(player_color):   # button fun
             player_purple = Player(player_color)
             player_list.append(player_color)
             print(player_purple)
-            print(player_purple.color)
             purple_button.set_position(1000, 1000)
             if len(player_list) == 3:
                 print(player_list)
@@ -180,19 +168,21 @@ def player_add(player_color):   # button fun
         print(player_list)
         print('THIS CODE SHOULD NOT RUN ONCE EVERYTHING IS GOING')
 
-def quiter():
+# Function for clean quit
+def quitter():
     """quits pygame and python"""
     pygame.quit()
     quit()
 
-start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_GREEN, title='Select 3 Players', onclose=quiter)
+# Start Menu & Buttons
+start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_GREEN,
+                              title='Select 3 Players', onclose=quitter)
 start_menu.add_label('In Starting Order:')
 green_button = start_menu.add_button('Green', player_add, 'Green')
 blue_button = start_menu.add_button('Blue', player_add, 'Blue')
 grey_button = start_menu.add_button('Grey', player_add, 'Grey')
 yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
 purple_button = start_menu.add_button('Purple', player_add, 'Purple')
-
 
 
 # Main Game Loop
@@ -203,7 +193,7 @@ def main_screen():
     rect1 = pygame.Rect(155, 150, 21, 122)
     rect11 = pygame.Rect(135, 87, 62, 82)
     rect5 = pygame.Rect(343, 87, 61, 190)
-    rect00 = pygame.Rect()
+    # rect00 = pygame.Rect()
     while running:
         # Inner loop of events & logic based off that (mouse clicks, selections, etc)
         for event in pygame.event.get():
@@ -229,7 +219,7 @@ def main_screen():
         screen.blit(text_title, text_title_rect)
 
         # Call Board Function
-        board(x_board_coord, y_board_coord)
+        board(X_BOARD_COORD, Y_BOARD_COORD)
 
         # Update display after event logic is complete in inner for loop
         pygame.display.update()
@@ -240,7 +230,7 @@ def main_screen():
 #  stuff goes here
 #
 #  and here!
-# 
+#
 #
 
 # Run Sequence Below
@@ -249,7 +239,7 @@ def main_screen():
 
 screen.fill(white)
 screen.blit(text_title, text_title_rect)
-board(x_board_coord, y_board_coord)
+board(X_BOARD_COORD, Y_BOARD_COORD)
 start_menu.mainloop(screen)
 # results_screen()
-quiter()
+quitter()
