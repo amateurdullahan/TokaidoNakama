@@ -182,20 +182,20 @@ def CardSetup():
     """Player initializing"""
     GreenList = []
     GreenDeck = Deck(0, GreenList)
-    GreenPlayer = Player("Green", GreenDeck)
+    GreenPlayer = Player("Green", GreenDeck, player_green.png)
 
     PurpleList = []
     PurpleDeck = Deck(0, PurpleList)
-    PurplePlayer = Player("Purple", PurpleDeck)
+    PurplePlayer = Player("Purple", PurpleDeck, player_purple.png)
 
     YellowList = []
     YellowDeck = Deck(0, YellowList)
-    YellowPlayer = Player("Yellow", YellowDeck)
+    YellowPlayer = Player("Yellow", YellowDeck, player_yellow.png)
 
     BlueList = []
     BlueDeck = Deck(0, BlueList)
-    BluePlayer = Player("Blue", BlueDeck)
+    BluePlayer = Player("Blue", BlueDeck, player_blue.png)
 
     GreyList = []
     GreyDeck = Deck(0, GreyList)
-    GreyPlayer = Player("Grey", GreyDeck)
+    GreyPlayer = Player("Grey", GreyDeck, player_grey.png)
