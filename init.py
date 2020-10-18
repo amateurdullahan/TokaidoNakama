@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """board initializing"""
-from deck import *
+from deck import Card, Deck
 
 def CardSetup():
     """set up board"""
@@ -17,7 +17,8 @@ def CardSetup():
     HS11 = HotSpring("Hot Spring", 3, "Hot Spring")
     HS12 = HotSpring("Hot Spring", 3, "Hot Spring")
 
-    HSDeck = Deck(12)
+    HSlist = []
+    HSDeck = Deck(0, HSlist)
     HSDeck.add(HS1)
     HSDeck.add(HS2)
     HSDeck.add(HS3)
@@ -30,8 +31,6 @@ def CardSetup():
     HSDeck.add(HS10)
     HSDeck.add(HS11)
     HSDeck.add(HS12)
-
-    """HSDeck.print_list()"""
 
     ENC1 = Encounter("Encounter", 0, "Kuge")
     ENC2 = Encounter("Encounter", 0, "Kuge")
@@ -48,7 +47,8 @@ def CardSetup():
     ENC13 = Encounter("Encounter", 0, "Annaibito: Sea")
     ENC14 = Encounter("Encounter", 0, "Annaibito: Sea")
 
-    ENCDeck = Deck(14)
+    ENClist = []
+    ENCDeck = Deck(0, ENClist)
     ENCDeck.add(ENC1)
     ENCDeck.add(ENC2)
     ENCDeck.add(ENC3)
@@ -92,7 +92,8 @@ def CardSetup():
     M24 = Meal("Meal", 0, "Unagi", 3)
     M25 = Meal("Meal", 0, "Tai Meshi", 3)
 
-    MDeck = Deck(25)
+    Mlist = []
+    MDeck = Deck(0, Mlist)
     MDeck.add(M1)
     MDeck.add(M2)
     MDeck.add(M3)
@@ -146,7 +147,8 @@ def CardSetup():
     SV23 = Souvenir("Souvenir", 1, "Sumie", "Art", 3)
     SV24 = Souvenir("Souvenir", 1, "Shamisen", "Art", 3)
 
-    SVDeck = Deck(24)
+    SVlist = []
+    SVDeck = Deck(0, SVlist)
     SVDeck.add(SV1)
     SVDeck.add(SV2)
     SVDeck.add(SV3)
@@ -174,8 +176,26 @@ def CardSetup():
 
     """SVDeck.print_list()"""
 
-    GreenPlayer = Player("Green")
-    PurplePlayer = Player("Purple")
-    YellowPlayer = Player("Yellow")
-    BluePlayer = Player("Blue")
-    GreyPlayer = Player("Grey")
+    Dlist = []
+    DiscardDeck = Deck(0, Dlist)
+
+    """Player initializing"""
+    GreenList = []
+    GreenDeck = Deck(0, GreenList)
+    GreenPlayer = Player("Green", GreenDeck)
+
+    PurpleList = []
+    PurpleDeck = Deck(0, PurpleList)
+    PurplePlayer = Player("Purple", PurpleDeck)
+
+    YellowList = []
+    YellowDeck = Deck(0, YellowList)
+    YellowPlayer = Player("Yellow", YellowDeck)
+
+    BlueList = []
+    BlueDeck = Deck(0, BlueList)
+    BluePlayer = Player("Blue", BlueDeck)
+
+    GreyList = []
+    GreyDeck = Deck(0, GreyList)
+    GreyPlayer = Player("Grey", GreyDeck)

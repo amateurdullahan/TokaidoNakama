@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """location class and inherited stuff"""
-
+from player import Player
+from deck import Card, Deck, HotSpring, Encounter, Meal, Souvenir, MoveCard
 
 """ NOT SURE WE NEED THIS
 class Location():
@@ -66,42 +67,52 @@ def Temple_Loc(Player):
     Player.score += num
     """ temple bonus check"""
 
-def Souvenir_Shop_Loc(Player):
+def Souvenir_Shop_Loc(Player, Deck, Discard):
     """souvenirshop location function TBW"""
-    """ask player which cards bought, do this three times"""
-    if discard:
-        """move card to discard deck"""
-    else:
-        Player.coins -= bought.cost
-        if Player.sv_type_first is None:
-           Player.sv_type_first = bought.subtype
-        elif Player.sv_type_first == bought.subtype:
-            Player.score += 1
-        elif Player.sv_type_second is None:
-            Player.sv_type_second = bought.subtype
-        elif Player.sv_type_second == bought.subtype:
-            Player.score += 3
-        elif Player.sv_type_third is None:
-            Player.sv_type_third = bought.subtype
-        elif Player.sv_type_third == bought.subtype:
-            Player.score += 5
-        elif Player.sv_type_fourth is None:
-            Player.sv_type_fourth = bought.subtype
-        elif Player.sv_type_fourth == bought.subtype:
-            Player.score += 7
-        """move card to player deck"""
+    """bought will be the Card obj they select"""
+    while a less than 3:
+        """ask player which cards bought, do this three times"""
+        if discard:
+            Discard.add(bought)
+        else:
+            Player.coins -= bought.cost
+            if Player.sv_type_first is "":
+                Player.sv_type_first = bought.subtype
+                Player.score += 1
+            elif Player.sv_type_first == bought.subtype:
+                Player.score += 1
+            elif Player.sv_type_second is "":
+                Player.sv_type_second = bought.subtype
+                Player.score += 3
+            elif Player.sv_type_second == bought.subtype:
+                Player.score += 3
+            elif Player.sv_type_third is "":
+                Player.sv_type_third = bought.subtype
+                Player.score += 5
+            elif Player.sv_type_third == bought.subtype:
+                Player.score += 5
+            elif Player.sv_type_fourth is "":
+                Player.sv_type_fourth = bought.subtype
+                Player.score += 7
+            elif Player.sv_type_fourth == bought.subtype:
+                Player.score += 7
+            MoveCard(Player, Deck, bought)
         """check collector acheviement"""
-    
 
-def Hot_Spring_Loc(Player):
+
+def Hot_Spring_Loc(Player, Deck):
     """hot spring location function TBW"""
-    """ask player if 2 or 3 pts"""
-    Player.score += pts
+    selected = """whatever the fuck they select"""
+    MoveCard(Player, Deck, selected)
     bather_bonus_check("""number of HS cards""")
     """move card to player deck"""
 
-def Inn_Loc(Player):
+def Inn_Loc(Player, Deck):
     """inn location function TBW"""
+    meal = """"whatever they select"""
+    MoveCard(Player, Deck, meal)
 
-def Encounter_Loc(Player):
+def Encounter_Loc(Player, Deck):
     """encounter location function TBW"""
+    encounter = """whatever they select"""
+    MoveCard(Player, Deck, encounter)

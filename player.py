@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """player objects"""
+from deck import Deck
 
 class Player():
-        def __init__(self, color="", score=0, coins=7, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0):
+        def __init__(self, color="", playerdeck=Deck(), score=0, coins=7, board_space=0, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0):
             """initializing the players"""
             self.color = color
             self.score = score
@@ -16,6 +17,7 @@ class Player():
             self.sv_type_third = sv_type_third
             self.sv_type_fourth = sv_type_fourth
             self.bather_bonus = bather_bonus
+            self.playerdeck = playerdeck
 
         @property
         def color(self):
@@ -90,8 +92,8 @@ class Player():
         @property
         def sv_type_first(self):
             """comment"""
-            return self.__sv_type0
-
+            return self.__sv_type_first
+            
         @sv_type_first.setter
         def sv_type_first(self, string):
             """comment"""
