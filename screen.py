@@ -1,4 +1,5 @@
 """Main code for Tokaido Nakama"""
+from player import Player
 import pygame
 import pygame_menu
 # import sys
@@ -61,8 +62,12 @@ def board(x_board, y_board):
     # board_spaces(1)
     screen.blit(current_board, (x_board, y_board))
 
-# def encounter_selection(board_position):
-# Generates drop down menu / contextual menu based off encounter chosen."""
+def encounter_selection(board_position):
+    # Generates drop down menu / contextual menu based off encounter chosen."""
+    if board_position == 1:
+        print("1")
+    elif board_position == 5:
+        print("5")
 
 
 
@@ -95,27 +100,84 @@ text_title_rect.center = (display_width / 2, display_height * .03)
 #                quit()
 # parameters selected here will be passed to main_screen
 
+# def player_setup(player_color):
+    
+    # if len(player_list) == 3:
 
-player_colors = []
+player_list = []    # makes empty list
+def player_add(player_color):   # button fun
+    """adds player color to game"""
+    if len(player_list) < 3:
+        if player_color == 'Green' and 'Green' not in player_list:
+            player_green = Player(player_color)
+            player_list.append(player_color)
+            print(player_green)
+            green_button.set_position(1000, 1000)   # Hides it off the surface. Could just change color like below:
+            # green_button.set_background_color((73, 114, 16))
+            if len(player_list) == 3:
+                print(player_list)
+                print('GO RIGHT INTO MAIN')
+        elif player_color == 'Blue' and 'Blue' not in player_list:
+            player_blue = Player(player_color)
+            player_list.append(player_color)
+            print(player_blue)
+            blue_button.set_position(1000, 1000)
+            if len(player_list) == 3:
+                print(player_list)
+                print('GO RIGHT INTO MAIN')
+        elif player_color == 'Grey' and 'Grey' not in player_list:
+            player_grey = Player(player_color)
+            player_list.append(player_color)
+            print(player_grey)
+            grey_button.set_position(1000, 1000)
+            if len(player_list) == 3:
+                print(player_list)
+                print('GO RIGHT INTO MAIN')
+        elif player_color == 'Yellow' and 'Yellow' not in player_list:
+            player_yellow = Player(player_color)
+            player_list.append(player_color)
+            print(player_yellow)
+            yellow_button.set_position(1000, 1000)
+            if len(player_list) == 3:
+                print(player_list)
+                print('GO RIGHT INTO MAIN')
+        elif player_color == 'Purple' and 'Purple' not in player_list:
+            player_purple = Player(player_color)
+            player_list.append(player_color)
+            print(player_purple)
+            print(player_purple.color)
+            purple_button.set_position(1000, 1000)
+            if len(player_list) == 3:
+                print(player_list)
+                print('GO RIGHT INTO MAIN')
+    else:
+        print(player_list)
+        print('THIS CODE SHOULD NOT RUN ONCE EVERYTHING IS GOING')
 
-start_menu = pygame_menu.Menu(height=300, width=400, theme=pygame_menu.themes.THEME_BLUE, title='Select Players:')
-start_menu.add_button('Green', print('Green'))
-start_menu.add_button('Blue', player_colors.append('Blue'))
-start_menu.add_button('Grey', player_colors.append('Grey'))
-start_menu.add_button('Yellow', player_colors.append('Yellow'))
-start_menu.add_button('Purple', player_colors.append('Purple'))
+def quiter():
+    """quits pygame and python"""
+    pygame.quit()
+    quit()
+
+start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_GREEN, title='Select 3 Players', onclose=quiter)
+start_menu.add_label('In Starting Order:')
+green_button = start_menu.add_button('Green', player_add, 'Green')
+blue_button = start_menu.add_button('Blue', player_add, 'Blue')
+grey_button = start_menu.add_button('Grey', player_add, 'Grey')
+yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
+purple_button = start_menu.add_button('Purple', player_add, 'Purple')
 
 
 
 # Main Game Loop
 def main_screen():
     """Main game loop"""
-   
 
     running = True
     rect1 = pygame.Rect(155, 150, 21, 122)
     rect11 = pygame.Rect(135, 87, 62, 82)
     rect5 = pygame.Rect(343, 87, 61, 190)
+    rect00 = pygame.Rect()
     while running:
         # Inner loop of events & logic based off that (mouse clicks, selections, etc)
         for event in pygame.event.get():
@@ -126,11 +188,10 @@ def main_screen():
                     # Check if the rect collides with the mouse pos.
                     if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
                         print('Area 1 clicked.')
-                        encounter_selection(1)
+                        # encounter_selection(1)
                     if rect5.collidepoint(event.pos):
                         print('Area 5 clicked.')
-                        encounter_selection(5)
-            #
+                        # encounter_selection(5)
 
             # Shows list of events on ya terminal. To be removed, but fun to see
             print(event)
@@ -159,9 +220,10 @@ def main_screen():
 # Run Sequence Below
 
 # start_screen()
-start_menu.mainloop(screen)
-main_screen()
-# results_screen()
-pygame.quit()
-quit()
 
+screen.fill(white)
+screen.blit(text_title, text_title_rect)
+board(x_board_coord, y_board_coord)
+start_menu.mainloop(screen)
+# results_screen()
+quiter()
