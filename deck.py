@@ -1,6 +1,16 @@
 #!/usr/bin/python3
 """deck objects"""
 
+def MoveCard(Player, Deck, card):
+    """method to move cards between decks"""
+    for a in range(len(Deck.card_list)):
+        if Deck.card_list[a] is card:
+            Player.playerdeck.add(Deck.card_list.pop(a))
+            Deck.number_of_cards -= 1
+            break
+        a += 1
+
+
 class Card():
         def __init__(self, type="", point_value=0, name=""):
             """initializing the cards"""
@@ -41,7 +51,7 @@ class Card():
 
         def __str__(self):
             """string rep"""
-            return "[{:s}] {:d} {:s}".format(self.type, self.point_value, self.name)
+            return "[{:s}] points = {:d}, name = {:s}".format(self.type, self.point_value, self.name)
 
 class HotSpring(Card):
         def __init__(self, type="", point_value=0, name=""):
@@ -97,6 +107,10 @@ class Meal(Card):
         def cost(self, value):
             """comment"""
             self.__cost = value
+
+        def __str__(self):
+            """string rep"""
+            return "[{:s}] points = {:d}, name = {:s}, cost = {:d}".format(self.type, self.point_value, self.name, self.cost)
 
 class Souvenir(Card):
         def __init__(self, type="", point_value=0, name="", subtype="", cost=0):
@@ -156,6 +170,10 @@ class Souvenir(Card):
             """comment"""
             self.__cost = value
 
+        def __str__(self):
+            """string rep"""
+            return "[{:s}] points = {:d}, name = {:s}, subtype = {:s}, cost = {:d}".format(self.type, self.point_value, self.name, self.subtype, self.cost)
+
 class Deck():
         def __init__(self, number_of_cards=0, card_list=[]):
             """initializing a deck, board or player owned"""
@@ -164,11 +182,11 @@ class Deck():
 
         def add(self, obj):
             """add card to deck"""
-            self.card_list.append(str(obj))
+            self.card_list.append(obj)
+            self.number_of_cards += 1
+
 
         def print_list(self):
-            """just a test method to print a deck"""
-            a = 0
-            for a in self.number_of_cards:
-                print(self.card_list[a.__str__])
+            for a in range(len(self.card_list)):
+                print(self.card_list[a])
                 a += 1
