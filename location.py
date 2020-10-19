@@ -116,6 +116,7 @@ def Souvenir_Shop_Loc(Player, Deck, Discard):
 
 def Hot_Spring_Loc(pts):
     """hot spring location function TBW"""
+    from screen import main_screen
     if pts == 2:
         print("2 points clicked")
         for a in range(len(HSDeck.card_list)):
@@ -125,7 +126,7 @@ def Hot_Spring_Loc(pts):
         GreenPlayer.score += 2
         print("Green Score: {}", GreenPlayer.score)
         # bather_bonus_check("""number of HS cards""")
-        pygame_menu.events.BACK
+        main_screen(1)
 
 
 def Inn_Loc(Player, Deck):

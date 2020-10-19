@@ -38,9 +38,9 @@ pygame.display.set_icon(icon)
 
 # Board images
 board_one = pygame.image.load('media/board_one.png')
-# board_two = pygame.image.load('/images/board_two.png')
-# board_three = pygame.image.load('/images/board_three.png')
-# board_four = pygame.image.load('/images/board_four.png')
+# board_two = pygame.image.load('media/images/board_two.png')
+# board_three = pygame.image.load('media/images/board_three.png')
+# board_four = pygame.image.load('media/images/board_four.png')
 
 # Piece images
 # player_green = ('player_green.png')
