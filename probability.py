@@ -21,6 +21,7 @@ def CostProb(Deck):
     cost1sum = round(((cost1sum / Deck.number_of_cards) * 100), 2)
     cost2sum = round(((cost2sum / Deck.number_of_cards) * 100), 2)
     cost3sum = round(((cost3sum / Deck.number_of_cards) * 100), 2)
+    return(cost1sum, cost2sum, cost3sum)
 
 def PointProb(Deck):
     """Determine point prob"""
@@ -36,6 +37,7 @@ def PointProb(Deck):
         a += 1
     point2sum = round(((point2sum / Deck.number_of_cards) * 100), 2)
     point3sum = round(((point3sum / Deck.number_of_cards) * 100), 2)
+    return(point2sum, point3sum)
 
 
 def SubTypeProb(Deck):
@@ -59,6 +61,7 @@ def SubTypeProb(Deck):
     food_drink_sum = round(((food_drink_sum / Deck.number_of_cards) * 100), 2)
     clothing_sum = round(((clothing_sum / Deck.number_of_cards) * 100), 2)
     art_sum = round(((art_sum / Deck.number_of_cards) * 100), 2)
+    return(small_item_sum, food_drink_sum, clothing_sum, art_sum)
 
 def EncTypeProb(Deck):
     """encounter type probability"""
@@ -80,10 +83,10 @@ def EncTypeProb(Deck):
             shokunin_sum += 1
         elif Deck.card_list[a].name == "Annaibito: Paddy":
             anna_paddy_sum += 1
-        elif Deck.card_list[a].name == "Annaibito: Sea":
-            anna_sea_sum += 1
         elif Deck.card_list[a].name == "Annaibito: Mountain":
             anna_mtn_sum += 1
+        elif Deck.card_list[a].name == "Annaibito: Sea":
+            anna_sea_sum += 1
         else:
             continue
         a += 1
@@ -94,3 +97,4 @@ def EncTypeProb(Deck):
     anna_paddy_sum = round(((anna_paddy_sum / Deck.number_of_cards) * 100), 2)
     anna_mtn_sum = round(((anna_mtn_sum / Deck.number_of_cards) * 100), 2)
     anna_sea_sum = round(((anna_sea_sum / Deck.number_of_cards) * 100), 2)
+    return(kuge_sum, miko_sum, samurai_sum, shokunin_sum, anna_paddy_sum, anna_mtn_sum, anna_sea_sum)
