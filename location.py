@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """location class and inherited stuff"""
+import pygame
+import pygame_menu
 from player import Player
-from deck import Card, Deck, HotSpring, Encounter, Meal, Souvenir, MoveCard
+from deck import Card, Deck, HotSpring, Encounter, Meal, Souvenir
+from init import HSDeck, GreenPlayer
 
 """ NOT SURE WE NEED THIS
 class Location():
@@ -34,6 +37,17 @@ class Location():
     @func.setter
     def func(self, function)
         self.__func = function"""
+
+
+def MoveCard(Player, Deck, card):
+    """method to move cards between decks"""
+    for a in range(len(Deck.card_list)):
+        if Deck.card_list[a] is card:
+            Player.playerdeck.add(Deck.card_list.pop(a))
+            Deck.number_of_cards -= 1
+            break
+        a += 1
+
 
 def Farm_Loc(Player):
     """farm location function"""
@@ -70,7 +84,7 @@ def Temple_Loc(Player):
 def Souvenir_Shop_Loc(Player, Deck, Discard):
     """souvenirshop location function TBW"""
     """bought will be the Card obj they select"""
-    while a less than 3:
+    while a < 3:
         """ask player which cards bought, do this three times"""
         if discard:
             Discard.add(bought)
@@ -100,12 +114,19 @@ def Souvenir_Shop_Loc(Player, Deck, Discard):
         """check collector acheviement"""
 
 
-def Hot_Spring_Loc(Player, Deck):
+def Hot_Spring_Loc(pts):
     """hot spring location function TBW"""
-    selected = """whatever the fuck they select"""
-    MoveCard(Player, Deck, selected)
-    bather_bonus_check("""number of HS cards""")
-    """move card to player deck"""
+    if pts == 2:
+        print("2 points clicked")
+        for a in range(len(HSDeck.card_list)):
+            if HSDeck.card_list[a].point_value == 2:
+                selected = HSDeck.card_list[a]
+        MoveCard(GreenPlayer, HSDeck, selected)
+        GreenPlayer.score += 2
+        print("Green Score: {}", GreenPlayer.score)
+        # bather_bonus_check("""number of HS cards""")
+        pygame_menu.events.BACK
+
 
 def Inn_Loc(Player, Deck):
     """inn location function TBW"""

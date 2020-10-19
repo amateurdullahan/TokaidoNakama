@@ -1,7 +1,10 @@
+#!/usr/bin/python3
 """Main code for Tokaido Nakama"""
 import pygame
 import pygame_menu
 from player import Player
+from init import HSDeck, player_list
+from location import Hot_Spring_Loc
 # import sys
 # import time
 # from pygame.locals import *
@@ -27,14 +30,14 @@ purple = (98, 55, 114)
 
 # Title and Icon
 pygame.display.set_caption("Tokaido Nakama")
-icon = pygame.image.load('cherrytreeicon.png')
+icon = pygame.image.load('media/cherrytreeicon.png')
 pygame.display.set_icon(icon)
 
 # Clock, if we want a timer
 # clock = pygame.time.Clock()
 
 # Board images
-board_one = pygame.image.load('board_one.png')
+board_one = pygame.image.load('media/board_one.png')
 # board_two = pygame.image.load('/images/board_two.png')
 # board_three = pygame.image.load('/images/board_three.png')
 # board_four = pygame.image.load('/images/board_four.png')
@@ -79,7 +82,7 @@ def encounter_selection(board_position):
         print("Pano paddy stuff")
     elif board_position in [5, 13, 22, 33, 42, 48]:
         # Code for Hot Springs
-        print("Hot spring stuff")
+        hot_spring_popup.mainloop(screen)
     elif board_position in [6, 12, 19, 23, 32, 50]:
         # Code for Pano_Mt
         print("Pano mt stuff")
@@ -114,7 +117,7 @@ text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
 # Setup
 
 # Creates list in order of players, at limit goes into main screen
-player_list = []    # makes empty list
+
 def player_add(player_color):   # button fun
     """Adds player color to game"""
     if len(player_list) < 3:
@@ -138,6 +141,8 @@ def player_add(player_color):   # button fun
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
+                start_menu.disable()
+                main_screen(1)
         elif player_color == 'Grey' and 'Grey' not in player_list:
             player_grey = Player(player_color)
             player_list.append(player_color)
@@ -146,6 +151,8 @@ def player_add(player_color):   # button fun
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
+                start_menu.disable()
+                main_screen(1)
         elif player_color == 'Yellow' and 'Yellow' not in player_list:
             player_yellow = Player(player_color)
             player_list.append(player_color)
@@ -154,6 +161,8 @@ def player_add(player_color):   # button fun
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
+                start_menu.disable()
+                main_screen(1)
         elif player_color == 'Purple' and 'Purple' not in player_list:
             player_purple = Player(player_color)
             player_list.append(player_color)
@@ -162,6 +171,8 @@ def player_add(player_color):   # button fun
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
+                start_menu.disable()
+                main_screen(1)
     else:
         print(player_list)
         print('THIS CODE SHOULD NOT RUN ONCE EVERYTHING IS GOING')
@@ -181,6 +192,12 @@ blue_button = start_menu.add_button('Blue', player_add, 'Blue')
 grey_button = start_menu.add_button('Grey', player_add, 'Grey')
 yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
 purple_button = start_menu.add_button('Purple', player_add, 'Purple')
+#Hot Spring popup menu
+hot_spring_popup = pygame_menu.Menu(height=300, width=400, theme=pygame_menu.themes.THEME_DEFAULT,
+                        title='Hot Spring', onclose=pygame_menu.events.BACK)
+hot_spring_popup.add_label('Select Point Value')
+hot_spring_popup.add_button('2 Points', Hot_Spring_Loc, 2)
+
 
 
 # Main Game Loop
@@ -227,7 +244,7 @@ def main_screen(board_number):
                         # encounter_selection(1)
                     if rect5.collidepoint(event.pos):
                         print('Hot Springs selected.')
-                        # encounter_selection(5)
+                        encounter_selection(5)
                   # if rect for inn collision:
                         # append to player list (which will be cleared as player pieces are set)
                         # if all players on inn:
