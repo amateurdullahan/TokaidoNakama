@@ -1,16 +1,6 @@
 #!/usr/bin/python3
 """deck objects"""
 
-def MoveCard(Player, Deck, card):
-    """method to move cards between decks"""
-    for a in range(len(Deck.card_list)):
-        if Deck.card_list[a] is card:
-            Player.playerdeck.add(Deck.card_list.pop(a))
-            Deck.number_of_cards -= 1
-            break
-        a += 1
-
-
 class Card():
         def __init__(self, type="", point_value=0, name=""):
             """initializing the cards"""
