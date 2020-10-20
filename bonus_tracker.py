@@ -234,3 +234,62 @@ def gourmet_bonus_check():
             if player_count < gourmet_count:
                 player.gourmet_bonus = 0
                 player.score -= 3
+
+def temple_bonus_check():
+    if current_player.donation > temple_bonus_first:
+        temple_bonus_third = temple_bonus_second
+        temple_bonus_second = temple_bonus_first
+        temple_bonus_first = donation
+    elif current_player.donation > temple_bonus_second:
+        temple_bonus_third = temple_bonus_second
+        temple_bonus_second = donation
+    elif current_player.donation > temple_bonus_third:
+        temple_bonus_third = donation
+
+    for player in player_list:
+        if player.temple_bonus == 0:
+            if player.donation == temple_bonus_first:
+                player.temple_bonus = 10
+                player.score += 10
+            elif player.donation == temple_bonus_second:
+                player.temple_bonus = 7
+                player.score += 7
+            elif player.donation == temple_bonus_third:
+                player.temple_bonus = 3
+                player.score += 3
+        elif player.temple_bonus == 10:
+            if player.donation == temple_bonus_first:
+                pass
+            elif player.donation == temple_bonus_second:
+                player.temple_bonus = 7
+                player.score -= 3
+            elif player.donation == temple_bonus_third:
+                player.temple_bonus = 3
+                player.score -= 7
+            else:
+                player.temple_bonus = 0
+                player.score -= 10
+        elif player.temple_bonus == 7:
+            if player.donation == temple_bonus_first:
+                player.temple_bonus = 10
+                player.score += 3
+            elif player.donation == temple_bonus_second:
+                pass
+            elif player.donation == temple_bonus_third:
+                player.temple_bonus = 3
+                player.score -= 4
+            else:
+                player.temple_bonus = 0
+                player.score -= 7
+        elif player.temple_bonus == 3:
+            if player.donation == temple_bonus_first:
+                player.temple_bonus = 10
+                player.score += 7
+            elif player.donation == temple_bonus_second:
+                player.temple_bonus = 7
+                player.score += 4
+            elif player.donation == temple_bonus_third:
+                pass
+            else:
+                player.temple_bonus = 0
+                player.score -= 3
