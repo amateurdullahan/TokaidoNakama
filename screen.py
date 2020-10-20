@@ -271,8 +271,7 @@ def main_screen(board_number):
                   # if rect for inn collision:
                         # append to player list (which will be cleared as player pieces are set)
                         # if all players on inn:
-                        # food menu. Within food menu,
-                        # determine board to load based off player pos # (which inn)
+                        # food menu.
 
             # Shows list of events on ya terminal. To be removed, but fun to see
             print(event)
