@@ -5,13 +5,16 @@ import pygame_menu
 from player import Player
 from init import HSDeck, player_list
 from location import Hot_Spring_Loc
+import tkinter as tk
 # import sys
 # import time
 # from pygame.locals import *
 
-
 # Pygame Module Initialization
 pygame.init()
+
+# Tkinter Initialization
+root = tk.Tk()
 
 # Screen Creation
 # Stretch goal of resizing display
@@ -38,31 +41,30 @@ pygame.display.set_icon(icon)
 
 # Board images
 board_one = pygame.image.load('media/board_one.png')
-# board_two = pygame.image.load('media/images/board_two.png')
-# board_three = pygame.image.load('media/images/board_three.png')
-# board_four = pygame.image.load('media/images/board_four.png')
-
-# Piece images
-# player_green = ('player_green.png')
-# player_blue = ('player_blue.png')
-# player_grey = ('player_grey.png')
-# player_yellow = ('player_yellow.png')
-# player_purple = ('player_purple.png')
+board_two = pygame.image.load('media/board_two.png')
+board_three = pygame.image.load('media/board_three.png')
+board_four = pygame.image.load('media/board_four.png')
 
 # Coordinates for board
 X_BOARD_COORD = (DISPLAY_WIDTH * 0.02)
 Y_BOARD_COORD = (DISPLAY_HEIGHT * 0.062)
 
 # Function for board, will check for which board to load
-def board(x_board, y_board):
+def board(x_board, y_board, current_board):
     """Sets up board & switches board as needed"""
 
     # if check on which board to load, depending on game progress
     # if all players at space 14 && food has been chosen, board 2
     # section for generating landing spots based off board
     # Blit board, while scaling it to uniform size
-    current_board = pygame.transform.scale(board_one, (850, 500))
-    # board_spaces(1)
+    if current_board == 1:
+        current_board = pygame.transform.scale(board_one, (850, 500))
+    if current_board == 2:
+        current_board = pygame.transform.scale(board_two, (850, 500))
+    if current_board == 3:
+        current_board = pygame.transform.scale(board_three, (850, 500))
+    if current_board == 4:
+        current_board = pygame.transform.scale(board_four, (850, 500))
     screen.blit(current_board, (x_board, y_board))
 
 def encounter_selection(board_position):
@@ -82,7 +84,11 @@ def encounter_selection(board_position):
         print("Pano paddy stuff")
     elif board_position in [5, 13, 22, 33, 42, 48]:
         # Code for Hot Springs
-        hot_spring_popup.mainloop(screen)
+        hot_spring_popup = tk.Frame(root)
+        hot_spring_popup.pack()
+        hs_button_2 = tk.Button(hot_spring_popup, text='2 Points', command=Hot_Spring_Loc)
+        hs_button_2.pack()
+        root.mainloop()
     elif board_position in [6, 12, 19, 23, 32, 50]:
         # Code for Pano_Mt
         print("Pano mt stuff")
@@ -99,11 +105,6 @@ def encounter_selection(board_position):
 # def player_info(playercount, list of colors):
 # Generates player's info displays, depending on number of players & assigns colors
 
-# def board_spaces(board_number):
-#     """Generates spaces for pieces to land, depending on board #"""
-#    if board_number == 1:
-    # rects for board positions
-
 # Font Section
 # Create title font, first param is font file in pygame, second is size
 font_title = pygame.font.Font('freesansbold.ttf', 50)
@@ -114,17 +115,16 @@ text_title_rect = text_title.get_rect()
 # Set the center of the rectangular object
 text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
 
-# Setup
-
 # Creates list in order of players, at limit goes into main screen
-
 def player_add(player_color):   # button fun
     """Adds player color to game"""
     if len(player_list) < 3:
-        if player_color == 'Green' and 'Green' not in player_list:
+        if player_color == 'Green' and 'player_green' not in player_list:
             player_green = Player(player_color)
-            player_list.append(player_color)
+            player_list.append(player_green)
             print(player_green)
+            player_green.icon = pygame.image.load('media/player_green.png')
+            # pygame.transform.scale(player_green.icon, (34, 60))
             green_button.set_position(1000, 1000)
             # Hides it off the surface. Could just change color like below:
             # green_button.set_background_color((73, 114, 16))
@@ -133,40 +133,48 @@ def player_add(player_color):   # button fun
                 print('GO RIGHT INTO MAIN')
                 start_menu.disable()
                 main_screen(1)
-        elif player_color == 'Blue' and 'Blue' not in player_list:
+        elif player_color == 'Blue' and 'player_blue' not in player_list:
             player_blue = Player(player_color)
-            player_list.append(player_color)
+            player_list.append(player_blue)
             print(player_blue)
+            player_blue.icon = pygame.image.load('media/player_blue.png')
+            # pygame.transform.scale(player_blue.icon, (34, 60))
             blue_button.set_position(1000, 1000)
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
                 start_menu.disable()
                 main_screen(1)
-        elif player_color == 'Grey' and 'Grey' not in player_list:
+        elif player_color == 'Grey' and 'player_grey' not in player_list:
             player_grey = Player(player_color)
-            player_list.append(player_color)
+            player_list.append(player_grey)
             print(player_grey)
+            player_grey.icon = pygame.image.load('media/player_grey.png')
+            # pygame.transform.scale(player_grey.icon, (34, 60))
             grey_button.set_position(1000, 1000)
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
                 start_menu.disable()
                 main_screen(1)
-        elif player_color == 'Yellow' and 'Yellow' not in player_list:
+        elif player_color == 'Yellow' and 'player_yellow' not in player_list:
             player_yellow = Player(player_color)
-            player_list.append(player_color)
+            player_list.append(player_yellow)
             print(player_yellow)
+            player_yellow.icon = pygame.image.load('media/player_yellow.png')
+            # pygame.transform.scale(player_yellow.icon, (34, 60))
             yellow_button.set_position(1000, 1000)
             if len(player_list) == 3:
                 print(player_list)
                 print('GO RIGHT INTO MAIN')
                 start_menu.disable()
                 main_screen(1)
-        elif player_color == 'Purple' and 'Purple' not in player_list:
+        elif player_color == 'Purple' and 'player_purple' not in player_list:
             player_purple = Player(player_color)
-            player_list.append(player_color)
+            player_list.append(player_purple)
             print(player_purple)
+            player_purple.icon = pygame.image.load('media/player_purple.png')
+            # pygame.transform.scale(player_purple.icon, (34, 60))
             purple_button.set_position(1000, 1000)
             if len(player_list) == 3:
                 print(player_list)
@@ -192,43 +200,61 @@ blue_button = start_menu.add_button('Blue', player_add, 'Blue')
 grey_button = start_menu.add_button('Grey', player_add, 'Grey')
 yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
 purple_button = start_menu.add_button('Purple', player_add, 'Purple')
-#Hot Spring popup menu
-hot_spring_popup = pygame_menu.Menu(height=300, width=400, theme=pygame_menu.themes.THEME_DEFAULT,
-                        title='Hot Spring', onclose=pygame_menu.events.BACK)
-hot_spring_popup.add_label('Select Point Value')
-hot_spring_popup.add_button('2 Points', Hot_Spring_Loc, 2)
 
+def player_positioning():
+    """Checks player positions & blits pieces"""
+    for player in player_list:
+        if player.board_space == 0.1:
+            screen.blit(player.icon, (80, 283))
+        if player.board_space == 0.2:
+            screen.blit(player.icon, (80, 336))
+        if player.board_space == 0.3:
+            screen.blit(player.icon, (80, 385))
+        if player.board_space == 1:
+            screen.blit(player.icon, (149, 215))
+    # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
 
 
 # Main Game Loop
 def main_screen(board_number):
     """Main game loop"""
+
+    if board_number == 0:
+        start_menu.enable()
     # Board One
     if board_number == 1:
         # Rect(left, top, width, height)
         rect1 = pygame.Rect(155, 150, 21, 122)
+        # rect 11 is additional rect for position 1
         rect11 = pygame.Rect(135, 87, 62, 82)
         # rect2 = pygame.Rect(, , , ,)
         # rect3 = pygame.Rect(, , , ,)
         # rect4 = pygame.Rect(, , , ,)
         rect5 = pygame.Rect(343, 87, 61, 190)
         # rect6 = pygame.Rect(, , , ,)
-        rect00 = pygame.Rect(79, 309, 34, 34)
-        rect01 = pygame.Rect(79, 358, 34, 34)
-        rect02 = pygame.Rect(79, 408, 34, 34)
-        for elem in player_list:
-            print(elem)
-            # if elem == 'Green':
+        # rect7 = pygame.Rect(, , , ,)
+        # rect8 = pygame.Rect(, , , ,)
+        # rect9 = pygame.Rect(, , , ,)
+        # rect10 = pygame.Rect(, , , ,)
+        # rect11 = pygame.Rect(, , , ,)
+        # rect12 = pygame.Rect(, , , ,)
+        # rect13 = pygame.Rect(, , , ,)
+        # rect14 = pygame.Rect(, , , ,)
+        # 1400 is 14.01
+        # rect1401 = pygame.Rect(, , , ,)
+        # rect1402 = pygame.Rect(, , , ,)
+        # rect1403 = pygame.Rect(, , , ,)
+        # Starting inn rect
+        start_list = [0.1, 0.2, 0.3]
+        for player, position in zip(player_list, start_list):
+            player.board_space = position
+            print(player.board_space)
+    # if board_number == 2:
 
-                
-                
-                
-        # Piece images
-# player_green = ('player_green.png')
-# player_blue = ('player_blue.png')
-# player_grey = ('player_grey.png')
-# player_yellow = ('player_yellow.png')
-# player_purple = ('player_purple.png')
+    # if board_number == 3:
+
+    # if board_number == 4:
+
 
     running = True  # Main Loop Flag
     while running:
@@ -248,11 +274,15 @@ def main_screen(board_number):
                   # if rect for inn collision:
                         # append to player list (which will be cleared as player pieces are set)
                         # if all players on inn:
-                        # food menu. Within food menu,
-                        # determine board to load based off player pos # (which inn)
+                        # food menu.
 
             # Shows list of events on ya terminal. To be removed, but fun to see
             print(event)
+
+        # hopefully fixes start_menu
+        if start_menu.is_enabled():
+            start_menu.update(events)
+            start_menu.draw(screen)
 
         # Filling screen
         screen.fill(white)
@@ -261,7 +291,10 @@ def main_screen(board_number):
         screen.blit(text_title, text_title_rect)
 
         # Call Board Function
-        board(X_BOARD_COORD, Y_BOARD_COORD)
+        board(X_BOARD_COORD, Y_BOARD_COORD, board_number)
+
+        # Piece Space Function
+        player_positioning()
 
         # Update display after event logic is complete in inner for loop
         pygame.display.update()
@@ -281,6 +314,6 @@ def main_screen(board_number):
 
 # Run Sequence Below
 start_menu.mainloop(screen)
-# main_screen(1)
+main_screen(0)
 # results screen()
 quitter()
