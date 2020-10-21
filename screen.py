@@ -5,12 +5,16 @@ import pygame_menu
 from player import Player
 from init import HSDeck, player_list
 from location import Hot_Spring_Loc
+import tkinter as tk
 # import sys
 # import time
 # from pygame.locals import *
 
 # Pygame Module Initialization
 pygame.init()
+
+# Tkinter Initialization
+root = tk.Tk()
 
 # Screen Creation
 # Stretch goal of resizing display
@@ -80,7 +84,11 @@ def encounter_selection(board_position):
         print("Pano paddy stuff")
     elif board_position in [5, 13, 22, 33, 42, 48]:
         # Code for Hot Springs
-        hot_spring_popup.mainloop(screen)
+        hot_spring_popup = tk.Frame(root)
+        hot_spring_popup.pack()
+        hs_button_2 = tk.Button(hot_spring_popup, text='2 Points', command=Hot_Spring_Loc)
+        hs_button_2.pack()
+        root.mainloop()
     elif board_position in [6, 12, 19, 23, 32, 50]:
         # Code for Pano_Mt
         print("Pano mt stuff")
@@ -106,8 +114,6 @@ text_title = font_title.render('Color\'s Turn', True, black)
 text_title_rect = text_title.get_rect()
 # Set the center of the rectangular object
 text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
-
-# Setup
 
 # Creates list in order of players, at limit goes into main screen
 def player_add(player_color):   # button fun
@@ -194,12 +200,6 @@ blue_button = start_menu.add_button('Blue', player_add, 'Blue')
 grey_button = start_menu.add_button('Grey', player_add, 'Grey')
 yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
 purple_button = start_menu.add_button('Purple', player_add, 'Purple')
-#Hot Spring popup menu
-# hot_spring_popup = pygame_menu.Menu(height=300, width=400, theme=pygame_menu.themes.THEME_DEFAULT,
-# title='Hot Spring', onclose=pygame_menu.events.BACK)
-# hot_spring_popup.add_label('Select Point Value')
-# hot_spring_popup.add_button('2 Points', Hot_Spring_Loc, 2)
-
 
 def player_positioning():
     """Checks player positions & blits pieces"""
@@ -218,6 +218,9 @@ def player_positioning():
 # Main Game Loop
 def main_screen(board_number):
     """Main game loop"""
+
+    if board_number == 0:
+        start_menu.enable()
     # Board One
     if board_number == 1:
         # Rect(left, top, width, height)
@@ -276,6 +279,11 @@ def main_screen(board_number):
             # Shows list of events on ya terminal. To be removed, but fun to see
             print(event)
 
+        # hopefully fixes start_menu
+        if start_menu.is_enabled():
+            start_menu.update(events)
+            start_menu.draw(screen)
+
         # Filling screen
         screen.fill(white)
 
@@ -306,6 +314,6 @@ def main_screen(board_number):
 
 # Run Sequence Below
 start_menu.mainloop(screen)
-# main_screen(1)
+main_screen(0)
 # results screen()
 quitter()
