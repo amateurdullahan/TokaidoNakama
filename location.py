@@ -126,7 +126,6 @@ def Hot_Spring_Loc(pts):
         GreenPlayer.score += 2
         print("Green Score: {}", GreenPlayer.score)
         # bather_bonus_check("""number of HS cards""")
-        main_screen(1)
 
 
 def Inn_Loc(Player, Deck):

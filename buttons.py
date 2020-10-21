@@ -13,9 +13,9 @@ class Button(pygame.Rect):
         self.height = height
         self.rect = pygame.Rect(self.left, self.top, self.width, self.height)
         if screen is not None:
-            button.__screen = self.screen = screen
+            Button.__screen = self.screen = screen
         else:
-            self.scren = button.__screen
+            self.screen = Button.__screen
         self.color = color
         self.rectColor = rectColor
 
@@ -28,4 +28,4 @@ class Button(pygame.Rect):
 
     def add_text(self, text, offset=0):
         self.font = pygame.font.SysFont('Arial', 25)
-        self.screen.blit(self.font.render(text, True, self.color), ((self.left + welf.width / 3) - offest, self.top))
+        self.screen.blit(self.font.render(text, True, self.color), ((self.left + self.width / 3) - offset, self.top))
