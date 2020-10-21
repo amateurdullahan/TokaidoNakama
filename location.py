@@ -39,15 +39,14 @@ class Location():
         self.__func = function"""
 
 
-def MoveCard(Player, Deck, card):
+def MoveCard(player, deck, card):
     """method to move cards between decks"""
-    for a in range(len(Deck.card_list)):
-        if Deck.card_list[a] is card:
-            Player.playerdeck.add(Deck.card_list.pop(a))
-            Deck.number_of_cards -= 1
+    for a in range(len(deck.card_list)):
+        if deck.card_list[a] is card:
+            player.playerdeck.add(deck.card_list.pop(a))
+            deck.number_of_cards -= 1
             break
         a += 1
-
 
 def Farm_Loc(Player):
     """farm location function"""
@@ -116,16 +115,26 @@ def Souvenir_Shop_Loc(Player, Deck, Discard):
 
 def Hot_Spring_Loc(pts):
     """hot spring location function TBW"""
-    from screen import main_screen
     if pts == 2:
         print("2 points clicked")
         for a in range(len(HSDeck.card_list)):
             if HSDeck.card_list[a].point_value == 2:
-                selected = HSDeck.card_list[a]
-        MoveCard(GreenPlayer, HSDeck, selected)
-        GreenPlayer.score += 2
-        print("Green Score: {}", GreenPlayer.score)
-        # bather_bonus_check("""number of HS cards""")
+                GreenPlayer.playerdeck.add(HSDeck.card_list.pop(a))
+                print("Deck")
+                HSDeck.print_list()
+                print("Player")
+                GreenPlayer.playerdeck.print_list()
+                HSDeck.number_of_cards -= 1
+                break
+            a += 1
+    elif pts == 3:
+        print("3 points clicked")
+        for a in range(len(HSDeck.card_list)):
+            if HSDeck.card_list[a].point_value == 3:
+                GreenPlayer.playerdeck.add(HSDeck.card_list.pop(a))
+                HSDeck.number_of_cards -= 1
+                break
+            a += 1
 
 
 def Inn_Loc(Player, Deck):
