@@ -201,3 +201,4 @@ GreyDeck = Deck(0, GreyList)
 GreyPlayer = Player("Grey", GreyDeck, 'media/player_grey.png')
 
 player_list = []    # active players global list
+current_player = None # initialize global current player tracker

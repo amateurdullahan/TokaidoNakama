@@ -80,8 +80,8 @@ def Temple_Loc(Player):
     Player.score += num
     """ temple bonus check"""
 
-def Souvenir_Shop_Loc(Player, Deck, Discard):
-    """souvenirshop location function TBW"""
+def Village_Loc(Player, Deck, Discard):
+    """Village location function TBW"""
     """bought will be the Card obj they select"""
     while a < 3:
         """ask player which cards bought, do this three times"""
@@ -113,17 +113,14 @@ def Souvenir_Shop_Loc(Player, Deck, Discard):
         """check collector acheviement"""
 
 
-def Hot_Spring_Loc(pts):
+def Hot_Spring_Loc(current_player, pts):
     """hot spring location function TBW"""
     if pts == 2:
         print("2 points clicked")
         for a in range(len(HSDeck.card_list)):
             if HSDeck.card_list[a].point_value == 2:
-                GreenPlayer.playerdeck.add(HSDeck.card_list.pop(a))
-                print("Deck")
-                HSDeck.print_list()
-                print("Player")
-                GreenPlayer.playerdeck.print_list()
+                print("2 Points Selected")
+                current_player.playerdeck.add(HSDeck.card_list.pop(a))
                 HSDeck.number_of_cards -= 1
                 break
             a += 1
