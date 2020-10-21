@@ -5,16 +5,17 @@ import pygame_menu
 from player import Player
 from init import HSDeck, player_list
 from location import Hot_Spring_Loc
-import tkinter as tk
+from buttons import Button
+
 # import sys
 # import time
 # from pygame.locals import *
 
+# Declaring global variables
+global screen
+
 # Pygame Module Initialization
 pygame.init()
-
-# Tkinter Initialization
-root = tk.Tk()
 
 # Screen Creation
 # Stretch goal of resizing display
@@ -84,11 +85,7 @@ def encounter_selection(board_position):
         print("Pano paddy stuff")
     elif board_position in [5, 13, 22, 33, 42, 48]:
         # Code for Hot Springs
-        hot_spring_popup = tk.Frame(root)
-        hot_spring_popup.pack()
-        hs_button_2 = tk.Button(hot_spring_popup, text='2 Points', command=Hot_Spring_Loc)
-        hs_button_2.pack()
-        root.mainloop()
+        hot_springs_menu(screen)
     elif board_position in [6, 12, 19, 23, 32, 50]:
         # Code for Pano_Mt
         print("Pano mt stuff")
@@ -192,14 +189,14 @@ def quitter():
     quit()
 
 # Start Menu & Buttons
-start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_DEFAULT,
+# start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_DEFAULT,
                               title='Select 3 Players', onclose=quitter)
-start_menu.add_label('In Starting Order:')
-green_button = start_menu.add_button('Green', player_add, 'Green')
-blue_button = start_menu.add_button('Blue', player_add, 'Blue')
-grey_button = start_menu.add_button('Grey', player_add, 'Grey')
-yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
-purple_button = start_menu.add_button('Purple', player_add, 'Purple')
+# start_menu.add_label('In Starting Order:')
+# green_button = start_menu.add_button('Green', player_add, 'Green')
+# blue_button = start_menu.add_button('Blue', player_add, 'Blue')
+# grey_button = start_menu.add_button('Grey', player_add, 'Grey')
+# yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
+# purple_button = start_menu.add_button('Purple', player_add, 'Purple')
 
 def player_positioning():
     """Checks player positions & blits pieces"""
@@ -221,6 +218,7 @@ def main_screen(board_number):
 
     if board_number == 0:
         start_menu.enable()
+        start_menu.mainloop(screen)
     # Board One
     if board_number == 1:
         # Rect(left, top, width, height)
@@ -259,7 +257,8 @@ def main_screen(board_number):
     running = True  # Main Loop Flag
     while running:
         # Inner Loop for Events
-        for event in pygame.event.get():
+        events = pygame.event.get()
+        for event in events:
             if event.type == pygame.QUIT:   # If The Window's 'X' Button is Clicked
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -303,17 +302,41 @@ def main_screen(board_number):
         # Call Food Menu
         # Then From Food Menu Call main_screen(NEXT BOARD NUMBER)
 
-# Results Screen
-# def results_screen():
-#
-#  stuff goes here
-#
-#  and here!
-#
-#
+
+# 900, 800
+#s400, 420
+def hot_springs_menu(screen):
+    """MENU TEST"""
+    paused = True
+    while paused:
+        screen.fill((255, 255, 255))
+        but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+        but_3 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+        but_2.add_text('2 Points')
+        but_3.add_text('3 Points')
+        events = pygame.event.get()
+        for event in events:
+            if event.type == pygame.QUIT:
+                quitter()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if but_2.collidepoint(event.pos):
+                        Hot_Spring_Loc(2)
+                        exit()
+                    elif but_3.collidepoint(event.pos):
+                        Hot_Spring_Loc(3)
+                        exit()
+        pygame.display.update()
+    return False
+                    
+
+# if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
+            
+             
+            
+
 
 # Run Sequence Below
-start_menu.mainloop(screen)
 main_screen(0)
 # results screen()
 quitter()
