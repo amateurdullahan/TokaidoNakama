@@ -3,9 +3,10 @@
 import pygame
 import pygame_menu
 from player import Player
-from init import HSDeck, player_list
+from init import HSDeck, player_list, GreenPlayer
 from location import Hot_Spring_Loc
 from buttons import Button
+from deck import Deck
 
 # import sys
 # import time
@@ -13,6 +14,7 @@ from buttons import Button
 
 # Declaring global variables
 global screen
+
 
 # Pygame Module Initialization
 pygame.init()
@@ -88,13 +90,13 @@ def encounter_selection(board_position):
         hot_springs_menu(screen)
     elif board_position in [6, 12, 19, 23, 32, 50]:
         # Code for Pano_Mt
-        print("Pano mt stuff")
+        Panorama_Mountain_Loc()
     elif board_position in [7, 17, 26, 31, 37, 47]:
         # Code for Farm
-        print("Farm stuff")
+        Farm_Loc()
     elif board_position in [11, 15, 24, 34, 39, 46, 52]:
         # Code for Pano_Sea
-        print("Pano sea stuff")
+        Panorama_Sea_Loc()
     elif board_position in [14, 27, 41, 54]:
         # Code for Inn
         print("Inn stuff")
@@ -117,7 +119,7 @@ def player_add(player_color):   # button fun
     """Adds player color to game"""
     if len(player_list) < 3:
         if player_color == 'Green' and 'player_green' not in player_list:
-            player_green = Player(player_color)
+            player_green = GreenPlayer
             player_list.append(player_green)
             print(player_green)
             player_green.icon = pygame.image.load('media/player_green.png')
@@ -181,6 +183,7 @@ def player_add(player_color):   # button fun
     else:
         print(player_list)
         print('THIS CODE SHOULD NOT RUN ONCE EVERYTHING IS GOING')
+        main_screen(1)
 
 # Function for clean quit
 def quitter():
@@ -189,14 +192,13 @@ def quitter():
     quit()
 
 # Start Menu & Buttons
-# start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_DEFAULT,
-                              title='Select 3 Players', onclose=quitter)
-# start_menu.add_label('In Starting Order:')
-# green_button = start_menu.add_button('Green', player_add, 'Green')
-# blue_button = start_menu.add_button('Blue', player_add, 'Blue')
-# grey_button = start_menu.add_button('Grey', player_add, 'Grey')
-# yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
-# purple_button = start_menu.add_button('Purple', player_add, 'Purple')
+start_menu = pygame_menu.Menu(height=400, width=420, theme=pygame_menu.themes.THEME_DEFAULT, title='Select 3 Players', onclose=quitter)
+start_menu.add_label('In Starting Order:')
+green_button = start_menu.add_button('Green', player_add, 'Green')
+blue_button = start_menu.add_button('Blue', player_add, 'Blue')
+grey_button = start_menu.add_button('Grey', player_add, 'Grey')
+yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
+purple_button = start_menu.add_button('Purple', player_add, 'Purple')
 
 def player_positioning():
     """Checks player positions & blits pieces"""
@@ -276,7 +278,7 @@ def main_screen(board_number):
                         # food menu.
 
             # Shows list of events on ya terminal. To be removed, but fun to see
-            print(event)
+            #print(event)
 
         # hopefully fixes start_menu
         if start_menu.is_enabled():
@@ -314,6 +316,8 @@ def hot_springs_menu(screen):
         but_3 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
         but_2.add_text('2 Points')
         but_3.add_text('3 Points')
+        #but_2.draw(black)
+        #but_3.draw(black)
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
@@ -322,18 +326,18 @@ def hot_springs_menu(screen):
                 if event.button == 1:
                     if but_2.collidepoint(event.pos):
                         Hot_Spring_Loc(2)
-                        exit()
+                        return
                     elif but_3.collidepoint(event.pos):
                         Hot_Spring_Loc(3)
-                        exit()
+                        return
         pygame.display.update()
     return False
-                    
+
 
 # if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
-            
-             
-            
+
+
+
 
 
 # Run Sequence Below
