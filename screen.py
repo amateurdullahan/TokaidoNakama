@@ -87,7 +87,7 @@ def encounter_selection(board_position):
         hot_spring_popup = tk.Frame(root)
         hot_spring_popup.pack()
         hs_button_2 = tk.Button(hot_spring_popup, text='2 Points', command=Hot_Spring_Loc)
-
+        hs_button_2.pack()
         root.mainloop()
     elif board_position in [6, 12, 19, 23, 32, 50]:
         # Code for Pano_Mt
