@@ -86,19 +86,24 @@ if __name__ == '__main__':
         elif board_position in [4, 18, 28, 35, 51]:
             # Code for Pano_Paddy
             print("Pano paddy stuff")
+            pano_paddy_menu(screen)
+            update_current_player()
         elif board_position in [5, 13, 22, 33, 42, 48]:
             # Code for Hot Springs
             hot_springs_menu(screen)
             update_current_player()
         elif board_position in [6, 12, 19, 23, 32, 50]:
             # Code for Pano_Mt
-            Panorama_Mountain_Loc()
+            pano_mt_menu(screen)
+            update_current_player()
         elif board_position in [7, 17, 26, 31, 37, 47]:
             # Code for Farm
-            Farm_Loc()
+            farm_menu(screen)
+            update_current_player()
         elif board_position in [11, 15, 24, 34, 39, 46, 52]:
             # Code for Pano_Sea
-            Panorama_Sea_Loc()
+            pano_sea_menu(screen)
+            update_current_player
         elif board_position in [14, 27, 41, 54]:
             # Code for Inn
             print("Inn stuff")
@@ -355,6 +360,94 @@ if __name__ == '__main__':
             pygame.display.update()
         return False
 
+# farm screen
+    def farm_menu(screen):
+        """farm screen"""
+        global current_player
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2.add_text('Okay')
+            #but_2.draw(black)
+            #but_3.draw(black)
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_2.collidepoint(event.pos):
+                            current_player = Farm_Loc(current_player)
+                            return
+            pygame.display.update()
+        return False
+
+    def pano_paddy_menu(screen):
+        """MENU TEST"""
+        global current_player
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2.add_text('Okay')
+            #but_2.draw(black)
+            #but_3.draw(black)
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_2.collidepoint(event.pos):
+                            current_player = Pano_Paddy_Loc(current_player)
+                            return
+            pygame.display.update()
+        return False
+
+    def pano_mt_menu(screen):
+        """MENU TEST"""
+        global current_player
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2.add_text('Okay')
+            #but_2.draw(black)
+            #but_3.draw(black)
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_2.collidepoint(event.pos):
+                            current_player = Pano_Mt_Loc(current_player)
+                            return
+            pygame.display.update()
+        return False
+
+    def pano_sea_menu(screen):
+        """MENU TEST"""
+        global current_player
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2.add_text('Okay')
+            #but_2.draw(black)
+            #but_3.draw(black)
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_2.collidepoint(event.pos):
+                            current_player = Pano_Sea_Loc(current_player)
+                            return
+            pygame.display.update()
+        return False
 
     # if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
 
