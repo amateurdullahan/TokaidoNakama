@@ -112,7 +112,6 @@ def Village_Loc(Player, Deck, Discard):
             MoveCard(Player, Deck, bought)
         """check collector acheviement"""
 
-
 def Hot_Spring_Loc(current_player, pts):
     """hot spring location function TBW"""
     if pts == 2:
@@ -122,7 +121,7 @@ def Hot_Spring_Loc(current_player, pts):
                 print("2 Points Selected")
                 current_player.playerdeck.add(HSDeck.card_list.pop(a))
                 HSDeck.number_of_cards -= 1
-                break
+                return (current_player)
             a += 1
     elif pts == 3:
         print("3 points clicked")
@@ -133,8 +132,7 @@ def Hot_Spring_Loc(current_player, pts):
                 break
             a += 1
 
-
-def Inn_Loc(Player, Deck):
+def Inn_Loc(current_player):
     """inn location function TBW"""
     meal = """"whatever they select"""
     MoveCard(Player, Deck, meal)
