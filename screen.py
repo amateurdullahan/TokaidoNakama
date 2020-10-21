@@ -3,7 +3,7 @@
 import pygame
 import pygame_menu
 from player import Player
-from init import HSDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
+from init import current_player, HSDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
 from location import Hot_Spring_Loc
 from buttons import Button
 from deck import Deck
@@ -89,7 +89,7 @@ if __name__ == '__main__':
         elif board_position in [5, 13, 22, 33, 42, 48]:
             # Code for Hot Springs
             hot_springs_menu(screen)
-            update_current_player
+            update_current_player()
         elif board_position in [6, 12, 19, 23, 32, 50]:
             # Code for Pano_Mt
             Panorama_Mountain_Loc()
@@ -347,7 +347,7 @@ if __name__ == '__main__':
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         if but_2.collidepoint(event.pos):
-                            Hot_Spring_Loc(current_player, 2)
+                            current_player = Hot_Spring_Loc(current_player, 2)
                             return
                         elif but_3.collidepoint(event.pos):
                             Hot_Spring_Loc(3)
