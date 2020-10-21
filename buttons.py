@@ -15,7 +15,7 @@ class Button(pygame.Rect):
         if screen is not None:
             button.__screen = self.screen = screen
         else:
-            self.scren = button.__screen
+            self.screen = button.__screen
         self.color = color
         self.rectColor = rectColor
 
