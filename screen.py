@@ -3,7 +3,7 @@
 import pygame
 import pygame_menu
 from player import Player
-from init import HSDeck, player_list, current_player, GreenPlayer, YellowPlayer, GreyPlayer, PurplePlayer, BluePlayer
+from init import HSDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
 from location import Hot_Spring_Loc
 from buttons import Button
 from deck import Deck
