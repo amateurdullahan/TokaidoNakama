@@ -26,6 +26,6 @@ class Button(pygame.Rect):
             btn = color
         pygame.draw.rect(self.screen, btn, self.rect, 0)
 
-    def add_text(self, text, offset=0):
-        self.font = pygame.font.SysFont('Arial', 25)
+    def add_text(self, text, text_size=25, offset=0):
+        self.font = pygame.font.SysFont('Arial', text_size)
         self.screen.blit(self.font.render(text, True, self.color), ((self.left + self.width / 3) - offset, self.top))

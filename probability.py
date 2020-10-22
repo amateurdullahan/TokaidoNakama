@@ -8,6 +8,7 @@ def CostProb(Deck):
     cost1sum = 0
     cost2sum = 0
     cost3sum = 0
+    cost_list = []
     for a in range(len(Deck.card_list)):
         if Deck.card_list[a].cost == 1:
             cost1sum += 1
@@ -21,12 +22,16 @@ def CostProb(Deck):
     cost1sum = round(((cost1sum / Deck.number_of_cards) * 100), 2)
     cost2sum = round(((cost2sum / Deck.number_of_cards) * 100), 2)
     cost3sum = round(((cost3sum / Deck.number_of_cards) * 100), 2)
-    return(cost1sum, cost2sum, cost3sum)
+    cost_list.append(cost1sum)
+    cost_list.append(cost2sum)
+    cost_list.append(cost3sum)
+    return(cost_list)
 
 def PointProb(Deck):
     """Determine point prob"""
     point2sum = 0
     point3sum = 0
+    point_list = []
     for a in range(len(Deck.card_list)):
         if Deck.card_list[a].point_value == 2:
             point2sum += 1
@@ -37,7 +42,9 @@ def PointProb(Deck):
         a += 1
     point2sum = round(((point2sum / Deck.number_of_cards) * 100), 2)
     point3sum = round(((point3sum / Deck.number_of_cards) * 100), 2)
-    return(point2sum, point3sum)
+    point_list.append(point2sum)
+    point_list.append(point3sum)
+    return(point_list)
 
 
 def SubTypeProb(Deck):
@@ -46,6 +53,7 @@ def SubTypeProb(Deck):
     food_drink_sum = 0
     clothing_sum = 0
     art_sum = 0
+    type_list = []
     for a in range(len(Deck.card_list)):
         if Deck.card_list[a].subtype == "Small Item":
             small_item_sum += 1
@@ -61,7 +69,11 @@ def SubTypeProb(Deck):
     food_drink_sum = round(((food_drink_sum / Deck.number_of_cards) * 100), 2)
     clothing_sum = round(((clothing_sum / Deck.number_of_cards) * 100), 2)
     art_sum = round(((art_sum / Deck.number_of_cards) * 100), 2)
-    return(small_item_sum, food_drink_sum, clothing_sum, art_sum)
+    type_list.append(small_item_sum)
+    type_list.append(food_drink_sum)
+    type_list.append(clothing_sum)
+    type_list.append(art_sum)
+    return(type_list)
 
 def EncTypeProb(Deck):
     """encounter type probability"""
@@ -72,6 +84,7 @@ def EncTypeProb(Deck):
     anna_paddy_sum = 0
     anna_mtn_sum = 0
     anna_sea_sum = 0
+    type_list = []
     for a in range(len(Deck.card_list)):
         if Deck.card_list[a].name == "Kuge":
             kuge_sum += 1
@@ -79,7 +92,7 @@ def EncTypeProb(Deck):
             miko_sum += 1
         elif Deck.card_list[a].name == "Samurai":
             samurai_sum += 1
-        elif Deck.card_list[a].name == "Shoukunin":
+        elif Deck.card_list[a].name == "Shokunin":
             shokunin_sum += 1
         elif Deck.card_list[a].name == "Annaibito: Paddy":
             anna_paddy_sum += 1
@@ -97,4 +110,11 @@ def EncTypeProb(Deck):
     anna_paddy_sum = round(((anna_paddy_sum / Deck.number_of_cards) * 100), 2)
     anna_mtn_sum = round(((anna_mtn_sum / Deck.number_of_cards) * 100), 2)
     anna_sea_sum = round(((anna_sea_sum / Deck.number_of_cards) * 100), 2)
-    return(kuge_sum, miko_sum, samurai_sum, shokunin_sum, anna_paddy_sum, anna_mtn_sum, anna_sea_sum)
+    type_list.append(kuge_sum)
+    type_list.append(miko_sum)
+    type_list.append(samurai_sum)
+    type_list.append(shokunin_sum)
+    type_list.append(anna_paddy_sum)
+    type_list.append(anna_mtn_sum)
+    type_list.append(anna_sea_sum)
+    return(type_list)
