@@ -5,6 +5,7 @@ import pygame_menu
 from player import Player
 from deck import Card, Deck, HotSpring, Encounter, Meal, Souvenir
 from init import HSDeck
+from bonus_tracker import *
 
 """ NOT SURE WE NEED THIS
 class Location():
@@ -58,24 +59,24 @@ def Pano_Paddy_Loc(player):
     """paddy location function"""
     if player.pano_paddy < 3:
         player.pano_paddy += 1
-        player.points += player.pano_paddy
-        # pano_paddy_check(player)
+        player.score += player.pano_paddy
+        pano_paddy_check(player)
         return (player)
 
 def Pano_Mt_Loc(player):
     """mountain location function"""
     if player.pano_mt < 4:
         player.pano_mt += 1
-        player.points += player.pano_mt
-        """achievment check"""
+        player.score += player.pano_mt
+        pano_mt_check(player)
         return (player)
 
 def Pano_Sea_Loc(player):
     """sea location function"""
     if player.pano_sea < 5:
         player.pano_sea += 1
-        player.points += player.pano_sea
-        """achievment check"""
+        player.score += player.pano_sea
+        pano_sea_check(player)
         return (player)
 
 def Temple_Loc(player):
@@ -85,37 +86,37 @@ def Temple_Loc(player):
     player.score += num
     """ temple bonus check"""
 
-def Village_Loc(player, Deck, Discard):
+def Village_Loc(player, cardname):
     """Village location function TBW"""
-    """bought will be the Card obj they select"""
-    while a < 3:
-        """ask player which cards bought, do this three times"""
-        if discard:
-            Discard.add(bought)
-        else:
-            player.coins -= bought.cost
-            if player.sv_type_first is "":
-                player.sv_type_first = bought.subtype
-                player.score += 1
-            elif player.sv_type_first == bought.subtype:
-                player.score += 1
-            elif player.sv_type_second is "":
-                player.sv_type_second = bought.subtype
-                player.score += 3
-            elif player.sv_type_second == bought.subtype:
-                player.score += 3
-            elif player.sv_type_third is "":
-                player.sv_type_third = bought.subtype
-                player.score += 5
-            elif player.sv_type_third == bought.subtype:
-                player.score += 5
-            elif player.sv_type_fourth is "":
-                player.sv_type_fourth = bought.subtype
-                player.score += 7
-            elif player.sv_type_fourth == bought.subtype:
-                player.score += 7
-            MoveCard(player, Deck, bought)
-        """check collector acheviement"""
+    for a in cardname:
+        while a < 3:
+            """ask player which cards bought, do this three times"""
+            if discard:
+                Discard.add(bought)
+            else:
+                player.coins -= bought.cost
+                if player.sv_type_first is "":
+                    player.sv_type_first = bought.subtype
+                    player.score += 1
+                elif player.sv_type_first == bought.subtype:
+                    player.score += 1
+                elif player.sv_type_second is "":
+                    player.sv_type_second = bought.subtype
+                    player.score += 3
+                elif player.sv_type_second == bought.subtype:
+                    player.score += 3
+                elif player.sv_type_third is "":
+                    player.sv_type_third = bought.subtype
+                    player.score += 5
+                elif player.sv_type_third == bought.subtype:
+                    player.score += 5
+                elif player.sv_type_fourth is "":
+                    player.sv_type_fourth = bought.subtype
+                    player.score += 7
+                elif player.sv_type_fourth == bought.subtype:
+                    player.score += 7
+                MoveCard(player, Deck, bought)
+            """check collector acheviement"""
 
 def Hot_Spring_Loc(player, pts):
     """hot spring location function TBW"""

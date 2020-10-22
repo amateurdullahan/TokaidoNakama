@@ -3,7 +3,7 @@
 from deck import Deck
 
 class Player():
-        def __init__(self, color="", playerdeck=Deck(), donation=0, icon=0, score=0, coins=7, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0):
+        def __init__(self, color="", pano_paddy_bonus=0, playerdeck=Deck(), donation=0, icon=0, score=0, coins=7, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0):
             """initializing the players"""
             self.color = color
             self.score = score
@@ -20,6 +20,7 @@ class Player():
             self.playerdeck = playerdeck
             self.icon = icon
             self.donation = donation
+            self.pano_paddy_bonus = pano_paddy_bonus
 
         @property
         def color(self):
@@ -150,3 +151,13 @@ class Player():
         def donation(self, value):
             """comment"""
             self.__donation = value
+
+        @property
+        def pano_paddy_bonus(self):
+            """comment"""
+            return self.__pano_paddy_bonus
+
+        @pano_paddy_bonus.setter
+        def pano_paddy_bonus(self, value):
+            """comment"""
+            self.__pano_paddy_bonus = value
