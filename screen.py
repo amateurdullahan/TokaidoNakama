@@ -130,7 +130,7 @@ if __name__ == '__main__':
     # Font Section
     def title_selector(current_player):
         """Changes title for current player"""
-        
+
         colors_rgb = {
         "Green": (73, 114, 16),
         "Blue": (122, 165, 184),
@@ -445,7 +445,7 @@ if __name__ == '__main__':
                             # food menu.
 
                 # Shows list of events on ya terminal. To be removed, but fun to seeprint(event)
-                # print(event)    
+                # print(event)
 
             # hopefully fixes start_menu
             if start_menu.is_enabled():
@@ -742,7 +742,9 @@ if __name__ == '__main__':
     def village_menu(screen):
         """Village Menu"""
         paused = True
-        while paused:
+        counter = 0
+        while paused && counter < 3:
+
             screen.fill((255, 255, 255))
             but_gofu = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
             but_koma = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
@@ -802,76 +804,149 @@ if __name__ == '__main__':
                     if event.button == 1:
                         if but_gofu.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Gofu")
-                            return
+                            counter += 1
                         elif but_koma.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Koma")
-                            return
+                            counter += 1
                         elif but_yunomi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Yunomi")
-                            return
+                            counter += 1
                         elif but_washi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Washi")
-                            return
+                            counter += 1
                         elif but_uchiwa.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Uchiwa")
-                            return
+                            counter += 1
                         elif but_hashi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Hashi")
-                            return
+                            counter += 1
                         elif but_konpeito.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Konpeito")
-                            return
+                            counter += 1
                         elif but_kamaboko.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Kamaboko")
-                            return
+                            counter += 1
                         elif but_manju.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Manju")
-                            return
+                            counter += 1
                         elif but_daifuku.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Daifuku")
-                            return
+                            counter += 1
                         elif but_ocha.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Ocha")
-                            return
+                            counter += 1
                         elif but_sake.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sake")
-                            return
+                            counter += 1
                         elif but_yukata.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Yukata")
-                            return
+                            counter += 1
                         elif but_kanzashi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Kan Zashi")
-                            return
+                            counter += 1
                         elif but_geta.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Geta")
-                            return
+                            counter += 1
                         elif but_haori.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Haori")
-                            return
+                            counter += 1
                         elif but_furoshiki.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Furoshiki")
-                            return
+                            counter += 1
                         elif but_sandogasa.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sandogasa")
-                            return
+                            counter += 1
                         elif but_netsuke.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Netsuke")
-                            return
+                            counter += 1
                         elif but_shikki.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Shikki")
-                            return
+                            counter += 1
                         elif but_jubako.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Jubako")
-                            return
+                            counter += 1
                         elif but_ukiyoe.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Ukiyoe")
-                            return
+                            counter += 1
                         elif but_sumie.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sumie")
-                            return
+                            counter += 1
                         elif but_shamisen.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Shamisen")
-                            return
+                            counter += 1
+                    elif event.button == 3:
+                        if but_gofu.collidepoint(event.pos):
+                            discard(SVDeck, "Gofu")
+                            counter += 1
+                        elif but_koma.collidepoint(event.pos):
+                            discard(SVDeck, "Koma")
+                            counter += 1
+                        elif but_yunomi.collidepoint(event.pos):
+                            discard(SVDeck, "Yunomi")
+                            counter += 1
+                        elif but_washi.collidepoint(event.pos):
+                            discard(SVDeck, "Washi")
+                            counter += 1
+                        elif but_uchiwa.collidepoint(event.pos):
+                            discard(SVDeck, "Uchiwa")
+                            counter += 1
+                        elif but_hashi.collidepoint(event.pos):
+                            discard(SVDeck, "Hashi")
+                            counter += 1
+                        elif but_konpeito.collidepoint(event.pos):
+                            discard(SVDeck, "Konpeito")
+                            counter += 1
+                        elif but_kamaboko.collidepoint(event.pos):
+                            discard(SVDeck, "Kamaboko")
+                            counter += 1
+                        elif but_manju.collidepoint(event.pos):
+                            discard(SVDeck, "Manju")
+                            counter += 1
+                        elif but_daifuku.collidepoint(event.pos):
+                            discard(SVDeck, "Daifuku")
+                            counter += 1
+                        elif but_ocha.collidepoint(event.pos):
+                            discard(SVDeck, "Ocha")
+                            counter += 1
+                        elif but_sake.collidepoint(event.pos):
+                            discard(SVDeck, "Sake")
+                            counter += 1
+                        elif but_yukata.collidepoint(event.pos):
+                            discard(SVDeck, "Yukata")
+                            counter += 1
+                        elif but_kanzashi.collidepoint(event.pos):
+                            discard(SVDeck, "Kan Zashi")
+                            counter += 1
+                        elif but_geta.collidepoint(event.pos):
+                            discard(SVDeck, "Geta")
+                            counter += 1
+                        elif but_haori.collidepoint(event.pos):
+                            discard(SVDeck, "Haori")
+                            counter += 1
+                        elif but_furoshiki.collidepoint(event.pos):
+                            discard(SVDeck, "Furoshiki")
+                            counter += 1
+                        elif but_sandogasa.collidepoint(event.pos):
+                            discard(SVDeck, "Sandogasa")
+                            counter += 1
+                        elif but_netsuke.collidepoint(event.pos):
+                            discard(SVDeck, "Netsuke")
+                            counter += 1
+                        elif but_shikki.collidepoint(event.pos):
+                            discard(SVDeck, "Shikki")
+                            counter += 1
+                        elif but_jubako.collidepoint(event.pos):
+                            discard(SVDeck, "Jubako")
+                            counter += 1
+                        elif but_ukiyoe.collidepoint(event.pos):
+                            discard(SVDeck, "Ukiyoe")
+                            counter += 1
+                        elif but_sumie.collidepoint(event.pos):
+                            discard(SVDeck, "Sumie")
+                            counter += 1
+                        elif but_shamisen.collidepoint(event.pos):
+                            discard(SVDeck, "Shamisen")
+                            counter += 1
             pygame.display.update()
         return False
 
