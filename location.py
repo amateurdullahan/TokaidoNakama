@@ -7,38 +7,6 @@ from deck import Card, Deck, HotSpring, Encounter, Meal, Souvenir
 from init import HSDeck
 from bonus_tracker import *
 
-""" NOT SURE WE NEED THIS
-class Location():
-    base location
-    def __init__(self, board_space, name="", func):
-        self.board_space = board_space
-        self.name = name
-        self.func = func
-
-    @property
-    def board_space(self):
-        return self.__boardspace
-
-    @board_space.setter
-    def board_space(self, pygame_rect):
-        self.__boardspace = pygame_rect
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, string):
-        self.__name = string
-
-    @property
-    def func(self):
-        return self.__func
-
-    @func.setter
-    def func(self, function)
-        self.__func = function"""
-
 
 def MoveCard(player, deck, card):
     """method to move cards between decks"""
@@ -62,6 +30,9 @@ def Pano_Paddy_Loc(player):
         player.score += player.pano_paddy
         pano_paddy_check(player)
         return (player)
+    else:
+        print("Max Paddy Panorama Has Been Reached")
+        return (player)
 
 def Pano_Mt_Loc(player):
     """mountain location function"""
@@ -69,6 +40,9 @@ def Pano_Mt_Loc(player):
         player.pano_mt += 1
         player.score += player.pano_mt
         pano_mt_check(player)
+        return (player)
+    else:
+        print("Max Mountain Panorama Has Been Reached")
         return (player)
 
 def Pano_Sea_Loc(player):
@@ -78,45 +52,48 @@ def Pano_Sea_Loc(player):
         player.score += player.pano_sea
         pano_sea_check(player)
         return (player)
+    else:
+        print("Max Sea Panorama Has Been Reaced")
+        return (player)
 
-def Temple_Loc(player):
-    """temple location function TBW"""
-    """Ask player for num of coins"""
+def Temple_Loc(player, num):
+    """temple location function"""
     player.coins -= num
     player.score += num
-    """ temple bonus check"""
+    player = temple_bonus_check(player)
+    return (player)
 
 def Village_Loc(player, cardname):
     """Village location function TBW"""
-    for a in cardname:
-        while a < 3:
-            """ask player which cards bought, do this three times"""
-            if discard:
-                Discard.add(bought)
-            else:
-                player.coins -= bought.cost
-                if player.sv_type_first is "":
-                    player.sv_type_first = bought.subtype
-                    player.score += 1
-                elif player.sv_type_first == bought.subtype:
-                    player.score += 1
-                elif player.sv_type_second is "":
-                    player.sv_type_second = bought.subtype
-                    player.score += 3
-                elif player.sv_type_second == bought.subtype:
-                    player.score += 3
-                elif player.sv_type_third is "":
-                    player.sv_type_third = bought.subtype
-                    player.score += 5
-                elif player.sv_type_third == bought.subtype:
-                    player.score += 5
-                elif player.sv_type_fourth is "":
-                    player.sv_type_fourth = bought.subtype
-                    player.score += 7
-                elif player.sv_type_fourth == bought.subtype:
-                    player.score += 7
-                MoveCard(player, Deck, bought)
-            """check collector acheviement"""
+    for a in range(len(SVDeck.card_list)):
+        if SVDeck.card_list[a].name == cardname:
+            bought = SVDeck.card_list[a]
+            break
+        a += 1
+    player.coins -= bought.cost
+    if player.sv_type_first is "":
+        player.sv_type_first = bought.subtype
+        player.score += 1
+    elif player.sv_type_first == bought.subtype:
+        player.score += 1
+    elif player.sv_type_second is "":
+        player.sv_type_second = bought.subtype
+        player.score += 3
+    elif player.sv_type_second == bought.subtype:
+        player.score += 3
+    elif player.sv_type_third is "":
+        player.sv_type_third = bought.subtype
+        player.score += 5
+    elif player.sv_type_third == bought.subtype:
+        player.score += 5
+    elif player.sv_type_fourth is "":
+        player.sv_type_fourth = bought.subtype
+        player.score += 7
+    elif player.sv_type_fourth == bought.subtype:
+        player.score += 7
+    MoveCard(player, SVDeck, bought)
+    return (player)
+    """check collector acheviement"""
 
 def Hot_Spring_Loc(player, pts):
     """hot spring location function TBW"""
@@ -140,12 +117,32 @@ def Hot_Spring_Loc(player, pts):
                 return (player)
             a += 1
 
-def Inn_Loc(current_player):
+def Inn_Loc(current_player, cardname):
     """inn location function TBW"""
-    meal = """"whatever they select"""
-    MoveCard(player, Deck, meal)
+    for a in range(len(MDeck.card_list)):
+        if MDeck.card_list[a].name == cardname:
+            meal = MDeck.card_list[a]
+            break
+            a += 1
+    MoveCard(player, MDeck, meal)
+    return (player)
 
-def Encounter_Loc(player, Deck):
+def Encounter_Loc(current_player, cardname):
     """encounter location function TBW"""
-    encounter = """whatever they select"""
-    MoveCard(player, Deck, encounter)
+    for a in range(len(ENCDeck.card_list)):
+        if ENCDeck.card_list[a].name == cardname:
+            encounter = ENCDeck.card_list[a]
+            break
+            a += 1
+    MoveCard(player, ENCDeck, encounter)
+    return (player)
+
+def discard(deck, cardname):
+    """discard function"""
+    from init import DiscardDeck
+    for a in range(len(deck.card_list)):
+        if deck.card_list[a].name == cardname:
+            DiscardDeck.add(deck.card_list.pop(a))
+            deck.number_of_cards -= 1
+            return
+        a += 1
