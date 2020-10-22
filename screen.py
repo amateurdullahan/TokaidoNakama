@@ -473,13 +473,15 @@ if __name__ == '__main__':
     # 900, 800
     # 400, 420
     def hot_springs_menu(screen):
-        """MENU TEST"""
+        """Hot Spring Menu"""
         global current_player
         paused = True
         while paused:
             screen.fill((255, 255, 255))
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_3 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_3 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1.add_text('Hot Spring Value:')
             but_2.add_text('2 Points')
             but_3.add_text('3 Points')
             #but_2.draw(black)
@@ -494,7 +496,7 @@ if __name__ == '__main__':
                             current_player = Hot_Spring_Loc(current_player, 2)
                             return
                         elif but_3.collidepoint(event.pos):
-                            Hot_Spring_Loc(3)
+                            current_player = Hot_Spring_Loc(current_player, 3)
                             return
             pygame.display.update()
         return False
@@ -506,7 +508,9 @@ if __name__ == '__main__':
         paused = True
         while paused:
             screen.fill((255, 255, 255))
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1.add_text('Farm: Collect 3 Coins')
             but_2.add_text('Okay')
             #but_2.draw(black)
             #but_3.draw(black)
@@ -523,12 +527,14 @@ if __name__ == '__main__':
         return False
 
     def pano_paddy_menu(screen):
-        """MENU TEST"""
+        """Panorama Paddy Menu"""
         global current_player
         paused = True
         while paused:
             screen.fill((255, 255, 255))
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1.add_text('Panorama: Paddy')
             but_2.add_text('Okay')
             #but_2.draw(black)
             #but_3.draw(black)
@@ -545,12 +551,14 @@ if __name__ == '__main__':
         return False
 
     def pano_mt_menu(screen):
-        """MENU TEST"""
+        """Panorama Mountain Menu"""
         global current_player
         paused = True
         while paused:
             screen.fill((255, 255, 255))
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1.add_text('Panorama: Mountain')
             but_2.add_text('Okay')
             #but_2.draw(black)
             #but_3.draw(black)
@@ -567,12 +575,14 @@ if __name__ == '__main__':
         return False
 
     def pano_sea_menu(screen):
-        """MENU TEST"""
+        """Panorama Sea Menu"""
         global current_player
         paused = True
         while paused:
             screen.fill((255, 255, 255))
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1.add_text('Panorama: Sea')
             but_2.add_text('Okay')
             #but_2.draw(black)
             #but_3.draw(black)
@@ -587,6 +597,280 @@ if __name__ == '__main__':
                             return
             pygame.display.update()
         return False
+
+    def encounter_menu(screen):
+        """Encounter Menu"""
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_kuge = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_miko = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_samurai = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_shokunin = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_anna_pad = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_anna_mtn = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_anna_sea = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+
+            but_kuge.add_text('Kuge')
+            but_miko.add_text('Miko')
+            but_samurai.add_text('Samurai')
+            but_shokunin.add_text('Shokunin')
+            but_anna_pad.add_text('Annaibito: Paddy')
+            but_anna_mtn.add_text('Annaibito: Mountain')
+            but_anna_sea.add_text('Annaibito: Sea')
+
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_kuge.collidepoint(event.pos):
+                            current_player = Encounter_Loc(current_player, "Kuge")
+                            exit()
+                        elif but_miko.collidepoint(event.pos):
+                            current_player = Ecounter_Loc(current_player, "Miko")
+                            exit()
+                        elif but_samurai.collidepoint(event.pos):
+                            current_player = Ecounter_Loc(current_player, "Samurai")
+                            exit()
+                        elif but_shokunin.collidepoint(event.pos):
+                            current_player = Ecounter_Loc(current_player, "Shokunin")
+                            exit()
+                        elif but_anna_pad.collidepoint(event.pos):
+                            current_player = Ecounter_Loc(current_player, "Annaibito: Paddy")
+                            exit()
+                        elif but_anna_mtn.collidepoint(event.pos):
+                            current_player = Ecounter_Loc(current_player, "Annaibito: Mountain")
+                            exit()
+                        elif but_anna_sea.collidepoint(event.pos):
+                            current_player = Ecounter_Loc(current_player, "Annaibito: Sea")
+                            exit()
+            pygame.display.update()
+        return False
+
+    def inn_menu(screen):
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_miso = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_dango = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_nigiri = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_tempura = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_soba = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_yakitori = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_tofu = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_sushi = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_fugu = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_donburi = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_sashimi = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_udon = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_unagi = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_taimeshi = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+
+            but_miso.add_text('Miso')
+            but_dango.add_text('Dango')
+            but_nigiri.add_text('Nigiri')
+            but_tempura.add_text('Tempura')
+            but_soba.add_text('Soba')
+            but_yakitori.add_text('Yakitori')
+            but_tofu.add_text('Tofu')
+            but_sushi.add_text('Sushi')
+            but_fugu.add_text('Fugu')
+            but_donburi.add_text('Donburi')
+            but_sashimi.add_text('Sashimi')
+            but_udon.add_text('Udon')
+            but_unagi.add_text('Ungai')
+            but_taimeshi.add_test('Tai Meshi')
+
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_miso.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Miso")
+                            exit()
+                        elif but_dango.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Dango")
+                            exit()
+                        elif but_nigiri.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Nigiri")
+                            exit()
+                        elif but_tempura.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Tempura")
+                            exit()
+                        elif but_soba.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Soba")
+                            exit()
+                        elif but_yakitori.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Yakitori")
+                            exit()
+                        elif but_tofu.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Tofu")
+                            exit()
+                        elif but_sushi.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Sushi")
+                            exit()
+                        elif but_fugu.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Fugu")
+                            exit()
+                        elif but_donburi.collidepoint(event.pos):
+                            current_player = Ecounter_Loc(current_player, "Donburi")
+                            exit()
+                        elif but_sashimi.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Sashimi")
+                            exit()
+                        elif but_udon.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Udon")
+                            exit()
+                        elif but_unagi.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Unagi")
+                            exit()
+                        elif but_taimeshi.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Tai Meshi")
+                            exit()
+            pygame.display.update()
+        return False
+
+    def village_menu(screen):
+        """Village Menu"""
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_gofu = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_koma = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_yunomi = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_washi = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_uchiwa = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_hashi = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_konpeito = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_kamaboko = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_manju = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_daifuku = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_ocha = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_sake = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_yukata = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_kanzashi = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_geta = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_haori = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_furoshiki = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_sandogasa = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_netsuke = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_shikki = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_jubako = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_ukiyoe = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_sumie = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+            but_shamisen = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
+
+            but_gofu.add_text('Gofu')
+            but_koma.add_text('Koma')
+            but_yunomi.add_text('Yunomi')
+            but_washi.add_text('Washi')
+            but_uchiwa.add_text('Uchiwa')
+            but_hashi.add_text('Hashi')
+            but_konpeito.add_text('Konpeito')
+            but_kamaboko.add_text('Kamaboko')
+            but_manju.add_text('Manju')
+            but_daifuku.add_text('Daifuku')
+            but_ocha.add_text('Ocha')
+            but_sake.add_text('Sake')
+            but_yukata.add_text('Yukata')
+            but_kanzashi.add_text('Kan Zashi')
+            but_geta.add_text('Geta')
+            but_haori.add_text('Haori')
+            but_furoshiki.add_text('Furoshiki')
+            but_sandogasa.add_text('Sandogasa')
+            but_netsuke.add_text('Netsuke')
+            but_shikki.add_text('Shikki')
+            but_jubako.add_text('Jubako')
+            but_ukiyoe.add_text('Ukiyoe')
+            but_sumie.add_text('Sumie')
+            but_shamisen.add_text('Shamisen')
+
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_gofu.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Gofu")
+                            exit()
+                        elif but_koma.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Koma")
+                            exit()
+                        elif but_yunomi.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Yunomi")
+                            exit()
+                        elif but_washi.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Washi")
+                            exit()
+                        elif but_uchiwa.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Uchiwa")
+                            exit()
+                        elif but_hashi.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Hashi")
+                            exit()
+                        elif but_konpeito.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Konpeito")
+                            exit()
+                        elif but_kamaboko.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Kamaboko")
+                            exit()
+                        elif but_manju.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Manju")
+                            exit()
+                        elif but_daifuku.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Daifuku")
+                            exit()
+                        elif but_ocha.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Ocha")
+                            exit()
+                        elif but_sake.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Sake")
+                            exit()
+                        elif but_yukata.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Yukata")
+                            exit()
+                        elif but_kanzashi.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Kan Zashi")
+                            exit()
+                        elif but_geta.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Geta")
+                            exit()
+                        elif but_haori.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Haori")
+                            exit()
+                        elif but_furoshiki.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Furoshiki")
+                            exit()
+                        elif but_sandogasa.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Sandogasa")
+                            exit()
+                        elif but_netsuke.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Netsuke")
+                            exit()
+                        elif but_shikki.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Shikki")
+                            exit()
+                        elif but_jubako.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Jubako")
+                            exit()
+                        elif but_ukiyoe.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Ukiyoe")
+                            exit()
+                        elif but_sumie.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Sumie")
+                            exit()
+                        elif but_shamisen.collidepoint(event.pos):
+                            current_player = Village_Loc(current_player, "Shamisen")
+                            exit()
+            pygame.display.update()
+        return False
+
+
 
     # Run Sequence Below
     main_screen(0)
