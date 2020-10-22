@@ -117,25 +117,25 @@ class Achievements():
             """comment"""
             self.__temple_bonus_third = value
 
-def pano_paddy_check():
+def pano_paddy_check(current_player):
     if pano_paddy_bonus == None:
         if current_player.pano_paddy == 3:
             pano_paddy_bonus = current_player
             current_player.score += 3
 
-def pano_mt_check():
+def pano_mt_check(current_player):
     if pano_mt_bonus == None:
         if current_player.pano_mt == 4:
             pano_mt_bonus = current_player
             current_player.score += 3
 
-def pano_sea_check():
+def pano_sea_check(current_player):
     if pano_sea_bonus == None:
         if current_player.pano_sea == 5:
             pano_sea_bonus = current_player
             current_player.score += 3
 
-def bather_bonus_check():
+def bather_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type is HotSprings:
@@ -160,7 +160,7 @@ def bather_bonus_check():
                 player.bather_bonus = 0
                 player.score -= 3
 
-def chatterbox_bonus_check():
+def chatterbox_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type is Encounter:
@@ -185,7 +185,7 @@ def chatterbox_bonus_check():
                 player.chatterbox_bonus = 0
                 player.score -= 3
 
-def collector_bonus_check():
+def collector_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type is Souvenir:
@@ -210,7 +210,7 @@ def collector_bonus_check():
                 player.collector_bonus = 0
                 player.score -= 3
 
-def gourmet_bonus_check():
+def gourmet_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type is Meal:
@@ -235,7 +235,7 @@ def gourmet_bonus_check():
                 player.gourmet_bonus = 0
                 player.score -= 3
 
-def temple_bonus_check():
+def temple_bonus_check(current_player):
     if current_player.donation > temple_bonus_first:
         temple_bonus_third = temple_bonus_second
         temple_bonus_second = temple_bonus_first
