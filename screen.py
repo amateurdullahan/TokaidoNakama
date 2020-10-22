@@ -4,7 +4,7 @@ import pygame
 import pygame_menu
 from player import Player
 from init import current_player, HSDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
-from location import Hot_Spring_Loc
+from location import *
 from buttons import Button
 from deck import Deck
 
@@ -80,9 +80,11 @@ if __name__ == '__main__':
         elif board_position in [2, 9, 16, 21, 36, 43]:
             # Code for Temples Menu & updating stuff
             print("Temple stuff")
+            update_current_player()
         elif board_position in [3, 10, 20, 30, 38, 44, 49]:
             # Code for Encounter Menu & updating stuff
             print("Encounter stuff")
+            update_current_player()
         elif board_position in [4, 18, 28, 35, 51]:
             # Code for Pano_Paddy
             print("Pano paddy stuff")
@@ -360,10 +362,76 @@ if __name__ == '__main__':
                             current_player.board_space = 1
                             update_current_player()
                             screen_update = 1
+                        if rect2.collidepoint(event.pos) or rect2_1.collidepoint(event.pos):
+                            print('Temple selected.')
+                            encounter_selection(2)
+                            current_player.board_space = 2
+                            update_current_player()
+                            screen_update = 1
+                        if rect3.collidepoint(event.pos) or rect3_1.collidepoint(event.pos):
+                            print('Encounter selected.')
+                            encounter_selection(3)
+                            current_player.board_space = 3
+                            update_current_player()
+                            screen_update = 1
+                        if rect4.collidepoint(event.pos) or rect4_1.collidepoint(event.pos):
+                            print('Panorama: Paddy selected.')
+                            encounter_selection(4)
+                            current_player.board_space = 4
+                            update_current_player()
+                            screen_update = 1
                         if rect5.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
                             print('Hot Springs selected.')
                             encounter_selection(5)
                             current_player.board_space = 5
+                            update_current_player()
+                            screen_update = 1
+                        if rect6.collidepoint(event.pos) or rect6_1.collidepoint(event.pos):
+                            print('Panorama: Mt selected.')
+                            encounter_selection(6)
+                            current_player.board_space = 6
+                            update_current_player()
+                            screen_update = 1
+                        if rect7.collidepoint(event.pos) or rect7_1.collidepoint(event.pos):
+                            print('Farm selected.')
+                            encounter_selection(7)
+                            current_player.board_space = 7
+                            update_current_player()
+                            screen_update = 1
+                        if rect8.collidepoint(event.pos) or rect8_1.collidepoint(event.pos):
+                            print('Village selected.')
+                            encounter_selection(8)
+                            current_player.board_space = 8
+                            update_current_player()
+                            screen_update = 1
+                        if rect9.collidepoint(event.pos) or rect9_1.collidepoint(event.pos):
+                            print('Temple selected.')
+                            encounter_selection(9)
+                            current_player.board_space = 9
+                            update_current_player()
+                            screen_update = 1
+                        if rect10.collidepoint(event.pos) or rect10_1.collidepoint(event.pos):
+                            print('Encounter selected.')
+                            encounter_selection(10)
+                            current_player.board_space = 10
+                            update_current_player()
+                            screen_update = 1
+                        if rect11.collidepoint(event.pos) or rect11_1.collidepoint(event.pos):
+                            print('Panorama: Sea selected.')
+                            encounter_selection(11)
+                            current_player.board_space = 11
+                            update_current_player()
+                            screen_update = 1
+                        if rect12.collidepoint(event.pos) or rect12_1.collidepoint(event.pos):
+                            print('Panorama: Mountain selected.')
+                            encounter_selection(12)
+                            current_player.board_space = 12
+                            update_current_player()
+                            screen_update = 1
+                        if rect13.collidepoint(event.pos) or rect13_1.collidepoint(event.pos):
+                            print('Hot Spring selected.')
+                            encounter_selection(13)
+                            current_player.board_space = 13
                             update_current_player()
                             screen_update = 1
                     # if rect for inn collision:
