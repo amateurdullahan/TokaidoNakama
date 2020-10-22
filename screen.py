@@ -121,14 +121,30 @@ if __name__ == '__main__':
 
 
     # Font Section
-    # Create title font, first param is font file in pygame, second is size
-    font_title = pygame.font.Font('freesansbold.ttf', 50)
-    # Create a text surface object, on which text is drawn on.
-    text_title = font_title.render('Color\'s Turn', True, black)
-    # Create a rectangular object for the text surface object
-    text_title_rect = text_title.get_rect()
-    # Set the center of the rectangular object
-    text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
+    def title_selector(current_player):
+        """Changes title for current player"""
+        
+        colors_rgb = {
+        "Green": (73, 114, 16),
+        "Blue": (122, 165, 184),
+        "Yellow": (243, 175, 1),
+        "Grey": (145, 147, 156),
+        "Purple": (98, 55, 114)
+        }
+
+        for key in colors_rgb:
+            if key == current_player.color:
+                rgb = colors_rgb.get(key)
+        # Create title font, first param is font file in pygame, second is size
+        font_title = pygame.font.Font('freesansbold.ttf', 50)
+        # Create a text surface object, on which text is drawn on.
+        text_current_player = current_player.color + '\'s Turn'
+        text_title = font_title.render(text_current_player, True, rgb)
+        # Create a rectangular object for the text surface object
+        text_title_rect = text_title.get_rect()
+        # Set the center of the rectangular object
+        text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
+        screen.blit(text_title, text_title_rect)
 
     # Creates list in order of players, at limit goes into main screen
     def player_add(player_color):   # button fun
@@ -136,7 +152,7 @@ if __name__ == '__main__':
         global current_player
         if len(player_list) < 3:
             if player_color == 'Green' and 'player_green' not in player_list:
-                player_green = GreenPlayer
+                player_green = Player(player_color)
                 player_list.append(player_green)
                 print(player_green)
                 player_green.icon = pygame.image.load('media/player_green.png')
@@ -146,7 +162,7 @@ if __name__ == '__main__':
                 # green_button.set_background_color((73, 114, 16))
                 if len(player_list) == 3:
                     print(player_list)
-                    current_player = GreenPlayer
+                    # current_player = GreenPlayer
                     print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
@@ -159,7 +175,7 @@ if __name__ == '__main__':
                 blue_button.set_position(1000, 1000)
                 if len(player_list) == 3:
                     print(player_list)
-                    current_player = BluePlayer
+                    # current_player = BluePlayer
                     print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
@@ -172,7 +188,7 @@ if __name__ == '__main__':
                 grey_button.set_position(1000, 1000)
                 if len(player_list) == 3:
                     print(player_list)
-                    current_player = GreyPlayer
+                    # current_player = GreyPlayer
                     print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
@@ -185,7 +201,7 @@ if __name__ == '__main__':
                 yellow_button.set_position(1000, 1000)
                 if len(player_list) == 3:
                     print(player_list)
-                    current_player = YellowPlayer
+                    # current_player = YellowPlayer
                     print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
@@ -198,7 +214,7 @@ if __name__ == '__main__':
                 purple_button.set_position(1000, 1000)
                 if len(player_list) == 3:
                     print(player_list)
-                    current_player = PurplePlayer
+                    # current_player = PurplePlayer
                     print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
@@ -258,11 +274,11 @@ if __name__ == '__main__':
                 screen.blit(player.icon, (712, 169))
             if player.board_space == 13:
                 screen.blit(player.icon, (737, 125))
-            if player.board_space == 14.1:
+            if player.board_space == 14:
                 screen.blit(player.icon, (801, 176))
-            if player.board_space == 14.2:
+            if player.board_space == 15:
                 screen.blit(player.icon, (801, 227))
-            if player.board_space == 14.3:
+            if player.board_space == 16:
                 screen.blit(player.icon, (801, 277))
         player_list.reverse()
         # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
@@ -273,9 +289,11 @@ if __name__ == '__main__':
         """Main game loop"""
         global current_player
 
+        # Flag for Updating Screen. Flagged at main loop startup for each board section & after selecting a board space.
         screen_update = 1
 
         print(current_player)
+        # Start Menu
         if board_number == 0:
             start_menu.enable()
             start_menu.mainloop(screen)
@@ -314,6 +332,7 @@ if __name__ == '__main__':
             # Starting spots
             # start_list = [0.1, 0.2, 0.3] CORRECT
             start_list = [-3, -2, -1]
+            current_player = player_list[0]
             for player, position in zip(player_list, start_list):
                 player.board_space = position
                 print(player.board_space)
@@ -323,9 +342,10 @@ if __name__ == '__main__':
 
         # if board_number == 4:
 
-
+        print(current_player.color)
         running = True  # Main Loop Flag
         while running:
+
             # Inner Loop for Events
             events = pygame.event.get()
             for event in events:
@@ -338,11 +358,13 @@ if __name__ == '__main__':
                             print('Village selected.')
                             encounter_selection(1)
                             current_player.board_space = 1
+                            update_current_player()
                             screen_update = 1
                         if rect5.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
                             print('Hot Springs selected.')
                             encounter_selection(5)
                             current_player.board_space = 5
+                            update_current_player()
                             screen_update = 1
                     # if rect for inn collision:
                             # append to player list (which will be cleared as player pieces are set)
@@ -363,7 +385,7 @@ if __name__ == '__main__':
                 screen.fill(white)
 
                 # Render title text & rect
-                screen.blit(text_title, text_title_rect)
+                title_selector(current_player)
 
                 # Call Board Function
                 board(X_BOARD_COORD, Y_BOARD_COORD, board_number)
@@ -371,8 +393,9 @@ if __name__ == '__main__':
                 # Piece Space Function
                 player_positioning()
                 print("Update")
-                # Update display after event logic is complete in inner for loop
+                # After all screen items are blitted(sp?), update dat screen
                 pygame.display.update()
+            # Reset Flag
             screen_update = 0
             # If All Players At Inn
             # Call Food Menu
