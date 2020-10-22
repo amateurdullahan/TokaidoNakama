@@ -3,8 +3,8 @@
 import pygame
 import pygame_menu
 from player import Player
-from deck import Card, Deck, HotSpring, Encounter, Meal, Souvenir
-from init import HSDeck
+from deck import *
+from init import *
 from bonus_tracker import *
 
 
@@ -117,7 +117,7 @@ def Hot_Spring_Loc(player, pts):
                 return (player)
             a += 1
 
-def Inn_Loc(current_player, cardname):
+def Inn_Loc(player, cardname):
     """inn location function TBW"""
     for a in range(len(MDeck.card_list)):
         if MDeck.card_list[a].name == cardname:
@@ -127,7 +127,7 @@ def Inn_Loc(current_player, cardname):
     MoveCard(player, MDeck, meal)
     return (player)
 
-def Encounter_Loc(current_player, cardname):
+def Encounter_Loc(player, cardname):
     """encounter location function TBW"""
     for a in range(len(ENCDeck.card_list)):
         if ENCDeck.card_list[a].name == cardname:
@@ -135,6 +135,16 @@ def Encounter_Loc(current_player, cardname):
             break
             a += 1
     MoveCard(player, ENCDeck, encounter)
+    chatterbox_bonus_check(player)
+    if cardname == "Kuge":
+        player.coins += 3
+    if cardname == "Samurai":
+        player.score += 3
+    if cardname == "Miko":
+        player.donation += 1
+        player.score += 1
+        temple_bonus_check(player)
+    
     return (player)
 
 def discard(deck, cardname):

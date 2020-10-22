@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """achievement checking functions"""
-from init import player_list
+from init import *
 
 
 class Achievements():

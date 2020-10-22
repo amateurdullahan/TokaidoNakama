@@ -3,7 +3,7 @@
 from deck import Deck
 
 class Player():
-        def __init__(self, color="", playerdeck=Deck(), score=0, coins=0, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0, icon=0, donation=0, temple_bonus=0):
+        def __init__(self, color="", playerdeck=Deck(), score=0, coins=0, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0, icon=0, donation=0, temple_bonus=0, chatterbox_bonus=0, collector_bonus=0, gourmet_bonus=0):
             """initializing the players"""
             self.playerdeck = playerdeck
             self.color = color
@@ -22,6 +22,9 @@ class Player():
             self.icon = icon
             self.donation = donation
             self.temple_bonus = temple_bonus
+            self.chatterbox_bonus = chatterbox_bonus
+            self.collector_bonus = collector_bonus
+            self.gourmet_bonus = gourmet_bonus
 
         @property
         def color(self):
@@ -162,3 +165,33 @@ class Player():
         def temple_bonus(self, value):
             """comment"""
             self.__temple_bonus = value
+
+        @property
+        def chatterbox_bonus(self):
+            """comment"""
+            return self.__chatterbox_bonus
+
+        @chatterbox_bonus.setter
+        def chatterbox_bonus(self, value):
+            """comment"""
+            self.__chatterbox_bonus = value
+
+        @property
+        def collector_bonus(self):
+            """comment"""
+            return self.__collector_bonus
+
+        @collector_bonus.setter
+        def collector_bonus(self, value):
+            """comment"""
+            self.__collector_bonus = value
+
+        @property
+        def gourmet_bonus(self):
+            """comment"""
+            return self.__gourmet_bonus
+
+        @gourmet_bonus.setter
+        def gourmet_bonus(self, value):
+            """comment"""
+            self.__gourmet_bonus = value
