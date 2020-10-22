@@ -402,7 +402,7 @@ if __name__ == '__main__':
             pygame.display.update()
         return False
 
-# farm screen
+    # farm screen
     def farm_menu(screen):
         """farm screen"""
         global current_player
@@ -490,12 +490,6 @@ if __name__ == '__main__':
                             return
             pygame.display.update()
         return False
-
-    # if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
-
-
-
-
 
     # Run Sequence Below
     main_screen(0)
