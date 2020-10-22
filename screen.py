@@ -117,7 +117,7 @@ if __name__ == '__main__':
         for player in player_list:
             if player.board_space < current_player.board_space:
                 current_player = player
-        print("Current Player: {}", current_player)
+        print("Current Player: {}", current_player.color)
 
 
     # Font Section
@@ -226,11 +226,11 @@ if __name__ == '__main__':
         """Checks player positions & blits pieces"""
         player_list.reverse()
         for player in player_list:
-            if player.board_space == 0.1:
+            if player.board_space == -3:
                 screen.blit(player.icon, (80, 385))
-            if player.board_space == 0.2:
+            if player.board_space == -2:
                 screen.blit(player.icon, (80, 336))
-            if player.board_space == 0.3:
+            if player.board_space == -1:
                 screen.blit(player.icon, (80, 283))
             if player.board_space == 1:
                 screen.blit(player.icon, (149, 215))
@@ -313,7 +313,7 @@ if __name__ == '__main__':
             rect14_1 = pygame.Rect(800, 70, 34, 364)
             # Starting spots
             # start_list = [0.1, 0.2, 0.3] CORRECT
-            start_list = [0.1, 0.2, 0.3]
+            start_list = [-3, -2, -1]
             for player, position in zip(player_list, start_list):
                 player.board_space = position
                 print(player.board_space)
@@ -350,7 +350,7 @@ if __name__ == '__main__':
                             # food menu.
 
                 # Shows list of events on ya terminal. To be removed, but fun to seeprint(event)
-                print(event)    
+                # print(event)    
 
             # hopefully fixes start_menu
             if start_menu.is_enabled():
