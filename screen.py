@@ -80,6 +80,7 @@ if __name__ == '__main__':
         elif board_position in [2, 9, 16, 21, 36, 43]:
             # Code for Temples Menu & updating stuff
             print("Temple stuff")
+            temple_menu(screen)
             update_current_player()
         elif board_position in [3, 10, 20, 30, 38, 44, 49]:
             # Code for Encounter Menu & updating stuff
@@ -92,18 +93,22 @@ if __name__ == '__main__':
             update_current_player()
         elif board_position in [5, 13, 22, 33, 42, 48]:
             # Code for Hot Springs
+            print("Hot spring stuff")
             hot_springs_menu(screen)
             update_current_player()
         elif board_position in [6, 12, 19, 23, 32, 50]:
             # Code for Pano_Mt
+            print("Pano mt stuff")
             pano_mt_menu(screen)
             update_current_player()
         elif board_position in [7, 17, 26, 31, 37, 47]:
             # Code for Farm
+            print("Farm stuff")
             farm_menu(screen)
             update_current_player()
         elif board_position in [11, 15, 24, 34, 39, 46, 52]:
             # Code for Pano_Sea
+            print("Pano sea stuff")
             pano_sea_menu(screen)
             update_current_player
         elif board_position in [14, 27, 41, 54]:
@@ -627,25 +632,25 @@ if __name__ == '__main__':
                     if event.button == 1:
                         if but_kuge.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Kuge")
-                            exit()
+                            return
                         elif but_miko.collidepoint(event.pos):
                             current_player = Ecounter_Loc(current_player, "Miko")
-                            exit()
+                            return
                         elif but_samurai.collidepoint(event.pos):
                             current_player = Ecounter_Loc(current_player, "Samurai")
-                            exit()
+                            return
                         elif but_shokunin.collidepoint(event.pos):
                             current_player = Ecounter_Loc(current_player, "Shokunin")
-                            exit()
+                            return
                         elif but_anna_pad.collidepoint(event.pos):
                             current_player = Ecounter_Loc(current_player, "Annaibito: Paddy")
-                            exit()
+                            return
                         elif but_anna_mtn.collidepoint(event.pos):
                             current_player = Ecounter_Loc(current_player, "Annaibito: Mountain")
-                            exit()
+                            return
                         elif but_anna_sea.collidepoint(event.pos):
                             current_player = Ecounter_Loc(current_player, "Annaibito: Sea")
-                            exit()
+                            return
             pygame.display.update()
         return False
 
@@ -691,46 +696,46 @@ if __name__ == '__main__':
                     if event.button == 1:
                         if but_miso.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Miso")
-                            exit()
+                            return
                         elif but_dango.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Dango")
-                            exit()
+                            return
                         elif but_nigiri.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Nigiri")
-                            exit()
+                            return
                         elif but_tempura.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tempura")
-                            exit()
+                            return
                         elif but_soba.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Soba")
-                            exit()
+                            return
                         elif but_yakitori.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Yakitori")
-                            exit()
+                            return
                         elif but_tofu.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tofu")
-                            exit()
+                            return
                         elif but_sushi.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Sushi")
-                            exit()
+                            return
                         elif but_fugu.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Fugu")
-                            exit()
+                            return
                         elif but_donburi.collidepoint(event.pos):
                             current_player = Ecounter_Loc(current_player, "Donburi")
-                            exit()
+                            return
                         elif but_sashimi.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Sashimi")
-                            exit()
+                            return
                         elif but_udon.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Udon")
-                            exit()
+                            return
                         elif but_unagi.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Unagi")
-                            exit()
+                            return
                         elif but_taimeshi.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tai Meshi")
-                            exit()
+                            return
             pygame.display.update()
         return False
 
@@ -797,79 +802,112 @@ if __name__ == '__main__':
                     if event.button == 1:
                         if but_gofu.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Gofu")
-                            exit()
+                            return
                         elif but_koma.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Koma")
-                            exit()
+                            return
                         elif but_yunomi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Yunomi")
-                            exit()
+                            return
                         elif but_washi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Washi")
-                            exit()
+                            return
                         elif but_uchiwa.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Uchiwa")
-                            exit()
+                            return
                         elif but_hashi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Hashi")
-                            exit()
+                            return
                         elif but_konpeito.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Konpeito")
-                            exit()
+                            return
                         elif but_kamaboko.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Kamaboko")
-                            exit()
+                            return
                         elif but_manju.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Manju")
-                            exit()
+                            return
                         elif but_daifuku.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Daifuku")
-                            exit()
+                            return
                         elif but_ocha.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Ocha")
-                            exit()
+                            return
                         elif but_sake.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sake")
-                            exit()
+                            return
                         elif but_yukata.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Yukata")
-                            exit()
+                            return
                         elif but_kanzashi.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Kan Zashi")
-                            exit()
+                            return
                         elif but_geta.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Geta")
-                            exit()
+                            return
                         elif but_haori.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Haori")
-                            exit()
+                            return
                         elif but_furoshiki.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Furoshiki")
-                            exit()
+                            return
                         elif but_sandogasa.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sandogasa")
-                            exit()
+                            return
                         elif but_netsuke.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Netsuke")
-                            exit()
+                            return
                         elif but_shikki.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Shikki")
-                            exit()
+                            return
                         elif but_jubako.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Jubako")
-                            exit()
+                            return
                         elif but_ukiyoe.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Ukiyoe")
-                            exit()
+                            return
                         elif but_sumie.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sumie")
-                            exit()
+                            return
                         elif but_shamisen.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Shamisen")
-                            exit()
+                            return
             pygame.display.update()
         return False
 
+    def temple_menu(screen):
+        """Temple Menu"""
+        global current_player
+        paused = True
+        while paused:
+            screen.fill((255, 255, 255))
+            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_3 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_4 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_1.add_text('Temple Donation:')
+            but_2.add_text('One Coin')
+            but_3.add_text('Two Coins')
+            but_4.add_text('Three Coins')
+            #but_2.draw(black)
+            #but_3.draw(black)
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if but_2.collidepoint(event.pos):
+                            current_player = Temple_Loc(current_player, 1)
+                            return
+                        if but_3.collidepoint(event.pos):
+                            current_player = Temple_Loc(current_player, 2)
+                            return
+                        if but_4.collidepoint(event.pos):
+                            current_player = Temple_Loc(current_player, 3)
+                            return
+            pygame.display.update()
+        return False
 
 
     # Run Sequence Below
