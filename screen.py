@@ -3,7 +3,7 @@
 import pygame
 import pygame_menu
 from player import Player
-from init import current_player, HSDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
+from init import current_player, HSDeck, MDeck, SVDeck, ENCDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
 from location import *
 from buttons import Button
 from deck import Deck
@@ -52,6 +52,8 @@ if __name__ == '__main__':
     X_BOARD_COORD = (DISPLAY_WIDTH * 0.02)
     Y_BOARD_COORD = (DISPLAY_HEIGHT * 0.062)
 
+
+
     # Function for board, will check for which board to load
     def board(x_board, y_board, current_board):
         """Sets up board & switches board as needed"""
@@ -85,6 +87,7 @@ if __name__ == '__main__':
         elif board_position in [3, 10, 20, 30, 38, 44, 49]:
             # Code for Encounter Menu & updating stuff
             print("Encounter stuff")
+            encounter_menu(screen)
             update_current_player()
         elif board_position in [4, 18, 28, 35, 51]:
             # Code for Pano_Paddy
@@ -152,6 +155,69 @@ if __name__ == '__main__':
         # Set the center of the rectangular object
         text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
         screen.blit(text_title, text_title_rect)
+
+    def score_prob_display():
+        """bunch of buttons to display score and Probability"""
+        from probability import CostProb, PointProb, EncTypeProb, SubTypeProb
+        # Builds Meal Cost Display
+        btn_mcp_title = Button(0, 585, 50, 25, screen, black)
+        btn_mcp_title.add_text("Meal Cost", 18)
+        btn_mcp_1 = Button(0, 610, 50, 20, screen, black)
+        mcp_text = CostProb(MDeck)
+        btn_mcp_1.add_text("1 Coin " + str(mcp_text[0]) + "%", 16)
+        btn_mcp_2 = Button(0, 630, 50, 20, screen, black)
+        btn_mcp_2.add_text("2 Coin " + str(mcp_text[1]) + "%", 16)
+        btn_mcp_3 = Button(0, 650, 50, 20, screen, black)
+        btn_mcp_3.add_text("3 Coin " + str(mcp_text[2]) + "%", 16)
+        # Hot Springs Point Display
+        btn_hsp_title = Button(0, 675, 50, 25, screen, black)
+        btn_hsp_title.add_text("Hot Springs Points", 18)
+        btn_hsp_1 = Button(0, 700, 50, 20, screen, black)
+        hsp_text = PointProb(HSDeck)
+        btn_hsp_1.add_text("2 Points " + str(hsp_text[0]) + "%", 16)
+        btn_hsp_2 = Button(0, 720, 50, 20, screen, black)
+        btn_hsp_2.add_text("3 Points " + str(hsp_text[1]) + "%", 16)
+        # Builds Souvenir Cost Display
+        btn_svcp_title = Button(175, 585, 50, 25, screen, black)
+        btn_svcp_title.add_text("Souvneir Cost", 18)
+        btn_svcp_1 = Button(175, 610, 50, 20, screen, black)
+        svcp_text = CostProb(SVDeck)
+        btn_svcp_1.add_text("1 Coin " + str(svcp_text[0]) + "%", 16)
+        btn_svcp_2 = Button(175, 630, 50, 20, screen, black)
+        btn_svcp_2.add_text("2 Coin " + str(svcp_text[1]) + "%", 16)
+        btn_svcp_3 = Button(175, 650, 50, 20, screen, black)
+        btn_svcp_3.add_text("3 Coin " + str(svcp_text[2]) + "%", 16)
+        # Builds Souvenir Subtype Display
+        btn_svsp_title = Button(175, 675, 50, 25, screen, black)
+        btn_svsp_title.add_text("Souvneir Type", 18)
+        btn_svsp_1 = Button(175, 700, 50, 20, screen, black)
+        svsp_text = SubTypeProb(SVDeck)
+        btn_svsp_1.add_text("Small Item " + str(svsp_text[0]) + "%", 16)
+        btn_svsp_2 = Button(175, 720, 50, 20, screen, black)
+        btn_svsp_2.add_text("Food & Drink " + str(svsp_text[1]) + "%", 16)
+        btn_svsp_3 = Button(175, 740, 50, 20, screen, black)
+        btn_svsp_3.add_text("Clothing " + str(svsp_text[2]) + "%", 16)
+        btn_svsp_4 = Button(175, 760, 50, 20, screen, black)
+        btn_svsp_4.add_text("Art " + str(svsp_text[2]) + "%", 16)
+        # Builds Encounter Type Display
+        btn_entp_title = Button(350, 585, 50, 25, screen, black)
+        btn_entp_title.add_text("Encounter Type", 18)
+        btn_entp_1 = Button(350, 610, 50, 20, screen, black)
+        entp_text = EncTypeProb(ENCDeck)
+        btn_entp_1.add_text("Kuge " + str(entp_text[0]) + "%", 16)
+        btn_entp_2 = Button(350, 630, 50, 20, screen, black)
+        btn_entp_2.add_text("Miko " + str(entp_text[1]) + "%", 16)
+        btn_entp_3 = Button(350, 650, 50, 20, screen, black)
+        btn_entp_3.add_text("Samurai " + str(entp_text[2]) + "%", 16)
+        btn_entp_4 = Button(350, 670, 50, 20, screen, black)
+        btn_entp_4.add_text("Shokunin " + str(entp_text[3]) + "%", 16)
+        btn_entp_5 = Button(350, 690, 50, 20, screen, black)
+        btn_entp_5.add_text("Annaibito: Paddy " + str(entp_text[4]) + "%", 16)
+        btn_entp_6 = Button(350, 710, 50, 20, screen, black)
+        btn_entp_6.add_text("Annaibito: Mountain " + str(entp_text[5]) + "%", 16)
+        btn_entp_7 = Button(350, 730, 50, 20, screen, black)
+        btn_entp_7.add_text("Annaibito: Sea" + str(entp_text[6]) + "%", 16)
+
 
     # Creates list in order of players, at limit goes into main screen
     def player_add(player_color):   # button fun
@@ -306,6 +372,7 @@ if __name__ == '__main__':
             start_menu.mainloop(screen)
         # Board One
         if board_number == 1:
+
             # Rect(left, top, width, height)
             rect1 = pygame.Rect(155, 150, 21, 122)
             # rect 11 is additional rect for position 1
@@ -445,7 +512,7 @@ if __name__ == '__main__':
                             # food menu.
 
                 # Shows list of events on ya terminal. To be removed, but fun to seeprint(event)
-                # print(event)
+                print(event)
 
             # hopefully fixes start_menu
             if start_menu.is_enabled():
@@ -459,7 +526,7 @@ if __name__ == '__main__':
 
                 # Render title text & rect
                 title_selector(current_player)
-
+                score_prob_display()
                 # Call Board Function
                 board(X_BOARD_COORD, Y_BOARD_COORD, board_number)
 
@@ -743,8 +810,7 @@ if __name__ == '__main__':
         """Village Menu"""
         paused = True
         counter = 0
-        while paused && counter < 3:
-
+        while paused and counter < 3:
             screen.fill((255, 255, 255))
             but_gofu = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
             but_koma = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
