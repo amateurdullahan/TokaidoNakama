@@ -4,7 +4,7 @@ import pygame
 import pygame_menu
 from player import Player
 from init import current_player, HSDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
-from location import Hot_Spring_Loc
+from location import Hot_Spring_Loc, Farm_Loc, Pano_Paddy_Loc, Pano_Mt_Loc, Pano_Sea_Loc, Encounter_Loc, Village_Loc, Temple_Loc
 from buttons import Button
 from deck import Deck
 
@@ -80,9 +80,11 @@ if __name__ == '__main__':
         elif board_position in [2, 9, 16, 21, 36, 43]:
             # Code for Temples Menu & updating stuff
             print("Temple stuff")
+            update_current_player()
         elif board_position in [3, 10, 20, 30, 38, 44, 49]:
             # Code for Encounter Menu & updating stuff
             print("Encounter stuff")
+            update_current_player()
         elif board_position in [4, 18, 28, 35, 51]:
             # Code for Pano_Paddy
             print("Pano paddy stuff")
@@ -107,6 +109,7 @@ if __name__ == '__main__':
         elif board_position in [14, 27, 41, 54]:
             # Code for Inn
             print("Inn stuff")
+            update_current_player()
 
     # def player_info(playercount, list of colors):
     # Generates player's info displays, depending on number of players & assigns colors
@@ -334,6 +337,18 @@ if __name__ == '__main__':
                             print('Village selected.')
                             encounter_selection(1)
                             current_player.board_space = 1
+                        if rect2.collidepoint(event.pos) or rect2_1.collidepoint(event.pos):
+                            print('Temple selected.')
+                            encounter_selection(2)
+                            current_player.board_space = 2
+                        if rect3.collidepoint(event.pos) or rect3_1.collidepoint(event.pos):
+                            print('Encounter selected.')
+                            encounter_selection(3)
+                            current_player.board_space = 3
+                        if rect4.collidepoint(event.pos) or rect4_1.collidepoint(event.pos):
+                            print('Panorama: Paddy selected.')
+                            encounter_selection(4)
+                            current_player.board_space = 4
                         if rect5.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
                             print('Hot Springs selected.')
                             encounter_selection(5)
@@ -408,7 +423,7 @@ if __name__ == '__main__':
         while paused:
             screen.fill((255, 255, 255))
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2.add_text('Okay')
+            but_2.add_text('Take Three Coins')
             #but_2.draw(black)
             #but_3.draw(black)
             events = pygame.event.get()
@@ -430,7 +445,7 @@ if __name__ == '__main__':
         while paused:
             screen.fill((255, 255, 255))
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2.add_text('Okay')
+            but_2.add_text('Panorama: Paddy')
             #but_2.draw(black)
             #but_3.draw(black)
             events = pygame.event.get()
@@ -452,7 +467,7 @@ if __name__ == '__main__':
         while paused:
             screen.fill((255, 255, 255))
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2.add_text('Okay')
+            but_2.add_text('Panorama: Mountain')
             #but_2.draw(black)
             #but_3.draw(black)
             events = pygame.event.get()
@@ -474,7 +489,7 @@ if __name__ == '__main__':
         while paused:
             screen.fill((255, 255, 255))
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2.add_text('Okay')
+            but_2.add_text('Panorama: Sea')
             #but_2.draw(black)
             #but_3.draw(black)
             events = pygame.event.get()
