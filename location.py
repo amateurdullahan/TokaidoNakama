@@ -144,7 +144,27 @@ def Encounter_Loc(player, cardname):
         player.donation += 1
         player.score += 1
         temple_bonus_check(player)
-    
+    if cardname == "Annaibito: Paddy":
+        if player.pano_paddy < 3:
+            player.pano_paddy += 1
+            player.score += player.pano_paddy
+            pano_paddy_check(player)
+        else:
+            print("Max Paddy Panorama Has Been Reached")
+    if cardname == "Annaibito: Mountain":
+        if player.pano_mt < 4:
+            player.pano_mt += 1
+            player.score += player.pano_mt
+            pano_mt_check(player)
+        else:
+            print("Max Mountain Panorama Has Been Reached")
+    if cardname == "Annaibito: Sea":
+        if player.pano_sea < 3:
+            player.pano_sea += 1
+            player.score += player.pano_sea
+            pano_sea_check(player)
+        else:
+            print("Max Sea Panorama Has Been Reached")
     return (player)
 
 def discard(deck, cardname):
