@@ -273,6 +273,8 @@ if __name__ == '__main__':
         """Main game loop"""
         global current_player
 
+        screen_update = 1
+
         print(current_player)
         if board_number == 0:
             start_menu.enable()
@@ -336,10 +338,12 @@ if __name__ == '__main__':
                             print('Village selected.')
                             encounter_selection(1)
                             current_player.board_space = 1
+                            screen_update = 1
                         if rect5.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
                             print('Hot Springs selected.')
                             encounter_selection(5)
                             current_player.board_space = 5
+                            screen_update = 1
                     # if rect for inn collision:
                             # append to player list (which will be cleared as player pieces are set)
                             # if all players on inn:
@@ -353,21 +357,23 @@ if __name__ == '__main__':
                 start_menu.update(events)
                 start_menu.draw(screen)
 
-            # Filling screen
-            screen.fill(white)
 
-            # Render title text & rect
-            screen.blit(text_title, text_title_rect)
+            if screen_update == 1:
+                # Filling screen
+                screen.fill(white)
 
-            # Call Board Function
-            board(X_BOARD_COORD, Y_BOARD_COORD, board_number)
+                # Render title text & rect
+                screen.blit(text_title, text_title_rect)
 
-            # Piece Space Function
-            player_positioning()
+                # Call Board Function
+                board(X_BOARD_COORD, Y_BOARD_COORD, board_number)
 
-            # Update display after event logic is complete in inner for loop
-            pygame.display.update()
-
+                # Piece Space Function
+                player_positioning()
+                print("Update")
+                # Update display after event logic is complete in inner for loop
+                pygame.display.update()
+            screen_update = 0
             # If All Players At Inn
             # Call Food Menu
             # Then From Food Menu Call main_screen(NEXT BOARD NUMBER)
