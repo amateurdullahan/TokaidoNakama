@@ -264,6 +264,7 @@ if __name__ == '__main__':
                 screen.blit(player.icon, (801, 227))
             if player.board_space == 14.3:
                 screen.blit(player.icon, (801, 277))
+        player_list.reverse()
         # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
 
 
@@ -311,7 +312,6 @@ if __name__ == '__main__':
             # Starting spots
             # start_list = [0.1, 0.2, 0.3] CORRECT
             start_list = [0.1, 0.2, 0.3]
-            # start_list.reverse()
             for player, position in zip(player_list, start_list):
                 player.board_space = position
                 print(player.board_space)
