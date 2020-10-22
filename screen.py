@@ -75,46 +75,46 @@ if __name__ == '__main__':
     def encounter_selection(board_position):
         """Generates drop down menu / contextual menu based off encounter chosen."""
 
-        if board_position in [1, 8, 25, 29, 45, 45, 53]:
+        if board_position in [1, 8, 29, 37, 48, 57, 65]:
             # Code for Villages Menu & updating stuff
             print("Village stuff")
             update_current_player()
-        elif board_position in [2, 9, 16, 21, 36, 43]:
+        elif board_position in [2, 9, 20, 25, 44, 55]:
             # Code for Temples Menu & updating stuff
             print("Temple stuff")
             temple_menu(screen)
             update_current_player()
-        elif board_position in [3, 10, 20, 30, 38, 44, 49]:
+        elif board_position in [3, 10, 24, 38, 46, 56, 61]:
             # Code for Encounter Menu & updating stuff
             print("Encounter stuff")
             encounter_menu(screen)
             update_current_player()
-        elif board_position in [4, 18, 28, 35, 51]:
+        elif board_position in [4, 22, 36, 43, 63]:
             # Code for Pano_Paddy
             print("Pano paddy stuff")
             pano_paddy_menu(screen)
             update_current_player()
-        elif board_position in [5, 13, 22, 33, 42, 48]:
+        elif board_position in [5, 13, 26, 41, 54, 60]:
             # Code for Hot Springs
             print("Hot spring stuff")
             hot_springs_menu(screen)
             update_current_player()
-        elif board_position in [6, 12, 19, 23, 32, 50]:
+        elif board_position in [6, 12, 23, 27, 40, 62]:
             # Code for Pano_Mt
             print("Pano mt stuff")
             pano_mt_menu(screen)
             update_current_player()
-        elif board_position in [7, 17, 26, 31, 37, 47]:
+        elif board_position in [7, 21, 30, 39, 45, 59]:
             # Code for Farm
             print("Farm stuff")
             farm_menu(screen)
             update_current_player()
-        elif board_position in [11, 15, 24, 34, 39, 46, 52]:
+        elif board_position in [11, 19, 28, 42, 47, 58, 64]:
             # Code for Pano_Sea
             print("Pano sea stuff")
             pano_sea_menu(screen)
             update_current_player
-        elif board_position in [14, 27, 41, 54]:
+        elif board_position in [14, 15, 16, 17, 18, 31, 32, 33, 34, 35, 49, 50, 51, 52, 53, 66, 67, 68, 69, 70]:
             # Code for Inn
             print("Inn stuff")
 
