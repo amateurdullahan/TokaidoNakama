@@ -226,13 +226,43 @@ if __name__ == '__main__':
         """Checks player positions & blits pieces"""
         for player in player_list:
             if player.board_space == 0.3:
-                screen.blit(player.icon, (80, 283))
+                screen.blit(player.icon, (80, 385))
             if player.board_space == 0.2:
                 screen.blit(player.icon, (80, 336))
             if player.board_space == 0.1:
-                screen.blit(player.icon, (80, 385))
+                screen.blit(player.icon, (80, 283))
             if player.board_space == 1:
                 screen.blit(player.icon, (149, 215))
+            if player.board_space == 2:
+                screen.blit(player.icon, (195, 213))
+            if player.board_space == 3:
+                screen.blit(player.icon, (245, 191))
+            if player.board_space == 4:
+                screen.blit(player.icon, (299, 192))
+            if player.board_space == 5:
+                screen.blit(player.icon, (360, 218))
+            if player.board_space == 6:
+                screen.blit(player.icon, (413, 242))
+            if player.board_space == 7:
+                screen.blit(player.icon, (466, 269))
+            if player.board_space == 8:
+                screen.blit(player.icon, (512, 309))
+            if player.board_space == 9:
+                screen.blit(player.icon, (570, 306))
+            if player.board_space == 10:
+                screen.blit(player.icon, (625, 273))
+            if player.board_space == 11:
+                screen.blit(player.icon, (664, 237))
+            if player.board_space == 12:
+                screen.blit(player.icon, (712, 169))
+            if player.board_space == 13:
+                screen.blit(player.icon, (737, 125))
+            if player.board_space == 14.1:
+                screen.blit(player.icon, (801, 176))
+            if player.board_space == 14.2:
+                screen.blit(player.icon, (801, 227))
+            if player.board_space == 14.3:
+                screen.blit(player.icon, (801, 277))
         # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
 
 
@@ -250,25 +280,35 @@ if __name__ == '__main__':
             # Rect(left, top, width, height)
             rect1 = pygame.Rect(155, 150, 21, 122)
             # rect 11 is additional rect for position 1
-            rect11 = pygame.Rect(135, 87, 62, 82)
-            # rect2 = pygame.Rect(, , , ,)
-            # rect3 = pygame.Rect(, , , ,)
-            # rect4 = pygame.Rect(, , , ,)
-            rect5 = pygame.Rect(343, 87, 61, 190)
-            # rect6 = pygame.Rect(, , , ,)
-            # rect7 = pygame.Rect(, , , ,)
-            # rect8 = pygame.Rect(, , , ,)
-            # rect9 = pygame.Rect(, , , ,)
-            # rect10 = pygame.Rect(, , , ,)
-            # rect11 = pygame.Rect(, , , ,)
-            # rect12 = pygame.Rect(, , , ,)
-            # rect13 = pygame.Rect(, , , ,)
-            # rect14 = pygame.Rect(, , , ,)
-            # 1400 is 14.01
-            # rect1401 = pygame.Rect(, , , ,)
-            # rect1402 = pygame.Rect(, , , ,)
-            # rect1403 = pygame.Rect(, , , ,)
-            # Starting inn rect
+            rect1_1 = pygame.Rect(135, 87, 62, 82)
+            rect2 = pygame.Rect(205, 256, 14, 120)
+            rect2_1 = pygame.Rect(180, 302, 63, 76)
+            rect3 = pygame.Rect(254, 124, 16, 124)
+            rect3_1 = pygame.Rect(229, 124, 62, 78)
+            rect4 = pygame.Rect(309, 235, 16, 124)
+            rect4_1 = pygame.Rect(286, 282, 60, 78)
+            rect5 = pygame.Rect(370, 87, 16, 188)
+            rect5_1 = pygame.Rect(343, 87, 66, 81)
+            rect6 = pygame.Rect(423, 284, 15, 186)
+            rect6_1 = pygame.Rect(400, 392, 62, 81)
+            rect7 = pygame.Rect(477, 138, 14, 188)
+            rect7_1 = pygame.Rect(449, 138, 68, 78)
+            rect8 = pygame.Rect(523, 350, 15, 124)
+            rect8_1 = pygame.Rect(497, 350, 66, 122)
+            rect9 = pygame.Rect(578, 177, 16, 186)
+            rect9_1 = pygame.Rect(553, 177, 66, 77)
+            rect10 = pygame.Rect(633, 316, 16, 125)
+            rect10_1 = pygame.Rect(612, 316, 61, 124)
+            rect11 = pygame.Rect(675, 109, 14, 186)
+            rect11_1 = pygame.Rect(649, 109, 62, 184)
+            rect12 = pygame.Rect(724, 211, 16, 120)
+            rect12_1 = pygame.Rect(701, 211, 65, 123)
+            rect13 = pygame.Rect(743, 55, 16, 127)
+            rect13_1 = pygame.Rect(717, 55, 55, 81)
+            rect14 = pygame.Rect(778, 117, 78, 76)
+            rect14_1 = pygame.Rect(800, 70, 34, 364)
+            # Starting spots
+            # start_list = [0.1, 0.2, 0.3] CORRECT
             start_list = [0.1, 0.2, 0.3]
             for player, position in zip(player_list, start_list):
                 player.board_space = position
@@ -290,11 +330,11 @@ if __name__ == '__main__':
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1: # Left  mouse button.
                         # Check if the rect collides with the mouse pos.
-                        if rect1.collidepoint(event.pos) or rect11.collidepoint(event.pos):
+                        if rect1.collidepoint(event.pos) or rect1_1.collidepoint(event.pos):
                             print('Village selected.')
                             encounter_selection(1)
                             current_player.board_space = 1
-                        if rect5.collidepoint(event.pos):
+                        if rect5.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
                             print('Hot Springs selected.')
                             encounter_selection(5)
                             current_player.board_space = 5
@@ -303,8 +343,8 @@ if __name__ == '__main__':
                             # if all players on inn:
                             # food menu.
 
-                # Shows list of events on ya terminal. To be removed, but fun to see
-                #print(event)
+                # Shows list of events on ya terminal. To be removed, but fun to seeprint(event)
+                print(event)    
 
             # hopefully fixes start_menu
             if start_menu.is_enabled():
