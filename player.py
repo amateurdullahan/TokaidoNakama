@@ -3,7 +3,7 @@
 from deck import Deck
 
 class Player():
-        def __init__(self, color="", playerdeck=Deck(), score=0, coins=0, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0, icon=0, donation=0, pano_paddy_bonus=0, pano_mt_bonus=0, pano_sea_bonus=0):
+        def __init__(self, color="", playerdeck=Deck(), score=0, coins=0, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0, icon=0, donation=0, temple_bonus=0):
             """initializing the players"""
             self.playerdeck = playerdeck
             self.color = color
@@ -21,9 +21,7 @@ class Player():
             self.playerdeck = playerdeck
             self.icon = icon
             self.donation = donation
-            self.pano_paddy_bonus = pano_paddy_bonus
-            self.pano_mt_bonus = pano_mt_bonus
-            self.pano_sea_bonus = pano_sea_bonus
+            self.temple_bonus = temple_bonus
 
         @property
         def color(self):
@@ -156,31 +154,11 @@ class Player():
             self.__donation = value
 
         @property
-        def pano_paddy_bonus(self):
+        def temple_bonus(self):
             """comment"""
-            return self.__pano_paddy_bonus
+            return self.__temple_bonus
 
-        @pano_paddy_bonus.setter
-        def pano_paddy_bonus(self, value):
+        @temple_bonus.setter
+        def temple_bonus(self, value):
             """comment"""
-            self.__pano_paddy_bonus = value
-
-        @property
-        def pano_mt_bonus(self):
-            """comment"""
-            return self.__pano_mt_bonus
-
-        @pano_mt_bonus.setter
-        def pano_mt_bonus(self, value):
-            """comment"""
-            self.__pano_mt_bonus = value
-
-        @property
-        def pano_sea_bonus(self):
-            """comment"""
-            return self.__pano_sea_bonus
-
-        @pano_sea_bonus.setter
-        def pano_sea_bonus(self, value):
-            """comment"""
-            self.__pano_sea_bonus = value
+            self.__temple_bonus = value
