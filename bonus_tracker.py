@@ -4,8 +4,8 @@ from init import *
 
 
 class Achievements():
-        def __init__(self, pano_paddy_bonus="", pano_mt_bonus="", pano_sea_bonus="", gourmet_count=0, bather_count=0, chatterbox_count=0, collector_count=0, temple_bonus_first=1, temple_bonus_second=1, temple_bonus_third=1):
-            """initializing the players"""
+        def __init__(self, pano_paddy_bonus="", pano_mt_bonus="", pano_sea_bonus="", gourmet_count=0, bather_count=0, chatterbox_count=0, collector_count=0, temple_bonus_first=0, temple_bonus_second=0, temple_bonus_third=0):
+            """initializing the achievement tracker"""
             self.pano_paddy_bonus = pano_paddy_bonus
             self.pano_mt_bonus = pano_mt_bonus
             self.pano_sea_bonus = pano_sea_bonus
@@ -117,24 +117,26 @@ class Achievements():
             """comment"""
             self.__temple_bonus_third = value
 
+achievements = Achievements()
+
 def pano_paddy_check(current_player):
-    if Achievements().pano_paddy_bonus == "":
+    if achievements.pano_paddy_bonus == "":
         if current_player.pano_paddy == 3:
-            Achievements().pano_paddy_bonus = current_player
+            achievements.pano_paddy_bonus = current_player
             current_player.score += 3
     return(current_player)
 
 def pano_mt_check(current_player):
-    if Achievements().pano_mt_bonus == "":
+    if achievements.pano_mt_bonus == "":
         if current_player.pano_mt == 4:
-            Achievements().pano_mt_bonus = current_player
+            achievements.pano_mt_bonus = current_player
             current_player.score += 3
     return(current_player)
 
 def pano_sea_check(current_player):
-    if Achievements().pano_sea_bonus == "":
+    if achievements.pano_sea_bonus == "":
         if current_player.pano_sea == 5:
-            Achievements().pano_sea_bonus = current_player
+            achievements.pano_sea_bonus = current_player
             current_player.score += 3
     return(current_player)
 
@@ -144,31 +146,31 @@ def bather_bonus_check(current_player):
         print("Card checked in loop", current_player.playerdeck.card_list[a].type)
         if current_player.playerdeck.card_list[a].type == "Hot Spring":
             count += 1
-    print("Current bather value:", Achievements().bather_count)
+    print("Current bather value:", achievements.bather_count)
     print("Number of Hot Springs Cards:", count)
-    if count > Achievements().bather_count:
-        Achievements.bather_count = count
-    print("After update, bather count and count:", Achievements.bather_count, count)
+    if count > achievements.bather_count:
+        achievements.bather_count = count
+    print("After update, bather count and count:", achievements.bather_count, count)
     for player in player_list:
         if player.bather_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
                 if player.playerdeck.card_list[a].type == "Hot Spring":
                     player_count += 1
-            print("No Bonus Bather Count:", Achievements.bather_count)
+            print("No Bonus Bather Count:", achievements.bather_count)
             print("No Bonus Player and card count:", player.color, player_count)
-            if player_count == Achievements.bather_count:
+            if player_count == achievements.bather_count:
                 print("Add Flag and Points")
                 player.bather_bonus = 1
                 player.score += 3
         elif player.bather_bonus == 1:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                print("With Bonus Bather Count:", Achievements.bather_count)
+                print("With Bonus Bather Count:", achievements.bather_count)
                 print("With Bonus Player and card count:", player.color, player_count)
                 if player.playerdeck.card_list[a].type == "Hot Spring":
                     player_count += 1
-            if player_count < Achievements.bather_count:
+            if player_count < achievements.bather_count:
                 print("Remove flag and points")
                 player.bather_bonus = 0
                 player.score -= 3
@@ -176,18 +178,19 @@ def bather_bonus_check(current_player):
 
 def chatterbox_bonus_check(current_player):
     count = 0
+    print("Chatterbox check ():", Achievements.chatterbox_count, achievements.chatterbox_count)
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type == "Encounter":
             count += 1
-    if count > Achievements().chatterbox_count:
-        Achievements().chatterbox_count = count
+    if count > achievements.chatterbox_count:
+        achievements.chatterbox_count = count
     for player in player_list:
         if player.chatterbox_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
                 if player.playerdeck.card_list[a].type == "Encounter":
                     player_count += 1
-            if player_count == Achievements().chatterbox_count:
+            if player_count == achievements.chatterbox_count:
                 player.chatterbox_bonus = 1
                 player.score += 3
         elif player.chatterbox_bonus == 1:
@@ -195,7 +198,7 @@ def chatterbox_bonus_check(current_player):
             for a in range(len(player.playerdeck.card_list)):
                 if player.playerdeck.card_list[a].type == "Encounter":
                     player_count += 1
-            if player_count < Achievements().chatterbox_count:
+            if player_count < achievements.chatterbox_count:
                 player.chatterbox_bonus = 0
                 player.score -= 3
     return(current_player)
@@ -205,15 +208,15 @@ def collector_bonus_check(current_player):
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type == "Souvenir":
             count += 1
-    if count > Achievements().collector_count:
-        Achievements().collector_count = count
+    if count > achievements.collector_count:
+        achievements.collector_count = count
     for player in player_list:
         if player.collector_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
                 if player.playerdeck.card_list[a].type == "Souvenir":
                     player_count += 1
-            if player_count == Achievements().collector_count:
+            if player_count == achievements.collector_count:
                 player.collector_bonus = 1
                 player.score += 3
         elif player.collector_bonus == 1:
@@ -221,7 +224,7 @@ def collector_bonus_check(current_player):
             for a in range(len(player.playerdeck.card_list)):
                 if player.playerdeck.card_list[a].type == "Souvenir":
                     player_count += 1
-            if player_count < Achievements().collector_count:
+            if player_count < achievements.collector_count:
                 player.collector_bonus = 0
                 player.score -= 3
     return(current_player)
@@ -231,15 +234,15 @@ def gourmet_bonus_check(current_player):
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type == "Meal":
             count += current_player.playerdeck.card_list[a].cost
-    if count > Achievements().gourmet_count:
-        Achievements().gourmet_count = count
+    if count > achievements.gourmet_count:
+        achievements.gourmet_count = count
     for player in player_list:
         if player.gourmet_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
                 if player.playerdeck.card_list[a].type == "Meal":
                     player_count += 1
-            if player_count == Achievements().gourmet_count:
+            if player_count == achievements.gourmet_count:
                 player.gourmet_bonus = 1
                 player.score += 3
         elif player.gourmet_bonus == 1:
@@ -247,66 +250,74 @@ def gourmet_bonus_check(current_player):
             for a in range(len(player.playerdeck.card_list)):
                 if player.playerdeck.card_list[a].type == "Meal":
                     player_count += 1
-            if player_count < Achievements().gourmet_count:
+            if player_count < achievements.gourmet_count:
                 player.gourmet_bonus = 0
                 player.score -= 3
     return(current_player)
 
 def temple_bonus_check(current_player):
-    if current_player.donation > Achievements().temple_bonus_first:
-        Achievements().temple_bonus_third = Achievements().temple_bonus_second
-        Achievements().temple_bonus_second = Achievements().temple_bonus_first
-        Achievements().temple_bonus_first = donation
-    elif current_player.donation > Achievements().temple_bonus_second:
-        Achievements().temple_bonus_third = Achievements().temple_bonus_second
-        Achievements().temple_bonus_second = donation
-    elif current_player.donation > Achievements().temple_bonus_third:
-        Achievements().temple_bonus_third = donation
-    return(current_player)
+    print("temple bonus check")
+    print("donation:", current_player.donation)
+    print("first:", achievements.temple_bonus_first)
+    print("second:", achievements.temple_bonus_second)
+    print("third:", achievements.temple_bonus_third)
+    if current_player.donation > achievements.temple_bonus_first:
+        print("New First Place Triggered")
+        achievements.temple_bonus_third = achievements.temple_bonus_second
+        achievements.temple_bonus_second = achievements.temple_bonus_first
+        achievements.temple_bonus_first = current_player.donation
+    elif current_player.donation > achievements.temple_bonus_second:
+        print("New First Place Triggered")
+        achievements.temple_bonus_third = achievements.temple_bonus_second
+        achievements.temple_bonus_second = current_player.donation
+    elif current_player.donation > achievements.temple_bonus_third:
+        print("New First Place Triggered")
+        achievements.temple_bonus_third = current_player.donation
 
     for player in player_list:
-        if player.temple_bonus == 0:
-            if player.donation == Achievements().temple_bonus_first:
+        print("player and donation", player.color, player.donation)
+        if player.temple_bonus == 0 and player.donation > 0:
+            if player.donation == achievements.temple_bonus_first:
                 player.temple_bonus = 10
                 player.score += 10
-            elif player.donation == Achievements().temple_bonus_second:
+            elif player.donation == achievements.temple_bonus_second:
                 player.temple_bonus = 7
                 player.score += 7
-            elif player.donation == Achievements().temple_bonus_third:
+            elif player.donation == achievements.temple_bonus_third:
                 player.temple_bonus = 3
                 player.score += 3
         elif player.temple_bonus == 10:
-            if player.donation == Achievements().temple_bonus_first:
+            if player.donation == achievements.temple_bonus_first:
                 pass
-            elif player.donation == Achievements().temple_bonus_second:
+            elif player.donation == achievements.temple_bonus_second:
                 player.temple_bonus = 7
                 player.score -= 3
-            elif player.donation == Achievements().temple_bonus_third:
+            elif player.donation == achievements.temple_bonus_third:
                 player.temple_bonus = 3
                 player.score -= 7
             else:
                 player.temple_bonus = 0
                 player.score -= 10
         elif player.temple_bonus == 7:
-            if player.donation == Achievements().temple_bonus_first:
+            if player.donation == achievements.temple_bonus_first:
                 player.temple_bonus = 10
                 player.score += 3
-            elif player.donation == Achievements().temple_bonus_second:
+            elif player.donation == achievements.temple_bonus_second:
                 pass
-            elif player.donation == Achievements().temple_bonus_third:
+            elif player.donation == achievements.temple_bonus_third:
                 player.temple_bonus = 3
                 player.score -= 4
             else:
                 player.temple_bonus = 0
                 player.score -= 7
         elif player.temple_bonus == 3:
-            if player.donation == Achievements().temple_bonus_first:
+            if player.donation == achievements.temple_bonus_first:
                 player.temple_bonus = 10
                 player.score += 7
-            elif player.donation == Achievements().temple_bonus_second:
+            elif player.donation == achievements.temple_bonus_second:
                 player.temple_bonus = 7
                 player.score += 4
-            elif player.donation == Achievements().temple_bonus_third:
+            elif player.donation == achievements.temple_bonus_third:
                 pass
             else:
                 player.temple_bonus = 0
