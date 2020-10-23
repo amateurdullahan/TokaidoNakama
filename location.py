@@ -5,7 +5,6 @@ import pygame_menu
 from player import Player
 from deck import *
 from init import *
-from bonus_tracker import *
 
 
 def MoveCard(player, deck, card):
@@ -28,7 +27,7 @@ def Pano_Paddy_Loc(player):
     if player.pano_paddy < 3:
         player.pano_paddy += 1
         player.score += player.pano_paddy
-        pano_paddy_check(player)
+        # pano_paddy_check(player)
         return (player)
     else:
         print("Max Paddy Panorama Has Been Reached")
@@ -39,7 +38,7 @@ def Pano_Mt_Loc(player):
     if player.pano_mt < 4:
         player.pano_mt += 1
         player.score += player.pano_mt
-        pano_mt_check(player)
+        # pano_mt_check(player)
         return (player)
     else:
         print("Max Mountain Panorama Has Been Reached")
@@ -50,7 +49,7 @@ def Pano_Sea_Loc(player):
     if player.pano_sea < 5:
         player.pano_sea += 1
         player.score += player.pano_sea
-        pano_sea_check(player)
+        # pano_sea_check(player)
         return (player)
     else:
         print("Max Sea Panorama Has Been Reaced")
@@ -61,7 +60,7 @@ def Temple_Loc(player, num):
     player.coins -= num
     player.score += num
     player.donation += num
-    player = temple_bonus_check(player)
+    # player = temple_bonus_check(player)
     return (player)
 
 def Village_Loc(player, cardname):
@@ -95,8 +94,8 @@ def Village_Loc(player, cardname):
     elif player.sv_type_fourth == bought.subtype:
         player.score += 7
     MoveCard(player, SVDeck, bought)
+    # collector_bonus_check(player)
     return (player)
-    """check collector acheviement"""
 
 def Hot_Spring_Loc(player, pts):
     """hot spring location function TBW"""
@@ -108,7 +107,7 @@ def Hot_Spring_Loc(player, pts):
                 player.playerdeck.add(HSDeck.card_list.pop(a))
                 player.score += 2
                 HSDeck.number_of_cards -= 1
-                player = bather_bonus_check(player)
+                # player = bather_bonus_check(player)
                 return (player)
             a += 1
     elif pts == 3:
@@ -118,7 +117,7 @@ def Hot_Spring_Loc(player, pts):
                 player.playerdeck.add(HSDeck.card_list.pop(a))
                 player.score += 3
                 HSDeck.number_of_cards -= 1
-                player = bather_bonus_check(player)
+                # player = bather_bonus_check(player)
                 return (player)
             a += 1
 
@@ -134,7 +133,7 @@ def Inn_Loc(player, cardname):
             a += 1
     print("Player, meal:", player, meal)
     MoveCard(player, MDeck, meal)
-    player = gourmet_bonus_check(player)
+    # player = gourmet_bonus_check(player)
     return (player)
 
 def Encounter_Loc(player, cardname):
@@ -145,7 +144,7 @@ def Encounter_Loc(player, cardname):
             break
             a += 1
     MoveCard(player, ENCDeck, encounter)
-    chatterbox_bonus_check(player)
+    # chatterbox_bonus_check(player)
     if cardname == "Kuge":
         player.coins += 3
     if cardname == "Samurai":
@@ -153,26 +152,26 @@ def Encounter_Loc(player, cardname):
     if cardname == "Miko":
         player.donation += 1
         player.score += 1
-        temple_bonus_check(player)
+        # temple_bonus_check(player)
     if cardname == "Annaibito: Paddy":
         if player.pano_paddy < 3:
             player.pano_paddy += 1
             player.score += player.pano_paddy
-            pano_paddy_check(player)
+            # pano_paddy_check(player)
         else:
             print("Max Paddy Panorama Has Been Reached")
     if cardname == "Annaibito: Mountain":
         if player.pano_mt < 4:
             player.pano_mt += 1
             player.score += player.pano_mt
-            pano_mt_check(player)
+            # pano_mt_check(player)
         else:
             print("Max Mountain Panorama Has Been Reached")
     if cardname == "Annaibito: Sea":
         if player.pano_sea < 3:
             player.pano_sea += 1
             player.score += player.pano_sea
-            pano_sea_check(player)
+            # pano_sea_check(player)
         else:
             print("Max Sea Panorama Has Been Reached")
     return (player)
