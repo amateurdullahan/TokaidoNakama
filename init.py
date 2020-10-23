@@ -182,23 +182,23 @@ DiscardDeck = Deck(0, Dlist)
 """Player initializing"""
 GreenList = []
 GreenDeck = Deck(0, GreenList)
-GreenPlayer = Player("Green", GreenDeck, 'media/player_green.png')
+GreenPlayer = Player("Green", GreenDeck)
 
 PurpleList = []
 PurpleDeck = Deck(0, PurpleList)
-PurplePlayer = Player("Purple", PurpleDeck, 'media/player_purple.png')
+PurplePlayer = Player("Purple", PurpleDeck)
 
 YellowList = []
 YellowDeck = Deck(0, YellowList)
-YellowPlayer = Player("Yellow", YellowDeck, 'media/player_yellow.png')
+YellowPlayer = Player("Yellow", YellowDeck)
 
 BlueList = []
 BlueDeck = Deck(0, BlueList)
-BluePlayer = Player("Blue", BlueDeck, 'media/player_blue.png')
+BluePlayer = Player("Blue", BlueDeck)
 
 GreyList = []
 GreyDeck = Deck(0, GreyList)
-GreyPlayer = Player("Grey", GreyDeck, 'media/player_grey.png')
+GreyPlayer = Player("Grey", GreyDeck)
 
 player_list = []    # active players global list
 current_player = None # initialize global current player tracker
