@@ -436,7 +436,41 @@ if __name__ == '__main__':
                 if player.board_space == 36:
                     screen.blit(player.icon, (134, 333))
                 if player.board_space == 37:
-                    screen.blit(player.icon, ())
+                    screen.blit(player.icon, (180, 324))
+                if player.board_space == 38:
+                    screen.blit(player.icon, (229, 325))
+                if player.board_space == 39:
+                    screen.blit(player.icon, (287, 310))
+                if player.board_space == 40:
+                    screen.blit(player.icon, (335, 304))
+                if player.board_space == 41:
+                    screen.blit(player.icon, (381, 286))
+                if player.board_space == 42:
+                    screen.blit(player.icon, (440, 250))
+                if player.board_space == 43:
+                    screen.blit(player.icon, (484, 226))
+                if player.board_space == 44:
+                    screen.blit(player.icon, (533, 213))
+                if player.board_space == 45:
+                    screen.blit(player.icon, (577, 191))
+                if player.board_space == 46:
+                    screen.blit(player.icon, (625, 161))
+                if player.board_space == 47:
+                    screen.blit(player.icon, (666, 127))
+                if player.board_space == 48:
+                    screen.blit(player.icon, (716, 121))
+                if player.board_space == 49:
+                    screen.blit(player.icon, (795, 343))
+                if player.board_space == 50:
+                    screen.blit(player.icon, (795, 299))
+                if player.board_space == 51:
+                    screen.blit(player.icon, (795, 253))
+                if player.board_space == 52:
+                    screen.blit(player.icon, (795, 210))
+                if player.board_space == 53:
+                    screen.blit(player.icon, (795, 167))
+            # if board_number == 4:
+
         player_list.reverse()
         # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
 
