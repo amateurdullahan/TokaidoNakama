@@ -244,7 +244,7 @@ if __name__ == '__main__':
         global current_player
         if len(player_list) < 3:
             if player_color == 'Green' and 'player_green' not in player_list:
-                player_green = Player(player_color)
+                player_green = GreenPlayer
                 player_list.append(player_green)
                 print(player_green)
                 player_green.icon = pygame.image.load('media/player_green.png')
@@ -259,7 +259,7 @@ if __name__ == '__main__':
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Blue' and 'player_blue' not in player_list:
-                player_blue = Player(player_color)
+                player_blue = BluePlayer
                 player_list.append(player_blue)
                 print(player_blue)
                 player_blue.icon = pygame.image.load('media/player_blue.png')
@@ -272,7 +272,7 @@ if __name__ == '__main__':
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Grey' and 'player_grey' not in player_list:
-                player_grey = Player(player_color)
+                player_grey = GreyPlayer
                 player_list.append(player_grey)
                 print(player_grey)
                 player_grey.icon = pygame.image.load('media/player_grey.png')
@@ -285,7 +285,7 @@ if __name__ == '__main__':
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Yellow' and 'player_yellow' not in player_list:
-                player_yellow = Player(player_color)
+                player_yellow = YellowPlayer
                 player_list.append(player_yellow)
                 print(player_yellow)
                 player_yellow.icon = pygame.image.load('media/player_yellow.png')
@@ -298,7 +298,7 @@ if __name__ == '__main__':
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Purple' and 'player_purple' not in player_list:
-                player_purple = Player(player_color)
+                player_purple = PurplePlayer
                 player_list.append(player_purple)
                 print(player_purple)
                 player_purple.icon = pygame.image.load('media/player_purple.png')
