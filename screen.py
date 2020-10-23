@@ -3,7 +3,7 @@
 import pygame
 import pygame_menu
 from player import Player
-from init import current_player, HSDeck, MDeck, SVDeck, ENCDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
+from init import current_player, HSDeck, MDeck, SVDeck, ENCDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer, board_1_list, board_2_list, board_3_list
 from location import *
 from buttons import Button
 from deck import Deck
@@ -118,6 +118,8 @@ if __name__ == '__main__':
         elif board_position in [14, 15, 16, 17, 18, 31, 32, 33, 34, 35, 49, 50, 51, 52, 53, 66, 67, 68, 69, 70]:
             # Code for Inn
             print("Inn stuff")
+            inn_menu(screen)
+            update_current_player
 
     # def player_info(playercount, list of colors):
     # Generates player's info displays, depending on number of players & assigns colors
@@ -351,6 +353,8 @@ if __name__ == '__main__':
         """Checks player positions & blits pieces"""
         player_list.reverse()
         for player in player_list:
+            print("Board Number:", board_number)
+            print("Board Space:", player.board_space)
             if board_number == 1:
                 loc = spaces_b1.get(player.board_space)
             elif board_number == 2:
@@ -359,6 +363,7 @@ if __name__ == '__main__':
                 loc = spaces_b3.get(player.board_space)
             # elif board_number == 4:
                 # loc = spaces_b4.get(player.board_space)
+            print("Line 364:", loc)
             screen.blit(player.icon, loc)
         player_list.reverse()
 
@@ -554,9 +559,21 @@ if __name__ == '__main__':
                             if rect14.collidepoint(event.pos) or rect14_1.collidepoint(event.pos):
                                 if current_player.board_space < 14:
                                     print('We\'re INN IT NOW BOYS')
-                                    # append to player list (which will be cleared as player pieces are set)
-                                    # if all players on inn:
-                                    # food menu.
+                                    encounter_selection(14)
+                                    if board_number == 1:
+                                        if len(board_1_list) == 0:
+                                            current_player.board_space = 18
+                                            board_1_list.append(current_player)
+                                        elif len(board_1_list) == 1:
+                                            current_player.board_space = 17
+                                            board_1_list.append(current_player)
+                                        elif len(board_1_list) == 2:
+                                            current_player.board_space = 16
+                                            board_1_list.append(current_player)
+                                            board_number = 2
+                                    update_current_player()
+                                    screen_update = 1
+
                         # if board_number == 2:
                             # if
                         # if board_number == 3:
@@ -807,7 +824,7 @@ if __name__ == '__main__':
             but_sashimi.add_text('Sashimi')
             but_udon.add_text('Udon')
             but_unagi.add_text('Ungai')
-            but_taimeshi.add_test('Tai Meshi')
+            but_taimeshi.add_text('Tai Meshi')
 
             events = pygame.event.get()
             for event in events:
