@@ -141,25 +141,35 @@ def pano_sea_check(current_player):
 def bather_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
-        if current_player.playerdeck.card_list[a].type is HotSprings:
+        print("Card checked in loop", current_player.playerdeck.card_list[a].type)
+        if current_player.playerdeck.card_list[a].type == "Hot Spring":
             count += 1
+    print("Current bather value:", Achievements().bather_count)
+    print("Number of Hot Springs Cards:", count)
     if count > Achievements().bather_count:
-        Achievements().bather_count = count
+        Achievements.bather_count = count
+    print("After update, bather count and count:", Achievements.bather_count, count)
     for player in player_list:
         if player.bather_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is HotSprings:
+                if player.playerdeck.card_list[a].type == "Hot Spring":
                     player_count += 1
-            if player_count == Achievements().bather_count:
+            print("No Bonus Bather Count:", Achievements.bather_count)
+            print("No Bonus Player and card count:", player.color, player_count)
+            if player_count == Achievements.bather_count:
+                print("Add Flag and Points")
                 player.bather_bonus = 1
                 player.score += 3
         elif player.bather_bonus == 1:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is HotSprings:
+                print("With Bonus Bather Count:", Achievements.bather_count)
+                print("With Bonus Player and card count:", player.color, player_count)
+                if player.playerdeck.card_list[a].type == "Hot Spring":
                     player_count += 1
-            if player_count < Achievements().bather_count:
+            if player_count < Achievements.bather_count:
+                print("Remove flag and points")
                 player.bather_bonus = 0
                 player.score -= 3
     return(current_player)
@@ -167,7 +177,7 @@ def bather_bonus_check(current_player):
 def chatterbox_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
-        if current_player.playerdeck.card_list[a].type is Encounter:
+        if current_player.playerdeck.card_list[a].type == "Encounter":
             count += 1
     if count > Achievements().chatterbox_count:
         Achievements().chatterbox_count = count
@@ -175,7 +185,7 @@ def chatterbox_bonus_check(current_player):
         if player.chatterbox_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is Encounter:
+                if player.playerdeck.card_list[a].type == "Encounter":
                     player_count += 1
             if player_count == Achievements().chatterbox_count:
                 player.chatterbox_bonus = 1
@@ -183,7 +193,7 @@ def chatterbox_bonus_check(current_player):
         elif player.chatterbox_bonus == 1:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is Encounter:
+                if player.playerdeck.card_list[a].type == "Encounter":
                     player_count += 1
             if player_count < Achievements().chatterbox_count:
                 player.chatterbox_bonus = 0
@@ -193,7 +203,7 @@ def chatterbox_bonus_check(current_player):
 def collector_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
-        if current_player.playerdeck.card_list[a].type is Souvenir:
+        if current_player.playerdeck.card_list[a].type == "Souvenir":
             count += 1
     if count > Achievements().collector_count:
         Achievements().collector_count = count
@@ -201,7 +211,7 @@ def collector_bonus_check(current_player):
         if player.collector_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is Souvenir:
+                if player.playerdeck.card_list[a].type == "Souvenir":
                     player_count += 1
             if player_count == Achievements().collector_count:
                 player.collector_bonus = 1
@@ -209,7 +219,7 @@ def collector_bonus_check(current_player):
         elif player.collector_bonus == 1:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is Souvenir:
+                if player.playerdeck.card_list[a].type == "Souvenir":
                     player_count += 1
             if player_count < Achievements().collector_count:
                 player.collector_bonus = 0
@@ -219,7 +229,7 @@ def collector_bonus_check(current_player):
 def gourmet_bonus_check(current_player):
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
-        if current_player.playerdeck.card_list[a].type is Meal:
+        if current_player.playerdeck.card_list[a].type == "Meal":
             count += current_player.playerdeck.card_list[a].cost
     if count > Achievements().gourmet_count:
         Achievements().gourmet_count = count
@@ -227,7 +237,7 @@ def gourmet_bonus_check(current_player):
         if player.gourmet_bonus == 0:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is Meal:
+                if player.playerdeck.card_list[a].type == "Meal":
                     player_count += 1
             if player_count == Achievements().gourmet_count:
                 player.gourmet_bonus = 1
@@ -235,7 +245,7 @@ def gourmet_bonus_check(current_player):
         elif player.gourmet_bonus == 1:
             player_count = 0
             for a in range(len(player.playerdeck.card_list)):
-                if player.playerdeck.card_list[a].type is Meal:
+                if player.playerdeck.card_list[a].type == "Meal":
                     player_count += 1
             if player_count < Achievements().gourmet_count:
                 player.gourmet_bonus = 0
