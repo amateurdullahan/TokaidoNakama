@@ -63,11 +63,11 @@ if __name__ == '__main__':
         # section for generating landing spots based off board
         # Blit board, while scaling it to uniform size
         if current_board == 1:
-            current_board = pygame.transform.scale(board_three, (850, 500))
+            current_board = pygame.transform.scale(board_one, (850, 500))
         if current_board == 2:
             current_board = pygame.transform.scale(board_two, (850, 500))
         if current_board == 3:
-            current_board = pygame.transform.scale(board_one, (850, 500))
+            current_board = pygame.transform.scale(board_three, (850, 500))
         if current_board == 4:
             current_board = pygame.transform.scale(board_four, (850, 500))
         screen.blit(current_board, (x_board, y_board))
@@ -330,150 +330,37 @@ if __name__ == '__main__':
     yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
     purple_button = start_menu.add_button('Purple', player_add, 'Purple')
 
+    # Player space dictionaries, by board number, so inn spaces are blitted(sp?) correctly
+    spaces_b1 = {-3: (80, 385), -2: (80, 336), -1: (80, 283), 1: (149, 215), 2: (195, 213),
+                 3: (245, 191), 4: (299, 192), 5: (360, 218), 6: (413, 242), 7: (466, 269),
+                 8: (512, 309), 9: (570, 306), 10: (625, 273), 11: (664, 237), 12: (712, 169),
+                 13: (737, 125), 14: (801, 376), 15: (801, 327), 16: (801, 277), 17: (801, 227),
+                 18: (801, 176)}
+    spaces_b2 = {14: (48, 350), 15: (48, 309), 16: (48, 261), 17: (48, 217), 18: (48, 170),
+                 19: (132, 141), 20: (180, 162), 21: (229, 197), 22: (282, 219), 23: (334, 250),
+                 24: (434, 290), 25: (440, 321), 26: (496, 374), 27: (549, 387), 28: (602, 384),
+                 29: (659, 384), 30: (711, 375), 31: (799, 126), 32: (799, 170), 33: (799, 214),
+                 34: (799, 259), 35: (799, 304)}
+    spaces_b3 = {31: (53, 113), 32: (53, 155), 33: (53, 199), 34: (53, 244), 35: (53, 290),
+                 36: (134, 333), 37: (180, 324), 38: (229, 325), 39: (287, 310), 40: (335, 304),
+                 41: (381, 286), 42: (440, 250), 43: (484, 226), 44: (533, 213), 45: (577, 191),
+                 46: (625, 161), 47: (666, 127), 48: (716, 121), 49: (795, 343), 50: (795, 299),
+                 51: (795, 253), 52: (795, 210), 53: (795, 167)}
+
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
         player_list.reverse()
         for player in player_list:
             if board_number == 1:
-                if player.board_space == -3:
-                    screen.blit(player.icon, (80, 385))
-                if player.board_space == -2:
-                    screen.blit(player.icon, (80, 336))
-                if player.board_space == -1:
-                    screen.blit(player.icon, (80, 283))
-                if player.board_space == 1:
-                    screen.blit(player.icon, (149, 215))
-                if player.board_space == 2:
-                    screen.blit(player.icon, (195, 213))
-                if player.board_space == 3:
-                    screen.blit(player.icon, (245, 191))
-                if player.board_space == 4:
-                    screen.blit(player.icon, (299, 192))
-                if player.board_space == 5:
-                    screen.blit(player.icon, (360, 218))
-                if player.board_space == 6:
-                    screen.blit(player.icon, (413, 242))
-                if player.board_space == 7:
-                    screen.blit(player.icon, (466, 269))
-                if player.board_space == 8:
-                    screen.blit(player.icon, (512, 309))
-                if player.board_space == 9:
-                    screen.blit(player.icon, (570, 306))
-                if player.board_space == 10:
-                    screen.blit(player.icon, (625, 273))
-                if player.board_space == 11:
-                    screen.blit(player.icon, (664, 237))
-                if player.board_space == 12:
-                    screen.blit(player.icon, (712, 169))
-                if player.board_space == 13:
-                    screen.blit(player.icon, (737, 125))
-                if player.board_space == 14:
-                    screen.blit(player.icon, (801, 376))
-                if player.board_space == 15:
-                    screen.blit(player.icon, (801, 327))
-                if player.board_space == 16:
-                    screen.blit(player.icon, (801, 277))
-                if player.board_space == 17:
-                    screen.blit(player.icon, (801, 227))
-                if player.board_space == 18:
-                    screen.blit(player.icon, (801, 176))
+                loc = spaces_b1.get(player.board_space)
             elif board_number == 2:
-                if player.board_space == 14:
-                    screen.blit(player.icon, (48, 350))
-                if player.board_space == 15:
-                    screen.blit(player.icon, (48, 309))
-                if player.board_space == 16:
-                    screen.blit(player.icon, (48, 261))
-                if player.board_space == 17:
-                    screen.blit(player.icon, (48, 217))
-                if player.board_space == 18:
-                    screen.blit(player.icon, (48, 170))
-                if player.board_space == 19:
-                    screen.blit(player.icon, (132, 141))
-                if player.board_space == 20:
-                    screen.blit(player.icon, (180, 162))
-                if player.board_space == 21:
-                    screen.blit(player.icon, (229, 197))
-                if player.board_space == 22:
-                    screen.blit(player.icon, (282, 219))
-                if player.board_space == 23:
-                    screen.blit(player.icon, (334, 250))
-                if player.board_space == 24:
-                    screen.blit(player.icon, (434, 290))
-                if player.board_space == 25:
-                    screen.blit(player.icon, (440, 321))
-                if player.board_space == 26:
-                    screen.blit(player.icon, (496, 374))
-                if player.board_space == 27:
-                    screen.blit(player.icon, (549, 387))
-                if player.board_space == 28:
-                    screen.blit(player.icon, (602, 384))
-                if player.board_space == 29:
-                    screen.blit(player.icon, (659, 384))
-                if player.board_space == 30:
-                    screen.blit(player.icon, (711, 375))
-                if player.board_space == 31:
-                    screen.blit(player.icon, (799, 126))
-                if player.board_space == 32:
-                    screen.blit(player.icon, (799, 170))
-                if player.board_space == 33:
-                    screen.blit(player.icon, (799, 214))
-                if player.board_space == 34:
-                    screen.blit(player.icon, (799, 259))
-                if player.board_space == 35:
-                    screen.blit(player.icon, (799, 304))
+                loc = spaces_b2.get(player.board_space)
             elif board_number == 3:
-                if player.board_space == 31:
-                    screen.blit(player.icon, (53, 113))
-                if player.board_space == 32:
-                    screen.blit(player.icon, (53, 155))
-                if player.board_space == 33:
-                    screen.blit(player.icon, (53, 199))
-                if player.board_space == 34:
-                    screen.blit(player.icon, (53, 244))
-                if player.board_space == 35:
-                    screen.blit(player.icon, (53, 290))
-                if player.board_space == 36:
-                    screen.blit(player.icon, (134, 333))
-                if player.board_space == 37:
-                    screen.blit(player.icon, (180, 324))
-                if player.board_space == 38:
-                    screen.blit(player.icon, (229, 325))
-                if player.board_space == 39:
-                    screen.blit(player.icon, (287, 310))
-                if player.board_space == 40:
-                    screen.blit(player.icon, (335, 304))
-                if player.board_space == 41:
-                    screen.blit(player.icon, (381, 286))
-                if player.board_space == 42:
-                    screen.blit(player.icon, (440, 250))
-                if player.board_space == 43:
-                    screen.blit(player.icon, (484, 226))
-                if player.board_space == 44:
-                    screen.blit(player.icon, (533, 213))
-                if player.board_space == 45:
-                    screen.blit(player.icon, (577, 191))
-                if player.board_space == 46:
-                    screen.blit(player.icon, (625, 161))
-                if player.board_space == 47:
-                    screen.blit(player.icon, (666, 127))
-                if player.board_space == 48:
-                    screen.blit(player.icon, (716, 121))
-                if player.board_space == 49:
-                    screen.blit(player.icon, (795, 343))
-                if player.board_space == 50:
-                    screen.blit(player.icon, (795, 299))
-                if player.board_space == 51:
-                    screen.blit(player.icon, (795, 253))
-                if player.board_space == 52:
-                    screen.blit(player.icon, (795, 210))
-                if player.board_space == 53:
-                    screen.blit(player.icon, (795, 167))
-            # if board_number == 4:
-
+                loc = spaces_b3.get(player.board_space)
+            # elif board_number == 4:
+                # loc = spaces_b4.get(player.board_space)
+            screen.blit(player.icon, loc)
         player_list.reverse()
-        # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
-
 
     # Main Game Loop
     def main_screen(board_number):
