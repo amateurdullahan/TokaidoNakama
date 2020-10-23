@@ -2,6 +2,7 @@
 Portfolio Project for Holberton School TUL-11, gameplay aid for board game Tokaido
 
 HOW TO USE:
+
 0. Set up, physically or digitally, the board for Tokaido
 1. Run the executable file screen.py
 2. On the starting screen select 3 players, in turn order. Currently the application can only handle 3 player games
