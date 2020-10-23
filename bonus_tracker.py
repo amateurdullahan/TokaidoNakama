@@ -120,21 +120,21 @@ class Achievements():
 def pano_paddy_check(current_player):
     if Achievements().pano_paddy_bonus == "":
         if current_player.pano_paddy == 3:
-            pano_paddy_bonus = current_player
+            Achievements().pano_paddy_bonus = current_player
             current_player.score += 3
     return(current_player)
 
 def pano_mt_check(current_player):
-    if pano_mt_bonus == "":
+    if Achievements().pano_mt_bonus == "":
         if current_player.pano_mt == 4:
-            pano_mt_bonus = current_player
+            Achievements().pano_mt_bonus = current_player
             current_player.score += 3
     return(current_player)
 
 def pano_sea_check(current_player):
-    if pano_sea_bonus == "":
+    if Achievements().pano_sea_bonus == "":
         if current_player.pano_sea == 5:
-            pano_sea_bonus = current_player
+            Achievements().pano_sea_bonus = current_player
             current_player.score += 3
     return(current_player)
 
