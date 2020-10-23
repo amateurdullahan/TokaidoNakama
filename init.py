@@ -201,4 +201,7 @@ GreyDeck = Deck(0, GreyList)
 GreyPlayer = Player("Grey", GreyDeck)
 
 player_list = []    # active players global list
+board_1_list = [] # order players finish board
+board_2_list = []
+board_3_list = []
 current_player = None # initialize global current player tracker

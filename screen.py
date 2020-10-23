@@ -3,7 +3,7 @@
 import pygame
 import pygame_menu
 from player import Player
-from init import current_player, HSDeck, MDeck, SVDeck, ENCDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer
+from init import current_player, HSDeck, MDeck, SVDeck, ENCDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer, board_1_list, board_2_list, board_3_list
 from location import *
 from buttons import Button
 from deck import Deck
@@ -118,6 +118,8 @@ if __name__ == '__main__':
         elif board_position in [14, 15, 16, 17, 18, 31, 32, 33, 34, 35, 49, 50, 51, 52, 53, 66, 67, 68, 69, 70]:
             # Code for Inn
             print("Inn stuff")
+            inn_menu(screen)
+            update_current_player
 
     # def player_info(playercount, list of colors):
     # Generates player's info displays, depending on number of players & assigns colors
@@ -330,102 +332,40 @@ if __name__ == '__main__':
     yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
     purple_button = start_menu.add_button('Purple', player_add, 'Purple')
 
+    # Player space dictionaries, by board number, so inn spaces are blitted(sp?) correctly
+    spaces_b1 = {-3: (80, 385), -2: (80, 336), -1: (80, 283), 1: (149, 215), 2: (195, 213),
+                 3: (245, 191), 4: (299, 192), 5: (360, 218), 6: (413, 242), 7: (466, 269),
+                 8: (512, 309), 9: (570, 306), 10: (625, 273), 11: (664, 237), 12: (712, 169),
+                 13: (737, 125), 14: (801, 376), 15: (801, 327), 16: (801, 277), 17: (801, 227),
+                 18: (801, 176)}
+    spaces_b2 = {14: (48, 350), 15: (48, 309), 16: (48, 261), 17: (48, 217), 18: (48, 170),
+                 19: (132, 141), 20: (180, 162), 21: (229, 197), 22: (282, 219), 23: (334, 250),
+                 24: (434, 290), 25: (440, 321), 26: (496, 374), 27: (549, 387), 28: (602, 384),
+                 29: (659, 384), 30: (711, 375), 31: (799, 126), 32: (799, 170), 33: (799, 214),
+                 34: (799, 259), 35: (799, 304)}
+    spaces_b3 = {31: (53, 113), 32: (53, 155), 33: (53, 199), 34: (53, 244), 35: (53, 290),
+                 36: (134, 333), 37: (180, 324), 38: (229, 325), 39: (287, 310), 40: (335, 304),
+                 41: (381, 286), 42: (440, 250), 43: (484, 226), 44: (533, 213), 45: (577, 191),
+                 46: (625, 161), 47: (666, 127), 48: (716, 121), 49: (795, 343), 50: (795, 299),
+                 51: (795, 253), 52: (795, 210), 53: (795, 167)}
+
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
         player_list.reverse()
         for player in player_list:
+            print("Board Number:", board_number)
+            print("Board Space:", player.board_space)
             if board_number == 1:
-                if player.board_space == -3:
-                    screen.blit(player.icon, (80, 385))
-                if player.board_space == -2:
-                    screen.blit(player.icon, (80, 336))
-                if player.board_space == -1:
-                    screen.blit(player.icon, (80, 283))
-                if player.board_space == 1:
-                    screen.blit(player.icon, (149, 215))
-                if player.board_space == 2:
-                    screen.blit(player.icon, (195, 213))
-                if player.board_space == 3:
-                    screen.blit(player.icon, (245, 191))
-                if player.board_space == 4:
-                    screen.blit(player.icon, (299, 192))
-                if player.board_space == 5:
-                    screen.blit(player.icon, (360, 218))
-                if player.board_space == 6:
-                    screen.blit(player.icon, (413, 242))
-                if player.board_space == 7:
-                    screen.blit(player.icon, (466, 269))
-                if player.board_space == 8:
-                    screen.blit(player.icon, (512, 309))
-                if player.board_space == 9:
-                    screen.blit(player.icon, (570, 306))
-                if player.board_space == 10:
-                    screen.blit(player.icon, (625, 273))
-                if player.board_space == 11:
-                    screen.blit(player.icon, (664, 237))
-                if player.board_space == 12:
-                    screen.blit(player.icon, (712, 169))
-                if player.board_space == 13:
-                    screen.blit(player.icon, (737, 125))
-                if player.board_space == 14:
-                    screen.blit(player.icon, (801, 376))
-                if player.board_space == 15:
-                    screen.blit(player.icon, (801, 327))
-                if player.board_space == 16:
-                    screen.blit(player.icon, (801, 277))
-                if player.board_space == 17:
-                    screen.blit(player.icon, (801, 227))
-                if player.board_space == 18:
-                    screen.blit(player.icon, (801, 176))
+                loc = spaces_b1.get(player.board_space)
             elif board_number == 2:
-                if player.board_space == 14:
-                    screen.blit(player.icon, (48, 350))
-                if player.board_space == 15:
-                    screen.blit(player.icon, (48, 309))
-                if player.board_space == 16:
-                    screen.blit(player.icon, (48, 261))
-                if player.board_space == 17:
-                    screen.blit(player.icon, (48, 217))
-                if player.board_space == 18:
-                    screen.blit(player.icon, (48, 170))
-                if player.board_space == 19:
-                    screen.blit(player.icon, (132, 141))
-                if player.board_space == 20:
-                    screen.blit(player.icon, (180, 162))
-                if player.board_space == 21:
-                    screen.blit(player.icon, (229, 197))
-                if player.board_space == 22:
-                    screen.blit(player.icon, (282, 219))
-                if player.board_space == 23:
-                    screen.blit(player.icon, (334, 250))
-                if player.board_space == 24:
-                    screen.blit(player.icon, (434, 290))
-                if player.board_space == 25:
-                    screen.blit(player.icon, (440, 321))
-                if player.board_space == 26:
-                    screen.blit(player.icon, (496, 374))
-                if player.board_space == 27:
-                    screen.blit(player.icon, (549, 387))
-                if player.board_space == 28:
-                    screen.blit(player.icon, (602, 384))
-                if player.board_space == 29:
-                    screen.blit(player.icon, (659, 384))
-                if player.board_space == 30:
-                    screen.blit(player.icon, (711, 375))
-                if player.board_space == 31:
-                    screen.blit(player.icon, (799, 126))
-                if player.board_space == 32:
-                    screen.blit(player.icon, (799, 170))
-                if player.board_space == 33:
-                    screen.blit(player.icon, (799, 214))
-                if player.board_space == 34:
-                    screen.blit(player.icon, (799, 259))
-                if player.board_space == 35:
-                    screen.blit(player.icon, (799, 304))
-
+                loc = spaces_b2.get(player.board_space)
+            elif board_number == 3:
+                loc = spaces_b3.get(player.board_space)
+            # elif board_number == 4:
+                # loc = spaces_b4.get(player.board_space)
+            print("Line 364:", loc)
+            screen.blit(player.icon, loc)
         player_list.reverse()
-        # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
-
 
     # Main Game Loop
     def main_screen(board_number):
@@ -480,16 +420,37 @@ if __name__ == '__main__':
             for player, position in zip(player_list, start_list):
                 player.board_space = position
                 print(player.board_space)
-        # Rect(left, top, width, height)
-        # if board_number == 2:
-            #rect19 = pygame.Rect(, , ,)
-            #rect19_1 = pygame.Rect(, , ,)
-            #rect20 = pygame.Rect()
-            #rect20_1 = pygame.Rect()
-            #rect21 = pygame.Rect()
+        if board_number == 2:
+            rect19 = pygame.Rect(140, 186, 17, 107)
+            rect19_1 = pygame.Rect(113, 226, 70, 68)
+            rect20 = pygame.Rect(187, 108, 18, 112)
+            rect20_1 = pygame.Rect(160, 111, 73, 68)
+            rect21 = pygame.Rect(237, 240, 18, 171)
+            rect21_1 = pygame.Rect(211, 337, 75, 71)
+            rect22 = pygame.Rect(290, 106, 18, 172)
+            rect22_1 = pygame.Rect(262, 106, 71, 71)
+            rect23 = pygame.Rect(343, 295, 17, 169)
+            rect23_1 = pygame.Rect(314, 393, 75, 71)
+            rect24 = pygame.Rect(408, 177, 17, 171)
+            rect24_1 = pygame.Rect(379, 175, 73, 74)
+            rect25 = pygame.Rect(448, 365, 18, 101)
+            rect25_1 = pygame.Rect(418, 407, 73, 70)
+            rect26 = pygame.Rect(505, 258, 16, 172)
+            rect26_1 = pygame.Rect(476, 258, 73, 72)
+            rect27 = pygame.Rect(558, 430, 17, 115)
+            rect27_1 = pygame.Rect(527, 471, 78, 72)
+            rect28 = pygame.Rect(609, 273, 18, 169)
+            rect28_1 = pygame.Rect(576, 273, 79, 73)
+            rect29 = pygame.Rect(668, 427, 18, 111)
+            rect29_1 = pygame.Rect(639, 469, 77, 70)
+            rect30 = pygame.Rect(719, 320, 18, 113)
+            rect30_1 = pygame.Rect(688, 320, 75, 71)
+            rect31 = pygame.Rect(795, 148, 40, 332)
+            rect31_1 = pygame.Rect(769, 367, 95, 69)
         # if board_number == 3:
 
         # if board_number == 4:
+
 
         print(current_player.color)
         running = True  # Main Loop Flag
@@ -598,9 +559,21 @@ if __name__ == '__main__':
                             if rect14.collidepoint(event.pos) or rect14_1.collidepoint(event.pos):
                                 if current_player.board_space < 14:
                                     print('We\'re INN IT NOW BOYS')
-                                    # append to player list (which will be cleared as player pieces are set)
-                                    # if all players on inn:
-                                    # food menu.
+                                    encounter_selection(14)
+                                    if board_number == 1:
+                                        if len(board_1_list) == 0:
+                                            current_player.board_space = 18
+                                            board_1_list.append(current_player)
+                                        elif len(board_1_list) == 1:
+                                            current_player.board_space = 17
+                                            board_1_list.append(current_player)
+                                        elif len(board_1_list) == 2:
+                                            current_player.board_space = 16
+                                            board_1_list.append(current_player)
+                                            board_number = 2
+                                    update_current_player()
+                                    screen_update = 1
+
                         # if board_number == 2:
                             # if
                         # if board_number == 3:
@@ -851,7 +824,7 @@ if __name__ == '__main__':
             but_sashimi.add_text('Sashimi')
             but_udon.add_text('Udon')
             but_unagi.add_text('Ungai')
-            but_taimeshi.add_test('Tai Meshi')
+            but_taimeshi.add_text('Tai Meshi')
 
             events = pygame.event.get()
             for event in events:

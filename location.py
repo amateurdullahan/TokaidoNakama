@@ -60,12 +60,15 @@ def Temple_Loc(player, num):
     """temple location function"""
     player.coins -= num
     player.score += num
+    player.donation += num
     player = temple_bonus_check(player)
     return (player)
 
 def Village_Loc(player, cardname):
     """Village location function TBW"""
+    print("Card name:", cardname)
     for a in range(len(SVDeck.card_list)):
+        print("Card checked in loop:", SVDeck.card_list[a].name)
         if SVDeck.card_list[a].name == cardname:
             bought = SVDeck.card_list[a]
             break
@@ -105,6 +108,7 @@ def Hot_Spring_Loc(player, pts):
                 player.playerdeck.add(HSDeck.card_list.pop(a))
                 player.score += 2
                 HSDeck.number_of_cards -= 1
+                player = bather_bonus_check(player)
                 return (player)
             a += 1
     elif pts == 3:
@@ -114,17 +118,23 @@ def Hot_Spring_Loc(player, pts):
                 player.playerdeck.add(HSDeck.card_list.pop(a))
                 player.score += 3
                 HSDeck.number_of_cards -= 1
+                player = bather_bonus_check(player)
                 return (player)
             a += 1
 
 def Inn_Loc(player, cardname):
     """inn location function TBW"""
+    print("Enter Inn_Loc function")
     for a in range(len(MDeck.card_list)):
+        print("Card Name:", cardname)
+        print("Card Checked:", MDeck.card_list[a].name)
         if MDeck.card_list[a].name == cardname:
             meal = MDeck.card_list[a]
             break
             a += 1
+    print("Player, meal:", player, meal)
     MoveCard(player, MDeck, meal)
+    player = gourmet_bonus_check(player)
     return (player)
 
 def Encounter_Loc(player, cardname):
