@@ -480,16 +480,37 @@ if __name__ == '__main__':
             for player, position in zip(player_list, start_list):
                 player.board_space = position
                 print(player.board_space)
-        # Rect(left, top, width, height)
-        # if board_number == 2:
-            #rect19 = pygame.Rect(, , ,)
-            #rect19_1 = pygame.Rect(, , ,)
-            #rect20 = pygame.Rect()
-            #rect20_1 = pygame.Rect()
-            #rect21 = pygame.Rect()
+        if board_number == 2:
+            rect19 = pygame.Rect(140, 186, 17, 107)
+            rect19_1 = pygame.Rect(113, 226, 70, 68)
+            rect20 = pygame.Rect(187, 108, 18, 112)
+            rect20_1 = pygame.Rect(160, 111, 73, 68)
+            rect21 = pygame.Rect(237, 240, 18, 171)
+            rect21_1 = pygame.Rect(211, 337, 75, 71)
+            rect22 = pygame.Rect(290, 106, 18, 172)
+            rect22_1 = pygame.Rect(262, 106, 71, 71)
+            rect23 = pygame.Rect(343, 295, 17, 169)
+            rect23_1 = pygame.Rect(314, 393, 75, 71)
+            rect24 = pygame.Rect(408, 177, 17, 171)
+            rect24_1 = pygame.Rect(379, 175, 73, 74)
+            rect25 = pygame.Rect(448, 365, 18, 101)
+            rect25_1 = pygame.Rect(418, 407, 73, 70)
+            rect26 = pygame.Rect(505, 258, 16, 172)
+            rect26_1 = pygame.Rect(476, 258, 73, 72)
+            rect27 = pygame.Rect(558, 430, 17, 115)
+            rect27_1 = pygame.Rect(527, 471, 78, 72)
+            rect28 = pygame.Rect(609, 273, 18, 169)
+            rect28_1 = pygame.Rect(576, 273, 79, 73)
+            rect29 = pygame.Rect(668, 427, 18, 111)
+            rect29_1 = pygame.Rect(639, 469, 77, 70)
+            rect30 = pygame.Rect(719, 320, 18, 113)
+            rect30_1 = pygame.Rect(688, 320, 75, 71)
+            rect31 = pygame.Rect(795, 148, 40, 332)
+            rect31_1 = pygame.Rect(769, 367, 95, 69)
         # if board_number == 3:
 
         # if board_number == 4:
+
 
         print(current_player.color)
         running = True  # Main Loop Flag
