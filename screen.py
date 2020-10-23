@@ -149,8 +149,8 @@ if __name__ == '__main__':
             # if key == current_player.color:
                 # rgb = colors_rgb.get(key)
         # Create title font, first param is font file in pygame, second is size
-        font_title = pygame.font.Font('freesansbold.ttf', 50)   
-        # Create a string from current player's color     
+        font_title = pygame.font.Font('freesansbold.ttf', 50)
+        # Create a string from current player's color
         text_current_player = current_player.color + '\'s Turn'
         # Create a text surface object, on which text is drawn on.
         text_title = font_title.render(text_current_player, True, rgb)
@@ -221,7 +221,21 @@ if __name__ == '__main__':
         btn_entp_6.add_text("Annaibito: Mountain " + str(entp_text[5]) + "%", 16)
         btn_entp_7 = Button(350, 730, 50, 20, screen, black)
         btn_entp_7.add_text("Annaibito: Sea" + str(entp_text[6]) + "%", 16)
-
+        # player 1 score display
+        btn_player_1_title = Button(725, 585, 50, 25, screen, black)
+        btn_player_1_title.add_text(str(player_list[0].color))
+        btn_player_1_score = Button(750, 625, 50, 25, screen, black)
+        btn_player_1_score.add_text(str(player_list[0].score), 18)
+        # player 2 score display
+        btn_player_2_title = Button(725, 650, 50, 25, screen, black)
+        btn_player_2_title.add_text(str(player_list[1].color))
+        btn_player_2_score = Button(750, 690, 50, 25, screen, black)
+        btn_player_2_score.add_text(str(player_list[1].score), 18)
+        # player 3 score display
+        btn_player_3_title = Button(725, 715, 50, 25, screen, black)
+        btn_player_3_title.add_text(str(player_list[2].color))
+        btn_player_3_score = Button(750, 755, 50, 25, screen, black)
+        btn_player_3_score.add_text(str(player_list[2].score), 18)
 
     # Creates list in order of players, at limit goes into main screen
     def player_add(player_color):   # button fun
@@ -587,7 +601,7 @@ if __name__ == '__main__':
                                     # if all players on inn:
                                     # food menu.
                         # if board_number == 2:
-                            # if 
+                            # if
                         # if board_number == 3:
                             # if
                         # if board_number == 4:
