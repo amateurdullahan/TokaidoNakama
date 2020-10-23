@@ -63,11 +63,11 @@ if __name__ == '__main__':
         # section for generating landing spots based off board
         # Blit board, while scaling it to uniform size
         if current_board == 1:
-            current_board = pygame.transform.scale(board_one, (850, 500))
+            current_board = pygame.transform.scale(board_three, (850, 500))
         if current_board == 2:
             current_board = pygame.transform.scale(board_two, (850, 500))
         if current_board == 3:
-            current_board = pygame.transform.scale(board_three, (850, 500))
+            current_board = pygame.transform.scale(board_one, (850, 500))
         if current_board == 4:
             current_board = pygame.transform.scale(board_four, (850, 500))
         screen.blit(current_board, (x_board, y_board))
@@ -422,7 +422,21 @@ if __name__ == '__main__':
                     screen.blit(player.icon, (799, 259))
                 if player.board_space == 35:
                     screen.blit(player.icon, (799, 304))
-
+            elif board_number == 3:
+                if player.board_space == 31:
+                    screen.blit(player.icon, (53, 113))
+                if player.board_space == 32:
+                    screen.blit(player.icon, (53, 155))
+                if player.board_space == 33:
+                    screen.blit(player.icon, (53, 199))
+                if player.board_space == 34:
+                    screen.blit(player.icon, (53, 244))
+                if player.board_space == 35:
+                    screen.blit(player.icon, (53, 290))
+                if player.board_space == 36:
+                    screen.blit(player.icon, (134, 333))
+                if player.board_space == 37:
+                    screen.blit(player.icon, ())
         player_list.reverse()
         # for cleanup, maybe make dictionary with board_space(key) and associated coords(value)
 
