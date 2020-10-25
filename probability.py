@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""all the probability funstuff"""
+"""all the probability functions"""
 from deck import Deck, Card
 
 
 def CostProb(Deck):
-    """Determine Cost Probability"""
+    """Determine Cost probability"""
     cost1sum = 0
     cost2sum = 0
     cost3sum = 0
@@ -28,7 +28,7 @@ def CostProb(Deck):
     return(cost_list)
 
 def PointProb(Deck):
-    """Determine point prob"""
+    """Determine Point probability"""
     point2sum = 0
     point3sum = 0
     point_list = []
@@ -48,7 +48,7 @@ def PointProb(Deck):
 
 
 def SubTypeProb(Deck):
-    """determine subtype prob"""
+    """Determine Subtype probability"""
     small_item_sum = 0
     food_drink_sum = 0
     clothing_sum = 0
@@ -76,7 +76,7 @@ def SubTypeProb(Deck):
     return(type_list)
 
 def EncTypeProb(Deck):
-    """encounter type probability"""
+    """Determine Encounter Type probability"""
     kuge_sum = 0
     miko_sum = 0
     samurai_sum = 0

@@ -3,7 +3,7 @@
 from deck import Card, Deck, HotSpring, Encounter, Meal, Souvenir
 from player import Player
 
-"""set up board"""
+
 HS1 = HotSpring("Hot Spring", 2, "Hot Spring")
 HS2 = HotSpring("Hot Spring", 2, "Hot Spring")
 HS3 = HotSpring("Hot Spring", 2, "Hot Spring")
@@ -31,6 +31,7 @@ HSDeck.add(HS9)
 HSDeck.add(HS10)
 HSDeck.add(HS11)
 HSDeck.add(HS12)
+
 
 ENC1 = Encounter("Encounter", 0, "Kuge")
 ENC2 = Encounter("Encounter", 0, "Kuge")
@@ -64,7 +65,6 @@ ENCDeck.add(ENC12)
 ENCDeck.add(ENC13)
 ENCDeck.add(ENC14)
 
-"""ENCDeck.print_list()"""
 
 M1 = Meal("Meal", 6, "Misoshiru", 1)
 M2 = Meal("Meal", 6, "Misoshiru", 1)
@@ -120,7 +120,6 @@ MDeck.add(M23)
 MDeck.add(M24)
 MDeck.add(M25)
 
-"""MDeck.print_list()"""
 
 SV1 = Souvenir("Souvenir", 1, "Gofu", "Small Item", 1)
 SV2 = Souvenir("Souvenir", 1, "Koma", "Small Item", 1)
@@ -174,12 +173,11 @@ SVDeck.add(SV22)
 SVDeck.add(SV23)
 SVDeck.add(SV24)
 
-"""SVDeck.print_list()"""
 
 Dlist = []
 DiscardDeck = Deck(0, Dlist)
 
-"""Player initializing"""
+"""Player initialization"""
 GreenList = []
 GreenDeck = Deck(0, GreenList)
 GreenPlayer = Player("Green", GreenDeck)

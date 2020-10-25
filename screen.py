@@ -625,8 +625,6 @@ if __name__ == '__main__':
             but_1.add_text('Hot Spring Value:')
             but_2.add_text('2 Points')
             but_3.add_text('3 Points')
-            #but_2.draw(black)
-            #but_3.draw(black)
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
@@ -653,8 +651,6 @@ if __name__ == '__main__':
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
             but_1.add_text('Farm: Collect 3 Coins')
             but_2.add_text('Okay')
-            #but_2.draw(black)
-            #but_3.draw(black)
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
@@ -677,8 +673,6 @@ if __name__ == '__main__':
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
             but_1.add_text('Panorama: Paddy')
             but_2.add_text('Okay')
-            #but_2.draw(black)
-            #but_3.draw(black)
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
@@ -701,8 +695,6 @@ if __name__ == '__main__':
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
             but_1.add_text('Panorama: Mountain')
             but_2.add_text('Okay')
-            #but_2.draw(black)
-            #but_3.draw(black)
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
@@ -725,8 +717,6 @@ if __name__ == '__main__':
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
             but_1.add_text('Panorama: Sea')
             but_2.add_text('Okay')
-            #but_2.draw(black)
-            #but_3.draw(black)
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
@@ -1102,8 +1092,6 @@ if __name__ == '__main__':
             but_2.add_text('One Coin')
             but_3.add_text('Two Coins')
             but_4.add_text('Three Coins')
-            #but_2.draw(black)
-            #but_3.draw(black)
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:

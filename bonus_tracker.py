@@ -120,6 +120,7 @@ class Achievements():
 achievements = Achievements()
 
 def pano_paddy_check(current_player):
+    """checks for the Paddy Panorama Achievment"""
     if achievements.pano_paddy_bonus == "":
         if current_player.pano_paddy == 3:
             achievements.pano_paddy_bonus = current_player
@@ -127,6 +128,7 @@ def pano_paddy_check(current_player):
     return(current_player)
 
 def pano_mt_check(current_player):
+    """checks for the Mountain Panorama Achievment"""
     if achievements.pano_mt_bonus == "":
         if current_player.pano_mt == 4:
             achievements.pano_mt_bonus = current_player
@@ -134,6 +136,7 @@ def pano_mt_check(current_player):
     return(current_player)
 
 def pano_sea_check(current_player):
+    """checks for the Sea Panorama Achievment"""
     if achievements.pano_sea_bonus == "":
         if current_player.pano_sea == 5:
             achievements.pano_sea_bonus = current_player
@@ -141,6 +144,7 @@ def pano_sea_check(current_player):
     return(current_player)
 
 def bather_bonus_check(current_player):
+    """Checks for the Bather Achivement"""
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
         print("Card checked in loop", current_player.playerdeck.card_list[a].type)
@@ -177,6 +181,7 @@ def bather_bonus_check(current_player):
     return(current_player)
 
 def chatterbox_bonus_check(current_player):
+    """Checks for the Chatterbox Achievment"""
     count = 0
     print("Chatterbox check ():", Achievements.chatterbox_count, achievements.chatterbox_count)
     for a in range(len(current_player.playerdeck.card_list)):
@@ -204,6 +209,7 @@ def chatterbox_bonus_check(current_player):
     return(current_player)
 
 def collector_bonus_check(current_player):
+    """Checks for the Collecter Achivement"""
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type == "Souvenir":
@@ -230,6 +236,7 @@ def collector_bonus_check(current_player):
     return(current_player)
 
 def gourmet_bonus_check(current_player):
+    """Checks for the Gourmet Achievment"""
     count = 0
     for a in range(len(current_player.playerdeck.card_list)):
         if current_player.playerdeck.card_list[a].type == "Meal":
@@ -256,6 +263,7 @@ def gourmet_bonus_check(current_player):
     return(current_player)
 
 def temple_bonus_check(current_player):
+    """Sets the Temple Bonus points"""
     print("temple bonus check")
     print("donation:", current_player.donation)
     print("first:", achievements.temple_bonus_first)

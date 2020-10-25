@@ -64,7 +64,7 @@ def Temple_Loc(player, num):
     return (player)
 
 def Village_Loc(player, cardname):
-    """Village location function TBW"""
+    """Village location function"""
     print("Card name:", cardname)
     for a in range(len(SVDeck.card_list)):
         print("Card checked in loop:", SVDeck.card_list[a].name)
@@ -98,7 +98,7 @@ def Village_Loc(player, cardname):
     return (player)
 
 def Hot_Spring_Loc(player, pts):
-    """hot spring location function TBW"""
+    """hot spring location function"""
     if pts == 2:
         print("2 points clicked")
         for a in range(len(HSDeck.card_list)):
@@ -122,8 +122,7 @@ def Hot_Spring_Loc(player, pts):
             a += 1
 
 def Inn_Loc(player, cardname):
-    """inn location function TBW"""
-    print("Enter Inn_Loc function")
+    """inn location function"""
     for a in range(len(MDeck.card_list)):
         print("Card Name:", cardname)
         print("Card Checked:", MDeck.card_list[a].name)
@@ -137,7 +136,7 @@ def Inn_Loc(player, cardname):
     return (player)
 
 def Encounter_Loc(player, cardname):
-    """encounter location function TBW"""
+    """encounter location function"""
     for a in range(len(ENCDeck.card_list)):
         if ENCDeck.card_list[a].name == cardname:
             encounter = ENCDeck.card_list[a]

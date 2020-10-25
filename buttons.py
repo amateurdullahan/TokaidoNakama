@@ -3,7 +3,7 @@
 import pygame
 
 class Button(pygame.Rect):
-    """docstring for button"""
+    """Button Class for menu buttons"""
     __screen = None
 
     def __init__(self, left=0, top=0, width=0, height=0, screen=None, color=(255, 0, 0), rectColor=(255, 150, 0)):
@@ -18,13 +18,6 @@ class Button(pygame.Rect):
             self.screen = Button.__screen
         self.color = color
         self.rectColor = rectColor
-
-    def draw(self, color=None):
-        if color is None:
-            btn = self.rectColor
-        else:
-            btn = color
-        pygame.draw.rect(self.screen, btn, self.rect, 0)
 
     def add_text(self, text, text_size=25, offset=0):
         self.font = pygame.font.SysFont('Arial', text_size)

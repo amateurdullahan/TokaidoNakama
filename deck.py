@@ -3,55 +3,58 @@
 
 class Card():
         def __init__(self, type="", point_value=0, name=""):
-            """initializing the cards"""
+            """initializing the Card obj"""
             self.type = type
             self.point_value = point_value
             self.name = name
 
         @property
         def type(self):
-            """comment"""
+            """getter for type"""
             return self.__type
 
         @type.setter
         def type(self, string):
-            """comment"""
+            """setter for type"""
             self.__type = string
 
         @property
         def point_value(self):
-            """comment"""
+            """getter for point_value"""
             return self.__point_value
 
         @point_value.setter
         def point_value(self, value):
-            """comment"""
+            """setter for point_value"""
             self.__point_value = value
 
         @property
         def name(self):
-            """comment"""
+            """getter for name"""
             return self.__name
 
 
         @name.setter
         def name(self, string):
-            """comment"""
+            """setter for name"""
             self.__name = string
 
         def __str__(self):
-            """string rep"""
+            """string rep of Card obj"""
             return "[{:s}] points = {:d}, name = {:s}".format(self.type, self.point_value, self.name)
 
 class HotSpring(Card):
+    """HotSpring Card Class"""
         def __init__(self, type="", point_value=0, name=""):
             super().__init__(type, point_value, name)
 
 class Encounter(Card):
+    """Encounter Card Class"""
         def __init__(self, type="", point_value=0, name=""):
             super().__init__(type, point_value, name)
 
 class Meal(Card):
+    """Meal Card Class, has additional attributes"""
         def __init__(self, type="", point_value=0, name="", cost=0):
             self.type = type
             self.point_value = point_value
@@ -60,50 +63,51 @@ class Meal(Card):
 
         @property
         def type(self):
-            """comment"""
+            """getter for type"""
             return self.__type
 
         @type.setter
         def type(self, string):
-            """comment"""
+            """setter for type"""
             self.__type = string
 
         @property
         def point_value(self):
-            """comment"""
+            """getter for point_value"""
             return self.__point_value
 
         @point_value.setter
         def point_value(self, value):
-            """comment"""
+            """setter for point_value"""
             self.__point_value = value
 
         @property
         def name(self):
-            """comment"""
+            """getter for name"""
             return self.__name
 
         @name.setter
         def name(self, string):
-            """comment"""
+            """setter for name"""
             self.__name = string
 
         @property
         def cost(self):
-            """comment"""
+            """getter for cost"""
             return self.__cost
 
         @cost.setter
         def cost(self, value):
-            """comment"""
+            """setter for cost"""
             self.__cost = value
 
         def __str__(self):
-            """string rep"""
+            """string rep for Meal obj"""
             return "[{:s}] points = {:d}, name = {:s}, cost = {:d}".format(self.type, self.point_value, self.name, self.cost)
 
 class Souvenir(Card):
         def __init__(self, type="", point_value=0, name="", subtype="", cost=0):
+            """initializing for Souvenir obj"""
             self.type = type
             self.point_value = point_value
             self.name = name
@@ -112,61 +116,62 @@ class Souvenir(Card):
 
         @property
         def type(self):
-            """comment"""
+            """getter for type"""
             return self.__type
 
         @type.setter
         def type(self, string):
-            """comment"""
+            """setter for type"""
             self.__type = string
 
         @property
         def point_value(self):
-            """comment"""
+            """getter for point_value"""
             return self.__point_value
 
         @point_value.setter
         def point_value(self, value):
-            """comment"""
+            """setter for point_value"""
             self.__point_value = value
 
         @property
         def name(self):
-            """comment"""
+            """getter for name"""
             return self.__name
 
 
         @name.setter
         def name(self, string):
-            """comment"""
+            """setter for name"""
             self.__name = string
 
         @property
         def subtype(self):
-            """comment"""
+            """getter for subtype"""
             return self.__subtype
 
         @subtype.setter
         def subtype(self, string):
+            """setter for subtype"""
             self.__subtype = string
 
         @property
         def cost(self):
-            """comment"""
+            """getter for cost"""
             return self.__cost
 
         @cost.setter
         def cost(self, value):
-            """comment"""
+            """setter for cost"""
             self.__cost = value
 
         def __str__(self):
-            """string rep"""
+            """string rep for Souvenir obj"""
             return "[{:s}] points = {:d}, name = {:s}, subtype = {:s}, cost = {:d}".format(self.type, self.point_value, self.name, self.subtype, self.cost)
 
 class Deck():
         def __init__(self, number_of_cards=0, card_list=[]):
-            """initializing a deck, board or player owned"""
+            """initializing Deck obj"""
             self.number_of_cards = number_of_cards
             self.card_list = card_list
 
@@ -177,6 +182,7 @@ class Deck():
 
 
         def print_list(self):
+            """test method for troubleshooting"""
             for a in range(len(self.card_list)):
                 print(self.card_list[a])
                 a += 1
