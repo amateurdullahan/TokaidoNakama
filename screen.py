@@ -451,7 +451,9 @@ if __name__ == '__main__':
 
         # if board_number == 4:
 
-
+        # For Cleanup:
+        # Function that takes in number and 4 coordinates,
+        # that makes rect with our naming convention
         print(current_player.color)
         running = True  # Main Loop Flag
         while running:
