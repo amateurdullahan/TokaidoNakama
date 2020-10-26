@@ -601,6 +601,7 @@ if __name__ == '__main__':
                                             current_player.board_space = 16
                                             board_1_list.append(current_player)
                                             update_current_player()
+                                            running = False
                                             main_screen(2)
                                     update_current_player()
                                     screen_update = 1
@@ -704,6 +705,7 @@ if __name__ == '__main__':
                                             current_player.board_space = 33
                                             board_1_list.append(current_player)
                                             update_current_player()
+                                            running = False
                                             main_screen(3)
                                     update_current_player()
                                     screen_update = 1
@@ -814,6 +816,7 @@ if __name__ == '__main__':
                                             current_player.board_space = 51
                                             board_1_list.append(current_player)
                                             update_current_player()
+                                            running = False
                                             main_screen(4)
                                     update_current_player()
                                     screen_update = 1
@@ -1367,4 +1370,4 @@ if __name__ == '__main__':
     # Run Sequence Below
     main_screen(0)
     # results screen()
-    quitter()
+    # quitter()
