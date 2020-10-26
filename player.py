@@ -3,7 +3,7 @@
 from deck import Deck
 
 class Player():
-        def __init__(self, color="", playerdeck=Deck(), score=0, coins=0, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0, icon=0, donation=0, temple_bonus=0, chatterbox_bonus=0, collector_bonus=0, gourmet_bonus=0):
+        def __init__(self, color="", playerdeck=Deck(), score=0, coins=7, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0, icon=0, donation=0, temple_bonus=0, chatterbox_bonus=0, collector_bonus=0, gourmet_bonus=0):
             """initializing the players"""
             self.playerdeck = playerdeck
             self.color = color

@@ -131,6 +131,8 @@ def Inn_Loc(player, cardname):
             break
             a += 1
     print("Player, meal:", player, meal)
+    player.score += 6
+    player.coins -= MDeck.card_list[a].cost
     MoveCard(player, MDeck, meal)
     # player = gourmet_bonus_check(player)
     return (player)
