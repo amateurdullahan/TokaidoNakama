@@ -33,6 +33,7 @@ if __name__ == '__main__':
     yelloworange = (243, 175, 1)
     grey = (145, 147, 156)
     purple = (98, 55, 114)
+    gold = (210, 132, 47)
 
     # Title and Icon
     pygame.display.set_caption("Tokaido Nakama")
@@ -132,19 +133,14 @@ if __name__ == '__main__':
                 current_player = player
         print("Current Player: {}", current_player.color)
 
+    # Player Colors & Associated RGB values
+    colors_rgb = {
+        "Green": (73, 114, 16), "Blue": (122, 165, 184), "Yellow": (243, 175, 1),
+        "Grey": (145, 147, 156), "Purple": (98, 55, 114)}
 
     # Font Section
     def title_selector(current_player):
         """Changes title for current player"""
-
-        # Player Colors & Associated RGB values
-        colors_rgb = {
-        "Green": (73, 114, 16),
-        "Blue": (122, 165, 184),
-        "Yellow": (243, 175, 1),
-        "Grey": (145, 147, 156),
-        "Purple": (98, 55, 114)
-        }
 
         # Retrieve current player's RGB value
         rgb = colors_rgb.get(current_player.color)
@@ -152,7 +148,7 @@ if __name__ == '__main__':
             # if key == current_player.color:
                 # rgb = colors_rgb.get(key)
         # Create title font, first param is font file in pygame, second is size
-        font_title = pygame.font.Font('freesansbold.ttf', 50)
+        font_title = pygame.font.SysFont('Arial', 50)
         # Create a string from current player's color
         text_current_player = current_player.color + '\'s Turn'
         # Create a text surface object, on which text is drawn on.
@@ -186,7 +182,7 @@ if __name__ == '__main__':
         btn_hsp_2.add_text("3 Points " + str(hsp_text[1]) + "%", 16)
         # Builds Souvenir Cost Display
         btn_svcp_title = Button(175, 585, 50, 25, screen, black)
-        btn_svcp_title.add_text("Souvneir Cost", 18)
+        btn_svcp_title.add_text("Souvenir Cost", 18)
         btn_svcp_1 = Button(175, 610, 50, 20, screen, black)
         svcp_text = CostProb(SVDeck)
         btn_svcp_1.add_text("1 Coin " + str(svcp_text[0]) + "%", 16)
@@ -196,7 +192,7 @@ if __name__ == '__main__':
         btn_svcp_3.add_text("3 Coin " + str(svcp_text[2]) + "%", 16)
         # Builds Souvenir Subtype Display
         btn_svsp_title = Button(175, 675, 50, 25, screen, black)
-        btn_svsp_title.add_text("Souvneir Type", 18)
+        btn_svsp_title.add_text("Souvenir5 Type", 18)
         btn_svsp_1 = Button(175, 700, 50, 20, screen, black)
         svsp_text = SubTypeProb(SVDeck)
         btn_svsp_1.add_text("Small Item " + str(svsp_text[0]) + "%", 16)
@@ -224,21 +220,86 @@ if __name__ == '__main__':
         btn_entp_6.add_text("Annaibito: Mountain " + str(entp_text[5]) + "%", 16)
         btn_entp_7 = Button(350, 730, 50, 20, screen, black)
         btn_entp_7.add_text("Annaibito: Sea" + str(entp_text[6]) + "%", 16)
+        # Retrieve current player's RGB value
+        rgb = colors_rgb.get(current_player.color)
+        # for key in colors_rgb:
+            # if key == current_player.color:
+                # rgb = colors_rgb.get(key)
+        # Create title font, first param is font file in pygame, second is size
+        font_title = pygame.font.SysFont('Arial', 50)
+        # Create a string from current player's color
+        text_current_player = current_player.color + '\'s Turn'
+        # Create a text surface object, on which text is drawn on.
+        text_title = font_title.render(text_current_player, True, rgb)
+        # Create a rectangular object for the text surface object
+        text_title_rect = text_title.get_rect()
+        # Set the center of the rectangular object
+        text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
+        screen.blit(text_title, text_title_rect)
         # player 1 score display
-        btn_player_1_title = Button(725, 585, 50, 25, screen, black)
-        btn_player_1_title.add_text(str(player_list[0].color))
-        btn_player_1_score = Button(750, 625, 50, 25, screen, black)
-        btn_player_1_score.add_text(str(player_list[0].score), 18)
-        # player 2 score display
-        btn_player_2_title = Button(725, 650, 50, 25, screen, black)
-        btn_player_2_title.add_text(str(player_list[1].color))
-        btn_player_2_score = Button(750, 690, 50, 25, screen, black)
-        btn_player_2_score.add_text(str(player_list[1].score), 18)
-        # player 3 score display
-        btn_player_3_title = Button(725, 715, 50, 25, screen, black)
-        btn_player_3_title.add_text(str(player_list[2].color))
-        btn_player_3_score = Button(750, 755, 50, 25, screen, black)
-        btn_player_3_score.add_text(str(player_list[2].score), 18)
+        p1_title = pygame.font.SysFont('Arial', 30)
+        p1_rgb = colors_rgb.get(player_list[0].color)
+        p1_color = str(player_list[0].color)
+        p1_text = p1_title.render(p1_color, True, p1_rgb)
+        p1_text_rect = p1_text.get_rect()
+        p1_text_rect.center = (DISPLAY_WIDTH * .745, DISPLAY_HEIGHT * .745)
+        screen.blit(p1_text, p1_text_rect)
+        p1_coin = pygame.image.load('media/coin_small.png')
+        p1_coin_rect = p1_coin.get_rect()
+        p1_coin_rect.center = (DISPLAY_WIDTH * .8, DISPLAY_HEIGHT * .787)
+        screen.blit(p1_coin, p1_coin_rect)
+        p1_coins_title = pygame.font.SysFont('Arial', 18)
+        p1_coins = p1_coins_title.render(str(player_list[0].coins), True, gold)
+        p1_coins_rect = p1_coins.get_rect()
+        p1_coins_rect = (DISPLAY_WIDTH * .774, DISPLAY_HEIGHT * .7735)
+        screen.blit(p1_coins, p1_coins_rect)
+        p1_score_title = pygame.font.SysFont('Arial', 30)
+        p1_score = p1_score_title.render(str(player_list[0].score), True, p1_rgb)
+        p1_score_rect = p1_score.get_rect()
+        p1_score_rect.center = (DISPLAY_WIDTH * .735, DISPLAY_HEIGHT * .785)
+        screen.blit(p1_score, p1_score_rect)
+        p2_title = pygame.font.SysFont('Arial', 30)
+        p2_rgb = colors_rgb.get(player_list[1].color)
+        p2_text = p2_title.render(player_list[1].color, True, p2_rgb)
+        p2_text_rect = p2_text.get_rect()
+        p2_text_rect.center = (DISPLAY_WIDTH * .9, DISPLAY_HEIGHT * .745)
+        screen.blit(p2_text, p2_text_rect)
+        p2_coin = pygame.image.load('media/coin_small.png')
+        p2_coin_rect = p2_coin.get_rect()
+        p2_coin_rect.center = (DISPLAY_WIDTH * .95, DISPLAY_HEIGHT * .787)
+        screen.blit(p2_coin, p2_coin_rect)
+        p2_coins_title = pygame.font.SysFont('Arial', 18)
+        p2_coins = p2_coins_title.render(str(player_list[1].coins), True, gold)
+        p2_coins_rect = p2_coins.get_rect()
+        p2_coins_rect = (DISPLAY_WIDTH * .925, DISPLAY_HEIGHT * .7735)
+        screen.blit(p2_coins, p2_coins_rect)
+        p2_score_title = pygame.font.SysFont('Arial', 30)
+        p2_score = p2_score_title.render(str(player_list[1].score), True, p2_rgb)
+        p2_score_rect = p2_score.get_rect()
+        p2_score_rect.center = (DISPLAY_WIDTH * .885, DISPLAY_HEIGHT * .785)
+        screen.blit(p2_score, p2_score_rect)
+        p3_title = pygame.font.SysFont('Arial', 30)
+        p3_rgb = colors_rgb.get(player_list[2].color)
+        p3_text = p3_title.render(player_list[2].color, True, p3_rgb)
+        p3_text_rect = p3_text.get_rect()
+        p3_text_rect.center = (DISPLAY_WIDTH * .745, DISPLAY_HEIGHT * .845)
+        screen.blit(p3_text, p3_text_rect)
+        p3_coin = pygame.image.load('media/coin_small.png')
+        p3_coin_rect = p3_coin.get_rect()
+        p3_coin_rect.center = (DISPLAY_WIDTH * .8, DISPLAY_HEIGHT * .885)
+        screen.blit(p3_coin, p3_coin_rect)
+        p3_coins_title = pygame.font.SysFont('Arial', 18)
+        p3_coins = p3_coins_title.render(str(player_list[2].coins), True, gold)
+        p3_coins_rect = p3_coins.get_rect()
+        p3_coins_rect = (DISPLAY_WIDTH * .774, DISPLAY_HEIGHT * .872)
+        screen.blit(p3_coins, p3_coins_rect)
+        p3_score_title = pygame.font.SysFont('Arial', 30)
+        p3_score = p3_score_title.render(str(player_list[2].score), True, p3_rgb)
+        p3_score_rect = p3_score.get_rect()
+        p3_score_rect.center = (DISPLAY_WIDTH * .735, DISPLAY_HEIGHT * .885)
+        screen.blit(p3_score, p3_score_rect)
+
+
 
     # Creates list in order of players, at limit goes into main screen
     def player_add(player_color):   # button fun
@@ -349,12 +410,12 @@ if __name__ == '__main__':
                  41: (381, 286), 42: (440, 250), 43: (484, 226), 44: (533, 213), 45: (577, 191),
                  46: (625, 161), 47: (666, 127), 48: (716, 121), 49: (795, 343), 50: (795, 299),
                  51: (795, 253), 52: (795, 210), 53: (795, 167)}
-
     spaces_b4 = {49: (50, 116), 50: (50, 161), 51: (50, 207), 52: (50, 252), 53: (50, 298),
                  54: (133, 337), 55: (180, 326), 56: (404, 302), 57: (269, 284), 58: (307, 258),
                  59: (357, 239), 60: (406, 214), 61: (457, 211), 62: (506, 204), 63: (550, 213),
                  64: (619, 207), 65: (680, 166), 66: (766, 341), 67: (766, 296), 68: (766, 251),
                  69: (766, 205), 70: (766, 159)}
+
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
         player_list.reverse()
@@ -992,7 +1053,7 @@ if __name__ == '__main__':
         global current_player
         paused = True
         hs_screen_flag = 1
-        text_select = pygame.font.Font('freesansbold.ttf', 50)
+        text_select = pygame.font.SysFont('Arial', 50)
         text_select_r = text_select.render('Select Card:', True, black)
         text_select_rect = text_select_r.get_rect()
         text_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .20)
@@ -1033,7 +1094,7 @@ if __name__ == '__main__':
         while paused:
             screen.fill((255, 255, 255))
             but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
+            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
             but_1.add_text('Farm: Collect 3 Coins')
             but_2.add_text('Okay')
             events = pygame.event.get()
