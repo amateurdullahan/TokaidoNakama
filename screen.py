@@ -1053,7 +1053,7 @@ if __name__ == '__main__':
         global current_player
         paused = True
         hs_screen_flag = 1
-        text_select = pygame.font.Font('media/japanese_tourist', 50)
+        text_select = pygame.font.SysFont('Arial', 50)
         text_select_r = text_select.render('Select Card:', True, black)
         text_select_rect = text_select_r.get_rect()
         text_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .20)
