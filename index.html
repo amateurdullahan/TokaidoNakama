@@ -10,10 +10,11 @@
 
 <style>
 .header{
-  position: fixed;
+    position: fixed;
 	top: 0;
 	background-color: white;
 	border-bottom: 1px solid grey;
+    z-index: 100;
 }
 .jumbotron{
 	background-color: lightskyblue;
@@ -43,8 +44,8 @@
 	text-shadow: 2px 2px 8px #FFFFFF;
 }
 .about{
-	padding-top: 20%;
-	padding-bottom: 20%;
+	padding: 15%;
+    padding-right: 10;
 	background: url("media/about.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -53,9 +54,10 @@
 	margin: 5%;
 	background-color: #ffffff;
 	border: 1px solid grey;
-  opacity: 0.8;
+    opacity: 0.8;
+    padding: 10%;
 }
-.box h1, .box h2, .box h3, .box h4, .box h5, .box p{
+.box h2, .box h3, .box h4, .box h5{
 	margin-left: 2%;
 }
 h2, h3, h4, h5{
@@ -67,6 +69,15 @@ p{
 .btn{
 	margin-left: 2%;
 	border: 1px solid black;
+}
+.btn-xs{
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    width: 29%;
+    opacity: 1;
+	border: 1px solid black;
+    overflow-wrap: break-word;
 }
 </style>
 </head>
@@ -135,7 +146,8 @@ p{
             </h4>
             <p>
 				Tokaido Nakama automatically updates each players score and coins according to the locations they stop at and cards they choose. Never forget to add the points for that temple donation again!
-			</p>
+            </p>
+            <br>
 			<h2>
 				Probability Calculator
             </h2>
@@ -145,7 +157,14 @@ p{
             </h4>
             <p>
 				Tokaido Nakama will always show the odds of what cards are left in eash deck to be drawn. Get all the info you need to decide whether it's worth being last at the Inn to stop and the Village and shop for souvenirs!
-			</p>
+            </p>
+            <br>
+            <h2>
+                Future Features
+            </h2>
+            <p>
+                Some features in the works are support for 2 to 5 players and an end game achievement tracker. Other planned features are Traveler powers and options to apply the variants Return Trip, Gastronomy, and Preperations. Eventually we hope to include the option to use the Crossroads expansion fo the game.
+            </p>
 		</div>
 		<div class="about">
 			<a name="targetabout"></a>
@@ -164,25 +183,50 @@ p{
                 </h2>
                 <div class="row">
                     <div class="col-sm">
-                        <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/robertheadshot.JPG" width="310" height="396" alt="" loading="lazy">
-                        <h6>
+                        <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/robertheadshot.JPG" width="103" height="132" alt="" loading="lazy">
+                        <h5>
                             Robert Rowe
-                        </h6>
-                        <h7>
+                        </h5>
+                        <p>
                             Designer
-                        </h7>
-                        <a href="https://github.com/robertrowe1013" class="btn btn-light btn-sm" role="button">Github</a>
-                        <a href="https://www.linkedin.com/in/robert-rowe-8a41b71a1/" class="btn btn-light btn-sm" role="button">LinkedIn</a>
-                        <a href="https://twitter.com/RobertRowe1013" class="btn btn-light btn-sm" role="button">Twitter</a>
-
+                        </p>
+                        <div class="btn-group" role="group" aria-label="Links">
+                            <a href="https://github.com/robertrowe1013" class="btn btn-light btn-xs btn-secondary" role="button">Github</a>
+                            <a href="https://www.linkedin.com/in/robert-rowe-8a41b71a1/" class="btn btn-light btn-xs btn-secondary" role="button">LinkedIn</a>
+                            <a href="https://twitter.com/RobertRowe1013" class="btn btn-light btn-xs btn-secondary" role="button">Twitter</a>
+                        </div>
                     </div>
                     <div class="col-sm">
-                        <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/robertheadshot.JPG" width="310" height="396" alt="" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/robertheadshot.JPG" width="103" height="132" alt="" loading="lazy">
+                        <h5>
+                            Robert Rowe
+                        </h5>
+                        <p>
+                            Designer
+                        </p>
+                        <div class="btn-group" role="group" aria-label="Links">
+                            <a href="https://github.com/robertrowe1013" class="btn btn-light btn-xs btn-secondary" role="button">Github</a>
+                            <a href="https://www.linkedin.com/in/robert-rowe-8a41b71a1/" class="btn btn-light btn-xs btn-secondary" role="button">LinkedIn</a>
+                            <a href="https://twitter.com/RobertRowe1013" class="btn btn-light btn-xs btn-secondary" role="button">Twitter</a>
+                        </div>
                     </div>
                     <div class="col-sm">
-                        <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/robertheadshot.JPG" width="310" height="396" alt="" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/robertheadshot.JPG" width="103" height="132" alt="" loading="lazy">
+                        <h5>
+                            Robert Rowe
+                        </h5>
+                        <p>
+                            Designer
+                        </p>
+                        <div class="btn-group" role="group" aria-label="Links">
+                            <a href="https://github.com/robertrowe1013" class="btn btn-light btn-xs btn-secondary" role="button">Github</a>
+                            <a href="https://www.linkedin.com/in/robert-rowe-8a41b71a1/" class="btn btn-light btn-xs btn-secondary" role="button">LinkedIn</a>
+                            <a href="https://twitter.com/RobertRowe1013" class="btn btn-light btn-xs btn-secondary" role="button">Twitter</a>
+                        </div>
                     </div>
-                </div><a href="https://github.com/amateurdullahan/TokaidoNakama" class="btn btn-light btn-sm" role="button">Click for Github</a>
+                </div>
+                <br>
+                <a href="https://github.com/amateurdullahan/TokaidoNakama" class="btn btn-light btn-sm" role="button">Click for Github</a>
 			</div>
 		</div>
 	</div>
