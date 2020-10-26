@@ -333,7 +333,7 @@ if __name__ == '__main__':
     purple_button = start_menu.add_button('Purple', player_add, 'Purple')
     # Hot Springs Menu
 
-    # Player space dictionaries, by board number, so inn spaces are blitted(sp?) correctly
+    # Player space dictionaries, by board number, so inn spaces don't conflict
     spaces_b1 = {-3: (80, 385), -2: (80, 336), -1: (80, 283), 1: (149, 215), 2: (195, 213),
                  3: (245, 191), 4: (299, 192), 5: (360, 218), 6: (413, 242), 7: (466, 269),
                  8: (512, 309), 9: (570, 306), 10: (625, 273), 11: (664, 237), 12: (712, 169),
@@ -350,6 +350,11 @@ if __name__ == '__main__':
                  46: (625, 161), 47: (666, 127), 48: (716, 121), 49: (795, 343), 50: (795, 299),
                  51: (795, 253), 52: (795, 210), 53: (795, 167)}
 
+    spaces_b4 = {49: (50, 116), 50: (50, 161), 51: (50, 207), 52: (50, 252), 53: (50, 298),
+                 54: (133, 337), 55: (180, 326), 56: (404, 302), 57: (269, 284), 58: (307, 258),
+                 59: (357, 239), 60: (406, 214), 61: (457, 211), 62: (506, 204), 63: (550, 213),
+                 64: (619, 207), 65: (680, 166), 66: (766, 341), 67: (766, 296), 68: (766, 251),
+                 69: (766, 205), 70: (766, 159)}
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
         player_list.reverse()
@@ -362,8 +367,8 @@ if __name__ == '__main__':
                 loc = spaces_b2.get(player.board_space)
             elif board_number == 3:
                 loc = spaces_b3.get(player.board_space)
-            # elif board_number == 4:
-                # loc = spaces_b4.get(player.board_space)
+            elif board_number == 4:
+                loc = spaces_b4.get(player.board_space)
             print("Line 364:", loc)
             screen.blit(player.icon, loc)
         player_list.reverse()
@@ -383,10 +388,9 @@ if __name__ == '__main__':
             start_menu.mainloop(screen)
         # Board One
         if board_number == 1:
-
             # Rect(left, top, width, height)
             rect1 = pygame.Rect(155, 150, 21, 122)
-            # rect 11 is additional rect for position 1
+            # rect 1_1 is additional rect for position 1
             rect1_1 = pygame.Rect(135, 87, 62, 82)
             rect2 = pygame.Rect(205, 256, 14, 120)
             rect2_1 = pygame.Rect(180, 302, 63, 76)
@@ -448,7 +452,7 @@ if __name__ == '__main__':
             rect30_1 = pygame.Rect(688, 320, 75, 71)
             rect31 = pygame.Rect(795, 148, 40, 332)
             rect31_1 = pygame.Rect(769, 367, 95, 69)
-        # if board_number == 3:
+        if board_number == 3:
             rect36 = pygame.Rect(142, 378, 17, 109)
             rect36_1 = pygame.Rect(116, 417, 69, 71)
             rect37 = pygame.Rect(188, 273, 18, 108)
@@ -477,8 +481,33 @@ if __name__ == '__main__':
             rect48_1 = pygame.Rect(699, 262, 70, 70)
             rect49 = pygame.Rect(793, 69, 36, 332)
             rect49_1 = pygame.Rect(764, 116, 92, 69)
-        # if board_number == 4:
-
+        if board_number == 4:
+            rect54 = pygame.Rect(143, 278, 16, 117)
+            rect54_1 = pygame.Rect(119, 278, 64, 74)
+            rect55 = pygame.Rect(188, 370, 17, 171)
+            rect55_1 = pygame.Rect(163, 470, 69, 74)
+            rect56 = pygame.Rect(231, 245, 17, 115)
+            rect56_1 = pygame.Rect(207, 245, 65, 73)
+            rect57 = pygame.Rect(278, 328, 16, 168)
+            rect57_1 = pygame.Rect(254, 428, 67, 69)
+            rect58 = pygame.Rect(316, 204, 16, 111)
+            rect58_1 = pygame.Rect(293, 204, 63, 71)
+            rect59 = pygame.Rect(366, 281, 16, 173)
+            rect59_1 = pygame.Rect(339, 381, 70, 74)
+            rect60 = pygame.Rect(415, 98, 16, 175)
+            rect60_1 = pygame.Rect(389, 98, 67, 74)
+            rect61 = pygame.Rect(466, 254, 17, 116)
+            rect61_1 = pygame.Rect(440, 296, 69, 74)
+            rect62 = pygame.Rect(515, 151, 17, 111)
+            rect62_1 = pygame.Rect(489, 151, 69, 71)
+            rect63 = pygame.Rect(569, 257, 16, 172)
+            rect63_1 = pygame.Rect(546, 357, 64, 73)
+            rect64 = pygame.Rect(628, 95, 17, 169)
+            rect64_1 = pygame.Rect(601, 95, 69, 69)
+            rect65 = pygame.Rect(689, 209, 16, 112)
+            rect65_1 = pygame.Rect(663, 251, 68, 70)
+            rect66 = pygame.Rect(767, 91, 34, 307)
+            rect66_1 = pygame.Rect(739, 91, 89, 88)
         # For Cleanup:
         # Function that takes in number and 4 coordinates,
         # that makes rect with our naming convention
@@ -820,11 +849,111 @@ if __name__ == '__main__':
                                             main_screen(4)
                                     update_current_player()
                                     screen_update = 1
-                            
-                        
+                        if board_number == 4:
+                            if rect54.collidepoint(event.pos) or rect54_1.collidepoint(event.pos):
+                                if current_player.board_space < 54:
+                                    print('Hot Spring selected.')
+                                    encounter_selection(54)
+                                    current_player.board_space = 54
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect55.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
+                                if current_player.board_space < 55:
+                                    print('Temple selected.')
+                                    encounter_selection(55)
+                                    current_player.board_space = 55
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect56.collidepoint(event.pos) or rect56_1.collidepoint(event.pos):
+                                if current_player.board_space < 56:
+                                    print('Encounter selected.')
+                                    encounter_selection(56)
+                                    current_player.board_space = 56
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect57.collidepoint(event.pos) or rect57_1.collidepoint(event.pos):
+                                if current_player.board_space < 57:
+                                    print('Village selected.')
+                                    encounter_selection(57)
+                                    current_player.board_space = 57
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect58.collidepoint(event.pos) or rect58_1.collidepoint(event.pos):
+                                if current_player.board_space < 58:
+                                    print('Panorama: Sea selected.')
+                                    encounter_selection(58)
+                                    current_player.board_space = 58
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect59.collidepoint(event.pos) or rect59_1.collidepoint(event.pos):
+                                if current_player.board_space < 59:
+                                    print('Farm selected.')
+                                    encounter_selection(59)
+                                    current_player.board_space = 59
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect60.collidepoint(event.pos) or rect60_1.collidepoint(event.pos):
+                                if current_player.board_space < 60:
+                                    print('Hot Spring selected.')
+                                    encounter_selection(60)
+                                    current_player.board_space = 60
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect61.collidepoint(event.pos) or rect61_1.collidepoint(event.pos):
+                                if current_player.board_space < 61:
+                                    print('Encounter selected.')
+                                    encounter_selection(61)
+                                    current_player.board_space = 61
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect62.collidepoint(event.pos) or rect62_1.collidepoint(event.pos):
+                                if current_player.board_space < 62:
+                                    print('Panorama: Mountain selected.')
+                                    encounter_selection(62)
+                                    current_player.board_space = 62
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect63.collidepoint(event.pos) or rect63_1.collidepoint(event.pos):
+                                if current_player.board_space < 63:
+                                    print('Panorama: Paddy selected.')
+                                    encounter_selection(63)
+                                    current_player.board_space = 63
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect64.collidepoint(event.pos) or rect64_1.collidepoint(event.pos):
+                                if current_player.board_space < 64:
+                                    print('Panorama: Sea selected.')
+                                    encounter_selection(64)
+                                    current_player.board_space = 64
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect65.collidepoint(event.pos) or rect65_1.collidepoint(event.pos):
+                                if current_player.board_space < 65:
+                                    print('Village selected.')
+                                    encounter_selection(65)
+                                    current_player.board_space = 65
+                                    update_current_player()
+                                    screen_update = 1
+                            if rect66.collidepoint(event.pos) or rect66_1.collidepoint(event.pos):
+                                if current_player.board_space < 66:
+                                    print('We\'re INN IT NOW BOYS')
+                                    encounter_selection(66)
+                                    if board_number == 1:
+                                        if len(board_1_list) == 0:
+                                            current_player.board_space = 70
+                                            board_1_list.append(current_player)
+                                        elif len(board_1_list) == 1:
+                                            current_player.board_space = 69
+                                            board_1_list.append(current_player)
+                                        elif len(board_1_list) == 2:
+                                            current_player.board_space = 68
+                                            board_1_list.append(current_player)
+                                            update_current_player()
+                                            running = False
+                                            # results_menu(screen)
+                                    update_current_player()
+                                    screen_update = 1
 
-                        # if board_number == 4:
-                            # if
                 # Shows list of events on ya terminal. To be removed, but fun to seeprint(event)
                 print(event)
 
