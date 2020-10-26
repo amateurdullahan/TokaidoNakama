@@ -45,21 +45,21 @@ class Card():
 
 class HotSpring(Card):
     """HotSpring Card Class"""
-        def __init__(self, type="", point_value=0, name=""):
-            super().__init__(type, point_value, name)
+    def __init__(self, type="", point_value=0, name=""):
+        super().__init__(type, point_value, name)
 
 class Encounter(Card):
     """Encounter Card Class"""
-        def __init__(self, type="", point_value=0, name=""):
-            super().__init__(type, point_value, name)
+    def __init__(self, type="", point_value=0, name=""):
+        super().__init__(type, point_value, name)
 
 class Meal(Card):
     """Meal Card Class, has additional attributes"""
-        def __init__(self, type="", point_value=0, name="", cost=0):
-            self.type = type
-            self.point_value = point_value
-            self.name = name
-            self.cost = cost
+    def __init__(self, type="", point_value=0, name="", cost=0):
+        self.type = type
+        self.point_value = point_value
+        self.name = name
+        self.cost = cost
 
         @property
         def type(self):
