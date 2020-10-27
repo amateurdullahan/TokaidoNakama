@@ -192,7 +192,7 @@ if __name__ == '__main__':
         btn_svcp_3.add_text("3 Coin " + str(svcp_text[2]) + "%", 16)
         # Builds Souvenir Subtype Display
         btn_svsp_title = Button(175, 675, 50, 25, screen, black)
-        btn_svsp_title.add_text("Souvenir5 Type", 18)
+        btn_svsp_title.add_text("Souvenir Type", 18)
         btn_svsp_1 = Button(175, 700, 50, 20, screen, black)
         svsp_text = SubTypeProb(SVDeck)
         btn_svsp_1.add_text("Small Item " + str(svsp_text[0]) + "%", 16)
