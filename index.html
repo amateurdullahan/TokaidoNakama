@@ -16,6 +16,11 @@
 	border-bottom: 1px solid grey;
     z-index: 100;
 }
+.landing img{
+    border-radius: 5%;
+    max-width: 100%;
+    height: auto;
+}
 .jumbotron{
 	background-color: lightskyblue;
 	color: white;
@@ -44,20 +49,25 @@
 	text-shadow: 2px 2px 8px #FFFFFF;
 }
 .about{
-	padding: 15%;
+	padding: 10%;
     padding-right: 10;
 	background: url("media/about.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .box{
-	margin: 5%;
+	margin: 2%;
 	background-color: rgba(255, 255, 255, 0.5);
 	border: 1px solid grey;
     padding: 10%;
+    text-align: center;
 }
 .box h2, .box h3, .box h4, .box h5{
 	margin-left: 2%;
+    text-align: center;
+}
+.creators{
+    padding-top: 2%;
 }
 h2, h3, h4, h5{
 	margin-left: 2%;
@@ -73,7 +83,7 @@ p{
     padding: 5px;
     font-size: 12px;
     border-radius: 5px;
-    width: 29%;
+    width: 40%;
     opacity: 1;
 	border: 1px solid black;
     overflow-wrap: break-word;
@@ -114,21 +124,18 @@ p{
 				A companion app for the board game Tokaido.
 			</h3>
 			<a href="https://github.com/amateurdullahan/TokaidoNakama" class="btn btn-light btn-sm" role="button">Click for Github</a>
-		</div>
+        </div>
+        <br>
+        <div class="landing">
+            <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/tabletopdemo.jpg" width="1280" height="1100" alt="" loading="lazy">
+        </div>
 		<br>
 		<div class="jumbotron">
 			<a name="targetfeatures"></a>
 			<h1>
 				Tokaido Nakama Features
             </h1>
-            <div class="row">
-                <div class="col-sm">
-                    <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/fullscreen.jpg" width="320" height="275" alt="" loading="lazy">
-                </div>
-                <div class="col-sm">
-                    <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/tabletopdemo.jpg" width="320" height="275" alt="" loading="lazy">
-                </div>
-            </div>
+
             <h2>
 				Demo Video
             </h2>
@@ -136,7 +143,17 @@ p{
             <p>
                 A short video demonstrating Tokaido Nakama in action!
             </p>
-			<h2>
+            <h2>
+                Turn Tracker and Player Positions
+            </h2>
+            <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/fullscreen.jpg" width="320" height="275" alt="" loading="lazy">
+            <h4>
+                Always Know Your Moves
+            </h4>
+            <p>
+                Tokaido Nakama automatically updates the player tunrs whenever a player complete's their actions and has a GUI showing player positions with intuitive moving based on clicking spots on the borad.
+            </p>
+            <h2>
 				Score and Coin Tracker
             </h2>
             <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/tracker.JPG" width="286" height="204" alt="" loading="lazy">
@@ -211,7 +228,7 @@ p{
                             </div>
                         </div>
                         <div class="col-sm">
-                            <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/corbincrapmugshot.JPG" width="103" height="132" alt="" loading="lazy">
+                            <img src="https://raw.githubusercontent.com/amateurdullahan/TokaidoNakama/main/media/corbincrapmugshot.jpg" width="103" height="132" alt="" loading="lazy">
                             <h5>
                                 Corbin Enterline
                             </h5>
@@ -227,7 +244,7 @@ p{
                     </div>
                 </div>
                 <br>
-                <a href="https://github.com/amateurdullahan/TokaidoNakama" class="btn btn-light btn-sm" role="button">Click for Github</a>
+                <a href="https://github.com/amateurdullahan/TokaidoNakama" class="btn btn-light btn-sm" role="button">Click for Tokaido Nakama on Github</a>
 			</div>
 		</div>
 	</div>
