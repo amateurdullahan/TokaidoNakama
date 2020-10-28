@@ -1272,6 +1272,22 @@ if __name__ == '__main__':
         enc_select_text = enc_text_style.render('Select Encounter:', True, black)
         enc_select_rect = enc_select_text.get_rect()
         enc_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        enc_dict = {}
+        for enc in ENCDeck.card_list:
+            if enc.name == 'Shokunin':
+                enc_dict[enc_shokunin] = enc_shokunin_rect
+            elif enc.name == 'Samurai':
+                enc_dict[enc_samurai] = enc_samurai_rect
+            elif enc.name == 'Miko':
+                enc_dict[enc_miko] = enc_miko_rect
+            elif enc.name == 'Kuge':
+                enc_dict[enc_kuge] = enc_kuge_rect
+            elif enc.name == 'Annaibito: Paddy':
+                enc_dict[enc_anna_paddy] = enc_anna_paddy_rect
+            elif enc.name == 'Annaibito: Mountain':
+                enc_dict[enc_anna_mt] = enc_anna_mt_rect
+            elif enc.name == 'Annaibito: Sea':
+                enc_dict[enc_anna_sea] = enc_anna_sea_rect
         while paused:
             events = pygame.event.get()
             for event in events:
@@ -1303,14 +1319,8 @@ if __name__ == '__main__':
             if enc_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(enc_select_text, enc_select_rect)
-                screen.blit(enc_anna_mt, enc_anna_mt_rect)
-                screen.blit(enc_anna_paddy, enc_anna_paddy_rect)
-                screen.blit(enc_anna_sea, enc_anna_sea_rect)
-                screen.blit(enc_kuge, enc_kuge_rect)
-                screen.blit(enc_miko, enc_miko_rect)
-                screen.blit(enc_samurai, enc_samurai_rect)
-                screen.blit(enc_shokunin, enc_shokunin_rect)
-                print("UPDATE")
+                for i in enc_dict:
+                    screen.blit(i, enc_dict[i])
                 enc_screen_update = 0
                 pygame.display.update()
         return False
