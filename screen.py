@@ -1052,7 +1052,7 @@ if __name__ == '__main__':
         """Hot Spring Menu"""
         global current_player
         paused = True
-        hs_screen_flag = 1
+        hs_screen_update = 1
         text_select = pygame.font.SysFont('Arial', 50)
         text_select_r = text_select.render('Select Card:', True, black)
         text_select_rect = text_select_r.get_rect()
@@ -1076,13 +1076,13 @@ if __name__ == '__main__':
                         elif hs_3_rect.collidepoint(event.pos):
                             current_player = Hot_Spring_Loc(current_player, 3)
                             return
-            if hs_screen_flag == 1:
+            if hs_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(text_select_r, text_select_rect)
                 screen.blit(hs_2, hs_2_rect)
                 print("SCREEN UPDATE")
                 screen.blit(hs_3, hs_3_rect)
-                hs_screen_flag = 0
+                hs_screen_update = 0
                 pygame.display.update()
         return False
 
@@ -1091,22 +1091,34 @@ if __name__ == '__main__':
         """farm screen"""
         global current_player
         paused = True
+        farm_screen_update = 1
+        farm_text_style = pygame.font.SysFont('Arial', 50)
+        farm_collect_text = farm_text_style.render('Collect 3 Coins!', True, black)
+        farm_collect_rect = farm_collect_text.get_rect()
+        farm_collect_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        farm_confirmation_text = farm_text_style.render('Click Anywhere To Continue', True, black)
+        farm_confirmation_rect = farm_confirmation_text.get_rect()
+        farm_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
+        coinpile = pygame.image.load('media/coins_three.png')
+        coinpile_rect = coinpile.get_rect()
+        coinpile_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .45)
         while paused:
-            screen.fill((255, 255, 255))
-            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_1.add_text('Farm: Collect 3 Coins')
-            but_2.add_text('Okay')
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_2.collidepoint(event.pos):
-                            current_player = Farm_Loc(current_player)
-                            return
-            pygame.display.update()
+                        current_player = Farm_Loc(current_player)
+                        return
+            if farm_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(farm_collect_text, farm_collect_rect)
+                screen.blit(farm_confirmation_text, farm_confirmation_rect)
+                screen.blit(coinpile, coinpile_rect)
+                print('SCREEN UPDATE')
+                farm_screen_update = 0
+                pygame.display.update()
         return False
 
     def pano_paddy_menu(screen):
@@ -1560,4 +1572,4 @@ if __name__ == '__main__':
     # Run Sequence Below
     main_screen(0)
     # results screen()
-    # quitter()
+    quitter()
