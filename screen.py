@@ -116,7 +116,8 @@ if __name__ == '__main__':
             print("Pano sea stuff")
             pano_sea_menu(screen)
             update_current_player()
-        elif board_position in [14, 15, 16, 17, 18, 31, 32, 33, 34, 35, 49, 50, 51, 52, 53, 66, 67, 68, 69, 70]:
+        elif board_position in [14, 15, 16, 17, 18, 31, 32, 33, 34, 35, 49, 50, 51, 52, 53, 66,
+                                67, 68, 69, 70]:
             # Code for Inn
             print("Inn stuff")
             inn_menu(screen)
@@ -246,7 +247,7 @@ if __name__ == '__main__':
         screen.blit(p1_text, p1_text_rect)
         p1_coin = pygame.image.load('media/coin_small.png')
         p1_coin_rect = p1_coin.get_rect()
-        p1_coin_rect.center = (DISPLAY_WIDTH * .8, DISPLAY_HEIGHT * .787)
+        p1_coin_rect.center = (DISPLAY_WIDTH * .81, DISPLAY_HEIGHT * .787)
         screen.blit(p1_coin, p1_coin_rect)
         p1_coins_title = pygame.font.SysFont('Arial', 18)
         p1_coins = p1_coins_title.render(str(player_list[0].coins), True, gold)
@@ -256,28 +257,38 @@ if __name__ == '__main__':
         p1_score_title = pygame.font.SysFont('Arial', 30)
         p1_score = p1_score_title.render(str(player_list[0].score), True, p1_rgb)
         p1_score_rect = p1_score.get_rect()
-        p1_score_rect.center = (DISPLAY_WIDTH * .735, DISPLAY_HEIGHT * .785)
+        p1_score_rect.center = (DISPLAY_WIDTH * .719, DISPLAY_HEIGHT * .785)
         screen.blit(p1_score, p1_score_rect)
+        p1_bird = pygame.image.load('media/points.png')
+        p1_bird_rect = p1_bird.get_rect()
+        p1_bird_rect.center = (DISPLAY_WIDTH * .75, DISPLAY_HEIGHT * .787)
+        screen.blit(p1_bird, p1_bird_rect)
+        # Player 2
         p2_title = pygame.font.SysFont('Arial', 30)
         p2_rgb = colors_rgb.get(player_list[1].color)
         p2_text = p2_title.render(player_list[1].color, True, p2_rgb)
         p2_text_rect = p2_text.get_rect()
-        p2_text_rect.center = (DISPLAY_WIDTH * .9, DISPLAY_HEIGHT * .745)
+        p2_text_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .745)
         screen.blit(p2_text, p2_text_rect)
         p2_coin = pygame.image.load('media/coin_small.png')
         p2_coin_rect = p2_coin.get_rect()
-        p2_coin_rect.center = (DISPLAY_WIDTH * .95, DISPLAY_HEIGHT * .787)
+        p2_coin_rect.center = (DISPLAY_WIDTH * .98, DISPLAY_HEIGHT * .787)
         screen.blit(p2_coin, p2_coin_rect)
         p2_coins_title = pygame.font.SysFont('Arial', 18)
         p2_coins = p2_coins_title.render(str(player_list[1].coins), True, gold)
         p2_coins_rect = p2_coins.get_rect()
-        p2_coins_rect = (DISPLAY_WIDTH * .925, DISPLAY_HEIGHT * .7735)
+        p2_coins_rect = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .7735)
         screen.blit(p2_coins, p2_coins_rect)
         p2_score_title = pygame.font.SysFont('Arial', 30)
         p2_score = p2_score_title.render(str(player_list[1].score), True, p2_rgb)
         p2_score_rect = p2_score.get_rect()
-        p2_score_rect.center = (DISPLAY_WIDTH * .885, DISPLAY_HEIGHT * .785)
+        p2_score_rect.center = (DISPLAY_WIDTH * .889, DISPLAY_HEIGHT * .785)
         screen.blit(p2_score, p2_score_rect)
+        p2_bird = pygame.image.load('media/points.png')
+        p2_bird_rect = p2_bird.get_rect()
+        p2_bird_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .787)
+        screen.blit(p2_bird, p2_bird_rect)
+        # Player 3
         p3_title = pygame.font.SysFont('Arial', 30)
         p3_rgb = colors_rgb.get(player_list[2].color)
         p3_text = p3_title.render(player_list[2].color, True, p3_rgb)
@@ -286,7 +297,7 @@ if __name__ == '__main__':
         screen.blit(p3_text, p3_text_rect)
         p3_coin = pygame.image.load('media/coin_small.png')
         p3_coin_rect = p3_coin.get_rect()
-        p3_coin_rect.center = (DISPLAY_WIDTH * .8, DISPLAY_HEIGHT * .885)
+        p3_coin_rect.center = (DISPLAY_WIDTH * .81, DISPLAY_HEIGHT * .885)
         screen.blit(p3_coin, p3_coin_rect)
         p3_coins_title = pygame.font.SysFont('Arial', 18)
         p3_coins = p3_coins_title.render(str(player_list[2].coins), True, gold)
@@ -296,13 +307,15 @@ if __name__ == '__main__':
         p3_score_title = pygame.font.SysFont('Arial', 30)
         p3_score = p3_score_title.render(str(player_list[2].score), True, p3_rgb)
         p3_score_rect = p3_score.get_rect()
-        p3_score_rect.center = (DISPLAY_WIDTH * .735, DISPLAY_HEIGHT * .885)
+        p3_score_rect.center = (DISPLAY_WIDTH * .719, DISPLAY_HEIGHT * .885)
         screen.blit(p3_score, p3_score_rect)
-
-
+        p3_bird = pygame.image.load('media/points.png')
+        p3_bird_rect = p3_bird.get_rect()
+        p3_bird_rect.center = (DISPLAY_WIDTH * .75, DISPLAY_HEIGHT * .885)
+        screen.blit(p3_bird, p3_bird_rect)
 
     # Creates list in order of players, at limit goes into main screen
-    def player_add(player_color):   # button fun
+    def player_add(player_color):
         """Adds player color to game"""
         global current_player
         if len(player_list) < 3:
@@ -313,8 +326,6 @@ if __name__ == '__main__':
                 player_green.icon = pygame.image.load('media/player_green.png')
                 # pygame.transform.scale(player_green.icon, (34, 60))
                 green_button.set_position(1000, 1000)
-                # Hides it off the surface. Could just change color like below:
-                # green_button.set_background_color((73, 114, 16))
                 if len(player_list) == 3:
                     print(player_list)
                     # current_player = GreenPlayer
@@ -374,9 +385,8 @@ if __name__ == '__main__':
                     start_menu.disable()
                     main_screen(1)
         else:
-            print(player_list)
-            print('THIS CODE SHOULD NOT RUN ONCE EVERYTHING IS GOING')
-            main_screen(1)
+            print("How did you get here?")
+            quitter()
 
     # Function for clean quit
     def quitter():
@@ -392,7 +402,6 @@ if __name__ == '__main__':
     grey_button = start_menu.add_button('Grey', player_add, 'Grey')
     yellow_button = start_menu.add_button('Yellow', player_add, 'Yellow')
     purple_button = start_menu.add_button('Purple', player_add, 'Purple')
-    # Hot Springs Menu
 
     # Player space dictionaries, by board number, so inn spaces don't conflict
     spaces_b1 = {-3: (80, 385), -2: (80, 336), -1: (80, 283), 1: (149, 215), 2: (195, 213),
@@ -439,7 +448,8 @@ if __name__ == '__main__':
         """Main game loop"""
         global current_player
 
-        # Flag for Updating Screen. Flagged at main loop startup for each board section & after selecting a board space.
+        # Flag for Updating Screen. Flagged at main loop,
+        # startup for each board section & after selecting a board space.
         screen_update = 1
 
         print(current_player)
@@ -480,7 +490,6 @@ if __name__ == '__main__':
             rect14 = pygame.Rect(778, 117, 78, 76)
             rect14_1 = pygame.Rect(800, 70, 34, 364)
             # Starting spots
-            # start_list = [0.1, 0.2, 0.3] CORRECT
             start_list = [-3, -2, -1]
             current_player = player_list[0]
             for player, position in zip(player_list, start_list):
@@ -573,9 +582,10 @@ if __name__ == '__main__':
         # Function that takes in number and 4 coordinates,
         # that makes rect with our naming convention
         print(current_player.color)
-        running = True  # Main Loop Flag
+        # Outer Loop Flag
+        running = True
+        # Outer loop
         while running:
-
             # Inner Loop for Events
             events = pygame.event.get()
             for event in events:
@@ -1045,14 +1055,11 @@ if __name__ == '__main__':
             # Call Food Menu
             # Then From Food Menu Call main_screen(NEXT BOARD NUMBER)
 
-
-    # 900, 800
-    # 400, 420
     def hot_springs_menu(screen):
-        """Hot Spring Menu"""
+        """Hot Springs Menu"""
         global current_player
         paused = True
-        hs_screen_flag = 1
+        hs_screen_update = 1
         text_select = pygame.font.SysFont('Arial', 50)
         text_select_r = text_select.render('Select Card:', True, black)
         text_select_rect = text_select_r.get_rect()
@@ -1076,45 +1083,58 @@ if __name__ == '__main__':
                         elif hs_3_rect.collidepoint(event.pos):
                             current_player = Hot_Spring_Loc(current_player, 3)
                             return
-            if hs_screen_flag == 1:
+            if hs_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(text_select_r, text_select_rect)
                 screen.blit(hs_2, hs_2_rect)
                 print("SCREEN UPDATE")
                 screen.blit(hs_3, hs_3_rect)
-                hs_screen_flag = 0
+                hs_screen_update = 0
                 pygame.display.update()
         return False
 
-    # farm screen
     def farm_menu(screen):
-        """farm screen"""
+        """Farm Menu"""
         global current_player
         paused = True
+        farm_screen_update = 1
+        farm_text_style = pygame.font.SysFont('Arial', 50)
+        farm_collect_text = farm_text_style.render('Collect 3 Coins!', True, black)
+        farm_collect_rect = farm_collect_text.get_rect()
+        farm_collect_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        farm_confirmation_text = farm_text_style.render('Click Anywhere To Continue', True, black)
+        farm_confirmation_rect = farm_confirmation_text.get_rect()
+        farm_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
+        coinpile = pygame.image.load('media/coins_three.png')
+        coinpile_rect = coinpile.get_rect()
+        coinpile_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .45)
         while paused:
-            screen.fill((255, 255, 255))
-            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_1.add_text('Farm: Collect 3 Coins')
-            but_2.add_text('Okay')
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_2.collidepoint(event.pos):
-                            current_player = Farm_Loc(current_player)
-                            return
-            pygame.display.update()
+                        current_player = Farm_Loc(current_player)
+                        return
+            if farm_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(farm_collect_text, farm_collect_rect)
+                screen.blit(farm_confirmation_text, farm_confirmation_rect)
+                screen.blit(coinpile, coinpile_rect)
+                print('SCREEN UPDATE')
+                farm_screen_update = 0
+                pygame.display.update()
         return False
 
     def pano_paddy_menu(screen):
         """Panorama Paddy Menu"""
         global current_player
+        # pano_paddy_screen_update = 1
         paused = True
         while paused:
             screen.fill((255, 255, 255))
+            # if current_player.pano_paddy == 0:
             but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
             but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
             but_1.add_text('Panorama: Paddy')
@@ -1560,4 +1580,4 @@ if __name__ == '__main__':
     # Run Sequence Below
     main_screen(0)
     # results screen()
-    # quitter()
+    quitter()
