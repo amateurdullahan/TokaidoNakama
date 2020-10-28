@@ -252,7 +252,7 @@ if __name__ == '__main__':
         p1_coins_title = pygame.font.SysFont('Arial', 18)
         p1_coins = p1_coins_title.render(str(player_list[0].coins), True, gold)
         p1_coins_rect = p1_coins.get_rect()
-        p1_coins_rect = (DISPLAY_WIDTH * .774, DISPLAY_HEIGHT * .7735)
+        p1_coins_rect.center = (DISPLAY_WIDTH * .787, DISPLAY_HEIGHT * .785)
         screen.blit(p1_coins, p1_coins_rect)
         p1_score_title = pygame.font.SysFont('Arial', 30)
         p1_score = p1_score_title.render(str(player_list[0].score), True, p1_rgb)
@@ -268,25 +268,25 @@ if __name__ == '__main__':
         p2_rgb = colors_rgb.get(player_list[1].color)
         p2_text = p2_title.render(player_list[1].color, True, p2_rgb)
         p2_text_rect = p2_text.get_rect()
-        p2_text_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .745)
+        p2_text_rect.center = (DISPLAY_WIDTH * .91, DISPLAY_HEIGHT * .745)
         screen.blit(p2_text, p2_text_rect)
         p2_coin = pygame.image.load('media/coin_small.png')
         p2_coin_rect = p2_coin.get_rect()
-        p2_coin_rect.center = (DISPLAY_WIDTH * .98, DISPLAY_HEIGHT * .787)
+        p2_coin_rect.center = (DISPLAY_WIDTH * .97, DISPLAY_HEIGHT * .787)
         screen.blit(p2_coin, p2_coin_rect)
         p2_coins_title = pygame.font.SysFont('Arial', 18)
         p2_coins = p2_coins_title.render(str(player_list[1].coins), True, gold)
         p2_coins_rect = p2_coins.get_rect()
-        p2_coins_rect = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .7735)
+        p2_coins_rect.center = (DISPLAY_WIDTH * .947, DISPLAY_HEIGHT * .785)
         screen.blit(p2_coins, p2_coins_rect)
         p2_score_title = pygame.font.SysFont('Arial', 30)
         p2_score = p2_score_title.render(str(player_list[1].score), True, p2_rgb)
         p2_score_rect = p2_score.get_rect()
-        p2_score_rect.center = (DISPLAY_WIDTH * .889, DISPLAY_HEIGHT * .785)
+        p2_score_rect.center = (DISPLAY_WIDTH * .879, DISPLAY_HEIGHT * .785)
         screen.blit(p2_score, p2_score_rect)
         p2_bird = pygame.image.load('media/points.png')
         p2_bird_rect = p2_bird.get_rect()
-        p2_bird_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .787)
+        p2_bird_rect.center = (DISPLAY_WIDTH * .91, DISPLAY_HEIGHT * .787)
         screen.blit(p2_bird, p2_bird_rect)
         # Player 3
         p3_title = pygame.font.SysFont('Arial', 30)
@@ -302,7 +302,7 @@ if __name__ == '__main__':
         p3_coins_title = pygame.font.SysFont('Arial', 18)
         p3_coins = p3_coins_title.render(str(player_list[2].coins), True, gold)
         p3_coins_rect = p3_coins.get_rect()
-        p3_coins_rect = (DISPLAY_WIDTH * .774, DISPLAY_HEIGHT * .872)
+        p3_coins_rect.center = (DISPLAY_WIDTH * .787, DISPLAY_HEIGHT * .884)
         screen.blit(p3_coins, p3_coins_rect)
         p3_score_title = pygame.font.SysFont('Arial', 30)
         p3_score = p3_score_title.render(str(player_list[2].score), True, p3_rgb)
@@ -311,7 +311,7 @@ if __name__ == '__main__':
         screen.blit(p3_score, p3_score_rect)
         p3_bird = pygame.image.load('media/points.png')
         p3_bird_rect = p3_bird.get_rect()
-        p3_bird_rect.center = (DISPLAY_WIDTH * .75, DISPLAY_HEIGHT * .885)
+        p3_bird_rect.center = (DISPLAY_WIDTH * .75, DISPLAY_HEIGHT * .886)
         screen.blit(p3_bird, p3_bird_rect)
 
     # Creates list in order of players, at limit goes into main screen
@@ -1025,35 +1025,31 @@ if __name__ == '__main__':
                                     update_current_player()
                                     screen_update = 1
 
-                # Shows list of events on ya terminal. To be removed, but fun to seeprint(event)
-                print(event)
+                # Remove comment below to get list of events to terminal
+                # print(event)
 
-            # hopefully fixes start_menu (spoiler alert: it didn't, but it works now)
+            # Endpoint for initialization, aka main_screen(0)
             if start_menu.is_enabled():
                 start_menu.update(events)
                 start_menu.draw(screen)
 
-            # Only update screen if needed
+            # Only update screen if needed, blits in functions
             if screen_update == 1:
                 # Filling screen
                 screen.fill(white)
-
-                # Render title text & rect
+                # Player turn indicator
                 title_selector(current_player)
+                # Scores & probabilities
                 score_prob_display()
-                # Call Board Function
+                # Current board section
                 board(X_BOARD_COORD, Y_BOARD_COORD, board_number)
-
-                # Piece Space Function
+                # Player position checks
                 player_positioning(board_number)
-                print("Update")
-                # After all screen items are blitted(sp?), update dat screen
+                # After all screen items are blitted(sp?), update display
                 pygame.display.update()
             # Reset Flag
             screen_update = 0
-            # If All Players At Inn
-            # Call Food Menu
-            # Then From Food Menu Call main_screen(NEXT BOARD NUMBER)
+
 
     def hot_springs_menu(screen):
         """Hot Springs Menu"""
@@ -1087,7 +1083,6 @@ if __name__ == '__main__':
                 screen.fill((255, 255, 255))
                 screen.blit(text_select_r, text_select_rect)
                 screen.blit(hs_2, hs_2_rect)
-                print("SCREEN UPDATE")
                 screen.blit(hs_3, hs_3_rect)
                 hs_screen_update = 0
                 pygame.display.update()
@@ -1122,7 +1117,6 @@ if __name__ == '__main__':
                 screen.blit(farm_collect_text, farm_collect_rect)
                 screen.blit(farm_confirmation_text, farm_confirmation_rect)
                 screen.blit(coinpile, coinpile_rect)
-                print('SCREEN UPDATE')
                 farm_screen_update = 0
                 pygame.display.update()
         return False
@@ -1161,7 +1155,6 @@ if __name__ == '__main__':
                 screen.blit(paddy_collect_text, paddy_collect_rect)
                 screen.blit(paddy_confirmation_text, paddy_confirmation_rect)
                 screen.blit(paddy_cards, paddy_cards_rect)
-                print("SCREEN UPDATE")
                 paddy_screen_update = 0
                 pygame.display.update()
         return False
@@ -1203,7 +1196,6 @@ if __name__ == '__main__':
                 screen.blit(mt_collect_text, mt_collect_rect)
                 screen.blit(mt_confirmation_text, mt_confirmation_rect)
                 screen.blit(mt_cards, mt_cards_rect)
-                print("SCREEN UPDATE")
                 mt_screen_update = 0
                 pygame.display.update()
         return False
@@ -1212,74 +1204,115 @@ if __name__ == '__main__':
         """Panorama Sea Menu"""
         global current_player
         paused = True
+        sea_screen_update = 1
+        if current_player.pano_sea == 0:
+            sea_cards = pygame.image.load('media/sea_1.png')
+        if current_player.pano_sea == 1:
+            sea_cards = pygame.image.load('media/sea_2.png')
+        if current_player.pano_sea == 2:
+            sea_cards = pygame.image.load('media/sea_3.png')
+        if current_player.pano_sea == 3:
+            sea_cards = pygame.image.load('media/sea_4.png')
+        if current_player.pano_sea == 4:
+            sea_cards = pygame.image.load('media/sea_5.png')
+        sea_cards_rect = sea_cards.get_rect()
+        sea_cards_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .45)
+        sea_text_style = pygame.font.SysFont('Arial', 50)
+        sea_collect_text = sea_text_style.render('Panorama: Sea', True, black)
+        sea_collect_rect = sea_collect_text.get_rect()
+        sea_collect_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        sea_confirmation_text = sea_text_style.render('Click Anywhere To Continue', True, black)
+        sea_confirmation_rect = sea_confirmation_text.get_rect()
+        sea_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
         while paused:
-            screen.fill((255, 255, 255))
-            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_1.add_text('Panorama: Sea')
-            but_2.add_text('Okay')
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_2.collidepoint(event.pos):
-                            current_player = Pano_Sea_Loc(current_player)
-                            return
-            pygame.display.update()
+                        current_player = Pano_Sea_Loc(current_player)
+                        return
+            if sea_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(sea_collect_text, sea_collect_rect)
+                screen.blit(sea_confirmation_text, sea_confirmation_rect)
+                screen.blit(sea_cards, sea_cards_rect)
+                sea_screen_update = 0
+                pygame.display.update()
         return False
 
     def encounter_menu(screen):
         """Encounter Menu"""
         global current_player
         paused = True
+        enc_screen_update = 1
+        enc_anna_mt = pygame.image.load('media/anna_mt.png')
+        enc_anna_mt_rect = enc_anna_mt.get_rect()
+        enc_anna_mt_rect.center = (DISPLAY_WIDTH * .44, DISPLAY_HEIGHT * .68)
+        enc_anna_paddy = pygame.image.load('media/anna_paddy.png')
+        enc_anna_paddy_rect = enc_anna_paddy.get_rect()
+        enc_anna_paddy_rect.center = (DISPLAY_WIDTH * .29, DISPLAY_HEIGHT * .68)
+        enc_anna_sea = pygame.image.load('media/anna_sea.png')
+        enc_anna_sea_rect = enc_anna_sea.get_rect()
+        enc_anna_sea_rect.center = (DISPLAY_WIDTH * .59, DISPLAY_HEIGHT * .68)
+        enc_kuge = pygame.image.load('media/kuge.png')
+        enc_kuge_rect = enc_kuge.get_rect()
+        enc_kuge_rect.center = (DISPLAY_WIDTH * .29, DISPLAY_HEIGHT * .4)
+        enc_miko = pygame.image.load('media/miko.png')
+        enc_miko_rect = enc_miko.get_rect()
+        enc_miko_rect.center = (DISPLAY_WIDTH * .44, DISPLAY_HEIGHT * .4)
+        enc_samurai = pygame.image.load('media/samurai.png')
+        enc_samurai_rect = enc_samurai.get_rect()
+        enc_samurai_rect.center = (DISPLAY_WIDTH * .59, DISPLAY_HEIGHT * .4)
+        enc_shokunin = pygame.image.load('media/shokunin.png')
+        enc_shokunin_rect = enc_shokunin.get_rect()
+        enc_shokunin_rect.center = (DISPLAY_WIDTH * .74, DISPLAY_HEIGHT * .54)
+        enc_text_style = pygame.font.SysFont('Arial', 50)
+        enc_select_text = enc_text_style.render('Select Encounter:', True, black)
+        enc_select_rect = enc_select_text.get_rect()
+        enc_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
         while paused:
-            screen.fill((255, 255, 255))
-            but_kuge = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_miko = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_samurai = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_shokunin = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_anna_pad = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_anna_mtn = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) - 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_anna_sea = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-
-            but_kuge.add_text('Kuge')
-            but_miko.add_text('Miko')
-            but_samurai.add_text('Samurai')
-            but_shokunin.add_text('Shokunin')
-            but_anna_pad.add_text('Annaibito: Paddy')
-            but_anna_mtn.add_text('Annaibito: Mountain')
-            but_anna_sea.add_text('Annaibito: Sea')
-
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_kuge.collidepoint(event.pos):
+                        if enc_kuge_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Kuge")
                             return
-                        elif but_miko.collidepoint(event.pos):
+                        elif enc_miko_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Miko")
                             return
-                        elif but_samurai.collidepoint(event.pos):
+                        elif enc_samurai_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Samurai")
                             return
-                        elif but_shokunin.collidepoint(event.pos):
+                        elif enc_shokunin_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Shokunin")
                             return
-                        elif but_anna_pad.collidepoint(event.pos):
+                        elif enc_anna_paddy_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Annaibito: Paddy")
                             return
-                        elif but_anna_mtn.collidepoint(event.pos):
+                        elif enc_anna_mt_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Annaibito: Mountain")
                             return
-                        elif but_anna_sea.collidepoint(event.pos):
+                        elif enc_anna_sea_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Annaibito: Sea")
                             return
-            pygame.display.update()
+            if enc_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(enc_select_text, enc_select_rect)
+                screen.blit(enc_anna_mt, enc_anna_mt_rect)
+                screen.blit(enc_anna_paddy, enc_anna_paddy_rect)
+                screen.blit(enc_anna_sea, enc_anna_sea_rect)
+                screen.blit(enc_kuge, enc_kuge_rect)
+                screen.blit(enc_miko, enc_miko_rect)
+                screen.blit(enc_samurai, enc_samurai_rect)
+                screen.blit(enc_shokunin, enc_shokunin_rect)
+                print("UPDATE")
+                enc_screen_update = 0
+                pygame.display.update()
         return False
 
     def inn_menu(screen):
