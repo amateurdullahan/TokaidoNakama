@@ -1063,7 +1063,7 @@ if __name__ == '__main__':
         text_select = pygame.font.SysFont('Arial', 50)
         text_select_r = text_select.render('Select Card:', True, black)
         text_select_rect = text_select_r.get_rect()
-        text_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .20)
+        text_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
         hs_2 = pygame.image.load('media/hs_2.png')
         hs_3 = pygame.image.load('media/hs_3.png')
         hs_2_rect = hs_2.get_rect()
@@ -1132,8 +1132,6 @@ if __name__ == '__main__':
         global current_player
         paused = True
         paddy_screen_update = 1
-        print("CURRENT PLAYER PADDY COUNT:")
-        print(current_player.pano_paddy)
         if current_player.pano_paddy == 0:
             paddy_cards = pygame.image.load('media/paddy_1.png')
         if current_player.pano_paddy == 1:
@@ -1172,22 +1170,42 @@ if __name__ == '__main__':
         """Panorama Mountain Menu"""
         global current_player
         paused = True
+        mt_screen_update = 1
+        if current_player.pano_mt == 0:
+            mt_cards = pygame.image.load('media/mt_1.png')
+        if current_player.pano_mt == 1:
+            mt_cards = pygame.image.load('media/mt_2.png')
+        if current_player.pano_mt == 2:
+            mt_cards = pygame.image.load('media/mt_3.png')
+        if current_player.pano_mt == 3:
+            mt_cards = pygame.image.load('media/mt_4.png')
+        mt_cards_rect = mt_cards.get_rect()
+        mt_cards_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .45)
+        mt_text_style = pygame.font.SysFont('Arial', 50)
+        mt_collect_text = mt_text_style.render('Panorama: Mountains', True, black)
+        mt_collect_rect = mt_collect_text.get_rect()
+        mt_collect_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        mt_confirmation_text = mt_text_style.render('Click Anywhere To Continue', True, black)
+        mt_confirmation_rect = mt_confirmation_text.get_rect()
+        mt_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
         while paused:
             screen.fill((255, 255, 255))
-            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_1.add_text('Panorama: Mountain')
-            but_2.add_text('Okay')
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_2.collidepoint(event.pos):
-                            current_player = Pano_Mt_Loc(current_player)
-                            return
-            pygame.display.update()
+                        current_player = Pano_Mt_Loc(current_player)
+                        return
+            if mt_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(mt_collect_text, mt_collect_rect)
+                screen.blit(mt_confirmation_text, mt_confirmation_rect)
+                screen.blit(mt_cards, mt_cards_rect)
+                print("SCREEN UPDATE")
+                mt_screen_update = 0
+                pygame.display.update()
         return False
 
     def pano_sea_menu(screen):
