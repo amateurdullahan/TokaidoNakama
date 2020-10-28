@@ -142,12 +142,8 @@ if __name__ == '__main__':
     # Font Section
     def title_selector(current_player):
         """Changes title for current player"""
-
         # Retrieve current player's RGB value
         rgb = colors_rgb.get(current_player.color)
-        # for key in colors_rgb:
-            # if key == current_player.color:
-                # rgb = colors_rgb.get(key)
         # Create title font, first param is font file in pygame, second is size
         font_title = pygame.font.SysFont('Arial', 50)
         # Create a string from current player's color
@@ -221,22 +217,6 @@ if __name__ == '__main__':
         btn_entp_6.add_text("Annaibito: Mountain " + str(entp_text[5]) + "%", 16)
         btn_entp_7 = Button(350, 730, 50, 20, screen, black)
         btn_entp_7.add_text("Annaibito: Sea" + str(entp_text[6]) + "%", 16)
-        # Retrieve current player's RGB value
-        rgb = colors_rgb.get(current_player.color)
-        # for key in colors_rgb:
-            # if key == current_player.color:
-                # rgb = colors_rgb.get(key)
-        # Create title font, first param is font file in pygame, second is size
-        font_title = pygame.font.SysFont('Arial', 50)
-        # Create a string from current player's color
-        text_current_player = current_player.color + '\'s Turn'
-        # Create a text surface object, on which text is drawn on.
-        text_title = font_title.render(text_current_player, True, rgb)
-        # Create a rectangular object for the text surface object
-        text_title_rect = text_title.get_rect()
-        # Set the center of the rectangular object
-        text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
-        screen.blit(text_title, text_title_rect)
         # player 1 score display
         p1_title = pygame.font.SysFont('Arial', 30)
         p1_rgb = colors_rgb.get(player_list[0].color)
