@@ -1099,7 +1099,7 @@ if __name__ == '__main__':
         paused = True
         farm_screen_update = 1
         farm_text_style = pygame.font.SysFont('Arial', 50)
-        farm_collect_text = farm_text_style.render('Collect 3 Coins!', True, black)
+        farm_collect_text = farm_text_style.render('Farm: Collect 3 Coins!', True, black)
         farm_collect_rect = farm_collect_text.get_rect()
         farm_collect_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
         farm_confirmation_text = farm_text_style.render('Click Anywhere To Continue', True, black)
@@ -1130,25 +1130,42 @@ if __name__ == '__main__':
     def pano_paddy_menu(screen):
         """Panorama Paddy Menu"""
         global current_player
-        # pano_paddy_screen_update = 1
         paused = True
+        paddy_screen_update = 1
+        print("CURRENT PLAYER PADDY COUNT:")
+        print(current_player.pano_paddy)
+        if current_player.pano_paddy == 0:
+            paddy_cards = pygame.image.load('media/paddy_1.png')
+        if current_player.pano_paddy == 1:
+            paddy_cards = pygame.image.load('media/paddy_2.png')
+        if current_player.pano_paddy == 2:
+            paddy_cards = pygame.image.load('media/paddy_3.png')
+        paddy_cards_rect = paddy_cards.get_rect()
+        paddy_cards_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .45)
+        paddy_text_style = pygame.font.SysFont('Arial', 50)
+        paddy_collect_text = paddy_text_style.render('Panorama: Rice Paddy', True, black)
+        paddy_collect_rect = paddy_collect_text.get_rect()
+        paddy_collect_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        paddy_confirmation_text = paddy_text_style.render('Click Anywhere To Continue', True, black)
+        paddy_confirmation_rect = paddy_confirmation_text.get_rect()
+        paddy_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
         while paused:
-            screen.fill((255, 255, 255))
-            # if current_player.pano_paddy == 0:
-            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_1.add_text('Panorama: Paddy')
-            but_2.add_text('Okay')
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_2.collidepoint(event.pos):
-                            current_player = Pano_Paddy_Loc(current_player)
-                            return
-            pygame.display.update()
+                        current_player = Pano_Paddy_Loc(current_player)
+                        return
+            if paddy_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(paddy_collect_text, paddy_collect_rect)
+                screen.blit(paddy_confirmation_text, paddy_confirmation_rect)
+                screen.blit(paddy_cards, paddy_cards_rect)
+                print("SCREEN UPDATE")
+                paddy_screen_update = 0
+                pygame.display.update()
         return False
 
     def pano_mt_menu(screen):
