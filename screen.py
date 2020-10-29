@@ -1440,211 +1440,270 @@ if __name__ == '__main__':
         """Village Menu"""
         global current_player
         paused = True
+        village_screen_update = 1
         counter = 0
+        village_text_style = pygame.font.SysFont('Arial', 50)
+        desc_text_style = pygame.font.SysFont('Arial', 38)
+        village_select_text = village_text_style.render('Choose 3 Souvenirs:', True, black)
+        village_select_text_rect = village_select_text.get_rect()
+        village_select_text_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .1)
+        desc_text = desc_text_style.render('Left-Click to Add, Right-Click to Discard', True, black)
+        desc_text_rect = desc_text.get_rect()
+        desc_text_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        koma = pygame.image.load('media/koma.png')
+        koma_rect = koma.get_rect()
+        koma_rect.center = (DISPLAY_WIDTH * .08, DISPLAY_HEIGHT * .37)
+        kamaboko = pygame.image.load('media/kamaboko.png')
+        kamaboko_rect = kamaboko.get_rect()
+        kamaboko_rect.center = (DISPLAY_WIDTH * .2, DISPLAY_HEIGHT * .37)
+        hashi = pygame.image.load('media/hashi.png')
+        hashi_rect = hashi.get_rect()
+        hashi_rect.center = (DISPLAY_WIDTH * .32, DISPLAY_HEIGHT * .37)
+        gofu = pygame.image.load('media/gofu.png')
+        gofu_rect = gofu.get_rect()
+        gofu_rect.center = (DISPLAY_WIDTH * .44, DISPLAY_HEIGHT * .37)
+        konpeito = pygame.image.load('media/konpeito.png')
+        konpeito_rect = konpeito.get_rect()
+        konpeito_rect.center = (DISPLAY_WIDTH * .56, DISPLAY_HEIGHT * .37)
+        manju = pygame.image.load('media/manju.png')
+        manju_rect = manju.get_rect()
+        manju_rect.center = (DISPLAY_WIDTH * .68, DISPLAY_HEIGHT * .37)
+        uchiwa = pygame.image.load('media/uchiwa.png')
+        uchiwa_rect = uchiwa.get_rect()
+        uchiwa_rect.center = (DISPLAY_WIDTH * .8, DISPLAY_HEIGHT * .37)
+        washi = pygame.image.load('media/washi.png')
+        washi_rect = washi.get_rect()
+        washi_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .37)
+        yunomi = pygame.image.load('media/yunomi.png')
+        yunomi_rect = yunomi.get_rect()
+        yunomi_rect.center = (DISPLAY_WIDTH * .08, DISPLAY_HEIGHT * .6)
+        daifuku = pygame.image.load('media/daifuku.png')
+        daifuku_rect = daifuku.get_rect()
+        daifuku_rect.center = (DISPLAY_WIDTH * .2, DISPLAY_HEIGHT * .6)
+        furoshiki = pygame.image.load('media/furoshiki.png')
+        furoshiki_rect = furoshiki.get_rect()
+        furoshiki_rect.center = (DISPLAY_WIDTH * .32, DISPLAY_HEIGHT * .6)
+        geta = pygame.image.load('media/geta.png')
+        geta_rect = geta.get_rect()
+        geta_rect.center = (DISPLAY_WIDTH * .44, DISPLAY_HEIGHT * .6)
+        haori = pygame.image.load('media/haori.png')
+        haori_rect = haori.get_rect()
+        haori_rect.center = (DISPLAY_WIDTH * .56, DISPLAY_HEIGHT * .6)
+        jubako = pygame.image.load('media/jubako.png')
+        jubako_rect = jubako.get_rect()
+        jubako_rect.center = (DISPLAY_WIDTH * .68, DISPLAY_HEIGHT * .6)
+        kan_zashi = pygame.image.load('media/kan_zashi.png')
+        kan_zashi_rect = kan_zashi.get_rect()
+        kan_zashi_rect.center = (DISPLAY_WIDTH * .8, DISPLAY_HEIGHT * .6)
+        netsuke = pygame.image.load('media/netsuke.png')
+        netsuke_rect = netsuke.get_rect()
+        netsuke_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .6)
+        ocha = pygame.image.load('media/ocha.png')
+        ocha_rect = ocha.get_rect()
+        ocha_rect.center = (DISPLAY_WIDTH * .08, DISPLAY_HEIGHT * .83)
+        sake = pygame.image.load('media/sake.png')
+        sake_rect = sake.get_rect()
+        sake_rect.center = (DISPLAY_WIDTH * .2, DISPLAY_HEIGHT * .83)
+        sandogasa = pygame.image.load('media/sandogasa.png')
+        sandogasa_rect = sandogasa.get_rect()
+        sandogasa_rect.center = (DISPLAY_WIDTH * .32, DISPLAY_HEIGHT * .83)
+        shikki = pygame.image.load('media/shikki.png')
+        shikki_rect = shikki.get_rect()
+        shikki_rect.center = (DISPLAY_WIDTH * .44, DISPLAY_HEIGHT * .83)
+        yukata = pygame.image.load('media/yukata.png')
+        yukata_rect = yukata.get_rect()
+        yukata_rect.center = (DISPLAY_WIDTH * .56, DISPLAY_HEIGHT * .83)
+        shamisen = pygame.image.load('media/shamisen.png')
+        shamisen_rect = shamisen.get_rect()
+        shamisen_rect.center = (DISPLAY_WIDTH * .68, DISPLAY_HEIGHT * .83)
+        sumie = pygame.image.load('media/sumie.png')
+        sumie_rect = sumie.get_rect()
+        sumie_rect.center = (DISPLAY_WIDTH * .8, DISPLAY_HEIGHT * .83)
+        ukiyoe = pygame.image.load('media/ukiyoe.png')
+        ukiyoe_rect = ukiyoe.get_rect()
+        ukiyoe_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .83)
         while paused and counter < 3:
-            screen.fill((255, 255, 255))
-            but_gofu = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_koma = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_yunomi = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_washi = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_uchiwa = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_hashi = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3) - 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_konpeito = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3) - 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_kamaboko = Button(DISPLAY_WIDTH / 3 - 150, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_manju = Button(DISPLAY_WIDTH / 3 - 150, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_daifuku = Button(DISPLAY_WIDTH / 3 - 150, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_ocha = Button(DISPLAY_WIDTH / 3 - 150, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_sake = Button(DISPLAY_WIDTH / 3 - 150, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_yukata = Button(DISPLAY_WIDTH / 3 - 150, ((DISPLAY_HEIGHT // 3) - 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_kanzashi = Button(DISPLAY_WIDTH / 3 - 150, (DISPLAY_HEIGHT // 3) - 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_geta = Button(DISPLAY_WIDTH / 3 + 200, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_haori = Button(DISPLAY_WIDTH / 3 + 200, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_furoshiki = Button(DISPLAY_WIDTH / 3 + 200, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_sandogasa = Button(DISPLAY_WIDTH / 3 + 200, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_netsuke = Button(DISPLAY_WIDTH / 3 + 200, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_shikki = Button(DISPLAY_WIDTH / 3 + 200, ((DISPLAY_HEIGHT // 3) - 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_jubako = Button(DISPLAY_WIDTH / 3 + 200, (DISPLAY_HEIGHT // 3) - 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_ukiyoe = Button(DISPLAY_WIDTH / 3 - 300, ((DISPLAY_HEIGHT // 3)) - 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_sumie = Button(DISPLAY_WIDTH / 3 - 300, (DISPLAY_HEIGHT // 3) - 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_shamisen = Button(DISPLAY_WIDTH / 3 - 300, ((DISPLAY_HEIGHT // 3) - 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-
-            but_gofu.add_text('Gofu')
-            but_koma.add_text('Koma')
-            but_yunomi.add_text('Yunomi')
-            but_washi.add_text('Washi')
-            but_uchiwa.add_text('Uchiwa')
-            but_hashi.add_text('Hashi')
-            but_konpeito.add_text('Konpeito')
-            but_kamaboko.add_text('Kamaboko')
-            but_manju.add_text('Manju')
-            but_daifuku.add_text('Daifuku')
-            but_ocha.add_text('Ocha')
-            but_sake.add_text('Sake')
-            but_yukata.add_text('Yukata')
-            but_kanzashi.add_text('Kan Zashi')
-            but_geta.add_text('Geta')
-            but_haori.add_text('Haori')
-            but_furoshiki.add_text('Furoshiki')
-            but_sandogasa.add_text('Sandogasa')
-            but_netsuke.add_text('Netsuke')
-            but_shikki.add_text('Shikki')
-            but_jubako.add_text('Jubako')
-            but_ukiyoe.add_text('Ukiyoe')
-            but_sumie.add_text('Sumie')
-            but_shamisen.add_text('Shamisen')
-
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_gofu.collidepoint(event.pos):
+                        if gofu_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Gofu")
                             counter += 1
-                        elif but_koma.collidepoint(event.pos):
+                        elif koma_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Koma")
                             counter += 1
-                        elif but_yunomi.collidepoint(event.pos):
+                        elif yunomi_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Yunomi")
                             counter += 1
-                        elif but_washi.collidepoint(event.pos):
+                        elif washi_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Washi")
                             counter += 1
-                        elif but_uchiwa.collidepoint(event.pos):
+                        elif uchiwa_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Uchiwa")
                             counter += 1
-                        elif but_hashi.collidepoint(event.pos):
+                        elif hashi_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Hashi")
                             counter += 1
-                        elif but_konpeito.collidepoint(event.pos):
+                        elif konpeito_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Konpeito")
                             counter += 1
-                        elif but_kamaboko.collidepoint(event.pos):
+                        elif kamaboko_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Kamaboko")
                             counter += 1
-                        elif but_manju.collidepoint(event.pos):
+                        elif manju_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Manju")
                             counter += 1
-                        elif but_daifuku.collidepoint(event.pos):
+                        elif daifuku_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Daifuku")
                             counter += 1
-                        elif but_ocha.collidepoint(event.pos):
+                        elif ocha_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Ocha")
                             counter += 1
-                        elif but_sake.collidepoint(event.pos):
+                        elif sake_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sake")
                             counter += 1
-                        elif but_yukata.collidepoint(event.pos):
+                        elif yukata_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Yukata")
                             counter += 1
-                        elif but_kanzashi.collidepoint(event.pos):
+                        elif kan_zashi_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Kan Zashi")
                             counter += 1
-                        elif but_geta.collidepoint(event.pos):
+                        elif geta_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Geta")
                             counter += 1
-                        elif but_haori.collidepoint(event.pos):
+                        elif haori_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Haori")
                             counter += 1
-                        elif but_furoshiki.collidepoint(event.pos):
+                        elif furoshiki_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Furoshiki")
                             counter += 1
-                        elif but_sandogasa.collidepoint(event.pos):
+                        elif sandogasa_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sandogasa")
                             counter += 1
-                        elif but_netsuke.collidepoint(event.pos):
+                        elif netsuke_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Netsuke")
                             counter += 1
-                        elif but_shikki.collidepoint(event.pos):
+                        elif shikki_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Shikki")
                             counter += 1
-                        elif but_jubako.collidepoint(event.pos):
+                        elif jubako_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Jubako")
                             counter += 1
-                        elif but_ukiyoe.collidepoint(event.pos):
+                        elif ukiyoe_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Ukiyoe")
                             counter += 1
-                        elif but_sumie.collidepoint(event.pos):
+                        elif sumie_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Sumie")
                             counter += 1
-                        elif but_shamisen.collidepoint(event.pos):
+                        elif shamisen_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Shamisen")
                             counter += 1
                     elif event.button == 3:
-                        if but_gofu.collidepoint(event.pos):
+                        if gofu_rect.collidepoint(event.pos):
                             discard(SVDeck, "Gofu")
                             counter += 1
-                        elif but_koma.collidepoint(event.pos):
+                        elif koma_rect.collidepoint(event.pos):
                             discard(SVDeck, "Koma")
                             counter += 1
-                        elif but_yunomi.collidepoint(event.pos):
+                        elif yunomi_rect.collidepoint(event.pos):
                             discard(SVDeck, "Yunomi")
                             counter += 1
-                        elif but_washi.collidepoint(event.pos):
+                        elif washi_rect.collidepoint(event.pos):
                             discard(SVDeck, "Washi")
                             counter += 1
-                        elif but_uchiwa.collidepoint(event.pos):
+                        elif uchiwa_rect.collidepoint(event.pos):
                             discard(SVDeck, "Uchiwa")
                             counter += 1
-                        elif but_hashi.collidepoint(event.pos):
+                        elif hashi_rect.collidepoint(event.pos):
                             discard(SVDeck, "Hashi")
                             counter += 1
-                        elif but_konpeito.collidepoint(event.pos):
+                        elif konpeito_rect.collidepoint(event.pos):
                             discard(SVDeck, "Konpeito")
                             counter += 1
-                        elif but_kamaboko.collidepoint(event.pos):
+                        elif kamaboko_rect.collidepoint(event.pos):
                             discard(SVDeck, "Kamaboko")
                             counter += 1
-                        elif but_manju.collidepoint(event.pos):
+                        elif manju_rect.collidepoint(event.pos):
                             discard(SVDeck, "Manju")
                             counter += 1
-                        elif but_daifuku.collidepoint(event.pos):
+                        elif daifuku_rect.collidepoint(event.pos):
                             discard(SVDeck, "Daifuku")
                             counter += 1
-                        elif but_ocha.collidepoint(event.pos):
+                        elif ocha_rect.collidepoint(event.pos):
                             discard(SVDeck, "Ocha")
                             counter += 1
-                        elif but_sake.collidepoint(event.pos):
+                        elif sake_rect.collidepoint(event.pos):
                             discard(SVDeck, "Sake")
                             counter += 1
-                        elif but_yukata.collidepoint(event.pos):
+                        elif yukata_rect.collidepoint(event.pos):
                             discard(SVDeck, "Yukata")
                             counter += 1
-                        elif but_kanzashi.collidepoint(event.pos):
+                        elif kan_zashi_rect.collidepoint(event.pos):
                             discard(SVDeck, "Kan Zashi")
                             counter += 1
-                        elif but_geta.collidepoint(event.pos):
+                        elif geta_rect.collidepoint(event.pos):
                             discard(SVDeck, "Geta")
                             counter += 1
-                        elif but_haori.collidepoint(event.pos):
+                        elif haori_rect.collidepoint(event.pos):
                             discard(SVDeck, "Haori")
                             counter += 1
-                        elif but_furoshiki.collidepoint(event.pos):
+                        elif furoshiki_rect.collidepoint(event.pos):
                             discard(SVDeck, "Furoshiki")
                             counter += 1
-                        elif but_sandogasa.collidepoint(event.pos):
+                        elif sandogasa_rect.collidepoint(event.pos):
                             discard(SVDeck, "Sandogasa")
                             counter += 1
-                        elif but_netsuke.collidepoint(event.pos):
+                        elif netsuke_rect.collidepoint(event.pos):
                             discard(SVDeck, "Netsuke")
                             counter += 1
-                        elif but_shikki.collidepoint(event.pos):
+                        elif shikki_rect.collidepoint(event.pos):
                             discard(SVDeck, "Shikki")
                             counter += 1
-                        elif but_jubako.collidepoint(event.pos):
+                        elif jubako_rect.collidepoint(event.pos):
                             discard(SVDeck, "Jubako")
                             counter += 1
-                        elif but_ukiyoe.collidepoint(event.pos):
+                        elif ukiyoe_rect.collidepoint(event.pos):
                             discard(SVDeck, "Ukiyoe")
                             counter += 1
-                        elif but_sumie.collidepoint(event.pos):
+                        elif sumie_rect.collidepoint(event.pos):
                             discard(SVDeck, "Sumie")
                             counter += 1
-                        elif but_shamisen.collidepoint(event.pos):
+                        elif shamisen_rect.collidepoint(event.pos):
                             discard(SVDeck, "Shamisen")
                             counter += 1
-            pygame.display.update()
+            if village_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(village_select_text, village_select_text_rect)
+                screen.blit(desc_text, desc_text_rect)
+                screen.blit(gofu, gofu_rect)
+                screen.blit(hashi, hashi_rect)
+                screen.blit(kamaboko, kamaboko_rect)
+                screen.blit(koma, koma_rect)
+                screen.blit(konpeito, konpeito_rect)
+                screen.blit(manju, manju_rect)
+                screen.blit(uchiwa, uchiwa_rect)
+                screen.blit(washi, washi_rect)
+                screen.blit(yunomi, yunomi_rect)
+                screen.blit(daifuku, daifuku_rect)
+                screen.blit(furoshiki, furoshiki_rect)
+                screen.blit(geta, geta_rect)
+                screen.blit(haori, haori_rect)
+                screen.blit(jubako, jubako_rect)
+                screen.blit(kan_zashi, kan_zashi_rect)
+                screen.blit(netsuke, netsuke_rect)
+                screen.blit(ocha, ocha_rect)
+                screen.blit(sake, sake_rect)
+                screen.blit(sandogasa, sandogasa_rect)
+                screen.blit(shikki, shikki_rect)
+                screen.blit(yukata, yukata_rect)
+                screen.blit(shamisen, shamisen_rect)
+                screen.blit(sumie, sumie_rect)
+                screen.blit(ukiyoe, ukiyoe_rect)
+                village_screen_update = 0
+                pygame.display.update()
         return False
 
     def temple_menu(screen):
