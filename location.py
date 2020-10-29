@@ -123,6 +123,8 @@ def Hot_Spring_Loc(player, pts):
 
 def Inn_Loc(player, cardname):
     """inn location function"""
+    if cardname == 'Skip':
+        return(player)
     for a in range(len(MDeck.card_list)):
         print("Card Name:", cardname)
         print("Card Checked:", MDeck.card_list[a].name)
