@@ -3,10 +3,11 @@
 import pygame
 import pygame_menu
 from player import Player
-from init import current_player, HSDeck, MDeck, SVDeck, ENCDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer, board_1_list, board_2_list, board_3_list
+from init import current_player, HSDeck, MDeck, SVDeck, ENCDeck, player_list, GreenPlayer, BluePlayer, YellowPlayer, PurplePlayer, GreyPlayer, board_1_list, board_2_list, board_3_list, board_4_list
 from location import *
 from buttons import Button
 from deck import Deck
+from operator import attrgetter
 
 # import sys
 # import time
@@ -391,7 +392,7 @@ if __name__ == '__main__':
                  18: (801, 176)}
     spaces_b2 = {14: (48, 350), 15: (48, 309), 16: (48, 261), 17: (48, 217), 18: (48, 170),
                  19: (132, 141), 20: (180, 162), 21: (229, 197), 22: (282, 219), 23: (334, 250),
-                 24: (434, 290), 25: (440, 321), 26: (496, 374), 27: (549, 387), 28: (602, 384),
+                 24: (400, 290), 25: (440, 321), 26: (496, 374), 27: (549, 387), 28: (602, 384),
                  29: (659, 384), 30: (711, 375), 31: (799, 126), 32: (799, 170), 33: (799, 214),
                  34: (799, 259), 35: (799, 304)}
     spaces_b3 = {31: (53, 113), 32: (53, 155), 33: (53, 199), 34: (53, 244), 35: (53, 290),
@@ -399,9 +400,9 @@ if __name__ == '__main__':
                  41: (381, 286), 42: (440, 250), 43: (484, 226), 44: (533, 213), 45: (577, 191),
                  46: (625, 161), 47: (666, 127), 48: (716, 121), 49: (795, 343), 50: (795, 299),
                  51: (795, 253), 52: (795, 210), 53: (795, 167)}
-    spaces_b4 = {49: (50, 116), 50: (50, 161), 51: (50, 207), 52: (50, 252), 53: (50, 298),
-                 54: (133, 337), 55: (180, 326), 56: (404, 302), 57: (269, 284), 58: (307, 258),
-                 59: (357, 239), 60: (406, 214), 61: (457, 211), 62: (506, 204), 63: (550, 213),
+    spaces_b4 = {49: (60, 116), 50: (60, 161), 51: (60, 207), 52: (60, 252), 53: (60, 298),
+                 54: (133, 337), 55: (180, 326), 56: (223, 302), 57: (269, 284), 58: (307, 258),
+                 59: (357, 239), 60: (406, 214), 61: (455, 211), 62: (507, 204), 63: (560, 213),
                  64: (619, 207), 65: (680, 166), 66: (766, 341), 67: (766, 296), 68: (766, 251),
                  69: (766, 205), 70: (766, 159)}
 
@@ -431,7 +432,6 @@ if __name__ == '__main__':
         # Flag for Updating Screen. Flagged at main loop,
         # startup for each board section & after selecting a board space.
         screen_update = 1
-
         print(current_player)
         # Start Menu
         if board_number == 0:
@@ -561,8 +561,7 @@ if __name__ == '__main__':
         # For Cleanup:
         # Function that takes in number and 4 coordinates,
         # that makes rect with our naming convention
-        print(current_player.color)
-        # Outer Loop Flag
+        # Outer loop flag
         running = True
         # Outer loop
         while running:
@@ -771,19 +770,19 @@ if __name__ == '__main__':
                                     update_current_player()
                                     screen_update = 1
                             if rect31.collidepoint(event.pos) or rect31_1.collidepoint(event.pos):
-                                if current_player.board_space < 31:
+                                if current_player.board_space < 51:
                                     print('We\'re INN IT NOW BOYS')
                                     encounter_selection(31)
-                                    if board_number == 1:
-                                        if len(board_1_list) == 0:
+                                    if board_number == 2:
+                                        if len(board_2_list) == 0:
                                             current_player.board_space = 35
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 1:
+                                            board_2_list.append(current_player)
+                                        elif len(board_2_list) == 1:
                                             current_player.board_space = 34
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 2:
+                                            board_2_list.append(current_player)
+                                        elif len(board_2_list) == 2:
                                             current_player.board_space = 33
-                                            board_1_list.append(current_player)
+                                            board_2_list.append(current_player)
                                             update_current_player()
                                             running = False
                                             main_screen(3)
@@ -885,16 +884,16 @@ if __name__ == '__main__':
                                 if current_player.board_space < 49:
                                     print('We\'re INN IT NOW BOYS')
                                     encounter_selection(49)
-                                    if board_number == 1:
-                                        if len(board_1_list) == 0:
+                                    if board_number == 3:
+                                        if len(board_3_list) == 0:
                                             current_player.board_space = 53
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 1:
+                                            board_3_list.append(current_player)
+                                        elif len(board_3_list) == 1:
                                             current_player.board_space = 52
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 2:
+                                            board_3_list.append(current_player)
+                                        elif len(board_3_list) == 2:
                                             current_player.board_space = 51
-                                            board_1_list.append(current_player)
+                                            board_3_list.append(current_player)
                                             update_current_player()
                                             running = False
                                             main_screen(4)
@@ -908,7 +907,7 @@ if __name__ == '__main__':
                                     current_player.board_space = 54
                                     update_current_player()
                                     screen_update = 1
-                            if rect55.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
+                            if rect55.collidepoint(event.pos) or rect55_1.collidepoint(event.pos):
                                 if current_player.board_space < 55:
                                     print('Temple selected.')
                                     encounter_selection(55)
@@ -989,16 +988,16 @@ if __name__ == '__main__':
                                 if current_player.board_space < 66:
                                     print('We\'re INN IT NOW BOYS')
                                     encounter_selection(66)
-                                    if board_number == 1:
-                                        if len(board_1_list) == 0:
+                                    if board_number == 4:
+                                        if len(board_4_list) == 0:
                                             current_player.board_space = 70
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 1:
+                                            board_4_list.append(current_player)
+                                        elif len(board_4_list) == 1:
                                             current_player.board_space = 69
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 2:
+                                            board_4_list.append(current_player)
+                                        elif len(board_4_list) == 2:
                                             current_player.board_space = 68
-                                            board_1_list.append(current_player)
+                                            board_4_list.append(current_player)
                                             update_current_player()
                                             running = False
                                             results_menu(screen)
@@ -1012,6 +1011,7 @@ if __name__ == '__main__':
             if start_menu.is_enabled():
                 start_menu.update(events)
                 start_menu.draw(screen)
+                running = False
 
             # Only update screen if needed, blits in functions
             if screen_update == 1:
@@ -1308,87 +1308,121 @@ if __name__ == '__main__':
     def inn_menu(screen):
         global current_player
         paused = True
+        inn_screen_update = 1
+        inn_text_style = pygame.font.SysFont('Arial', 50)
+        inn_select_text = inn_text_style.render('Select Meal:', True, black)
+        inn_select_text_rect = inn_select_text.get_rect()
+        inn_select_text_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        meal_miso = pygame.image.load('media/miso.png')
+        meal_miso_rect = meal_miso.get_rect()
+        meal_miso_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .37)
+        meal_dango = pygame.image.load('media/dango.png')
+        meal_dango_rect = meal_dango.get_rect()
+        meal_dango_rect.center = (DISPLAY_WIDTH * .38, DISPLAY_HEIGHT * .37)
+        meal_nigiri = pygame.image.load('media/nigiri.png')
+        meal_nigiri_rect = meal_nigiri.get_rect()
+        meal_nigiri_rect.center = (DISPLAY_WIDTH * .26, DISPLAY_HEIGHT * .37)
+        meal_soba = pygame.image.load('media/soba.png')
+        meal_soba_rect = meal_soba.get_rect()
+        meal_soba_rect.center = (DISPLAY_WIDTH * .14, DISPLAY_HEIGHT * .37)
+        meal_sushi = pygame.image.load('media/sushi.png')
+        meal_sushi_rect = meal_sushi.get_rect()
+        meal_sushi_rect.center = (DISPLAY_WIDTH * .62, DISPLAY_HEIGHT * .37)
+        meal_tempura = pygame.image.load('media/tempura.png')
+        meal_tempura_rect = meal_tempura.get_rect()
+        meal_tempura_rect.center = (DISPLAY_WIDTH * .74, DISPLAY_HEIGHT * .37)
+        meal_tofu = pygame.image.load('media/tofu.png')
+        meal_tofu_rect = meal_tofu.get_rect()
+        meal_tofu_rect.center = (DISPLAY_WIDTH * .86, DISPLAY_HEIGHT * .37)
+        meal_yakitori = pygame.image.load('media/yakitori.png')
+        meal_yakitori_rect = meal_yakitori.get_rect()
+        meal_yakitori_rect.center = (DISPLAY_WIDTH * .38, DISPLAY_HEIGHT * .6)
+        meal_donburi = pygame.image.load('media/donburi.png')
+        meal_donburi_rect = meal_donburi.get_rect()
+        meal_donburi_rect.center = (DISPLAY_WIDTH * .26, DISPLAY_HEIGHT * .6)
+        meal_fugu = pygame.image.load('media/fugu.png')
+        meal_fugu_rect = meal_fugu.get_rect()
+        meal_fugu_rect.center = (DISPLAY_WIDTH * .14, DISPLAY_HEIGHT * .6)
+        meal_sashimi = pygame.image.load('media/sashimi.png')
+        meal_sashimi_rect = meal_sashimi.get_rect()
+        meal_sashimi_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .6)
+        meal_tai_meshi = pygame.image.load('media/tai_meshi.png')
+        meal_tai_meshi_rect = meal_tai_meshi.get_rect()
+        meal_tai_meshi_rect.center = (DISPLAY_WIDTH * .74, DISPLAY_HEIGHT * .6)
+        meal_udon = pygame.image.load('media/udon.png')
+        meal_udon_rect = meal_udon.get_rect()
+        meal_udon_rect.center = (DISPLAY_WIDTH * .86, DISPLAY_HEIGHT * .6)
+        meal_unagi = pygame.image.load('media/unagi.png')
+        meal_unagi_rect = meal_unagi.get_rect()
+        meal_unagi_rect.center = (DISPLAY_WIDTH * .62, DISPLAY_HEIGHT * .6)
         while paused:
-            screen.fill((255, 255, 255))
-            but_miso = Button(DISPLAY_WIDTH / 3 + 150, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_dango = Button(DISPLAY_WIDTH / 3 + 150, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_nigiri = Button(DISPLAY_WIDTH / 3 + 150, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_tempura = Button(DISPLAY_WIDTH / 3 + 150, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_soba = Button(DISPLAY_WIDTH / 3 + 150, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_yakitori = Button(DISPLAY_WIDTH / 3 + 150, ((DISPLAY_HEIGHT // 3) - 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_tofu = Button(DISPLAY_WIDTH / 3 + 150, (DISPLAY_HEIGHT // 3) - 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_sushi = Button(DISPLAY_WIDTH / 3 - 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_fugu = Button(DISPLAY_WIDTH / 3 - 50, ((DISPLAY_HEIGHT // 3) + 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_donburi = Button(DISPLAY_WIDTH / 3 - 50, (DISPLAY_HEIGHT // 3) + 100, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_sashimi = Button(DISPLAY_WIDTH / 3 - 50, ((DISPLAY_HEIGHT // 3) + 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_udon = Button(DISPLAY_WIDTH / 3 - 50, (DISPLAY_HEIGHT // 3) - 50, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_unagi = Button(DISPLAY_WIDTH / 3 - 50, ((DISPLAY_HEIGHT // 3) - 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-            but_taimeshi = Button(DISPLAY_WIDTH / 3 - 50, (DISPLAY_HEIGHT // 3) - 150, ((DISPLAY_WIDTH / 3) - 100), 40, screen, green)
-
-            but_miso.add_text('Miso')
-            but_dango.add_text('Dango')
-            but_nigiri.add_text('Nigiri')
-            but_tempura.add_text('Tempura')
-            but_soba.add_text('Soba')
-            but_yakitori.add_text('Yakitori')
-            but_tofu.add_text('Tofu')
-            but_sushi.add_text('Sushi')
-            but_fugu.add_text('Fugu')
-            but_donburi.add_text('Donburi')
-            but_sashimi.add_text('Sashimi')
-            but_udon.add_text('Udon')
-            but_unagi.add_text('Ungai')
-            but_taimeshi.add_text('Tai Meshi')
-
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_miso.collidepoint(event.pos):
-                            current_player = Inn_Loc(current_player, "Miso")
+                        if meal_miso_rect.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Misoshiru")
                             return
-                        elif but_dango.collidepoint(event.pos):
+                        elif meal_dango_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Dango")
                             return
-                        elif but_nigiri.collidepoint(event.pos):
-                            current_player = Inn_Loc(current_player, "Nigiri")
+                        elif meal_nigiri_rect.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Nigirimeshi")
                             return
-                        elif but_tempura.collidepoint(event.pos):
+                        elif meal_tempura_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tempura")
                             return
-                        elif but_soba.collidepoint(event.pos):
+                        elif meal_soba_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Soba")
                             return
-                        elif but_yakitori.collidepoint(event.pos):
+                        elif meal_yakitori_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Yakitori")
                             return
-                        elif but_tofu.collidepoint(event.pos):
+                        elif meal_tofu_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tofu")
                             return
-                        elif but_sushi.collidepoint(event.pos):
+                        elif meal_sushi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Sushi")
                             return
-                        elif but_fugu.collidepoint(event.pos):
+                        elif meal_fugu_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Fugu")
                             return
-                        elif but_donburi.collidepoint(event.pos):
-                            current_player = Encounter_Loc(current_player, "Donburi")
+                        elif meal_donburi_rect.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, "Donburi")
                             return
-                        elif but_sashimi.collidepoint(event.pos):
+                        elif meal_sashimi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Sashimi")
                             return
-                        elif but_udon.collidepoint(event.pos):
+                        elif meal_udon_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Udon")
                             return
-                        elif but_unagi.collidepoint(event.pos):
+                        elif meal_unagi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Unagi")
                             return
-                        elif but_taimeshi.collidepoint(event.pos):
+                        elif meal_tai_meshi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tai Meshi")
                             return
-            pygame.display.update()
+            if inn_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(inn_select_text, inn_select_text_rect)
+                screen.blit(meal_miso, meal_miso_rect)
+                screen.blit(meal_dango, meal_dango_rect)
+                screen.blit(meal_nigiri, meal_nigiri_rect)
+                screen.blit(meal_soba, meal_soba_rect)
+                screen.blit(meal_sushi, meal_sushi_rect)
+                screen.blit(meal_tempura, meal_tempura_rect)
+                screen.blit(meal_tofu, meal_tofu_rect)
+                screen.blit(meal_yakitori, meal_yakitori_rect)
+                screen.blit(meal_donburi, meal_donburi_rect)
+                screen.blit(meal_fugu, meal_fugu_rect)
+                screen.blit(meal_sashimi, meal_sashimi_rect)
+                screen.blit(meal_tai_meshi, meal_tai_meshi_rect)
+                screen.blit(meal_udon, meal_udon_rect)
+                screen.blit(meal_unagi, meal_unagi_rect)
+                inn_screen_update = 0
+                pygame.display.update()
         return False
 
     def village_menu(screen):
@@ -1651,32 +1685,32 @@ if __name__ == '__main__':
         paused = True
         results_screen_update = 1
         text_results = pygame.font.SysFont('Arial', 50)
-        results_player_list = sorted(player_list, key=operator.attrgetter(score))
+        results_player_list = sorted(player_list, key=attrgetter("score"))
         first_place = text_results.render('First', True, black)
         first_place_rect = first_place.get_rect()
-        first_place_rect.center = (DISPLAY_WIDTH * .35, DISPLAY_HEIGHT * .2)
+        first_place_rect.center = (DISPLAY_WIDTH * .30, DISPLAY_HEIGHT * .2)
         second_place = text_results.render('Second', True, black)
         second_place_rect = second_place.get_rect()
-        second_place_rect.center = (DISPLAY_WIDTH * .35, DISPLAY_HEIGHT * .5)
+        second_place_rect.center = (DISPLAY_WIDTH * .30, DISPLAY_HEIGHT * .5)
         third_place = text_results.render('Third', True, black)
         third_place_rect = third_place.get_rect()
-        third_place_rect.center = (DISPLAY_WIDTH * .35, DISPLAY_HEIGHT * .8)
+        third_place_rect.center = (DISPLAY_WIDTH * .30, DISPLAY_HEIGHT * .8)
         first_player = text_results.render(results_player_list[0].color, True, black)
         first_player_rect = first_player.get_rect()
-        first_player_rect.center = (DISPLAY_WDITH * .5, DISPLAY_HEIGHT * .2)
+        first_player_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .2)
         second_player = text_results.render(results_player_list[1].color, True, black)
         second_player_rect = second_player.get_rect()
         second_player_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .5)
         third_player = text_results.render(results_player_list[2].color, True, black)
         third_player_rect = third_player.get_rect()
         third_player_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .8)
-        first_score = text_results.render(results_player_list[0].score, True, black)
+        first_score = text_results.render(str(results_player_list[0].score), True, black)
         first_score_rect = first_score.get_rect()
         first_score_rect.center = (DISPLAY_WIDTH * .7, DISPLAY_HEIGHT * .2)
-        second_score = text_results.render(results_player_list[0].score, True, black)
+        second_score = text_results.render(str(results_player_list[0].score), True, black)
         second_score_rect = second_score.get_rect()
         second_score_rect.center = (DISPLAY_WIDTH * .7, DISPLAY_HEIGHT * .5)
-        third_score = text_results.render(results_player_list[2].score, True, black)
+        third_score = text_results.render(str(results_player_list[2].score), True, black)
         third_score_rect = third_score.get_rect()
         third_score_rect.center = (DISPLAY_WIDTH * .7, DISPLAY_HEIGHT * .8)
         while paused:
