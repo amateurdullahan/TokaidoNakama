@@ -35,6 +35,9 @@ if __name__ == '__main__':
     grey = (145, 147, 156)
     purple = (98, 55, 114)
     gold = (210, 132, 47)
+    pink = (213, 123, 169)
+    light_blue = (64, 202, 187)
+    red = (243, 0, 0)
 
     # Title and Icon
     pygame.display.set_caption("Tokaido Nakama")
@@ -161,7 +164,7 @@ if __name__ == '__main__':
         """bunch of buttons to display score and Probability"""
         from probability import CostProb, PointProb, EncTypeProb, SubTypeProb
         # Builds Meal Cost Display
-        btn_mcp_title = Button(0, 585, 50, 25, screen, black)
+        btn_mcp_title = Button(0, 585, 50, 25, screen, red)
         btn_mcp_title.add_text("Meal Cost", 18)
         btn_mcp_1 = Button(0, 610, 50, 20, screen, black)
         mcp_text = CostProb(MDeck)
@@ -171,7 +174,7 @@ if __name__ == '__main__':
         btn_mcp_3 = Button(0, 650, 50, 20, screen, black)
         btn_mcp_3.add_text("3 Coin " + str(mcp_text[2]) + "%", 16)
         # Hot Springs Point Display
-        btn_hsp_title = Button(0, 675, 50, 25, screen, black)
+        btn_hsp_title = Button(0, 675, 50, 25, screen, light_blue)
         btn_hsp_title.add_text("Hot Springs Points", 18)
         btn_hsp_1 = Button(0, 700, 50, 20, screen, black)
         hsp_text = PointProb(HSDeck)
@@ -201,7 +204,7 @@ if __name__ == '__main__':
         btn_svsp_4 = Button(175, 760, 50, 20, screen, black)
         btn_svsp_4.add_text("Art " + str(svsp_text[2]) + "%", 16)
         # Builds Encounter Type Display
-        btn_entp_title = Button(350, 585, 50, 25, screen, black)
+        btn_entp_title = Button(350, 585, 50, 25, screen, pink)
         btn_entp_title.add_text("Encounter Type", 18)
         btn_entp_1 = Button(350, 610, 50, 20, screen, black)
         entp_text = EncTypeProb(ENCDeck)
@@ -1310,9 +1313,13 @@ if __name__ == '__main__':
         paused = True
         inn_screen_update = 1
         inn_text_style = pygame.font.SysFont('Arial', 50)
+        skip_text_style = pygame.font.SysFont('Arial', 38)
         inn_select_text = inn_text_style.render('Select Meal:', True, black)
         inn_select_text_rect = inn_select_text.get_rect()
         inn_select_text_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        meal_skip = skip_text_style.render('Skip Meal', True, black)
+        meal_skip_rect = meal_skip.get_rect()
+        meal_skip_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .8)
         meal_miso = pygame.image.load('media/miso.png')
         meal_miso_rect = meal_miso.get_rect()
         meal_miso_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .37)
@@ -1404,9 +1411,13 @@ if __name__ == '__main__':
                         elif meal_tai_meshi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tai Meshi")
                             return
+                        elif meal_skip_rect.collidepoint(event.pos):
+                            current_player = Inn_Loc(current_player, 'Skip')
+                            return
             if inn_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(inn_select_text, inn_select_text_rect)
+                screen.blit(meal_skip, meal_skip_rect)
                 screen.blit(meal_miso, meal_miso_rect)
                 screen.blit(meal_dango, meal_dango_rect)
                 screen.blit(meal_nigiri, meal_nigiri_rect)
