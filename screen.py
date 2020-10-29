@@ -121,7 +121,7 @@ if __name__ == '__main__':
             # Code for Inn
             print("Inn stuff")
             inn_menu(screen)
-            update_current_player
+            update_current_player()
 
     # def player_info(playercount, list of colors):
     # Generates player's info displays, depending on number of players & assigns colors
@@ -1001,7 +1001,7 @@ if __name__ == '__main__':
                                             board_1_list.append(current_player)
                                             update_current_player()
                                             running = False
-                                            # results_menu(screen)
+                                            results_menu(screen)
                                     update_current_player()
                                     screen_update = 1
 
@@ -1606,33 +1606,102 @@ if __name__ == '__main__':
         """Temple Menu"""
         global current_player
         paused = True
+        temple_screen_update = 1
+        text_select = pygame.font.SysFont('Arial', 50)
+        text_select_r = text_select.render('Select Amount:', True, black)
+        text_select_rect = text_select_r.get_rect()
+        text_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        coins_1 = pygame.image.load('media/coin.png')
+        coins_2 = pygame.image.load('media/coins_two.png')
+        coins_3 = pygame.image.load('media/coins_three.png')
+        coins_1_rect = coins_1.get_rect()
+        coins_2_rect = coins_2.get_rect()
+        coins_3_rect = coins_3.get_rect()
+        coins_1_rect.center = (DISPLAY_WIDTH * .25, DISPLAY_HEIGHT * .45)
+        coins_2_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .46)
+        coins_3_rect.center = (DISPLAY_WIDTH * .75, DISPLAY_HEIGHT * .46)
         while paused:
-            screen.fill((255, 255, 255))
-            but_1 = Button(DISPLAY_WIDTH / 3 + 50, (DISPLAY_HEIGHT // 3), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_2 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 50), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_3 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 100), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_4 = Button(DISPLAY_WIDTH / 3 + 50, ((DISPLAY_HEIGHT // 3)+ 150), ((DISPLAY_WIDTH / 3) - 100), 40, screen, green, black)
-            but_1.add_text('Temple Donation:')
-            but_2.add_text('One Coin')
-            but_3.add_text('Two Coins')
-            but_4.add_text('Three Coins')
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if but_2.collidepoint(event.pos):
+                        if coins_1_rect.collidepoint(event.pos):
                             current_player = Temple_Loc(current_player, 1)
                             return
-                        if but_3.collidepoint(event.pos):
+                        if coins_2_rect.collidepoint(event.pos):
                             current_player = Temple_Loc(current_player, 2)
                             return
-                        if but_4.collidepoint(event.pos):
+                        if coins_3_rect.collidepoint(event.pos):
                             current_player = Temple_Loc(current_player, 3)
                             return
-            pygame.display.update()
+            if temple_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(text_select_r, text_select_rect)
+                screen.blit(coins_1, coins_1_rect)
+                screen.blit(coins_2, coins_2_rect)
+                screen.blit(coins_3, coins_3_rect)
+                temple_screen_update = 0
+                pygame.display.update()        
         return False
+
+    def results_menu(screen):
+        """Results screen! Will show breakdown of player points"""
+        paused = True
+        results_screen_update = 1
+        text_results = pygame.font.SysFont('Arial', 50)
+        results_player_list = sorted(player_list, key=operator.attrgetter(score))
+        first_place = text_results.render('First', True, black)
+        first_place_rect = first_place.get_rect()
+        first_place_rect.center = (DISPLAY_WIDTH * .35, DISPLAY_HEIGHT * .2)
+        second_place = text_results.render('Second', True, black)
+        second_place_rect = second_place.get_rect()
+        second_place_rect.center = (DISPLAY_WIDTH * .35, DISPLAY_HEIGHT * .5)
+        third_place = text_results.render('Third', True, black)
+        third_place_rect = third_place.get_rect()
+        third_place_rect.center = (DISPLAY_WIDTH * .35, DISPLAY_HEIGHT * .8)
+        first_player = text_results.render(results_player_list[0].color, True, black)
+        first_player_rect = first_player.get_rect()
+        first_player_rect.center = (DISPLAY_WDITH * .5, DISPLAY_HEIGHT * .2)
+        second_player = text_results.render(results_player_list[1].color, True, black)
+        second_player_rect = second_player.get_rect()
+        second_player_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .5)
+        third_player = text_results.render(results_player_list[2].color, True, black)
+        third_player_rect = third_player.get_rect()
+        third_player_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .8)
+        first_score = text_results.render(results_player_list[0].score, True, black)
+        first_score_rect = first_score.get_rect()
+        first_score_rect.center = (DISPLAY_WIDTH * .7, DISPLAY_HEIGHT * .2)
+        second_score = text_results.render(results_player_list[0].score, True, black)
+        second_score_rect = second_score.get_rect()
+        second_score_rect.center = (DISPLAY_WIDTH * .7, DISPLAY_HEIGHT * .5)
+        third_score = text_results.render(results_player_list[2].score, True, black)
+        third_score_rect = third_score.get_rect()
+        third_score_rect.center = (DISPLAY_WIDTH * .7, DISPLAY_HEIGHT * .8)
+        while paused:
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    quitter()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        quitter()
+            if results_screen_update == 1:
+                screen.fill((255, 255, 255))
+                screen.blit(first_place, first_place_rect)
+                screen.blit(first_player, first_player_rect)
+                screen.blit(first_score, first_score_rect)
+                screen.blit(second_place, second_place_rect)
+                screen.blit(second_player, second_player_rect)
+                screen.blit(second_score, second_score_rect)
+                screen.blit(third_place, third_place_rect)
+                screen.blit(third_player, third_player_rect)
+                screen.blit(third_score, third_score_rect)
+                results_screen_update = 0
+                pygame.display.update()        
+        return False
+
 
 
     # Run Sequence Below
