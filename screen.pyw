@@ -411,8 +411,8 @@ if __name__ == '__main__':
 
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
-        player_list.reverse()
-        for player in player_list:
+        blit_player_list = sorted(player_list, key=attrgetter("board_space"), reverse=True)
+        for player in blit_player_list:
             print("Board Number:", board_number)
             print("Board Space:", player.board_space)
             if board_number == 1:
@@ -425,7 +425,7 @@ if __name__ == '__main__':
                 loc = spaces_b4.get(player.board_space)
             print("Line 364:", loc)
             screen.blit(player.icon, loc)
-        player_list.reverse()
+
 
     # Main Game Loop
     def main_screen(board_number):
