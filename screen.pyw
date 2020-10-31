@@ -103,8 +103,16 @@ if __name__ == '__main__':
         elif board_position in [5, 13, 26, 41, 54, 60]:
             # Code for Hot Springs
             print("Hot spring stuff")
-            hot_springs_menu(screen)
-            update_current_player()
+            # Menu returns true if an action was completed
+            completion = hot_springs_menu(screen)
+            # Update only if completion of turn. This block can be moved to end of function to 
+            # save redundancy once all menus are switched to this return style. 
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
+            
         elif board_position in [6, 12, 23, 27, 40, 62]:
             # Code for Pano_Mt
             print("Pano mt stuff")
@@ -411,7 +419,18 @@ if __name__ == '__main__':
 
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
-        blit_player_list = sorted(player_list, key=attrgetter("board_space"), reverse=True)
+      
+        ascend = False
+        for player in player_list:
+            if player.board_space in [31, 32, 33, 34, 35]:
+                ascend = True
+            elif player.board_space in [49, 50, 51, 52, 53] and board_number == 4:
+                ascend = True
+        # Player list sorted by player attribute board_space, reverse for descending order
+        if ascend is True:
+            blit_player_list = sorted(player_list, key=attrgetter("board_space"))
+        else:
+            blit_player_list = sorted(player_list, key=attrgetter("board_space"), reverse=True)
         for player in blit_player_list:
             print("Board Number:", board_number)
             print("Board Space:", player.board_space)
@@ -432,8 +451,8 @@ if __name__ == '__main__':
         """Main game loop"""
         global current_player
 
-        # Flag for Updating Screen. Flagged at main loop,
-        # startup for each board section & after selecting a board space.
+        # Flag for Updating Screen. Flagged at startup for each
+        # board section & after selecting a board space.
         screen_update = 1
         print(current_player)
         # Start Menu
@@ -608,9 +627,10 @@ if __name__ == '__main__':
                             if rect5.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
                                 if current_player.board_space < 5:
                                     print('Hot Springs selected.')
-                                    encounter_selection(5)
-                                    current_player.board_space = 5
-                                    update_current_player()
+                                    enc_cont = encounter_selection(5)
+                                    if enc_cont is True:
+                                        current_player.board_space = 5
+                                        update_current_player()
                                     screen_update = 1
                             if rect6.collidepoint(event.pos) or rect6_1.collidepoint(event.pos):
                                 if current_player.board_space < 6:
@@ -1049,6 +1069,10 @@ if __name__ == '__main__':
         hs_3_rect = hs_3.get_rect()
         hs_2_rect.center = (DISPLAY_WIDTH * .32, DISPLAY_HEIGHT * .51)
         hs_3_rect.center = (DISPLAY_WIDTH * .68, DISPLAY_HEIGHT * .51)
+        back_style = pygame.font.SysFont('Arial', 38)
+        back_text = back_style.render('Back', True, black)
+        back_text_r = back_text.get_rect()
+        back_text_r.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .05)
         while paused:
             events = pygame.event.get()
             for event in events:
@@ -1058,13 +1082,16 @@ if __name__ == '__main__':
                     if event.button == 1:
                         if hs_2_rect.collidepoint(event.pos):
                             current_player = Hot_Spring_Loc(current_player, 2)
-                            return
+                            return True
                         elif hs_3_rect.collidepoint(event.pos):
                             current_player = Hot_Spring_Loc(current_player, 3)
-                            return
+                            return True
+                        elif back_text_r.collidepoint(event.pos):
+                            return False
             if hs_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(text_select_r, text_select_rect)
+                screen.blit(back_text, back_text_r)
                 screen.blit(hs_2, hs_2_rect)
                 screen.blit(hs_3, hs_3_rect)
                 hs_screen_update = 0
