@@ -1,6 +1,7 @@
 # TokaidoNakama
 Portfolio Project for Holberton School TUL-11, gameplay aid for board game Tokaido
 
+
 HOW TO USE:
 
 0. Set up, physically or digitally, the board for Tokaido

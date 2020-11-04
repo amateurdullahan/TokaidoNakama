@@ -183,6 +183,5 @@ class Deck():
 
         def print_list(self):
             """test method for troubleshooting"""
-            for a in range(len(self.card_list)):
-                print(self.card_list[a])
-                a += 1
+            for idx in range(len(self.card_list)):
+                print(self.card_list[idx])
