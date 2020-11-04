@@ -158,7 +158,7 @@ if __name__ == '__main__':
 
     # Probabilities & score displays
     def score_prob_display():
-        """bunch of buttons to display score and Probability"""
+        """Updates player scores & all probabilities."""
         from probability import CostProb, PointProb, EncTypeProb, SubTypeProb
         # Builds Meal Cost Display
         btn_mcp_title = Button(0, 585, 50, 25, screen, red)
@@ -383,6 +383,7 @@ if __name__ == '__main__':
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
 
+        # Ascend flag is for inns with ascending spaces. Helps for blit order at inns
         ascend = False
         for player in player_list:
             if player.board_space in [31, 32, 33, 34, 35]:
@@ -412,8 +413,8 @@ if __name__ == '__main__':
     # Main Game Loop
     def main_screen(board_number):
         """Main game loop"""
-        global current_player
 
+        global current_player
         # Flag for Updating Screen. Flagged at startup for each
         # board section & after selecting a board space.
         screen_update = 1
@@ -543,9 +544,9 @@ if __name__ == '__main__':
             rect65_1 = pygame.Rect(663, 251, 68, 70)
             rect66 = pygame.Rect(767, 91, 34, 307)
             rect66_1 = pygame.Rect(739, 91, 89, 88)
-        # For Cleanup:
         # Function that takes in number and 4 coordinates,
-        # that makes rect with our naming convention
+        # that makes rect with our naming convention ??!?
+
         # Outer loop flag
         running = True
         # Outer loop
@@ -1016,7 +1017,6 @@ if __name__ == '__main__':
             # Reset Flag
             screen_update = 0
 
-
     def hot_springs_menu(screen):
         """Hot Springs Menu"""
         global current_player
@@ -1302,6 +1302,7 @@ if __name__ == '__main__':
         return False
 
     def inn_menu(screen):
+        """Inn Menu"""
         global current_player
         paused = True
         inn_screen_update = 1
@@ -1798,8 +1799,6 @@ if __name__ == '__main__':
                 results_screen_update = 0
                 pygame.display.update()        
         return False
-
-
 
     # Run Sequence Below
     main_screen(0)
