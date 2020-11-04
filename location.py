@@ -51,7 +51,7 @@ def Pano_Sea_Loc(player):
         # pano_sea_check(player)
         return (player)
     else:
-        print("Max Sea Panorama Has Been Reaced")
+        print("Max Sea Panorama Has Been Reached")
         return (player)
 
 def Temple_Loc(player, num):
