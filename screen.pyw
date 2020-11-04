@@ -9,10 +9,6 @@ from buttons import Button
 from deck import Deck
 from operator import attrgetter
 
-# import sys
-# import time
-# from pygame.locals import *
-
 if __name__ == '__main__':
     # Declaring global variables
     global screen
@@ -44,9 +40,6 @@ if __name__ == '__main__':
     icon = pygame.image.load('media/cherrytreeicon.png')
     pygame.display.set_icon(icon)
 
-    # Clock, if we want a timer
-    # clock = pygame.time.Clock()
-
     # Board images
     board_one = pygame.image.load('media/board_one.png')
     board_two = pygame.image.load('media/board_two.png')
@@ -56,8 +49,6 @@ if __name__ == '__main__':
     # Coordinates for board
     X_BOARD_COORD = (DISPLAY_WIDTH * 0.02)
     Y_BOARD_COORD = (DISPLAY_HEIGHT * 0.062)
-
-
 
     # Function for board, will check for which board to load
     def board(x_board, y_board, current_board):
@@ -77,6 +68,7 @@ if __name__ == '__main__':
             current_board = pygame.transform.scale(board_four, (850, 500))
         screen.blit(current_board, (x_board, y_board))
 
+    # Calls correct function with board_position, based off board_position.
     def encounter_selection(board_position):
         """Generates drop down menu / contextual menu based off encounter chosen."""
 
@@ -112,7 +104,6 @@ if __name__ == '__main__':
                 return True
             else:
                 return False
-            
         elif board_position in [6, 12, 23, 27, 40, 62]:
             # Code for Pano_Mt
             print("Pano mt stuff")
@@ -135,10 +126,7 @@ if __name__ == '__main__':
             inn_menu(screen)
             update_current_player()
 
-    # def player_info(playercount, list of colors):
-    # Generates player's info displays, depending on number of players & assigns colors
-
-    # update current player
+    # Checks for & updates current player.
     def update_current_player():
         global current_player
         for player in player_list:
@@ -151,7 +139,7 @@ if __name__ == '__main__':
         "Green": (73, 114, 16), "Blue": (122, 165, 184), "Yellow": (243, 175, 1),
         "Grey": (145, 147, 156), "Purple": (98, 55, 114)}
 
-    # Font Section
+    # Text for turn indicator
     def title_selector(current_player):
         """Changes title for current player"""
         # Retrieve current player's RGB value
@@ -168,6 +156,7 @@ if __name__ == '__main__':
         text_title_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .03)
         screen.blit(text_title, text_title_rect)
 
+    # Probabilities & score displays
     def score_prob_display():
         """bunch of buttons to display score and Probability"""
         from probability import CostProb, PointProb, EncTypeProb, SubTypeProb
@@ -314,70 +303,44 @@ if __name__ == '__main__':
             if player_color == 'Green' and 'player_green' not in player_list:
                 player_green = GreenPlayer
                 player_list.append(player_green)
-                print(player_green)
                 player_green.icon = pygame.image.load('media/player_green.png')
-                # pygame.transform.scale(player_green.icon, (34, 60))
                 green_button.set_position(1000, 1000)
                 if len(player_list) == 3:
-                    print(player_list)
-                    # current_player = GreenPlayer
-                    print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Blue' and 'player_blue' not in player_list:
                 player_blue = BluePlayer
                 player_list.append(player_blue)
-                print(player_blue)
                 player_blue.icon = pygame.image.load('media/player_blue.png')
-                # pygame.transform.scale(player_blue.icon, (34, 60))
                 blue_button.set_position(1000, 1000)
                 if len(player_list) == 3:
-                    print(player_list)
-                    # current_player = BluePlayer
-                    print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Grey' and 'player_grey' not in player_list:
                 player_grey = GreyPlayer
                 player_list.append(player_grey)
-                print(player_grey)
                 player_grey.icon = pygame.image.load('media/player_grey.png')
-                # pygame.transform.scale(player_grey.icon, (34, 60))
                 grey_button.set_position(1000, 1000)
                 if len(player_list) == 3:
-                    print(player_list)
-                    # current_player = GreyPlayer
-                    print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Yellow' and 'player_yellow' not in player_list:
                 player_yellow = YellowPlayer
                 player_list.append(player_yellow)
-                print(player_yellow)
                 player_yellow.icon = pygame.image.load('media/player_yellow.png')
-                # pygame.transform.scale(player_yellow.icon, (34, 60))
                 yellow_button.set_position(1000, 1000)
                 if len(player_list) == 3:
-                    print(player_list)
-                    # current_player = YellowPlayer
-                    print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
             elif player_color == 'Purple' and 'player_purple' not in player_list:
                 player_purple = PurplePlayer
                 player_list.append(player_purple)
-                print(player_purple)
                 player_purple.icon = pygame.image.load('media/player_purple.png')
-                # pygame.transform.scale(player_purple.icon, (34, 60))
                 purple_button.set_position(1000, 1000)
                 if len(player_list) == 3:
-                    print(player_list)
-                    # current_player = PurplePlayer
-                    print('GO RIGHT INTO MAIN')
                     start_menu.disable()
                     main_screen(1)
         else:
-            print("How did you get here?")
             quitter()
 
     # Function for clean quit
@@ -419,7 +382,7 @@ if __name__ == '__main__':
 
     def player_positioning(board_number):
         """Checks player positions & blits pieces"""
-      
+
         ascend = False
         for player in player_list:
             if player.board_space in [31, 32, 33, 34, 35]:
