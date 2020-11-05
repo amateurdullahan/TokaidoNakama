@@ -1032,10 +1032,9 @@ if __name__ == '__main__':
         hs_3_rect = hs_3.get_rect()
         hs_2_rect.center = (DISPLAY_WIDTH * .32, DISPLAY_HEIGHT * .51)
         hs_3_rect.center = (DISPLAY_WIDTH * .68, DISPLAY_HEIGHT * .51)
-        back_style = pygame.font.SysFont('Arial', 38)
-        back_text = back_style.render('Back', True, black)
-        back_text_r = back_text.get_rect()
-        back_text_r.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .05)
+        back_arrow = pygame.image.load('media/arrow_back.png')
+        back_arrow_r = back_arrow.get_rect()
+        back_arrow_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         while paused:
             events = pygame.event.get()
             for event in events:
@@ -1049,12 +1048,12 @@ if __name__ == '__main__':
                         elif hs_3_rect.collidepoint(event.pos):
                             current_player = Hot_Spring_Loc(current_player, 3)
                             return True
-                        elif back_text_r.collidepoint(event.pos):
+                        elif back_arrow_r.collidepoint(event.pos):
                             return False
             if hs_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(text_select_r, text_select_rect)
-                screen.blit(back_text, back_text_r)
+                screen.blit(back_arrow, back_arrow_r)
                 screen.blit(hs_2, hs_2_rect)
                 screen.blit(hs_3, hs_3_rect)
                 hs_screen_update = 0
