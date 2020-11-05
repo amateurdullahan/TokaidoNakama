@@ -75,30 +75,46 @@ if __name__ == '__main__':
         if board_position in [1, 8, 29, 37, 48, 57, 65]:
             # Code for Villages Menu & updating stuff
             print("Village stuff")
-            village_menu(screen)
-            update_current_player()
+            completion = village_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
         elif board_position in [2, 9, 20, 25, 44, 55]:
             # Code for Temples Menu & updating stuff
             print("Temple stuff")
-            temple_menu(screen)
-            update_current_player()
+            completion = temple_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
         elif board_position in [3, 10, 24, 38, 46, 56, 61]:
             # Code for Encounter Menu & updating stuff
             print("Encounter stuff")
-            encounter_menu(screen)
-            update_current_player()
+            completion = encounter_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
         elif board_position in [4, 22, 36, 43, 63]:
             # Code for Pano_Paddy
             print("Pano paddy stuff")
-            pano_paddy_menu(screen)
-            update_current_player()
+            completion = pano_paddy_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
         elif board_position in [5, 13, 26, 41, 54, 60]:
             # Code for Hot Springs
             print("Hot spring stuff")
             # Menu returns true if an action was completed
             completion = hot_springs_menu(screen)
             # Update only if completion of turn. This block can be moved to end of function to 
-            # save redundancy once all menus are switched to this return style. 
+            # save redundancy once all menus are switched to this return style.
             if completion is True:
                 update_current_player()
                 return True
@@ -107,24 +123,40 @@ if __name__ == '__main__':
         elif board_position in [6, 12, 23, 27, 40, 62]:
             # Code for Pano_Mt
             print("Pano mt stuff")
-            pano_mt_menu(screen)
-            update_current_player()
+            completion = pano_mt_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
         elif board_position in [7, 21, 30, 39, 45, 59]:
             # Code for Farm
             print("Farm stuff")
-            farm_menu(screen)
-            update_current_player()
+            completion = farm_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
         elif board_position in [11, 19, 28, 42, 47, 58, 64]:
             # Code for Pano_Sea
             print("Pano sea stuff")
-            pano_sea_menu(screen)
-            update_current_player()
+            completion = pano_sea_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
         elif board_position in [14, 15, 16, 17, 18, 31, 32, 33, 34, 35, 49, 50, 51, 52, 53, 66,
                                 67, 68, 69, 70]:
             # Code for Inn
             print("Inn stuff")
-            inn_menu(screen)
-            update_current_player()
+            completion = inn_menu(screen)
+            if completion is True:
+                update_current_player()
+                return True
+            else:
+                return False
 
     # Checks for & updates current player.
     def update_current_player():
@@ -563,30 +595,34 @@ if __name__ == '__main__':
                             if rect1.collidepoint(event.pos) or rect1_1.collidepoint(event.pos):
                                 if current_player.board_space < 1:
                                     print('Village selected.')
-                                    encounter_selection(1)
-                                    current_player.board_space = 1
-                                    update_current_player()
+                                    enc_cont = encounter_selection(1)
+                                    if enc_cont is True:
+                                        current_player.board_space = 1
+                                        update_current_player()
                                     screen_update = 1
                             if rect2.collidepoint(event.pos) or rect2_1.collidepoint(event.pos):
                                 if current_player.board_space < 2:
                                     print('Temple selected.')
-                                    encounter_selection(2)
-                                    current_player.board_space = 2
-                                    update_current_player()
+                                    enc_cont = encounter_selection(2)
+                                    if enc_cont is True:
+                                        current_player.board_space = 2
+                                        update_current_player()
                                     screen_update = 1
                             if rect3.collidepoint(event.pos) or rect3_1.collidepoint(event.pos):
                                 if current_player.board_space < 3:
                                     print('Encounter selected.')
-                                    encounter_selection(3)
-                                    current_player.board_space = 3
-                                    update_current_player()
+                                    enc_cont = encounter_selection(3)
+                                    if enc_cont is True:
+                                        current_player.board_space = 3
+                                        update_current_player()
                                     screen_update = 1
                             if rect4.collidepoint(event.pos) or rect4_1.collidepoint(event.pos):
                                 if current_player.board_space < 4:
                                     print('Panorama: Paddy selected.')
-                                    encounter_selection(4)
-                                    current_player.board_space = 4
-                                    update_current_player()
+                                    enc_cont = encounter_selection(4)
+                                    if enc_cont is True:
+                                        current_player.board_space = 4
+                                        update_current_player()
                                     screen_update = 1
                             if rect5.collidepoint(event.pos) or rect5_1.collidepoint(event.pos):
                                 if current_player.board_space < 5:
@@ -599,77 +635,86 @@ if __name__ == '__main__':
                             if rect6.collidepoint(event.pos) or rect6_1.collidepoint(event.pos):
                                 if current_player.board_space < 6:
                                     print('Panorama: Mt selected.')
-                                    encounter_selection(6)
-                                    current_player.board_space = 6
-                                    update_current_player()
+                                    enc_cont = encounter_selection(6)
+                                    if enc_cont is True:
+                                        current_player.board_space = 6
+                                        update_current_player()
                                     screen_update = 1
                             if rect7.collidepoint(event.pos) or rect7_1.collidepoint(event.pos):
                                 if current_player.board_space < 7:
                                     print('Farm selected.')
-                                    encounter_selection(7)
-                                    current_player.board_space = 7
-                                    update_current_player()
+                                    enc_cont = encounter_selection(7)
+                                    if enc_cont is True:
+                                        current_player.board_space = 7
+                                        update_current_player()
                                     screen_update = 1
                             if rect8.collidepoint(event.pos) or rect8_1.collidepoint(event.pos):
                                 if current_player.board_space < 8:
                                     print('Village selected.')
-                                    encounter_selection(8)
-                                    current_player.board_space = 8
-                                    update_current_player()
+                                    enc_cont = encounter_selection(8)
+                                    if enc_cont is True:
+                                        current_player.board_space = 8
+                                        update_current_player()
                                     screen_update = 1
                             if rect9.collidepoint(event.pos) or rect9_1.collidepoint(event.pos):
                                 if current_player.board_space < 9:
                                     print('Temple selected.')
-                                    encounter_selection(9)
-                                    current_player.board_space = 9
-                                    update_current_player()
+                                    enc_cont = encounter_selection(9)
+                                    if enc_cont is True:
+                                        current_player.board_space = 9
+                                        update_current_player()
                                     screen_update = 1
                             if rect10.collidepoint(event.pos) or rect10_1.collidepoint(event.pos):
                                 if current_player.board_space < 10:
                                     print('Encounter selected.')
-                                    encounter_selection(10)
-                                    current_player.board_space = 10
-                                    update_current_player()
+                                    enc_cont = encounter_selection(10)
+                                    if enc_cont is True:
+                                        current_player.board_space = 10
+                                        update_current_player()
                                     screen_update = 1
                             if rect11.collidepoint(event.pos) or rect11_1.collidepoint(event.pos):
                                 if current_player.board_space < 11:
                                     print('Panorama: Sea selected.')
-                                    encounter_selection(11)
-                                    current_player.board_space = 11
-                                    update_current_player()
+                                    enc_cont = encounter_selection(11)
+                                    if enc_cont is True:
+                                        current_player.board_space = 11
+                                        update_current_player()
                                     screen_update = 1
                             if rect12.collidepoint(event.pos) or rect12_1.collidepoint(event.pos):
                                 if current_player.board_space < 12:
                                     print('Panorama: Mountain selected.')
-                                    encounter_selection(12)
-                                    current_player.board_space = 12
-                                    update_current_player()
+                                    enc_cont = encounter_selection(12)
+                                    if enc_cont is True:
+                                        current_player.board_space = 12
+                                        update_current_player()
                                     screen_update = 1
                             if rect13.collidepoint(event.pos) or rect13_1.collidepoint(event.pos):
                                 if current_player.board_space < 13:
                                     print('Hot Spring selected.')
-                                    encounter_selection(13)
-                                    current_player.board_space = 13
-                                    update_current_player()
+                                    enc_cont = encounter_selection(13)
+                                    if enc_cont is True:
+                                        current_player.board_space = 13
+                                        update_current_player()
                                     screen_update = 1
                             if rect14.collidepoint(event.pos) or rect14_1.collidepoint(event.pos):
                                 if current_player.board_space < 14:
                                     print('We\'re INN IT NOW BOYS')
-                                    encounter_selection(14)
-                                    if board_number == 1:
-                                        if len(board_1_list) == 0:
-                                            current_player.board_space = 18
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 1:
-                                            current_player.board_space = 17
-                                            board_1_list.append(current_player)
-                                        elif len(board_1_list) == 2:
-                                            current_player.board_space = 16
-                                            board_1_list.append(current_player)
-                                            update_current_player()
-                                            running = False
-                                            main_screen(2)
-                                    update_current_player()
+                                    enc_cont = encounter_selection(14)
+                                    if enc_cont is True:
+                                        if board_number == 1:
+                                            if len(board_1_list) == 0:
+                                                current_player.board_space = 18
+                                                board_1_list.append(current_player)
+                                            elif len(board_1_list) == 1:
+                                                current_player.board_space = 17
+                                                board_1_list.append(current_player)
+                                            elif len(board_1_list) == 2:
+                                                current_player.board_space = 16
+                                                board_1_list.append(current_player)
+                                                update_current_player()
+                                                running = False
+                                                main_screen(2)
+                                        update_current_player()
                                     screen_update = 1
                         if board_number == 2:
                             if rect19.collidepoint(event.pos) or rect19_1.collidepoint(event.pos):
@@ -1066,15 +1111,19 @@ if __name__ == '__main__':
         paused = True
         farm_screen_update = 1
         farm_text_style = pygame.font.SysFont('Arial', 50)
+        farm_sub_text_style = pygame.font.SysFont('Arial', 38)
         farm_collect_text = farm_text_style.render('Farm: Collect 3 Coins!', True, black)
         farm_collect_rect = farm_collect_text.get_rect()
         farm_collect_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
-        farm_confirmation_text = farm_text_style.render('Click Anywhere To Continue', True, black)
+        farm_confirmation_text = farm_sub_text_style.render('Click Anywhere To Continue', True, black)
         farm_confirmation_rect = farm_confirmation_text.get_rect()
         farm_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
         coinpile = pygame.image.load('media/coins_three.png')
         coinpile_rect = coinpile.get_rect()
         coinpile_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .45)
+        farm_back_arrow = pygame.image.load('media/arrow_back.png')
+        farm_back_arrow_r = farm_back_arrow.get_rect()
+        farm_back_arrow_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         while paused:
             events = pygame.event.get()
             for event in events:
@@ -1082,13 +1131,17 @@ if __name__ == '__main__':
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        current_player = Farm_Loc(current_player)
-                        return
+                        if not farm_back_arrow_r.collidepoint(event.pos):
+                            current_player = Farm_Loc(current_player)
+                            return True
+                        elif farm_back_arrow_r.collidepoint(event.pos):
+                            return False
             if farm_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(farm_collect_text, farm_collect_rect)
                 screen.blit(farm_confirmation_text, farm_confirmation_rect)
                 screen.blit(coinpile, coinpile_rect)
+                screen.blit(farm_back_arrow, farm_back_arrow_r)
                 farm_screen_update = 0
                 pygame.display.update()
         return False
@@ -1114,6 +1167,9 @@ if __name__ == '__main__':
         paddy_confirmation_text = click_text_style.render('Click Anywhere To Continue', True, black)
         paddy_confirmation_rect = paddy_confirmation_text.get_rect()
         paddy_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
+        pad_back = pygame.image.load('media/arrow_back.png')
+        pad_back_r = pad_back.get_rect()
+        pad_back_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         while paused:
             events = pygame.event.get()
             for event in events:
@@ -1121,13 +1177,17 @@ if __name__ == '__main__':
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        current_player = Pano_Paddy_Loc(current_player)
-                        return
+                        if not pad_back_r.collidepoint(event.pos):
+                            current_player = Pano_Paddy_Loc(current_player)
+                            return True
+                        elif pad_back_r.collidepoint(event.pos):
+                            return False
             if paddy_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(paddy_collect_text, paddy_collect_rect)
                 screen.blit(paddy_confirmation_text, paddy_confirmation_rect)
                 screen.blit(paddy_cards, paddy_cards_rect)
+                screen.blit(pad_back, pad_back_r)
                 paddy_screen_update = 0
                 pygame.display.update()
         return False
@@ -1155,6 +1215,9 @@ if __name__ == '__main__':
         mt_confirmation_text = click_text_style.render('Click Anywhere To Continue', True, black)
         mt_confirmation_rect = mt_confirmation_text.get_rect()
         mt_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
+        mt_back = pygame.image.load('media/arrow_back.png')
+        mt_back_r = mt_back.get_rect()
+        mt_back_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         while paused:
             screen.fill((255, 255, 255))
             events = pygame.event.get()
@@ -1163,13 +1226,17 @@ if __name__ == '__main__':
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        current_player = Pano_Mt_Loc(current_player)
-                        return
+                        if not mt_back_r.collidepoint(event.pos):
+                            current_player = Pano_Mt_Loc(current_player)
+                            return True
+                        elif mt_back_r.collidepoint(event.pos):
+                            return False
             if mt_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(mt_collect_text, mt_collect_rect)
                 screen.blit(mt_confirmation_text, mt_confirmation_rect)
                 screen.blit(mt_cards, mt_cards_rect)
+                screen.blit(mt_back, mt_back_r)
                 mt_screen_update = 0
                 pygame.display.update()
         return False
@@ -1199,6 +1266,9 @@ if __name__ == '__main__':
         sea_confirmation_text = click_text_style.render('Click Anywhere To Continue', True, black)
         sea_confirmation_rect = sea_confirmation_text.get_rect()
         sea_confirmation_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .7)
+        sea_back = pygame.image.load('media/arrow_back.png')
+        sea_back_r = sea_back.get_rect()
+        sea_back_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         while paused:
             events = pygame.event.get()
             for event in events:
@@ -1206,13 +1276,17 @@ if __name__ == '__main__':
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        current_player = Pano_Sea_Loc(current_player)
-                        return
+                        if not sea_back_r.collidepoint(event.pos):
+                            current_player = Pano_Sea_Loc(current_player)
+                            return True
+                        elif sea_back_r.collidepoint(event.pos):
+                            return False
             if sea_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(sea_collect_text, sea_collect_rect)
                 screen.blit(sea_confirmation_text, sea_confirmation_rect)
                 screen.blit(sea_cards, sea_cards_rect)
+                screen.blit(sea_back, sea_back_r)
                 sea_screen_update = 0
                 pygame.display.update()
         return False
@@ -1247,6 +1321,9 @@ if __name__ == '__main__':
         enc_select_text = enc_text_style.render('Select Encounter:', True, black)
         enc_select_rect = enc_select_text.get_rect()
         enc_select_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        enc_back = pygame.image.load('media/arrow_back.png')
+        enc_back_r = enc_back.get_rect()
+        enc_back_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         enc_dict = {}
         for enc in ENCDeck.card_list:
             if enc.name == 'Shokunin':
@@ -1272,28 +1349,31 @@ if __name__ == '__main__':
                     if event.button == 1:
                         if enc_kuge_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Kuge")
-                            return
+                            return True
                         elif enc_miko_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Miko")
-                            return
+                            return True
                         elif enc_samurai_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Samurai")
-                            return
+                            return True
                         elif enc_shokunin_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Shokunin")
-                            return
+                            return True
                         elif enc_anna_paddy_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Annaibito: Paddy")
-                            return
+                            return True
                         elif enc_anna_mt_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Annaibito: Mountain")
-                            return
+                            return True
                         elif enc_anna_sea_rect.collidepoint(event.pos):
                             current_player = Encounter_Loc(current_player, "Annaibito: Sea")
-                            return
+                            return True
+                        elif enc_back_r.collidepoint(event.pos):
+                            return False
             if enc_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(enc_select_text, enc_select_rect)
+                screen.blit(enc_back, enc_back_r)
                 for i in enc_dict:
                     screen.blit(i, enc_dict[i])
                 enc_screen_update = 0
@@ -1310,6 +1390,9 @@ if __name__ == '__main__':
         inn_select_text = inn_text_style.render('Select Meal:', True, black)
         inn_select_text_rect = inn_select_text.get_rect()
         inn_select_text_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .2)
+        inn_back = pygame.image.load('media/arrow_back.png')
+        inn_back_r = inn_back.get_rect()
+        inn_back_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         meal_skip = skip_text_style.render('Skip Meal', True, black)
         meal_skip_rect = meal_skip.get_rect()
         meal_skip_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT * .8)
@@ -1364,52 +1447,55 @@ if __name__ == '__main__':
                     if event.button == 1:
                         if meal_miso_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Misoshiru")
-                            return
+                            return True
                         elif meal_dango_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Dango")
-                            return
+                            return True
                         elif meal_nigiri_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Nigirimeshi")
-                            return
+                            return True
                         elif meal_tempura_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tempura")
-                            return
+                            return True
                         elif meal_soba_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Soba")
-                            return
+                            return True
                         elif meal_yakitori_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Yakitori")
-                            return
+                            return True
                         elif meal_tofu_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tofu")
-                            return
+                            return True
                         elif meal_sushi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Sushi")
-                            return
+                            return True
                         elif meal_fugu_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Fugu")
-                            return
+                            return True
                         elif meal_donburi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Donburi")
-                            return
+                            return True
                         elif meal_sashimi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Sashimi")
-                            return
+                            return True
                         elif meal_udon_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Udon")
-                            return
+                            return True
                         elif meal_unagi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Unagi")
-                            return
+                            return True
                         elif meal_tai_meshi_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, "Tai Meshi")
-                            return
+                            return True
                         elif meal_skip_rect.collidepoint(event.pos):
                             current_player = Inn_Loc(current_player, 'Skip')
-                            return
+                            return True
+                        elif inn_back_r.collidepoint(event.pos):
+                            return False
             if inn_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(inn_select_text, inn_select_text_rect)
+                screen.blit(inn_back, inn_back_r)
                 screen.blit(meal_skip, meal_skip_rect)
                 screen.blit(meal_miso, meal_miso_rect)
                 screen.blit(meal_dango, meal_dango_rect)
@@ -1515,6 +1601,9 @@ if __name__ == '__main__':
         ukiyoe = pygame.image.load('media/ukiyoe.png')
         ukiyoe_rect = ukiyoe.get_rect()
         ukiyoe_rect.center = (DISPLAY_WIDTH * .92, DISPLAY_HEIGHT * .83)
+        v_back = pygame.image.load('media/arrow_back.png')
+        v_back_r = v_back.get_rect()
+        v_back_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         while paused and counter < 3:
             events = pygame.event.get()
             for event in events:
@@ -1522,7 +1611,9 @@ if __name__ == '__main__':
                     quitter()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        if gofu_rect.collidepoint(event.pos):
+                        if v_back_r.collidepoint(event.pos):
+                            return False
+                        elif gofu_rect.collidepoint(event.pos):
                             current_player = Village_Loc(current_player, "Gofu")
                             counter += 1
                         elif koma_rect.collidepoint(event.pos):
@@ -1671,6 +1762,7 @@ if __name__ == '__main__':
                 screen.fill((255, 255, 255))
                 screen.blit(village_select_text, village_select_text_rect)
                 screen.blit(desc_text, desc_text_rect)
+                screen.blit(v_back, v_back_r)
                 screen.blit(gofu, gofu_rect)
                 screen.blit(hashi, hashi_rect)
                 screen.blit(kamaboko, kamaboko_rect)
@@ -1697,7 +1789,7 @@ if __name__ == '__main__':
                 screen.blit(ukiyoe, ukiyoe_rect)
                 village_screen_update = 0
                 pygame.display.update()
-        return False
+        return True
 
     def temple_menu(screen):
         """Temple Menu"""
@@ -1717,6 +1809,9 @@ if __name__ == '__main__':
         coins_1_rect.center = (DISPLAY_WIDTH * .25, DISPLAY_HEIGHT * .45)
         coins_2_rect.center = (DISPLAY_WIDTH * .5, DISPLAY_HEIGHT * .46)
         coins_3_rect.center = (DISPLAY_WIDTH * .75, DISPLAY_HEIGHT * .46)
+        temple_back = pygame.image.load('media/arrow_back.png')
+        temple_back_r = temple_back.get_rect()
+        temple_back_r.center = (DISPLAY_WIDTH * .945, DISPLAY_HEIGHT * .06)
         while paused:
             events = pygame.event.get()
             for event in events:
@@ -1733,9 +1828,12 @@ if __name__ == '__main__':
                         if coins_3_rect.collidepoint(event.pos):
                             current_player = Temple_Loc(current_player, 3)
                             return
+                        elif temple_back_r.collidepoint(event.pos):
+                            return False
             if temple_screen_update == 1:
                 screen.fill((255, 255, 255))
                 screen.blit(text_select_r, text_select_rect)
+                screen.blit(temple_back, temple_back_r)
                 screen.blit(coins_1, coins_1_rect)
                 screen.blit(coins_2, coins_2_rect)
                 screen.blit(coins_3, coins_3_rect)
