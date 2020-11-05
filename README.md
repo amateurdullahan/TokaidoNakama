@@ -34,7 +34,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/amateurdullahan/TokaidoNakama">
-    <img src="media/cherrytreeicon.png" alt="logo" width="80" height="80">
+    <img src="media/coins_three.png" alt="logo" width="80" height="80">
   </a>
 
   <h3 align="center">Tokaido Nakama</h3>
