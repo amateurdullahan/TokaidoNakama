@@ -176,14 +176,14 @@ Project Link: [https://github.com/amateurdullahan/TokaidoNakama](https://github.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
-[contributors-url]: https://github.com/amateurdullahan/TokaidoNakama/graphs/contributorss
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/amateurdullahan/TokaidoNakama.svg?style=flat-square
+[contributors-url]: https://github.com/amateurdullahan/TokaidoNakama/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/amateurdullahan/TokaidoNakama.svg?style=flat-square
 [forks-url]: https://github.com/amateurdullahan/TokaidoNakama/network/members
-[stars-shield]: https://img.shields.io/github/stars/amateurdullahan/repo.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/amateurdullahan/TokaidoNakama.svg?style=flat-square
 [stars-url]: https://github.com/amateurdullahan/TokaidoNakama/stargazers
-[issues-shield]: https://img.shields.io/github/issues/amateurdullahan/repo.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/amateurdullahan/TokaidoNakama.svg?style=flat-square
 [issues-url]: https://github.com/amateurdullahan/TokaidoNakama/issues
-[license-shield]: https://img.shields.io/github/license/amateurdullahan/repo.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/amateurdullahan/TokaidoNakama.svg?style=flat-square
 [license-url]: https://github.com/amateurdullahan/TokaidoNakama/blob/main/LICENSE.txt
 [product-screenshot]: media/fullscreen.jpg
