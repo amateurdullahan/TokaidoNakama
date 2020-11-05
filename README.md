@@ -1,10 +1,14 @@
 # TokaidoNakama
 Portfolio Project for Holberton School TUL-11, gameplay aid for board game Tokaido
+Creators:
+Corbin Enterline https://www.linkedin.com/in/corbin-enterline-87451247/
+Robert Rowe https://www.linkedin.com/in/robert-rowe-8a41b71a1/
+Dylan Carey https://www.linkedin.com/in/dylan-carey-7981b71a1/
 
 HOW TO USE:
 
 0. Set up, physically or digitally, the board for Tokaido
-1. Run the executable file screen.py
+1. Run the executable file screen.pyw
 2. On the starting screen select 3 players, in turn order. Currently the application can only handle 3 player games
 3. Use the probabilities displayed on the bottom half of the screen to help make decisions on your turn
 4. Choose the location you chose in the current game of Tokaido you are playing, by clicking on the location on the screen

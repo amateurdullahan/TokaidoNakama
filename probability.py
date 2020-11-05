@@ -9,16 +9,15 @@ def CostProb(Deck):
     cost2sum = 0
     cost3sum = 0
     cost_list = []
-    for a in range(len(Deck.card_list)):
-        if Deck.card_list[a].cost == 1:
+    for idx in range(len(Deck.card_list)):
+        if Deck.card_list[idx].cost == 1:
             cost1sum += 1
-        elif Deck.card_list[a].cost == 2:
+        elif Deck.card_list[idx].cost == 2:
             cost2sum += 1
-        elif Deck.card_list[a].cost == 3:
+        elif Deck.card_list[idx].cost == 3:
             cost3sum += 1
         else:
             continue
-        a += 1
     cost1sum = round(((cost1sum / Deck.number_of_cards) * 100), 2)
     cost2sum = round(((cost2sum / Deck.number_of_cards) * 100), 2)
     cost3sum = round(((cost3sum / Deck.number_of_cards) * 100), 2)
@@ -32,14 +31,13 @@ def PointProb(Deck):
     point2sum = 0
     point3sum = 0
     point_list = []
-    for a in range(len(Deck.card_list)):
-        if Deck.card_list[a].point_value == 2:
+    for idx in range(len(Deck.card_list)):
+        if Deck.card_list[idx].point_value == 2:
             point2sum += 1
-        elif Deck.card_list[a].point_value == 3:
+        elif Deck.card_list[idx].point_value == 3:
             point3sum += 1
         else:
             continue
-        a += 1
     point2sum = round(((point2sum / Deck.number_of_cards) * 100), 2)
     point3sum = round(((point3sum / Deck.number_of_cards) * 100), 2)
     point_list.append(point2sum)
@@ -54,14 +52,14 @@ def SubTypeProb(Deck):
     clothing_sum = 0
     art_sum = 0
     type_list = []
-    for a in range(len(Deck.card_list)):
-        if Deck.card_list[a].subtype == "Small Item":
+    for idx in range(len(Deck.card_list)):
+        if Deck.card_list[idx].subtype == "Small Item":
             small_item_sum += 1
-        elif Deck.card_list[a].subtype == "Food and Drink":
+        elif Deck.card_list[idx].subtype == "Food and Drink":
             food_drink_sum += 1
-        elif Deck.card_list[a].subtype == "Clothing":
+        elif Deck.card_list[idx].subtype == "Clothing":
             clothing_sum += 1
-        elif Deck.card_list[a].subtype == "Art":
+        elif Deck.card_list[idx].subtype == "Art":
             art_sum += 1
         else:
             continue
@@ -85,24 +83,23 @@ def EncTypeProb(Deck):
     anna_mtn_sum = 0
     anna_sea_sum = 0
     type_list = []
-    for a in range(len(Deck.card_list)):
-        if Deck.card_list[a].name == "Kuge":
+    for idx in range(len(Deck.card_list)):
+        if Deck.card_list[idx].name == "Kuge":
             kuge_sum += 1
-        elif Deck.card_list[a].name == "Miko":
+        elif Deck.card_list[idx].name == "Miko":
             miko_sum += 1
-        elif Deck.card_list[a].name == "Samurai":
+        elif Deck.card_list[idx].name == "Samurai":
             samurai_sum += 1
-        elif Deck.card_list[a].name == "Shokunin":
+        elif Deck.card_list[idx].name == "Shokunin":
             shokunin_sum += 1
-        elif Deck.card_list[a].name == "Annaibito: Paddy":
+        elif Deck.card_list[idx].name == "Annaibito: Paddy":
             anna_paddy_sum += 1
-        elif Deck.card_list[a].name == "Annaibito: Mountain":
+        elif Deck.card_list[idx].name == "Annaibito: Mountain":
             anna_mtn_sum += 1
-        elif Deck.card_list[a].name == "Annaibito: Sea":
+        elif Deck.card_list[idx].name == "Annaibito: Sea":
             anna_sea_sum += 1
         else:
             continue
-        a += 1
     kuge_sum = round(((kuge_sum / Deck.number_of_cards) * 100), 2)
     miko_sum = round(((miko_sum / Deck.number_of_cards) * 100), 2)
     samurai_sum = round(((samurai_sum / Deck.number_of_cards) * 100), 2)
