@@ -157,7 +157,7 @@ Dylan Carey - [@twitter_handle](https://twitter.com/twitter_handle) - [LinkedIn]
 
 Corbin Enterline - [@EnterlineCorbin](https://twitter.com/EnterlineCorbin) - [LinkedIn](www.corbinenterline.com)
 
-Project Link: [https://github.com/amateurdullahan/TokaidoNakama](https://github.com/amateurdullahan/TokaidoNakama)
+Project Link: [Tokaido Nakama Landing Page](https://amateurdullahan.github.io/TokaidoNakama/)
 
 
 
