@@ -61,7 +61,6 @@
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
@@ -93,13 +92,6 @@
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
 
 ### Installation
 
@@ -107,12 +99,12 @@ npm install npm@latest -g
 ```sh
 git clone https://github.com/amateurdullahan/TokaidoNakama.git
 ```
-or
+**or**
 
 1B. Download and extract the ZIP
 
 
-
+2. Run **screen.pyw**
 
 
 <!-- USAGE EXAMPLES -->
