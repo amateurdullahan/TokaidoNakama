@@ -95,13 +95,14 @@ To get a local copy up and running follow these simple steps.
 
 ### Installation
 
-1A. Clone the repo
+1.
+Option A - Clone the repo
 ```sh
 git clone https://github.com/amateurdullahan/TokaidoNakama.git
 ```
 **or**
 
-1B. Download and extract the ZIP
+Option B - Download and extract the ZIP
 
 
 2. Run **screen.pyw**
