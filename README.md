@@ -165,6 +165,7 @@ Project Link: [Tokaido Nakama Landing Page](https://amateurdullahan.github.io/To
 ## Acknowledgements
 
 * [Brett Davis - Menu Assistance](https://github.com/MenacingManatee)
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
