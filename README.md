@@ -122,10 +122,10 @@ From there the application will indicate at the top of the screen which player's
 <!-- ROADMAP -->
 ## Roadmap
 
-* Player Count (2, 4-5)
-* Achievement Tracking
-* Expansions
-* Rule Variations
+* Player Count (2, 4-5): Neutral traveller needs to be implemented for 2 player games, the expanded spaces need to be coded for 4 and 5 players.
+* Achievement Tracking: Most of the functionality has been coded and commented out. Temple bonus doesn't track properly, also want to include an option to either have the acheivements updated each turn and included in the current score or to not include the acheivement points until the final score. 
+* Expansions: Additional traveler and encounter card promos, the mitsuri cards for the inn spaces, and the Crossroads alternate actions for each space.
+* Rule Variations: Add in traveler tile abilities, Return Trip and Gastronomy variants, and alternate starting money for Preperations.
 
 
 <!-- CONTRIBUTING -->

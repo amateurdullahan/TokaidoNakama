@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""location class and inherited stuff"""
+"""location class"""
 import pygame
 import pygame_menu
 from player import Player
@@ -26,7 +26,7 @@ def Pano_Paddy_Loc(player):
     if player.pano_paddy < 3:
         player.pano_paddy += 1
         player.score += player.pano_paddy
-        # pano_paddy_check(player)
+        # pano_paddy_check(player) for acheivements
         return (player)
     else:
         print("Max Paddy Panorama Has Been Reached")
@@ -37,7 +37,7 @@ def Pano_Mt_Loc(player):
     if player.pano_mt < 4:
         player.pano_mt += 1
         player.score += player.pano_mt
-        # pano_mt_check(player)
+        # pano_mt_check(player) for acheivements
         return (player)
     else:
         print("Max Mountain Panorama Has Been Reached")
@@ -48,7 +48,7 @@ def Pano_Sea_Loc(player):
     if player.pano_sea < 5:
         player.pano_sea += 1
         player.score += player.pano_sea
-        # pano_sea_check(player)
+        # pano_sea_check(player) for acheivements
         return (player)
     else:
         print("Max Sea Panorama Has Been Reached")
@@ -59,7 +59,7 @@ def Temple_Loc(player, num):
     player.coins -= num
     player.score += num
     player.donation += num
-    # player = temple_bonus_check(player)
+    # player = temple_bonus_check(player) for acheivements
     return (player)
 
 def Village_Loc(player, cardname):
@@ -92,7 +92,7 @@ def Village_Loc(player, cardname):
     elif player.sv_type_fourth == bought.subtype:
         player.score += 7
     MoveCard(player, SVDeck, bought)
-    # collector_bonus_check(player)
+    # collector_bonus_check(player) for acheivements
     return (player)
 
 def Hot_Spring_Loc(player, pts):
@@ -105,7 +105,7 @@ def Hot_Spring_Loc(player, pts):
                 player.playerdeck.add(HSDeck.card_list.pop(idx))
                 player.score += 2
                 HSDeck.number_of_cards -= 1
-                # player = bather_bonus_check(player)
+                # player = bather_bonus_check(player) for acheivements
                 return (player)
     elif pts == 3:
         print("3 points clicked")
@@ -114,7 +114,7 @@ def Hot_Spring_Loc(player, pts):
                 player.playerdeck.add(HSDeck.card_list.pop(idx))
                 player.score += 3
                 HSDeck.number_of_cards -= 1
-                # player = bather_bonus_check(player)
+                # player = bather_bonus_check(player) for acheivements
                 return (player)
 
 def Inn_Loc(player, cardname):
@@ -127,11 +127,11 @@ def Inn_Loc(player, cardname):
         if MDeck.card_list[idx].name == cardname:
             meal = MDeck.card_list[idx]
             break
-    # print("Player, meal:", player, meal)
     player.score += 6
     player.coins -= MDeck.card_list[idx].cost
     MoveCard(player, MDeck, meal)
-    # player = gourmet_bonus_check(player)
+    # discard unchosen meal cards
+    # player = gourmet_bonus_check(player) for acheivements
     return (player)
 
 def Encounter_Loc(player, cardname):
@@ -141,7 +141,7 @@ def Encounter_Loc(player, cardname):
             encounter = ENCDeck.card_list[idx]
             break
     MoveCard(player, ENCDeck, encounter)
-    # chatterbox_bonus_check(player)
+    # chatterbox_bonus_check(player) for acheivements
     if cardname == "Kuge":
         player.coins += 3
     if cardname == "Samurai":
@@ -149,26 +149,26 @@ def Encounter_Loc(player, cardname):
     if cardname == "Miko":
         player.donation += 1
         player.score += 1
-        # temple_bonus_check(player)
+        # temple_bonus_check(player) for acheivements
     if cardname == "Annaibito: Paddy":
         if player.pano_paddy < 3:
             player.pano_paddy += 1
             player.score += player.pano_paddy
-            # pano_paddy_check(player)
+            # pano_paddy_check(player) for acheivements
         else:
             print("Max Paddy Panorama Has Been Reached")
     if cardname == "Annaibito: Mountain":
         if player.pano_mt < 4:
             player.pano_mt += 1
             player.score += player.pano_mt
-            # pano_mt_check(player)
+            # pano_mt_check(player) for acheivements
         else:
             print("Max Mountain Panorama Has Been Reached")
     if cardname == "Annaibito: Sea":
         if player.pano_sea < 3:
             player.pano_sea += 1
             player.score += player.pano_sea
-            # pano_sea_check(player)
+            # pano_sea_check(player) for acheivements
         else:
             print("Max Sea Panorama Has Been Reached")
     return (player)
