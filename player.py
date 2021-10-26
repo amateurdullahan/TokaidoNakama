@@ -2,8 +2,14 @@
 """Handles the player objects and their associated attributes."""
 from deck import Deck
 
+
 class Player():
-        def __init__(self, color="", playerdeck=Deck(), score=0, coins=7, board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0, sv_type_first="", sv_type_second="", sv_type_third="", sv_type_fourth="", bather_bonus=0, icon=0, donation=0, temple_bonus=0, chatterbox_bonus=0, collector_bonus=0, gourmet_bonus=0):
+        def __init__(self, color="", playerdeck=Deck(), score=0, coins=7,
+                     board_space=99, pano_paddy=0, pano_mt=0, pano_sea=0,
+                     sv_type_first="", sv_type_second="", sv_type_third="",
+                     sv_type_fourth="", bather_bonus=0, icon=0, donation=0,
+                     temple_bonus=0, chatterbox_bonus=0, collector_bonus=0,
+                     gourmet_bonus=0):
             """Player object intialization."""
             self.playerdeck = playerdeck
             self.color = color
@@ -170,30 +176,30 @@ class Player():
 
         @property
         def chatterbox_bonus(self):
-            """comment"""
+            """Chatterbox achievement flag."""
             return self.__chatterbox_bonus
 
         @chatterbox_bonus.setter
         def chatterbox_bonus(self, value):
-            """comment"""
+            """Sets Chatterbox achievement flag for the player."""
             self.__chatterbox_bonus = value
 
         @property
         def collector_bonus(self):
-            """comment"""
+            """Collector achievement flag."""
             return self.__collector_bonus
 
         @collector_bonus.setter
         def collector_bonus(self, value):
-            """comment"""
+            """Sets Collector achievement flag for the player."""
             self.__collector_bonus = value
 
         @property
         def gourmet_bonus(self):
-            """comment"""
+            """Gourmet achievement flag."""
             return self.__gourmet_bonus
 
         @gourmet_bonus.setter
         def gourmet_bonus(self, value):
-            """comment"""
+            """Sets Gourmet achievement flag for the player."""
             self.__gourmet_bonus = value
