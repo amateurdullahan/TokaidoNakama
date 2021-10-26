@@ -155,7 +155,7 @@ Robert Rowe - [@RobertRowe1013](https://twitter.com/robertrowe1013) - [LinkedIn]
 
 Dylan Carey - [@twitter_handle](https://twitter.com/twitter_handle) - [LinkedIn](https://www.linkedin.com/in/dylan-carey-7981b71a1/)
 
-Corbin Enterline - [@EnterlineCorbin](https://twitter.com/EnterlineCorbin) - [LinkedIn](www.corbinenterline.com)
+Corbin Enterline - [@nibroc_corbin](https://twitter.com/nibroc_corbin) - [LinkedIn](https://www.linkedin.com/in/corbin-enterline-87451247/)
 
 Project Link: [Tokaido Nakama Landing Page](https://amateurdullahan.github.io/TokaidoNakama/)
 
