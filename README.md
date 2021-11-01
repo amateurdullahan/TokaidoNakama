@@ -151,11 +151,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Robert Rowe - [@RobertRowe1013](https://twitter.com/robertrowe1013) - [LinkedIn](https://www.linkedin.com/in/robert-rowe-8a41b71a1/)
+Designer: Robert Rowe - [@RobertRowe1013](https://twitter.com/robertrowe1013) - [LinkedIn](https://www.linkedin.com/in/robert-rowe-8a41b71a1/)
 
-Dylan Carey - [@twitter_handle](https://twitter.com/twitter_handle) - [LinkedIn](https://www.linkedin.com/in/dylan-carey-7981b71a1/)
+Back-End Programmer: Dylan Carey - [@twitter_handle](https://twitter.com/twitter_handle) - [LinkedIn](https://www.linkedin.com/in/dylan-carey-7981b71a1/)
 
-Corbin Enterline - [@nibroc_corbin](https://twitter.com/nibroc_corbin) - [LinkedIn](https://www.linkedin.com/in/corbin-enterline-87451247/)
+Front-End Programmer: Corbin Enterline - [@nibroc_corbin](https://twitter.com/nibroc_corbin) - [LinkedIn](https://www.linkedin.com/in/corbin-enterline-87451247/)
 
 Project Link: [Tokaido Nakama Landing Page](https://amateurdullahan.github.io/TokaidoNakama/)
 
